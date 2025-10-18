@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1760660316 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\main.cpp
+	<iostream>
+	"App.h"
+
+1760767777 c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\app.h
+
+1758847336 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\utils.cpp
+	<iostream>
+	"utils.h"
+
+1758847336 c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\utils.h
+	<string>
+
