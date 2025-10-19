@@ -3,7 +3,8 @@
 	<iostream>
 	"App.h"
 
-1760767777 c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\app.h
+1760843790 c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\app.h
+	"UsuarioManager.h"
 
 1758847336 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\utils.cpp
 	<iostream>
@@ -11,4 +12,39 @@
 
 1758847336 c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\utils.h
 	<string>
+
+1760662436 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\fecha.cpp
+	"Fecha.h"
+
+1760662436 c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\fecha.h
+	<string>
+
+1760843298 c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\usuariomanager.h
+	<string>
+	"Usuario.h"
+	"UsuarioArchivo.h"
+
+1760841248 c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\usuario.h
+	"Fecha.h"
+
+1760842516 c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\usuarioarchivo.h
+	<string>
+	"Usuario.h"
+
+1760843832 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\app.cpp
+	<iostream>
+	"App.h"
+
+1760841922 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\usuarioarchivo.cpp
+	<iostream>
+	"UsuarioArchivo.h"
+
+1760868821 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\usuariomanager.cpp
+	<iostream>
+	"UsuarioManager.h"
+
+1760868528 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\usuario.cpp
+	<iostream>
+	<cstring>
+	"Usuario.h"
 

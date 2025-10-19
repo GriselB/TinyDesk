@@ -1,4 +1,5 @@
 #pragma once
+#include "UsuarioManager.h"
 
 class App
 {
@@ -11,6 +12,8 @@ class App
     int seleccionOpcion();
     void ejecutarOpcion(int opcion);
 
+    UsuarioManager _usuarioManager;
+    
   private:
     int _cantidadOpciones;
 };

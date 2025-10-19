@@ -7,7 +7,7 @@ App::App(){
 }
 void App::run(){
   int opcion;
-
+  
   do{
     system("cls");
     opcion = seleccionOpcion();
@@ -17,8 +17,7 @@ void App::run(){
 }
 
 void App::mostrarOpciones(){
-    cout << "                        --- Welcome ---" << endl;
-    cout << "                           TINYDESK" << endl;
+    cout << "                      --- TINYDESK ---" << endl;
     cout << "1- INICIAR SESION "<<endl;
     cout << "2- CREAR CUENTA NUEVA "<<endl;
     cout << "-----------------" << endl;
@@ -31,7 +30,7 @@ int App::seleccionOpcion(){
   cout << "---------------" << endl;
   cout << "Opcion: ";
   cin >> opcion;
-
+  
   while(opcion < 0 || opcion > _cantidadOpciones){
     cout << "Opcion incorrecta..."<<endl;
     cout << "Opcion: ";
@@ -42,13 +41,17 @@ int App::seleccionOpcion(){
 
 void App::ejecutarOpcion(int opcion){
   switch(opcion){
+          
   case 1:
-
+          _usuarioManager.iniciarSesion();
+          break;
   break;
+          
   case 2:
-
+          _usuarioManager.crearUsuario();
+          break;
     break;
-
+    
   case 0:
     cout << "Gracias por utilizar TinyDesk" << endl;
     break;

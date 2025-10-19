@@ -36,6 +36,15 @@
 		<Unit filename="App.h" />
 		<Unit filename="Fecha.cpp" />
 		<Unit filename="Fecha.h" />
+		<Unit filename="TinyDesk.cbp" />
+		<Unit filename="TinyDesk.depend" />
+		<Unit filename="TinyDesk.layout" />
+		<Unit filename="Usuario.cpp" />
+		<Unit filename="Usuario.h" />
+		<Unit filename="UsuarioArchivo.cpp" />
+		<Unit filename="UsuarioArchivo.h" />
+		<Unit filename="UsuarioManager.cpp" />
+		<Unit filename="UsuarioManager.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="utils.cpp" />
 		<Unit filename="utils.h" />
