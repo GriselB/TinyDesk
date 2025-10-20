@@ -36,6 +36,10 @@
 		<Unit filename="App.h" />
 		<Unit filename="Fecha.cpp" />
 		<Unit filename="Fecha.h" />
+		<Unit filename="Ticket.cpp" />
+		<Unit filename="Ticket.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="TinyDesk.cbp" />
 		<Unit filename="TinyDesk.depend" />
 		<Unit filename="TinyDesk.layout" />

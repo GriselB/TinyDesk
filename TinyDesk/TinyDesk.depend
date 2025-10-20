@@ -48,3 +48,62 @@
 	<cstring>
 	"Usuario.h"
 
+1760916762 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\app.cpp
+	<iostream>
+	"App.h"
+
+1760916762 c:\users\max\desktop\tp final\tinydesk\tinydesk\app.h
+	"UsuarioManager.h"
+
+1760916762 c:\users\max\desktop\tp final\tinydesk\tinydesk\usuariomanager.h
+	<string>
+	"Usuario.h"
+	"UsuarioArchivo.h"
+
+1760916762 c:\users\max\desktop\tp final\tinydesk\tinydesk\usuario.h
+	"Fecha.h"
+
+1760916762 c:\users\max\desktop\tp final\tinydesk\tinydesk\fecha.h
+	<string>
+
+1760916762 c:\users\max\desktop\tp final\tinydesk\tinydesk\usuarioarchivo.h
+	<string>
+	"Usuario.h"
+
+1760927610 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\fecha.cpp
+	"Fecha.h"
+
+1760833810 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\main.cpp
+	<iostream>
+	"App.h"
+
+1760916762 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\usuario.cpp
+	<iostream>
+	<cstring>
+	"Usuario.h"
+
+1760916762 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\usuarioarchivo.cpp
+	<iostream>
+	"UsuarioArchivo.h"
+
+1760916762 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\usuariomanager.cpp
+	<iostream>
+	"UsuarioManager.h"
+
+1760833810 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\utils.cpp
+	<iostream>
+	"utils.h"
+
+1760833810 c:\users\max\desktop\tp final\tinydesk\tinydesk\utils.h
+	<string>
+
+1760927729 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\ticket.cpp
+	<cstring>
+	<iostream>
+	"Ticket.h"
+	"Fecha.h"
+
+1760927741 c:\users\max\desktop\tp final\tinydesk\tinydesk\ticket.h
+	<string>
+	"Fecha.h"
+
