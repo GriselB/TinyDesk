@@ -21,7 +21,8 @@ int Fecha::getDia()
 
 void Fecha::setDia(int dia)
 {
-  _dia = dia;
+    if(dia>0 && dia<31)
+        _dia = dia;
 }
 
 int Fecha::getMes()
@@ -31,7 +32,8 @@ int Fecha::getMes()
 
 void Fecha::setMes(int mes)
 {
-  _mes = mes;
+    if(mes>0 && mes<13)
+        _mes = mes;
 }
 
 int Fecha::getAnio()
@@ -41,7 +43,8 @@ int Fecha::getAnio()
 
 void Fecha::setAnio(int anio)
 {
-  _anio = anio;
+    if(anio>1900)
+        _anio = anio;
 }
 
 string Fecha::toString()
