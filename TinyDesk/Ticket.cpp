@@ -28,6 +28,16 @@ std::string Ticket::getDescripcionTarea()
     return _descripcionTarea;
 }
 
+Fecha Ticket::getFechaInicio()
+{
+    _fechaInicio.toString();
+}
+
+Fecha Ticket::getFechaFin()
+{
+    _fechaFin.toString();
+}
+
 void Ticket::setIdEmpleado(int idEmpleado)
 {
     _idEmpleado=idEmpleado;
@@ -56,41 +66,18 @@ void Ticket::setDescripcionTarea(std::string descripcionTarea)
     _descripcionTarea[249] = '\0';
 }
 
-Fecha Ticket::getFechaInicio()
-{
-    _fechaInicio.toString();
-}
-
-Fecha Ticket::getFechaFin()
-{
-    _fechaFin.toString();
-}
-
 void Ticket::setFechaInicio()
 {
-    int dia,mes,anio;
-
-    std::cout << "Ingrese día de inicio: ";
-    std::cin >> dia;
-    std::cout << "Ingrese mes de inicio: ";
-    std::cin >> mes;
-    std::cout << "Ingrese año de inicio: ";
-    std::cin >> anio;
-    _fechaInicio.setDia(dia);
-    _fechaInicio.setMes(mes);
-    _fechaInicio.setAnio(anio);
+    _fechaInicio = Fecha("inicio");
 }
 
-void Ticket::setFechaFin(Fecha fecha)
+void Ticket::setFechaFin()
 {
-    int dia,mes,anio;
-    std::cout << "Ingrese día de fin: ";
-    std::cin >> dia;
-    std::cout << "Ingrese mes de fin: ";
-    std::cin >> mes;
-    std::cout << "Ingrese año de fin: ";
-    std::cin >> anio;
-    _fechaFin.setDia(dia);
-    _fechaFin.setMes(mes);
-    _fechaFin.setAnio(anio);
+    _fechaFin = Fecha("fin");
 }
+
+void Ticket::setFechaFinalizada()
+{
+    _fechaFinalizada = Fecha("finalizacion");
+}
+

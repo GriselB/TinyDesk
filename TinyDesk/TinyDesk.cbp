@@ -34,8 +34,16 @@
 		</Compiler>
 		<Unit filename="App.cpp" />
 		<Unit filename="App.h" />
+		<Unit filename="Estado.cpp" />
+		<Unit filename="Estado.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="Fecha.cpp" />
 		<Unit filename="Fecha.h" />
+		<Unit filename="Proyecto.cpp" />
+		<Unit filename="Proyecto.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="Ticket.cpp" />
 		<Unit filename="Ticket.h">
 			<Option target="&lt;{~None~}&gt;" />

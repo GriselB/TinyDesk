@@ -12,19 +12,22 @@ public:
     std::string getDescripcionTarea();
     Fecha getFechaInicio();
     Fecha getFechaFin();
+    Fecha getFechaFinalizada();
     void setIdEmpleado(int idEmpleado);
     void setIdTicket(int idTicket);
     void setStatus(std::string status);
     void setPrioridad(std::string prioridad);
     void setDescripcionTarea(std::string descripcionTarea);
     void setFechaInicio();
-    void setFechaFin(Fecha fecha);
+    void setFechaFin();
+    void setFechaFinalizada();
 
 private:
     int _idEmpleado;
     int _idTicket;
     Fecha _fechaInicio;
     Fecha _fechaFin;
+    Fecha _fechaFinalizada;
     char _status[20];
     char _prioridad[20];
     char _descripcionTarea[250];
