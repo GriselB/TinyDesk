@@ -125,3 +125,80 @@
 	<string>
 	"Fecha.h"
 
+1760926918 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\app.cpp
+	<iostream>
+	"App.h"
+
+1760926918 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\app.h
+	"UsuarioManager.h"
+
+1760926918 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\usuariomanager.h
+	<string>
+	"Usuario.h"
+	"UsuarioArchivo.h"
+
+1760926918 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\usuario.h
+	"Fecha.h"
+
+1761171491 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\fecha.h
+	<string>
+
+1760926918 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\usuarioarchivo.h
+	<string>
+	"Usuario.h"
+
+1761171491 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\estado.cpp
+	<cstring>
+	"Estado.h"
+
+1761171491 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\estado.h
+	<string>
+
+1761171491 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\fecha.cpp
+	<iostream>
+	"Fecha.h"
+
+1760926918 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\main.cpp
+	<iostream>
+	"App.h"
+
+1761171491 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\proyecto.cpp
+	<cstring>
+	<iostream>
+	"Proyecto.h"
+	"Fecha.h"
+
+1761171491 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\proyecto.h
+	<string>
+	"Fecha.h"
+
+1761171491 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\ticket.cpp
+	<cstring>
+	<iostream>
+	"Ticket.h"
+	"Fecha.h"
+
+1761171491 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\ticket.h
+	<string>
+	"Fecha.h"
+
+1760926918 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\usuario.cpp
+	<iostream>
+	<cstring>
+	"Usuario.h"
+
+1760926918 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\usuarioarchivo.cpp
+	<iostream>
+	"UsuarioArchivo.h"
+
+1760926918 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\usuariomanager.cpp
+	<iostream>
+	"UsuarioManager.h"
+
+1760926919 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\utils.cpp
+	<iostream>
+	"utils.h"
+
+1760926919 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\utils.h
+	<string>
+

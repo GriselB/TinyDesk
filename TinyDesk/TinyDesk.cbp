@@ -34,6 +34,7 @@
 		</Compiler>
 		<Unit filename="App.cpp" />
 		<Unit filename="App.h" />
+		<Unit filename="Area.cpp" />
 		<Unit filename="Estado.cpp" />
 		<Unit filename="Estado.h">
 			<Option target="&lt;{~None~}&gt;" />
@@ -42,6 +43,10 @@
 		<Unit filename="Fecha.h" />
 		<Unit filename="Proyecto.cpp" />
 		<Unit filename="Proyecto.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="Sprint.cpp" />
+		<Unit filename="Sprint.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="Ticket.cpp" />
@@ -57,6 +62,9 @@
 		<Unit filename="UsuarioArchivo.h" />
 		<Unit filename="UsuarioManager.cpp" />
 		<Unit filename="UsuarioManager.h" />
+		<Unit filename="area.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="main.cpp" />
 		<Unit filename="utils.cpp" />
 		<Unit filename="utils.h" />
