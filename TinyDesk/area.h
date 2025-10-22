@@ -1,13 +1,14 @@
 #pragma once
+#include <string>
 
 class Area 
 {
-  private
+  private:
     int _idArea;
     char _nombre[20];
   
   
-  public
+  public:
     int getIdArea();
     std::string getNombre();
     int setIdArea(int idArea);

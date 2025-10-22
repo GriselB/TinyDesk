@@ -15,16 +15,16 @@ public:
     Fecha getFechaInicio();
     Fecha getFechaFin();
     Fecha getFechaFinalizada();
-    void setIdEmpleado(int idEmpleado);
+    void setIdProyecto(int idProyecto);
     void setIdSprint(int idTicket);
     void setStatus(std::string status);
-    void setArea(int idArea)
+    void setIdArea(int idArea);
     void setFechaInicio();
     void setFechaFin();
     void setFechaFinalizada();
 
 private:
-    int _idEmpleado;
+    int _idProyecto;
     int _idSprint;
     int  _idArea;
     Fecha _fechaInicio;
