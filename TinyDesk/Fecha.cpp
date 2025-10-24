@@ -1,3 +1,4 @@
+#include <iostream>
 #include "Fecha.h"
 using namespace std;
 
@@ -14,6 +15,20 @@ Fecha::Fecha (int dia, int mes, int anio)
   setAnio(anio);
 }
 
+Fecha::Fecha(std::string nombre)
+{
+    int dia,mes,anio;
+    std::cout << "Ingrese día de "<<nombre<<": ";
+    std::cin >> dia;
+    std::cout << "Ingrese mes de "<<nombre<<": ";
+    std::cin >> mes;
+    std::cout << "Ingrese año de "<<nombre<<": ";
+    std::cin >> anio;
+    setDia(dia);
+    setMes(mes);
+    setAnio(anio);
+}
+
 int Fecha::getDia()
 {
   return _dia;
@@ -21,7 +36,8 @@ int Fecha::getDia()
 
 void Fecha::setDia(int dia)
 {
-  _dia = dia;
+    if(dia>0 && dia<31)
+        _dia = dia;
 }
 
 int Fecha::getMes()
@@ -31,7 +47,8 @@ int Fecha::getMes()
 
 void Fecha::setMes(int mes)
 {
-  _mes = mes;
+    if(mes>0 && mes<13)
+        _mes = mes;
 }
 
 int Fecha::getAnio()
@@ -41,7 +58,8 @@ int Fecha::getAnio()
 
 void Fecha::setAnio(int anio)
 {
-  _anio = anio;
+    if(anio>1900)
+        _anio = anio;
 }
 
 string Fecha::toString()

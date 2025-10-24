@@ -1,50 +1,49 @@
 # depslib dependency file v1.0
-1761192855 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\main.cpp
+1760660316 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\main.cpp
 	<iostream>
 	"App.h"
 
-1761192855 c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\app.h
+1760843790 c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\app.h
 	"UsuarioManager.h"
 
-1761192855 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\utils.cpp
+1758847336 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\utils.cpp
 	<iostream>
 	"utils.h"
 
-1761192855 c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\utils.h
+1758847336 c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\utils.h
 	<string>
 
-1761192855 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\fecha.cpp
-	<iostream>
+1760662436 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\fecha.cpp
 	"Fecha.h"
 
-1761192855 c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\fecha.h
+1760662436 c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\fecha.h
 	<string>
 
-1761192855 c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\usuariomanager.h
+1760843298 c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\usuariomanager.h
 	<string>
 	"Usuario.h"
 	"UsuarioArchivo.h"
 
-1761192855 c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\usuario.h
+1760841248 c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\usuario.h
 	"Fecha.h"
 
-1761192855 c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\usuarioarchivo.h
+1760842516 c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\usuarioarchivo.h
 	<string>
 	"Usuario.h"
 
-1761192855 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\app.cpp
+1760843832 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\app.cpp
 	<iostream>
 	"App.h"
 
-1761192855 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\usuarioarchivo.cpp
+1760841922 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\usuarioarchivo.cpp
 	<iostream>
 	"UsuarioArchivo.h"
 
-1761192855 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\usuariomanager.cpp
+1760868821 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\usuariomanager.cpp
 	<iostream>
 	"UsuarioManager.h"
 
-1761192855 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\usuario.cpp
+1760868528 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\usuario.cpp
 	<iostream>
 	<cstring>
 	"Usuario.h"
@@ -209,162 +208,4 @@
 
 1761176283 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\area.h
 	<string>
-
-1761192855 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\area.cpp
-	<cstring>
-	"Area.h"
-
-1761192855 c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\area.h
-	<string>
-
-1761192855 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\estado.cpp
-	<cstring>
-	"Estado.h"
-
-1761192855 c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\estado.h
-	<string>
-
-1761192855 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\proyecto.cpp
-	<cstring>
-	<iostream>
-	"Proyecto.h"
-	"Fecha.h"
-
-1761192855 c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\proyecto.h
-	<string>
-	"Fecha.h"
-
-1761192855 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\sprint.cpp
-	<cstring>
-	<iostream>
-	"Sprint.h"
-	"Fecha.h"
-
-1761192855 c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\sprint.h
-	<string>
-	"Fecha.h"
-	"Estado.h"
-	"Area.h"
-
-1761192855 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\ticket.cpp
-	<cstring>
-	<iostream>
-	"Ticket.h"
-	"Fecha.h"
-
-1761192855 c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\ticket.h
-	<string>
-	"Fecha.h"
-
-1761192856 source:e:\tinydesk\tinydesk\area.cpp
-	<cstring>
-	"Area.h"
-
-1761192856 e:\tinydesk\tinydesk\area.h
-	<string>
-
-1761192856 source:e:\tinydesk\tinydesk\estado.cpp
-	<cstring>
-	"Estado.h"
-
-1761192856 e:\tinydesk\tinydesk\estado.h
-	<string>
-
-1760662438 source:e:\tinydesk\tinydesk\fecha.cpp
-	"Fecha.h"
-
-1760662438 e:\tinydesk\tinydesk\fecha.h
-	<string>
-
-1760660318 source:e:\tinydesk\tinydesk\main.cpp
-	<iostream>
-	"App.h"
-
-1760843792 e:\tinydesk\tinydesk\app.h
-	"UsuarioManager.h"
-
-1761201864 e:\tinydesk\tinydesk\usuariomanager.h
-	<string>
-	"Usuario.h"
-	"UsuarioArchivo.h"
-	"ArchivoRol.h"
-	"utils.h"
-
-1760841250 e:\tinydesk\tinydesk\usuario.h
-	"Fecha.h"
-
-1761258652 e:\tinydesk\tinydesk\usuarioarchivo.h
-	<string>
-	"Usuario.h"
-
-1761201864 e:\tinydesk\tinydesk\archivorol.h
-	<string>
-	"Rol.h"
-
-1761202264 e:\tinydesk\tinydesk\rol.h
-	<string>
-
-1761199534 e:\tinydesk\tinydesk\utils.h
-	<string>
-
-1761192856 source:e:\tinydesk\tinydesk\proyecto.cpp
-	<cstring>
-	<iostream>
-	"Proyecto.h"
-	"Fecha.h"
-
-1761192856 e:\tinydesk\tinydesk\proyecto.h
-	<string>
-	"Fecha.h"
-
-1761192856 source:e:\tinydesk\tinydesk\sprint.cpp
-	<cstring>
-	<iostream>
-	"Sprint.h"
-	"Fecha.h"
-
-1761192856 e:\tinydesk\tinydesk\sprint.h
-	<string>
-	"Fecha.h"
-	"Estado.h"
-	"Area.h"
-
-1761192856 source:e:\tinydesk\tinydesk\ticket.cpp
-	<cstring>
-	<iostream>
-	"Ticket.h"
-	"Fecha.h"
-
-1761192856 e:\tinydesk\tinydesk\ticket.h
-	<string>
-	"Fecha.h"
-
-1760847680 source:e:\tinydesk\tinydesk\usuario.cpp
-	<iostream>
-	"Usuario.h"
-
-1761259278 source:e:\tinydesk\tinydesk\app.cpp
-	<iostream>
-	"App.h"
-
-1761258652 source:e:\tinydesk\tinydesk\usuarioarchivo.cpp
-	<iostream>
-	"UsuarioArchivo.h"
-
-1761258652 source:e:\tinydesk\tinydesk\usuariomanager.cpp
-	<iostream>
-	"UsuarioManager.h"
-
-1761199534 source:e:\tinydesk\tinydesk\utils.cpp
-	<iostream>
-	"utils.h"
-
-1761202424 source:e:\tinydesk\tinydesk\archivorol.cpp
-	<iostream>
-	"ArchivoRol.h"
-
-1761288020 source:e:\tinydesk\tinydesk\rol.cpp
-	<iostream>
-	<cstring>
-	"Rol.h"
 

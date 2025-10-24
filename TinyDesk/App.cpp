@@ -6,14 +6,14 @@ App::App(){
   _cantidadOpciones = 2;
 }
 void App::run(){
-    int opcion;
-    
-    do{
-        clear();
-        opcion = seleccionOpcion();
-        clear();
-        ejecutarOpcion(opcion);
-    }while(opcion != 0);
+  int opcion;
+  
+  do{
+    system("cls");
+    opcion = seleccionOpcion();
+    system("cls");
+    ejecutarOpcion(opcion);
+  }while(opcion != 0);
 }
 
 void App::mostrarOpciones(){
@@ -42,28 +42,15 @@ int App::seleccionOpcion(){
 void App::ejecutarOpcion(int opcion){
   switch(opcion){
           
-  case 1:{
-      clear();
-      int rol = _usuarioManager.iniciarSesion();
-
-      if (rol == 1) {
-          // ejecutar menú-admin
-      }
-      else if (rol == 2) {
-          // ejecutar menú-empleado
-      }
-      else {
-          cout << "Credenciales invalidas o usuario inactivo." << endl;
-          pause();
-          clear();
-      }
-      break;
-    }
+  case 1:
+          _usuarioManager.iniciarSesion();
+          break;
+  break;
           
   case 2:
-          clear();
           _usuarioManager.crearUsuario();
           break;
+    break;
     
   case 0:
     cout << "Gracias por utilizar TinyDesk" << endl;

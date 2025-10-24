@@ -34,22 +34,25 @@
 		</Compiler>
 		<Unit filename="App.cpp" />
 		<Unit filename="App.h" />
-		<Unit filename="ArchivoRol.cpp" />
-		<Unit filename="ArchivoRol.h" />
 		<Unit filename="Area.cpp" />
 		<Unit filename="Estado.cpp" />
-		<Unit filename="Estado.h" />
+		<Unit filename="Estado.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="Fecha.cpp" />
 		<Unit filename="Fecha.h" />
 		<Unit filename="Proyecto.cpp" />
-		<Unit filename="Proyecto.h" />
-		<Unit filename="Rol.cpp" />
-		<Unit filename="Rol.h" />
-		<Unit filename="Roles.dat" />
+		<Unit filename="Proyecto.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="Sprint.cpp" />
-		<Unit filename="Sprint.h" />
+		<Unit filename="Sprint.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="Ticket.cpp" />
-		<Unit filename="Ticket.h" />
+		<Unit filename="Ticket.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="TinyDesk.cbp" />
 		<Unit filename="TinyDesk.depend" />
 		<Unit filename="TinyDesk.layout" />
@@ -59,7 +62,9 @@
 		<Unit filename="UsuarioArchivo.h" />
 		<Unit filename="UsuarioManager.cpp" />
 		<Unit filename="UsuarioManager.h" />
-		<Unit filename="area.h" />
+		<Unit filename="area.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="main.cpp" />
 		<Unit filename="utils.cpp" />
 		<Unit filename="utils.h" />

@@ -6,31 +6,33 @@
 //
 
 #include <iostream>
+#include <cstring>
 #include "Usuario.h"
 
 using namespace std;
 
 void Usuario::Cargar() {
-    
+
     string nombre, apellido, email, pass;
     int idArea, idRol;
-    
+
+    system("cls");
     cout << "Nombre: ";
     cin>>nombre;
     setNombre(nombre);
-    
+
     cout << "Apellido: ";
     cin>>apellido;
     setApellido(apellido);
-    
+
     cout << "Email: ";
     cin>>email;
     setEmail(email);
-    
+
     cout << "Password: ";
     cin>>pass;
     setPassword(pass);
-    
+
     do{
         cout << "ID de área: "<<endl;
         cout << "1: Administración"<<endl;
@@ -42,13 +44,13 @@ void Usuario::Cargar() {
         cin >> idArea;
         setIdArea(idArea);
     }while(idArea < 1 or idArea > 5);
-    
+
     do{
         cout << "ID de rol (1 para admin, 2 para empleado) : ";
         cin >> idRol;
     }while(idRol != 1 and idRol != 2);
-    
-    
+
+
     setActivo(true);
 }
 
@@ -71,12 +73,12 @@ int Usuario::getIdArea() { return _idArea; }
 int Usuario::getIdRol() { return _idRol; }
 bool Usuario::getActivo() { return _activo; }
 
-void Usuario::setNombre(std::string nombre) {
+void Usuario::setNombre(string nombre) {
     strncpy(_nombre, nombre.c_str(), 19);
     _nombre[19] = '\0';
 }
 
-void Usuario::setPassword(std::string pass) {
+void Usuario::setPassword(string pass) {
     strncpy(_password, pass.c_str(), 49);
     _password[49] = '\0';
 }

@@ -98,7 +98,7 @@ int UsuarioArchivo::getNuevoID()
   return getCantidadRegistros() + 1;
 }
 
-int UsuarioArchivo::buscarID(int idUsuario)
+int UsuarioArchivo::buscarID(int id)
 {
   Usuario registro;
   FILE *pFile;
@@ -113,7 +113,7 @@ int UsuarioArchivo::buscarID(int idUsuario)
 
   while (fread(&registro, sizeof(Usuario), 1, pFile))
   {
-    if (registro.getIdUsuario() == idUsuario)
+    if (registro.getIdUsuario() == id)
     {
       pos = ftell(pFile) / sizeof(Usuario) - 1;
       break;
