@@ -9,9 +9,9 @@ void App::run(){
     int opcion;
     
     do{
-        //clear();
+        clear();
         opcion = seleccionOpcion();
-        //clear();
+        clear();
         ejecutarOpcion(opcion);
     }while(opcion != 0);
 }
