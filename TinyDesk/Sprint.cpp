@@ -28,12 +28,12 @@ std::string Sprint::getStatus()
 
 Fecha Sprint::getFechaInicio()
 {
-    _fechaInicio.toString();
+    return _fechaInicio.toString();
 }
 
 Fecha Sprint::getFechaFin()
 {
-    _fechaFin.toString();
+    return _fechaFin.toString();
 }
 
 void Sprint::setIdSprint(int idSprint)

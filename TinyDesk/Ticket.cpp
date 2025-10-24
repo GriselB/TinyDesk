@@ -30,12 +30,12 @@ std::string Ticket::getDescripcionTarea()
 
 Fecha Ticket::getFechaInicio()
 {
-    _fechaInicio.toString();
+    return _fechaInicio.toString();
 }
 
 Fecha Ticket::getFechaFin()
 {
-    _fechaFin.toString();
+    return _fechaFin.toString();
 }
 
 void Ticket::setIdEmpleado(int idEmpleado)

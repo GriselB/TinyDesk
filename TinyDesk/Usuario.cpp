@@ -16,7 +16,6 @@ void Usuario::Cargar() {
     string nombre, apellido, email, pass;
     int idArea, idRol;
 
-    system("cls");
     cout << "Nombre: ";
     cin>>nombre;
     setNombre(nombre);
@@ -73,12 +72,12 @@ int Usuario::getIdArea() { return _idArea; }
 int Usuario::getIdRol() { return _idRol; }
 bool Usuario::getActivo() { return _activo; }
 
-void Usuario::setNombre(string nombre) {
+void Usuario::setNombre(std::string nombre) {
     strncpy(_nombre, nombre.c_str(), 19);
     _nombre[19] = '\0';
 }
 
-void Usuario::setPassword(string pass) {
+void Usuario::setPassword(std::string pass) {
     strncpy(_password, pass.c_str(), 49);
     _password[49] = '\0';
 }

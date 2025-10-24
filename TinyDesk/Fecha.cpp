@@ -18,12 +18,12 @@ Fecha::Fecha (int dia, int mes, int anio)
 Fecha::Fecha(std::string nombre)
 {
     int dia,mes,anio;
-    std::cout << "Ingrese día de "<<nombre<<": ";
-    std::cin >> dia;
-    std::cout << "Ingrese mes de "<<nombre<<": ";
-    std::cin >> mes;
-    std::cout << "Ingrese año de "<<nombre<<": ";
-    std::cin >> anio;
+    cout << "Ingrese dia de "<<nombre<<": ";
+    cin >> dia;
+    cout << "Ingrese mes de "<<nombre<<": ";
+    cin >> mes;
+    cout << "Ingrese anio de "<<nombre<<": ";
+    cin >> anio;
     setDia(dia);
     setMes(mes);
     setAnio(anio);

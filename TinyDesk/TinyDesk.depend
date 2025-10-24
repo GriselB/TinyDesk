@@ -209,3 +209,117 @@
 1761176283 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\area.h
 	<string>
 
+1761316924 source:e:\hotfix td\hotfix td\app.cpp
+	<iostream>
+	"App.h"
+
+1760843792 e:\hotfix td\hotfix td\app.h
+	"UsuarioManager.h"
+
+1761201864 e:\hotfix td\hotfix td\usuariomanager.h
+	<string>
+	"Usuario.h"
+	"UsuarioArchivo.h"
+	"ArchivoRol.h"
+	"utils.h"
+
+1760841250 e:\hotfix td\hotfix td\usuario.h
+	"Fecha.h"
+
+1761315600 e:\hotfix td\hotfix td\fecha.h
+	<string>
+
+1761258652 e:\hotfix td\hotfix td\usuarioarchivo.h
+	<string>
+	"Usuario.h"
+
+1761201864 e:\hotfix td\hotfix td\archivorol.h
+	<string>
+	"Rol.h"
+
+1761328736 e:\hotfix td\hotfix td\rol.h
+	<string>
+
+1761199534 e:\hotfix td\hotfix td\utils.h
+	<string>
+
+1761202424 source:e:\hotfix td\hotfix td\archivorol.cpp
+	<iostream>
+	"ArchivoRol.h"
+
+1761316013 source:e:\hotfix td\hotfix td\area.cpp
+	<cstring>
+	"area.h"
+
+1761316013 e:\hotfix td\hotfix td\area.h
+	<string>
+
+1761315963 source:e:\hotfix td\hotfix td\estado.cpp
+	<cstring>
+	"Estado.h"
+
+1761315963 e:\hotfix td\hotfix td\estado.h
+	<string>
+
+1761316036 source:e:\hotfix td\hotfix td\fecha.cpp
+	<iostream>
+	"Fecha.h"
+
+1761315540 source:e:\hotfix td\hotfix td\main.cpp
+	<iostream>
+	"App.h"
+
+1761315939 source:e:\hotfix td\hotfix td\proyecto.cpp
+	<cstring>
+	<iostream>
+	"Proyecto.h"
+	"Fecha.h"
+
+1761315939 e:\hotfix td\hotfix td\proyecto.h
+	<string>
+	"Fecha.h"
+
+1761328712 source:e:\hotfix td\hotfix td\rol.cpp
+	<iostream>
+	<cstring>
+	"Rol.h"
+
+1761315979 source:e:\hotfix td\hotfix td\sprint.cpp
+	<cstring>
+	<iostream>
+	"Sprint.h"
+	"Fecha.h"
+
+1761316050 e:\hotfix td\hotfix td\sprint.h
+	<string>
+	"Fecha.h"
+	"Estado.h"
+	"area.h"
+
+1761315939 source:e:\hotfix td\hotfix td\ticket.cpp
+	<cstring>
+	<iostream>
+	"Ticket.h"
+	"Fecha.h"
+
+1761315600 e:\hotfix td\hotfix td\ticket.h
+	<string>
+	"Fecha.h"
+
+1761258652 source:e:\hotfix td\hotfix td\usuarioarchivo.cpp
+	<iostream>
+	"UsuarioArchivo.h"
+
+1761258652 source:e:\hotfix td\hotfix td\usuariomanager.cpp
+	<iostream>
+	"UsuarioManager.h"
+
+1761199534 source:e:\hotfix td\hotfix td\utils.cpp
+	<iostream>
+	"utils.h"
+
+1761328672 source:e:\hotfix td\hotfix td\usuario.cpp
+	<iostream>
+	<cstring>
+	"Usuario.h"
+

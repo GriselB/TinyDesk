@@ -2,7 +2,7 @@
 #include <string>
 #include "Fecha.h"
 #include "Estado.h"
-#include "Area.h"
+#include "area.h"
 
 
 class Sprint

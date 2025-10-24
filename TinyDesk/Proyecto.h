@@ -12,13 +12,13 @@ public:
     Fecha getFechaFin();
     int getIdEstado();
     Fecha getFechaFinalizada();
-    int setIdProyecto(int idProyecto);
-    std::string setNombre(std::string nombre);
-    std::string setDescripcion(std::string descripcion);
+    void setIdProyecto(int idProyecto);
+    void setNombre(std::string nombre);
+    void setDescripcion(std::string descripcion);
     void setFechaInicio();
     void setFechaFin();
     void setFechaFinalizada();
-    int setIdEstado(int idEstado);
+    void setIdEstado(int idEstado);
 private:
     int _idProyecto;
     char _nombre[50];
