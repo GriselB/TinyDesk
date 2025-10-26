@@ -187,7 +187,7 @@
 	<cstring>
 	"Usuario.h"
 
-1760926918 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\usuarioarchivo.cpp
+1761256230 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\usuarioarchivo.cpp
 	<iostream>
 	"UsuarioArchivo.h"
 
@@ -208,4 +208,35 @@
 
 1761176283 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\area.h
 	<string>
+
+1761439614 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\sprint.cpp
+	<cstring>
+	<iostream>
+	"Sprint.h"
+	"Fecha.h"
+	"Proyecto.h"
+
+1761439009 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\sprint.h
+	<string>
+	"Fecha.h"
+	"Estado.h"
+	"Area.h"
+	"Proyecto.h"
+
+1761256868 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\sprintarchivo.cpp
+	<iostream>
+	"SprintArchivo.h"
+
+1761256825 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\sprintarchivo.h
+	<string>
+	"Sprint.h"
+
+1761427362 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\sprintmanager.cpp
+	<iostream>
+	"SprintManager.h"
+
+1761423895 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\sprintmanager.h
+	<string>
+	"Sprint.h"
+	"SprintArchivo.h"
 

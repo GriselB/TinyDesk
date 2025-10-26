@@ -49,6 +49,14 @@
 		<Unit filename="Sprint.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="SprintArchivo.cpp" />
+		<Unit filename="SprintArchivo.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="SprintManager.cpp" />
+		<Unit filename="SprintManager.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="Ticket.cpp" />
 		<Unit filename="Ticket.h">
 			<Option target="&lt;{~None~}&gt;" />

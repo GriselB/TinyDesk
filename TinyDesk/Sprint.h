@@ -3,26 +3,9 @@
 #include "Fecha.h"
 #include "Estado.h"
 #include "Area.h"
+#include "Proyecto.h"
 
-
-class Sprint
-{
-public:
-    int getIdSprint();
-    int getIdProyecto();
-    int getIdArea();
-    std::string getStatus();
-    Fecha getFechaInicio();
-    Fecha getFechaFin();
-    Fecha getFechaFinalizada();
-    void setIdProyecto(int idProyecto);
-    void setIdSprint(int idTicket);
-    void setStatus(std::string status);
-    void setIdArea(int idArea);
-    void setFechaInicio();
-    void setFechaFin();
-    void setFechaFinalizada();
-
+class Sprint {
 private:
     int _idProyecto;
     int _idSprint;
@@ -31,4 +14,37 @@ private:
     Fecha _fechaFin;
     Fecha _fechaFinalizada;
     char _status[20];
+    char _nombre[50];
+    bool  _activo;
+    Proyecto _proyecto;
+    
+public:
+    void Cargar();
+    void Mostrar();
+    void generarNombre();
+    void cargarFecha(Fecha &f, const std::string &nombre);
+    
+    //getters
+    std::string getNombre();
+    int getIdSprint();
+    int getIdProyecto();
+    int getIdArea();
+    std::string getStatus();
+    Fecha getFechaInicio();
+    Fecha getFechaFin();
+    Fecha getFechaFinalizada();
+    bool getActivo();
+    
+    //setters
+    void setIdProyecto(int idProyecto);
+    void setIdSprint(int idTicket);
+    void setStatus(std::string status);
+    //void setNombre(std::string nombre);
+    void setNombre(const std::string &nombre);
+    void setIdArea(int idArea);
+    void setFechaInicio(const Fecha &f);
+    void setFechaFin(const Fecha &f);
+    void setFechaFinalizada();
+    void setActivo(bool activo);
 };
+

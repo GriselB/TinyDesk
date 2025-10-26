@@ -2,8 +2,91 @@
 #include <iostream>
 #include "Sprint.h"
 #include "Fecha.h"
+#include "Proyecto.h"
 
 using namespace std;
+
+void Sprint::Cargar() {
+
+    string nombreSprint;
+    int idArea, idProyecto;
+    Fecha fechaInicio, fechaFin;
+
+    /*cout << "Proyecto: ";
+    cin>>idProyecto;
+    setProyecto(idProyecto);*/
+
+    // Asegurate de que cargarFecha esté declarado en Sprint.h
+    cargarFecha(fechaInicio, "inicio");
+    setFechaInicio(fechaInicio);
+
+    cargarFecha(fechaFin, "fin");
+    setFechaFin(fechaFin);
+
+    generarNombre();
+
+    // luego cambiarlo por metodo cargarArea()
+    do {
+        cout << "ID de área: "<< endl;
+        cout << "1: Administración" << endl;
+        cout << "2: Backend" << endl;
+        cout << "3: Frontend" << endl;
+        cout << "4: QA" << endl;
+        cout << "5: UX/UI" << endl;
+        cout << "ID área: ";
+        cin >> idArea;
+        setIdArea(idArea);
+    } while (idArea < 1 || idArea > 5);
+
+    setActivo(true);
+}
+
+void Sprint::Mostrar() {
+    cout << "ID Sprint: " << getIdSprint() << endl;
+    cout << "Nombre: "  << getNombre() << endl;
+
+    cout << "Proyecto: " << _proyecto.getIdProyecto() << endl;
+
+    cout << "ID Área: " << getIdArea() << endl;
+
+    cout << "Fecha Inicio: " << getFechaInicio().toString() << endl;
+    cout << "Fecha Fin:   " << getFechaFin().toString() << endl;
+
+    cout << "Activo: " << (getActivo() ? "Sí" : "No") << endl;
+}
+
+void Sprint::generarNombre() {
+    string nombre = _proyecto.getNombre() + " - Sprint " + to_string(_idSprint) +
+                    " (" + _fechaInicio.toString() + " - " +
+                    _fechaFin.toString() + ")";
+    setNombre(nombre);
+}
+
+void Sprint::cargarFecha(Fecha &f, const string &nombre) {
+    int dia, mes, anio;
+    cout << "Ingrese día de " << nombre << ": ";
+    cin >> dia;
+    cout << "Ingrese mes de " << nombre << ": ";
+    cin >> mes;
+    cout << "Ingrese año de " << nombre << ": ";
+    cin >> anio;
+
+    f.setDia(dia);
+    f.setMes(mes);
+    f.setAnio(anio);
+}
+
+// get
+
+string Sprint::getNombre() 
+{ 
+  return string(_nombre);   
+}  
+
+bool Sprint::getActivo() 
+{ 
+  return _activo; 
+}
 
 int Sprint::getIdSprint()
 {
@@ -22,33 +105,40 @@ int Sprint::getIdArea()
 
 std::string Sprint::getStatus()
 {
-    return _status;
+    return string(_status);
 }
-
 
 Fecha Sprint::getFechaInicio()
 {
-    _fechaInicio.toString();
+    return _fechaInicio;
 }
 
 Fecha Sprint::getFechaFin()
 {
-    _fechaFin.toString();
+    return _fechaFin;
+}
+
+// Setters
+
+void Sprint::setNombre(const std::string &nombre)
+{
+    strncpy(_nombre, nombre.c_str(), 50);
+    _nombre[50] = '\0';
 }
 
 void Sprint::setIdSprint(int idSprint)
 {
-    _idSprint=idSprint;
+    _idSprint = idSprint;
 }
 
 void Sprint::setIdProyecto(int idProyecto)
 {
-    _idProyecto=idProyecto;
+    _idProyecto = idProyecto;
 }
 
 void Sprint::setIdArea(int idArea)
 {
-    _idArea=idArea;
+    _idArea = idArea;
 }
 
 void Sprint::setStatus(std::string status)
@@ -57,18 +147,21 @@ void Sprint::setStatus(std::string status)
     _status[19] = '\0';
 }
 
-
-void Sprint::setFechaInicio()
+void Sprint::setFechaInicio(const Fecha &f)
 {
-    _fechaInicio = Fecha("inicio");
+    _fechaInicio = f;
 }
 
-void Sprint::setFechaFin()
+void Sprint::setFechaFin(const Fecha &f)
 {
-    _fechaFin = Fecha("fin");
+    _fechaFin = f;
 }
 
 void Sprint::setFechaFinalizada()
 {
     _fechaFinalizada = Fecha("finalizacion");
+}
+
+void Sprint::setActivo(bool activo){
+    _activo = activo;
 }
