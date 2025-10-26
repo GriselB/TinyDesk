@@ -16,7 +16,7 @@ void Sprint::Cargar() {
     cin>>idProyecto;
     setProyecto(idProyecto);*/
 
-    // Asegurate de que cargarFecha esté declarado en Sprint.h
+    // Asegurate de que cargarFecha estï¿½ declarado en Sprint.h
     cargarFecha(fechaInicio, "inicio");
     setFechaInicio(fechaInicio);
 
@@ -27,13 +27,13 @@ void Sprint::Cargar() {
 
     // luego cambiarlo por metodo cargarArea()
     do {
-        cout << "ID de área: "<< endl;
-        cout << "1: Administración" << endl;
+        cout << "ID de ï¿½rea: "<< endl;
+        cout << "1: Administraciï¿½n" << endl;
         cout << "2: Backend" << endl;
         cout << "3: Frontend" << endl;
         cout << "4: QA" << endl;
         cout << "5: UX/UI" << endl;
-        cout << "ID área: ";
+        cout << "ID ï¿½rea: ";
         cin >> idArea;
         setIdArea(idArea);
     } while (idArea < 1 || idArea > 5);
@@ -47,12 +47,12 @@ void Sprint::Mostrar() {
 
     cout << "Proyecto: " << _proyecto.getIdProyecto() << endl;
 
-    cout << "ID Área: " << getIdArea() << endl;
+    cout << "ID ï¿½rea: " << getIdArea() << endl;
 
     cout << "Fecha Inicio: " << getFechaInicio().toString() << endl;
     cout << "Fecha Fin:   " << getFechaFin().toString() << endl;
 
-    cout << "Activo: " << (getActivo() ? "Sí" : "No") << endl;
+    cout << "Activo: " << (getActivo() ? "Sï¿½" : "No") << endl;
 }
 
 void Sprint::generarNombre() {
@@ -64,11 +64,11 @@ void Sprint::generarNombre() {
 
 void Sprint::cargarFecha(Fecha &f, const string &nombre) {
     int dia, mes, anio;
-    cout << "Ingrese día de " << nombre << ": ";
+    cout << "Ingrese dï¿½a de " << nombre << ": ";
     cin >> dia;
     cout << "Ingrese mes de " << nombre << ": ";
     cin >> mes;
-    cout << "Ingrese año de " << nombre << ": ";
+    cout << "Ingrese aï¿½o de " << nombre << ": ";
     cin >> anio;
 
     f.setDia(dia);

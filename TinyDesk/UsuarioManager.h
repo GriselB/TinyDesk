@@ -9,6 +9,8 @@
 #include <string>
 #include "Usuario.h"
 #include "UsuarioArchivo.h"
+#include "ArchivoRol.h"
+#include "utils.h"
 
 class UsuarioManager {
 public:
@@ -16,10 +18,11 @@ public:
 
     void crearUsuario();
     void mostrarUsuarios();
-    void iniciarSesion();
+    int iniciarSesion();
 
 private:
     UsuarioArchivo _repo;
+    ArchivoRol _rolRepo;
 
     bool existeEmail(std::string email);
 };

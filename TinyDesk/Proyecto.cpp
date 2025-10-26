@@ -20,17 +20,17 @@ std::string Proyecto::getDescripcion()
 
 Fecha Proyecto::getFechaInicio()
 {
-    _fechaInicio.toString();
+    return _fechaInicio.toString();
 }
 
 Fecha Proyecto::getFechaFin()
 {
-    _fechaFin.toString();
+    return _fechaFin.toString();
 }
 
 Fecha Proyecto::getFechaFinalizada()
 {
-    _fechaFinalizada.toString();
+    return _fechaFinalizada.toString();
 }
 
 int Proyecto::getIdEstado()
@@ -38,18 +38,18 @@ int Proyecto::getIdEstado()
     return _idEstado;
 }
 
-int Proyecto::setIdProyecto(int idProyecto)
+void Proyecto::setIdProyecto(int idProyecto)
 {
     _idProyecto=idProyecto;
 }
 
-std::string Proyecto::setNombre(std::string nombre)
+void Proyecto::setNombre(std::string nombre)
 {
     strncpy(_nombre, nombre.c_str(), 49);
     _nombre[49] = '\0';
 }
 
-std::string Proyecto::setDescripcion(std::string descripcion)
+void Proyecto::setDescripcion(std::string descripcion)
 {
     strncpy(_descripcion, descripcion.c_str(), 249);
     _descripcion[249] = '\0';
@@ -70,7 +70,7 @@ void Proyecto::setFechaFinalizada()
     _fechaFinalizada = Fecha("finalizacion");
 }
 
-int Proyecto::setIdEstado(int idEstado)
+void Proyecto::setIdEstado(int idEstado)
 {
     _idEstado=idEstado;
 }

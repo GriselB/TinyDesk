@@ -1,5 +1,5 @@
 #include <cstring>
-#include "Area.h"
+#include "area.h"
 
 int Area::getIdArea()
 {
@@ -10,11 +10,11 @@ std::string Area::getNombre()
     return _nombre;
 }
 
-int Area::setIdArea(int idArea)
+void Area::setIdArea(int idArea)
 {
     _idArea=idArea;
 }
-std::string Area::setNombre(std::string nombre)
+void Area::setNombre(std::string nombre)
 {
     strncpy(_nombre, nombre.c_str(), 19);
     _nombre[19] = '\0';
