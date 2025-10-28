@@ -48,80 +48,83 @@
 	<cstring>
 	"Usuario.h"
 
-1760916762 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\app.cpp
+1761676405 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\app.cpp
 	<iostream>
 	"App.h"
 
-1760916762 c:\users\max\desktop\tp final\tinydesk\tinydesk\app.h
+1761676405 c:\users\max\desktop\tp final\tinydesk\tinydesk\app.h
 	"UsuarioManager.h"
 
-1760916762 c:\users\max\desktop\tp final\tinydesk\tinydesk\usuariomanager.h
+1761676405 c:\users\max\desktop\tp final\tinydesk\tinydesk\usuariomanager.h
 	<string>
 	"Usuario.h"
 	"UsuarioArchivo.h"
+	"ArchivoRol.h"
+	"utils.h"
 
-1760916762 c:\users\max\desktop\tp final\tinydesk\tinydesk\usuario.h
+1761676405 c:\users\max\desktop\tp final\tinydesk\tinydesk\usuario.h
 	"Fecha.h"
 
-1761095591 c:\users\max\desktop\tp final\tinydesk\tinydesk\fecha.h
+1761676405 c:\users\max\desktop\tp final\tinydesk\tinydesk\fecha.h
 	<string>
 
-1760916762 c:\users\max\desktop\tp final\tinydesk\tinydesk\usuarioarchivo.h
+1761676405 c:\users\max\desktop\tp final\tinydesk\tinydesk\usuarioarchivo.h
 	<string>
 	"Usuario.h"
 
-1761095614 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\fecha.cpp
+1761676405 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\fecha.cpp
 	<iostream>
 	"Fecha.h"
 
-1760833810 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\main.cpp
+1761676405 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\main.cpp
 	<iostream>
 	"App.h"
 
-1760916762 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\usuario.cpp
+1761676405 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\usuario.cpp
 	<iostream>
 	<cstring>
 	"Usuario.h"
 
-1760916762 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\usuarioarchivo.cpp
+1761676405 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\usuarioarchivo.cpp
 	<iostream>
 	"UsuarioArchivo.h"
 
-1760916762 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\usuariomanager.cpp
+1761676405 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\usuariomanager.cpp
 	<iostream>
 	"UsuarioManager.h"
 
-1760833810 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\utils.cpp
+1761676405 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\utils.cpp
 	<iostream>
 	"utils.h"
 
-1760833810 c:\users\max\desktop\tp final\tinydesk\tinydesk\utils.h
+1761676405 c:\users\max\desktop\tp final\tinydesk\tinydesk\utils.h
 	<string>
 
-1761096016 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\ticket.cpp
+1761676405 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\ticket.cpp
 	<cstring>
 	<iostream>
 	"Ticket.h"
 	"Fecha.h"
 
-1761095900 c:\users\max\desktop\tp final\tinydesk\tinydesk\ticket.h
+1761676405 c:\users\max\desktop\tp final\tinydesk\tinydesk\ticket.h
 	<string>
 	"Fecha.h"
 
-1761093581 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\estado.cpp
+1761676405 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\estado.cpp
 	<cstring>
 	"Estado.h"
 
-1761093564 c:\users\max\desktop\tp final\tinydesk\tinydesk\estado.h
+1761676405 c:\users\max\desktop\tp final\tinydesk\tinydesk\estado.h
 	<string>
 
-1761095665 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\proyecto.cpp
+1761516143 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\proyecto.cpp
 	<cstring>
 	<iostream>
 	"Proyecto.h"
 	"Fecha.h"
+	"utils.h"
 
-1761096064 c:\users\max\desktop\tp final\tinydesk\tinydesk\proyecto.h
+1761514523 c:\users\max\desktop\tp final\tinydesk\tinydesk\proyecto.h
 	<string>
 	"Fecha.h"
 
@@ -374,4 +377,61 @@
 	<iostream>
 	<cstring>
 	"Rol.h"
+
+1761676405 c:\users\max\desktop\tp final\tinydesk\tinydesk\archivorol.h
+	<string>
+	"Rol.h"
+
+1761676405 c:\users\max\desktop\tp final\tinydesk\tinydesk\rol.h
+	<string>
+
+1761676405 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\archivorol.cpp
+	<iostream>
+	"ArchivoRol.h"
+
+1761676405 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\area.cpp
+	<iostream>
+	<cstring>
+	"area.h"
+
+1761676405 c:\users\max\desktop\tp final\tinydesk\tinydesk\area.h
+	<string>
+
+1761676405 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\rol.cpp
+	<iostream>
+	<cstring>
+	"Rol.h"
+
+1761676405 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\sprint.cpp
+	<cstring>
+	<iostream>
+	"Sprint.h"
+	"Fecha.h"
+	"Proyecto.h"
+	"area.h"
+
+1761676405 c:\users\max\desktop\tp final\tinydesk\tinydesk\sprint.h
+	<string>
+	"Fecha.h"
+	"Estado.h"
+	"Area.h"
+	"Proyecto.h"
+
+1761676405 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\sprintarchivo.cpp
+	<iostream>
+	"SprintArchivo.h"
+
+1761676405 c:\users\max\desktop\tp final\tinydesk\tinydesk\sprintarchivo.h
+	<string>
+	"Sprint.h"
+
+1761676405 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\sprintmanager.cpp
+	<iostream>
+	"SprintManager.h"
+	"Sprint.h"
+
+1761676405 c:\users\max\desktop\tp final\tinydesk\tinydesk\sprintmanager.h
+	<string>
+	"Sprint.h"
+	"SprintArchivo.h"
 

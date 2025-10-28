@@ -19,6 +19,8 @@ public:
     void setFechaFin();
     void setFechaFinalizada();
     void setIdEstado(int idEstado);
+    void cargar();
+    void mostrar();
 private:
     int _idProyecto;
     char _nombre[50];

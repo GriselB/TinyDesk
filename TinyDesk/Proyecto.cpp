@@ -2,6 +2,7 @@
 #include <iostream>
 #include "Proyecto.h"
 #include "Fecha.h"
+#include "utils.h"
 
 int Proyecto::getIdProyecto()
 {
@@ -73,4 +74,27 @@ void Proyecto::setFechaFinalizada()
 void Proyecto::setIdEstado(int idEstado)
 {
     _idEstado=idEstado;
+}
+void Proyecto::cargar()
+{
+    std::string nombre, descripcion;
+    int idEstado;
+    Fecha inicio,fin,finalizada;
+    std::cout<<"Ingrese un nombre de proyecto: ";
+    setNombre(nombre);
+    setDescripcion(descripcion);
+    inicio=Fecha("inicio");
+    fin=Fecha("fin");
+    finalizada=Fecha("finalizada");
+    idEstado=1;
+}
+void Proyecto::mostrar()
+{
+    std::cout<<"Id del proyecto: "<<getIdProyecto()<<std::endl;
+    std::cout<<"Nombre del proyecto: "<<getNombre()<<std::endl;
+    std::cout<<"Descripción del proyecto: "<<getDescripcion()<<std::endl;
+    std::cout<<"Fecha de inicio del proyecto: "<<getFechaInicio().toString()<<std::endl;
+    std::cout<<"Fecha de fin del proyecto: "<<getFechaFin().toString()<<std::endl;
+    std::cout<<"Fecha de finalización del proyecto: "<<getFechaFinalizada().toString()<<std::endl;
+    std::cout<<"Id del estado del proyecto: "<<getIdEstado()<<std::endl;
 }
