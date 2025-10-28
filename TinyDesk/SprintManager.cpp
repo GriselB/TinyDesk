@@ -1,5 +1,6 @@
 #include <iostream>
 #include "SprintManager.h"
+#include "Sprint.h"
 
 using namespace std;
 

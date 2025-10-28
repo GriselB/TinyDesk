@@ -9,7 +9,7 @@ private:
 
 public:
     SprintManager();
-
+    
     void crearSprint();
     void listarSprints();
     void mostrarSprintPorID();

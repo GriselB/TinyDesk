@@ -9,8 +9,14 @@ class Area
   
   
   public:
+    //getter
     int getIdArea();
     std::string getNombre();
+    
+    //setter
     void setIdArea(int idArea);
-    void setNombre(std::string nombre);
+    void setNombreArea(std::string nombre);
+    
+    void seleccionar(); 
+    void mostrarOpciones();
 };

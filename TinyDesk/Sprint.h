@@ -22,7 +22,7 @@ public:
     void Cargar();
     void Mostrar();
     void generarNombre();
-    void cargarFecha(Fecha &f, const std::string &nombre);
+    void cargarFecha(Fecha &f, const std::string nombre);
     
     //getters
     std::string getNombre();
