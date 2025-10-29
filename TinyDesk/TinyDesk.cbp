@@ -43,6 +43,10 @@
 		<Unit filename="Fecha.h" />
 		<Unit filename="Proyecto.cpp" />
 		<Unit filename="Proyecto.h" />
+		<Unit filename="ProyectoArchivo.cpp" />
+		<Unit filename="ProyectoArchivo.h" />
+		<Unit filename="ProyectoManager.cpp" />
+		<Unit filename="ProyectoManager.h" />
 		<Unit filename="Rol.cpp" />
 		<Unit filename="Rol.h" />
 		<Unit filename="Roles.dat" />
