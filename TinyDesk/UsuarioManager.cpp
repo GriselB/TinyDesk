@@ -89,14 +89,12 @@ int UsuarioManager::iniciarSesion() {
             int idRol = user.getIdRol();
             Rol rol = _rolRepo.leer(idRol - 1);
             if(rol.getPermisosEscritura()){
-                return idRol;
+                return 1;
             } else {
-                return idRol;
+                return 2;
             }
-            
         }
     }
-    
     return 0;
 }
 

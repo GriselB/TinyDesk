@@ -15,6 +15,7 @@ private:
     bool _permisosEscritura;
 
 public:
+    Rol();
     void setIdRol(int id) { _idRol = id; }
     void setNombreRol(std::string nombre);
     void setPermisosEscritura(bool permiso) { _permisosEscritura = permiso; }

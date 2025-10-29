@@ -41,14 +41,14 @@ void Usuario::Cargar() {
         cout << "5: UX/UI"<<endl;
         cout << "ID área: ";
         cin >> idArea;
-        setIdArea(idArea);
     }while(idArea < 1 or idArea > 5);
-
+    setIdArea(idArea);
+    
     do{
         cout << "ID de rol (1 para admin, 2 para empleado) : ";
         cin >> idRol;
     }while(idRol != 1 and idRol != 2);
-
+    setIdRol(idRol);
 
     setActivo(true);
 }
