@@ -88,6 +88,11 @@ int UsuarioManager::iniciarSesion() {
             
             int idRol = user.getIdRol();
             Rol rol = _rolRepo.leer(idRol - 1);
+            
+            if(rol.getIdRol() == -1){
+                cout<<"Error al abrir el archivo Rol.dat"<<endl;
+                return 0;
+            }
             if(rol.getPermisosEscritura()){
                 return 1;
             } else {
