@@ -16,6 +16,7 @@ private:
     char _status[20];
     char _nombre[50];
     bool  _activo;
+    int _idEstado;
     Proyecto _proyecto;
     
 public:

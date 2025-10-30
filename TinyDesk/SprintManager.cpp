@@ -123,15 +123,7 @@ void SprintManager::eliminarSprintLogico() {
     Sprint sprint = _repo.leer(pos);
     sprint.setActivo(false);
 
-    FILE *pFile = fopen("sprints.dat", "rb+");
-    if (pFile != nullptr) {
-        fseek(pFile, sizeof(Sprint) * pos, SEEK_SET);
-        fwrite(&sprint, sizeof(Sprint), 1, pFile);
-        fclose(pFile);
-        cout << "Sprint desactivado." << endl;
-    } else {
-        cout << "No se pudo abrir el archivo." << endl;
-    }
+   
 
     system("pause");
 }

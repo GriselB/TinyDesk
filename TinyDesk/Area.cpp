@@ -38,7 +38,7 @@ void Area::mostrarOpciones() {
 
 void Area::seleccionar() {
     int idArea;
-    string nombres[] = {"Administración", "Backend", "Frontend", "QA", "UX/UI"};
+    string nombres[5] = {"Administración", "Backend", "Frontend", "QA", "UX/UI"};
 
     Area area;
 

@@ -167,13 +167,14 @@
 	<iostream>
 	"App.h"
 
-1761440410 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\proyecto.cpp
+1761685165 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\proyecto.cpp
 	<cstring>
 	<iostream>
 	"Proyecto.h"
 	"Fecha.h"
+	"utils.h"
 
-1761440410 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\proyecto.h
+1761685165 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\proyecto.h
 	<string>
 	"Fecha.h"
 
@@ -187,10 +188,11 @@
 	<string>
 	"Fecha.h"
 
-1761440410 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\usuario.cpp
+1761688914 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\usuario.cpp
 	<iostream>
 	<cstring>
 	"Usuario.h"
+	"area.h"
 
 1761440410 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\usuarioarchivo.cpp
 	<iostream>
@@ -207,7 +209,7 @@
 1761440410 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\utils.h
 	<string>
 
-1761620421 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\area.cpp
+1761688914 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\area.cpp
 	<iostream>
 	<cstring>
 	"area.h"
@@ -215,12 +217,13 @@
 1761620322 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\area.h
 	<string>
 
-1761440594 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\sprint.cpp
+1761620611 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\sprint.cpp
 	<cstring>
 	<iostream>
 	"Sprint.h"
 	"Fecha.h"
 	"Proyecto.h"
+	"area.h"
 
 1761316924 source:e:\hotfix td\hotfix td\app.cpp
 	<iostream>

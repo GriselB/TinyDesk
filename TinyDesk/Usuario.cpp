@@ -8,6 +8,7 @@
 #include <iostream>
 #include <cstring>
 #include "Usuario.h"
+#include "area.h"
 
 using namespace std;
 
@@ -15,7 +16,8 @@ void Usuario::Cargar() {
 
     string nombre, apellido, email, pass;
     int idArea, idRol;
-
+    Area area;
+    
     cout << "Nombre: ";
     cin>>nombre;
     setNombre(nombre);
@@ -32,17 +34,8 @@ void Usuario::Cargar() {
     cin>>pass;
     setPassword(pass);
 
-    do{
-        cout << "ID de área: "<<endl;
-        cout << "1: Administración"<<endl;
-        cout << "2: Backend"<<endl;
-        cout << "3: Frontend"<<endl;
-        cout << "4: QA"<<endl;
-        cout << "5: UX/UI"<<endl;
-        cout << "ID área: ";
-        cin >> idArea;
-        setIdArea(idArea);
-    }while(idArea < 1 or idArea > 5);
+    area.seleccionar();
+    
 
     do{
         cout << "ID de rol (1 para admin, 2 para empleado) : ";
