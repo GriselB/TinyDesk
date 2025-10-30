@@ -10,6 +10,12 @@
 #include "Rol.h"
 using namespace std;
 
+Rol::Rol() {
+    _idRol = 0;
+    _nombreRol[0] = '\0';
+    _permisosEscritura = false;
+}
+
 void Rol::setNombreRol(std::string nombre) {
     strncpy(_nombreRol, nombre.c_str(), 19);
     _nombreRol[19] = '\0';

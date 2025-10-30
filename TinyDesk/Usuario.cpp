@@ -41,7 +41,7 @@ void Usuario::Cargar() {
         cout << "ID de rol (1 para admin, 2 para empleado) : ";
         cin >> idRol;
     }while(idRol != 1 and idRol != 2);
-
+    setIdRol(idRol);
 
     setActivo(true);
 }

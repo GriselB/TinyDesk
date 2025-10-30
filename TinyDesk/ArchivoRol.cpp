@@ -23,8 +23,11 @@ bool ArchivoRol::grabar(Rol reg) {
 Rol ArchivoRol::leer(int pos) {
     Rol reg;
     FILE* p = fopen(_nombreArchivo.c_str(), "rb");
-    if (p == NULL) return reg;
-    fseek(p, sizeof(Rol) * pos, 0);
+    if (p == NULL){
+        reg.setIdRol(-1);
+        return reg;
+    }
+    fseek(p, sizeof(Rol) * pos, SEEK_SET);
     fread(&reg, sizeof(Rol), 1, p);
     fclose(p);
     return reg;
