@@ -2,3 +2,53 @@
 node_modules
 .env
 .sass-cache
+
+# SO / Finder
+.DS_Store
+Thumbs.db
+
+# Entornos frontend (si corresponde)
+node_modules/
+.sass-cache/
+
+# Variables de entorno
+.env
+
+# Objetos y compilación intermedia
+*.o
+*.obj
+*.lo
+*.la
+*.gch
+*.pch
+
+# Librerías
+*.a
+*.lib
+*.so
+*.so.*
+*.dylib
+*.dll
+
+# Ejecutables / bins
+*.exe
+*.out
+*.app
+*.run
+
+# Carpetas de build (ajusta según tu proyecto)
+bin/
+obj/
+build/
+Debug/
+Release/
+
+# Code::Blocks (archivos locales a cada usuario)
+*.depend
+*.layout
+default.layout
+# (NO ignores el .cbp; ese sí va al repo)
+
+# Logs / temporales
+*.log
+*.tmp
