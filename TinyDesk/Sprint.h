@@ -43,6 +43,6 @@ public:
     void setFechaInicio(const Fecha &f);
     void setFechaFin(const Fecha &f);
     void setFechaFinalizada();
-    bool setActivo(bool activo);
+    void setActivo(bool activo);
 };
 

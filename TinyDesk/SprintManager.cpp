@@ -54,11 +54,7 @@ void SprintManager::mostrar(int pos, bool activo) {
     Sprint sprint = sprintArch.leer(pos);
     cout << "ID Sprint: " << sprint.getIdSprint() << endl;
     cout << "Nombre: "  << sprint.getNombre() << endl;
-    
-    //cout << "Proyecto: " << proyecto.getIdProyecto() << endl;
-
     cout << "ID �rea: " << sprint.getIdArea() << endl;
-
     cout << "Fecha Inicio: " << sprint.getFechaInicio().toString() << endl;
     cout << "Fecha Fin:   " << sprint.getFechaFin().toString() << endl;
     if(activo){

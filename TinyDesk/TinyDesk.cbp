@@ -41,6 +41,12 @@
 		<Unit filename="Estado.h" />
 		<Unit filename="Fecha.cpp" />
 		<Unit filename="Fecha.h" />
+		<Unit filename="ListadoAdminManager.cpp" />
+		<Unit filename="ListadoAdminManager.h" />
+		<Unit filename="ListadoAdminMenu.cpp" />
+		<Unit filename="ListadoAdminMenu.h" />
+		<Unit filename="MenuAdmin.cpp" />
+		<Unit filename="MenuAdmin.h" />
 		<Unit filename="Proyecto.cpp" />
 		<Unit filename="Proyecto.h" />
 		<Unit filename="ProyectoArchivo.cpp" />
@@ -51,17 +57,11 @@
 		<Unit filename="Rol.h" />
 		<Unit filename="Roles.dat" />
 		<Unit filename="Sprint.cpp" />
-		<Unit filename="Sprint.h">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
+		<Unit filename="Sprint.h" />
 		<Unit filename="SprintArchivo.cpp" />
-		<Unit filename="SprintArchivo.h">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
+		<Unit filename="SprintArchivo.h" />
 		<Unit filename="SprintManager.cpp" />
-		<Unit filename="SprintManager.h">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
+		<Unit filename="SprintManager.h" />
 		<Unit filename="Ticket.cpp" />
 		<Unit filename="Ticket.h" />
 		<Unit filename="TinyDesk.cbp" />

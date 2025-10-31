@@ -15,7 +15,7 @@ public:
     Fecha getFechaInicio();
     Fecha getFechaFin();
     Fecha getFechaFinalizada();
-    
+
     //Setters
     void setIdEmpleado(int idEmpleado);
     void setIdTicket(int idTicket);

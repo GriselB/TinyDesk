@@ -55,8 +55,8 @@ Fecha Sprint::getFechaFin()
 
 void Sprint::setNombre(const std::string &nombre)
 {
-    strncpy(_nombre, nombre.c_str(), 50);
-    _nombre[50] = '\0';
+    strncpy(_nombre, nombre.c_str(), 49);
+    _nombre[49] = '\0';
 }
 
 void Sprint::setIdSprint(int idSprint)
@@ -95,6 +95,6 @@ void Sprint::setFechaFinalizada()
     _fechaFinalizada = Fecha("finalizacion");
 }
 
-bool Sprint::setActivo(bool activo){
+void Sprint::setActivo(bool activo){
     _activo = activo;
 }
