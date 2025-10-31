@@ -130,14 +130,14 @@
 	<string>
 	"Fecha.h"
 
-1761440410 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\app.cpp
+1761868143 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\app.cpp
 	<iostream>
 	"App.h"
 
-1760926918 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\app.h
+1761868143 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\app.h
 	"UsuarioManager.h"
 
-1761440410 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\usuariomanager.h
+1761868144 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\usuariomanager.h
 	<string>
 	"Usuario.h"
 	"UsuarioArchivo.h"
@@ -154,11 +154,12 @@
 	<string>
 	"Usuario.h"
 
-1761440410 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\estado.cpp
+1761868143 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\estado.cpp
+	<iostream>
 	<cstring>
 	"Estado.h"
 
-1761440410 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\estado.h
+1761868143 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\estado.h
 	<string>
 
 1761440410 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\fecha.cpp
@@ -169,14 +170,14 @@
 	<iostream>
 	"App.h"
 
-1761685165 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\proyecto.cpp
+1761868143 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\proyecto.cpp
 	<cstring>
 	<iostream>
 	"Proyecto.h"
 	"Fecha.h"
 	"utils.h"
 
-1761685165 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\proyecto.h
+1761868143 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\proyecto.h
 	<string>
 	"Fecha.h"
 
@@ -190,7 +191,7 @@
 	<string>
 	"Fecha.h"
 
-1761688914 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\usuario.cpp
+1761868144 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\usuario.cpp
 	<iostream>
 	<cstring>
 	"Usuario.h"
@@ -200,7 +201,7 @@
 	<iostream>
 	"UsuarioArchivo.h"
 
-1761440410 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\usuariomanager.cpp
+1761868144 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\usuariomanager.cpp
 	<iostream>
 	"UsuarioManager.h"
 
@@ -211,15 +212,15 @@
 1761440410 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\utils.h
 	<string>
 
-1761688914 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\area.cpp
+1761868143 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\area.cpp
 	<iostream>
 	<cstring>
 	"area.h"
 
-1761620322 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\area.h
+1761868144 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\area.h
 	<string>
 
-1761620611 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\sprint.cpp
+1761868358 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\sprint.cpp
 	<cstring>
 	<iostream>
 	"Sprint.h"
@@ -309,27 +310,27 @@
 	"Fecha.h"
 	"Proyecto.h"
 
-1761614342 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\sprint.h
+1761873583 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\sprint.h
 	<string>
 	"Fecha.h"
 	"Estado.h"
 	"Area.h"
 	"Proyecto.h"
 
-1761256868 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\sprintarchivo.cpp
+1761873370 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\sprintarchivo.cpp
 	<iostream>
 	"SprintArchivo.h"
 
-1761256825 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\sprintarchivo.h
+1761873332 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\sprintarchivo.h
 	<string>
 	"Sprint.h"
 
-1761441199 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\sprintmanager.cpp
+1761873332 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\sprintmanager.cpp
 	<iostream>
 	"SprintManager.h"
 	"Sprint.h"
 
-1761441199 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\sprintmanager.h
+1761870060 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\sprintmanager.h
 	<string>
 	"Sprint.h"
 	"SprintArchivo.h"
@@ -371,14 +372,14 @@
 	<string>
 	"Rol.h"
 
-1761440410 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\rol.h
+1761868143 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\rol.h
 	<string>
 
-1761440410 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\archivorol.cpp
+1761868143 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\archivorol.cpp
 	<iostream>
 	"ArchivoRol.h"
 
-1761440410 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\rol.cpp
+1761868143 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\rol.cpp
 	<iostream>
 	<cstring>
 	"Rol.h"
@@ -455,6 +456,25 @@
 	"Proyecto.h"
 
 1761866364 c:\users\max\desktop\tp final\tinydesk\tinydesk\proyectomanager.h
+	<string>
+	"Proyecto.h"
+	"ProyectoArchivo.h"
+
+1761868143 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\proyectoarchivo.cpp
+	<iostream>
+	"Proyecto.h"
+	"ProyectoArchivo.h"
+
+1761868143 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\proyectoarchivo.h
+	<string>
+	"Proyecto.h"
+
+1761868143 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\proyectomanager.cpp
+	<iostream>
+	"ProyectoManager.h"
+	"Proyecto.h"
+
+1761868143 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\proyectomanager.h
 	<string>
 	"Proyecto.h"
 	"ProyectoArchivo.h"

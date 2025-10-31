@@ -8,6 +8,7 @@ class SprintArchivo
     SprintArchivo(std::string nombreArchivo = "sprints.dat");
 
     bool guardar(Sprint registro);
+    bool guardar(int pos, Sprint registro);
     int  buscarID(int id);
     Sprint leer(int pos);
 

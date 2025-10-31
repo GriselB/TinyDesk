@@ -20,10 +20,7 @@ private:
     Proyecto _proyecto;
     
 public:
-    void Cargar();
-    void Mostrar();
-    void generarNombre();
-    void cargarFecha(Fecha &f, const std::string nombre);
+
     
     //getters
     std::string getNombre();
@@ -46,6 +43,6 @@ public:
     void setFechaInicio(const Fecha &f);
     void setFechaFin(const Fecha &f);
     void setFechaFinalizada();
-    void setActivo(bool activo);
+    bool setActivo(bool activo);
 };
 

@@ -6,10 +6,16 @@
 class SprintManager {
 private:
     SprintArchivo _repo;
+    
+protected:
+    void Mostrar(Sprint sprint);
 
 public:
     SprintManager();
     
+    void Cargar();
+    void generarNombre();
+    void cargarFecha(Fecha &f, const std::string nombre);
     void crearSprint();
     void listarSprints();
     void mostrarSprintPorID();

@@ -6,13 +6,72 @@ using namespace std;
 
 SprintManager::SprintManager() { }
 
+void SprintManager::Cargar() {
+
+    string nombreSprint;
+    int idArea, idProyecto;
+    Fecha fechaInicio, fechaFin;
+    Sprint sprint;
+
+    cargarFecha(fechaInicio, "inicio");
+    sprint.setFechaInicio(fechaInicio);
+
+    cargarFecha(fechaFin, "fin");
+    sprint.setFechaFin(fechaFin);
+
+    generarNombre();
+
+    Area area;
+    area.mostrarOpciones();
+
+    sprint.setActivo(true);
+}
+
+void SprintManager::Mostrar(Sprint sprint) {
+    Proyecto proyecto;
+    cout << "ID Sprint: " << sprint.getIdSprint() << endl;
+    cout << "Nombre: "  << sprint.getNombre() << endl;
+
+    cout << "Proyecto: " << proyecto.getIdProyecto() << endl;
+
+    cout << "ID ï¿½rea: " << sprint.getIdArea() << endl;
+
+    cout << "Fecha Inicio: " << sprint.getFechaInicio().toString() << endl;
+    cout << "Fecha Fin:   " << sprint.getFechaFin().toString() << endl;
+
+    cout << "Activo: " << (sprint.getActivo() ? "Sï¿½" : "No") << endl;
+}
+
+void SprintManager::generarNombre() {
+  Proyecto proyecto;
+  Sprint sprint;
+    string nombre = proyecto.getNombre() + " - Sprint " + to_string(sprint.getIdSprint()) +
+                    " (" + sprint.getFechaInicio().toString() + " - " +
+                    sprint.getFechaFin().toString() + ")";
+    sprint.setNombre(nombre);
+}
+
+void SprintManager::cargarFecha(Fecha &f, const string nombre) {
+    int dia, mes, anio;
+    cout << "Ingrese dï¿½a de " << nombre << ": ";
+    cin >> dia;
+    cout << "Ingrese mes de " << nombre << ": ";
+    cin >> mes;
+    cout << "Ingrese aï¿½o de " << nombre << ": ";
+    cin >> anio;
+
+    f.setDia(dia);
+    f.setMes(mes);
+    f.setAnio(anio);
+}
+
 void SprintManager::crearSprint() {
 
     system("cls");
 
     cout << "---- CREAR NUEVO SPRINT ----" << endl;
     Sprint sprint;
-    sprint.Cargar();
+    Cargar();
     
     sprint.setIdSprint(_repo.getNuevoID());
     sprint.setStatus("Pendiente");  
@@ -22,7 +81,7 @@ void SprintManager::crearSprint() {
     
 
     if (_repo.guardar(sprint)) {
-        cout << "Sprint guardado con éxito."<<endl;
+        cout << "Sprint guardado con Ã©xito."<<endl;
         cout << "ID: " << sprint.getIdSprint() << endl;
         system("pause");
     } else {
@@ -47,13 +106,16 @@ void SprintManager::listarSprints() {
         exit(-100);
         return;
     }
+  
 
     _repo.leerTodos(reg, cantReg);
 
     system("cls");
-    cout<<"                        ---- LISTA DE USUARIOS ----" << endl;
+    cout<<"---- LISTA DE SPRINTS ----" << endl;
     for (int i = 0; i < cantReg; i++) {
-        reg[i].Mostrar();
+        //reg[i] Mostrar();
+        Sprint sprint = _repo.leer(i);
+        Mostrar(sprint);
         cout << "--------------------------------" << endl;
     }
     system("pause");
@@ -75,55 +137,90 @@ void SprintManager::mostrarSprintPorID() {
     }
 
     Sprint sprint = _repo.leer(pos);
-    sprint.Mostrar();
+    Mostrar(sprint);
     system("pause");
 }
 
 void SprintManager::finalizarSprint() {
-    int id;
+    int id, pos;
+    Sprint sprint;
+    char finalizado;
+    
+    cout << "---- FINALIZAR SPRINT ----" << endl;
     cout << "ID del Sprint a finalizar: ";
     cin >> id;
 
-    int pos = _repo.buscarID(id);
+    pos = _repo.buscarID(id);
     if (pos < 0) {
         cout << "No existe un Sprint con ese ID." << endl;
         system("pause");
         return;
     }
 
-    Sprint sprint = _repo.leer(pos);
-    sprint.setStatus("Finalizado");
-    sprint.setFechaFinalizada();
+    sprint = _repo.leer(pos);
+    
+    cout << "Informacion del Sprint: "<<endl;
 
-    FILE *pFile = fopen("sprints.dat", "rb+");
-    if (pFile != nullptr) {
-        fseek(pFile, sizeof(Sprint) * pos, SEEK_SET);
-        fwrite(&sprint, sizeof(Sprint), 1, pFile);
-        fclose(pFile);
-        cout << "Sprint finalizado correctamente." << endl;
-    } else {
-        cout << "No se pudo abrir el archivo." << endl;
+    Mostrar(sprint);
+     cout << endl << "Quiere finalizarlo S/N:";
+     cin >> finalizado;
+
+    if(finalizado== 's' || finalizado == 'S')
+    {
+        sprint.setStatus("Finalizado");
+        sprint.setFechaFinalizada();
+        cout << "El Sprint fue eliminado correctamente "<<endl;
     }
+    
+    if(_repo.guardar(pos, sprint))
+    {
+      cout << "El Sprint fue finalizado correctamente "<<endl;
+    }
+    else
+    {
+      cout << "Ocurrio un error, no pudimos finalziar el Sprint"  << endl;
+    }
+    
+    
 
     system("pause");
 }
 
 void SprintManager::eliminarSprintLogico() {
-    int id;
+    int id, pos;
+    Sprint sprint;
+    char eliminado;
+    
+    cout << "---- ELIMINAR TAREA ----" << endl;
     cout << "Ingrese ID del Sprint a desactivar: ";
     cin >> id;
 
-    int pos = _repo.buscarID(id);
+    pos = _repo.buscarID(id);
+    
     if (pos < 0) {
         cout << "No existe un sprint con ese ID." << endl;
         system("pause");
         return;
     }
 
-    Sprint sprint = _repo.leer(pos);
-    sprint.setActivo(false);
+    sprint = _repo.leer(pos);
+    cout << "Informacion del Sprint: "<<endl;
 
-   
+    Mostrar(sprint);
+     cout << endl << "Quiere eliminarlo S/N:";
+     cin >> eliminado;
 
+    if(eliminado== 's' || eliminado == 'S')
+    {
+      if(sprint.setActivo(false)) //_repo.eliminar(pos)
+      {
+        cout << "El Sprint fue eliminado correctamente "<<endl;
+      }
+      else
+      {
+        cout << "Ocurrio un error en la eliminacion del Sprint"  << endl;
+      }
+    }
+    
     system("pause");
 }

@@ -7,62 +7,7 @@
 
 using namespace std;
 
-void Sprint::Cargar() {
 
-    string nombreSprint;
-    int idArea, idProyecto;
-    Fecha fechaInicio, fechaFin;
-
-    cargarFecha(fechaInicio, "inicio");
-    setFechaInicio(fechaInicio);
-
-    cargarFecha(fechaFin, "fin");
-    setFechaFin(fechaFin);
-
-    generarNombre();
-
-    Area area;
-    area.mostrarOpciones();
-
-    setActivo(true);
-}
-
-void Sprint::Mostrar() {
-    Proyecto proyecto;
-    cout << "ID Sprint: " << getIdSprint() << endl;
-    cout << "Nombre: "  << getNombre() << endl;
-
-    cout << "Proyecto: " << proyecto.getIdProyecto() << endl;
-
-    cout << "ID �rea: " << getIdArea() << endl;
-
-    cout << "Fecha Inicio: " << getFechaInicio().toString() << endl;
-    cout << "Fecha Fin:   " << getFechaFin().toString() << endl;
-
-    cout << "Activo: " << (getActivo() ? "S�" : "No") << endl;
-}
-
-void Sprint::generarNombre() {
-  Proyecto proyecto;
-    string nombre = proyecto.getNombre() + " - Sprint " + to_string(_idSprint) +
-                    " (" + _fechaInicio.toString() + " - " +
-                    _fechaFin.toString() + ")";
-    setNombre(nombre);
-}
-
-void Sprint::cargarFecha(Fecha &f, const string nombre) {
-    int dia, mes, anio;
-    cout << "Ingrese d�a de " << nombre << ": ";
-    cin >> dia;
-    cout << "Ingrese mes de " << nombre << ": ";
-    cin >> mes;
-    cout << "Ingrese a�o de " << nombre << ": ";
-    cin >> anio;
-
-    f.setDia(dia);
-    f.setMes(mes);
-    f.setAnio(anio);
-}
 
 // get
 
@@ -150,6 +95,6 @@ void Sprint::setFechaFinalizada()
     _fechaFinalizada = Fecha("finalizacion");
 }
 
-void Sprint::setActivo(bool activo){
+bool Sprint::setActivo(bool activo){
     _activo = activo;
 }

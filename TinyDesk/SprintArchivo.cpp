@@ -26,6 +26,25 @@ bool SprintArchivo::guardar(Sprint registro)
   return result;
 }
 
+bool SprintArchivo::guardar(int pos, Sprint registro){
+  FILE *pFile;
+  bool result;
+  
+  pFile = fopen(_nombreArchivo.c_str(), "rb+");
+  
+  if(pFile == nullptr){
+    return false;  
+  }
+
+  fseek(pFile, pos * sizeof(Sprint) , SEEK_SET);
+  
+  result = fwrite(&registro, sizeof(Sprint), 1, pFile);
+  
+  fclose(pFile);
+  
+  return result;
+}
+
 Sprint SprintArchivo::leer(int pos)
 {
   Sprint registro;
