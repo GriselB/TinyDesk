@@ -19,6 +19,7 @@ public:
     void crearSprint();
     void listarSprints();
     void mostrarSprintPorID();
+    void mostrar(int pos, bool activo);
     void finalizarSprint();
     void eliminarSprintLogico();  // Cambia activo => false
 };

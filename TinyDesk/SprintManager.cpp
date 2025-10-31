@@ -42,6 +42,30 @@ void SprintManager::Mostrar(Sprint sprint) {
     cout << "Activo: " << (sprint.getActivo() ? "S�" : "No") << endl;
 }
 
+void SprintManager::mostrar(int pos, bool activo) {
+    //Proyecto proyecto;
+    SprintArchivo sprintArch;
+    int cant = sprintArch.getCantidadRegistros();
+    if (pos < 0 || pos >= cant) {
+        cout << "Posicion de sprint invalida."<<endl;
+        return;
+    }
+    
+    Sprint sprint = sprintArch.leer(pos);
+    cout << "ID Sprint: " << sprint.getIdSprint() << endl;
+    cout << "Nombre: "  << sprint.getNombre() << endl;
+    
+    //cout << "Proyecto: " << proyecto.getIdProyecto() << endl;
+
+    cout << "ID �rea: " << sprint.getIdArea() << endl;
+
+    cout << "Fecha Inicio: " << sprint.getFechaInicio().toString() << endl;
+    cout << "Fecha Fin:   " << sprint.getFechaFin().toString() << endl;
+    if(activo){
+        cout << "Activo: " << (sprint.getActivo() ? "S�" : "No") << endl;
+    }
+}
+
 void SprintManager::generarNombre() {
   Proyecto proyecto;
   Sprint sprint;
@@ -189,6 +213,7 @@ void SprintManager::finalizarSprint() {
 void SprintManager::eliminarSprintLogico() {
     int id, pos;
     Sprint sprint;
+    SprintArchivo archivoSprint;
     char eliminado;
     
     cout << "---- ELIMINAR TAREA ----" << endl;
@@ -211,8 +236,8 @@ void SprintManager::eliminarSprintLogico() {
      cin >> eliminado;
 
     if(eliminado== 's' || eliminado == 'S')
-    {
-      if(sprint.setActivo(false)) //_repo.eliminar(pos)
+    {  
+      if(archivoSprint.eliminar(pos))
       {
         cout << "El Sprint fue eliminado correctamente "<<endl;
       }
