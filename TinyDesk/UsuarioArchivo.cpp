@@ -33,6 +33,25 @@ bool UsuarioArchivo::guardar(Usuario registro)
   return result;
 }
 
+bool UsuarioArchivo::guardar(int pos, Usuario registro){
+  FILE *pFile;
+  bool result;
+  
+  pFile = fopen(_nombreArchivo.c_str(), "rb+");
+  
+  if(pFile == nullptr){
+    return false;
+  }
+
+  fseek(pFile, pos * sizeof(Usuario) , SEEK_SET);
+  
+  result = fwrite(&registro, sizeof(Usuario), 1, pFile);
+  
+  fclose(pFile);
+  
+  return result;
+}
+
 Usuario UsuarioArchivo::leer(int pos)
 {
   Usuario registro;
@@ -123,4 +142,14 @@ int UsuarioArchivo::buscarID(int idUsuario)
   fclose(pFile);
 
   return pos;
+}
+
+bool UsuarioArchivo::eliminar(int pos){
+  Usuario usuario = leer(pos);
+  
+  if(usuario.getIdUsuario() != -1){
+      usuario.setActivo(false);
+    return guardar(pos, usuario);
+  }
+  return false;
 }

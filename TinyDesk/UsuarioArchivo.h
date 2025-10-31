@@ -15,9 +15,11 @@ class UsuarioArchivo
     UsuarioArchivo(std::string nombreArchivo = "usuarios.dat");
 
     bool guardar(Usuario registro);
+    bool guardar(int pos, Usuario registro);
     int  buscarID(int idUsuario);
+    bool eliminar(int pos);
+    
     Usuario leer(int pos);
-
     int leerTodos(Usuario registros[], int cantidad);
     int getCantidadRegistros();
     int getNuevoID();
