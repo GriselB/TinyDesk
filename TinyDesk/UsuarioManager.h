@@ -19,6 +19,7 @@ public:
     void crearUsuario();
     void mostrarUsuarios();
     int iniciarSesion();
+    void eliminarUsuario();
 
 private:
     UsuarioArchivo _repo;

@@ -7,6 +7,7 @@
 
 #pragma once
 #include "Fecha.h"
+#include "area.h"
 
 class Usuario {
 private:
@@ -18,6 +19,7 @@ private:
     int  _idArea;
     int   _idRol;
     bool  _activo;
+    Area _area;
     
 public:
     void Cargar();

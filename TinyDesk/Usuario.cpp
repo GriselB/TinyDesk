@@ -8,7 +8,6 @@
 #include <iostream>
 #include <cstring>
 #include "Usuario.h"
-#include "area.h"
 
 using namespace std;
 
@@ -16,8 +15,7 @@ void Usuario::Cargar() {
 
     string nombre, apellido, email, pass;
     int idArea, idRol;
-    Area area;
-    
+
     cout << "Nombre: ";
     cin>>nombre;
     setNombre(nombre);
@@ -34,9 +32,14 @@ void Usuario::Cargar() {
     cin>>pass;
     setPassword(pass);
 
-    area.seleccionar();
+    do{
+        _area.mostrarOpciones();
+        
+        cout << "ID área: ";
+        cin >> idArea;
+    }while(idArea < 1 or idArea > 5);
+    setIdArea(idArea);
     
-
     do{
         cout << "ID de rol (1 para admin, 2 para empleado) : ";
         cin >> idRol;
@@ -47,12 +50,19 @@ void Usuario::Cargar() {
 }
 
 void Usuario::Mostrar() {
+    const string AREAS[5] = {"Administracion", "Backend", "Frontend", "QA", "UX/UI"};
+    const string ROLES[2] = {"Administrador", "Usuario"};
+    
     cout<<"ID Usuario: "<<getIdUsuario()<<endl;
     cout<<"Nombre: "  <<getNombre()<<endl;
     cout<<"Apellido: "<<getApellido()<<endl;
     cout<<"Email: "<<getEmail()<<endl;
     cout<<"ID Área: "<<getIdArea()<<endl;
     cout<<"ID Rol: "<<getIdRol()<<endl;
+    int idArea = getIdArea();
+    cout << "Area: " << AREAS[idArea-1] <<endl;
+    int idRol = getIdRol();
+    cout << "Rol: "<< ROLES[idRol-1] <<endl;
     cout<<"Activo: "<<(getActivo() ? "Sí" : "No") << "\n";
 }
 

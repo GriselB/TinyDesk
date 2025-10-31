@@ -136,3 +136,13 @@ int SprintArchivo::buscarID(int id)
 
   return pos;
 }
+
+bool SprintArchivo::eliminar(int pos){
+  Sprint sprint = leer(pos);
+  
+  if(sprint.getIdSprint() != -1){
+      sprint.setActivo(false);
+    return guardar(pos, sprint);
+  }
+  return false;
+}

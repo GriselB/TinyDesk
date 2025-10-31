@@ -76,7 +76,7 @@ int UsuarioManager::iniciarSesion() {
     cout<<"Password: ";
     cin>>pass;
     clear();
-
+    
     int cantReg = _repo.getCantidadRegistros();
     for (int i = 0; i < cantReg; i++) {
         Usuario user = _repo.leer(i);
@@ -88,7 +88,6 @@ int UsuarioManager::iniciarSesion() {
             
             int idRol = user.getIdRol();
             Rol rol = _rolRepo.leer(idRol - 1);
-            
             if(rol.getIdRol() == -1){
                 cout<<"Error al abrir el archivo Rol.dat"<<endl;
                 return 0;
@@ -112,4 +111,44 @@ bool UsuarioManager::existeEmail(string email) {
         }
     }
     return false;
+}
+
+void UsuarioManager::eliminarUsuario(){
+    int id, pos;
+    Usuario usuario;
+    UsuarioArchivo archivoUser;
+    char eliminado;
+    
+    cout << "---- ELIMINAR USUARIO ----" << endl;
+    cout << "Ingrese ID del Usuario a desactivar: ";
+    cin >> id;
+
+    pos = _repo.buscarID(id);
+    
+    if (pos < 0) {
+        cout << "No existe un sprint con ese ID." << endl;
+        system("pause");
+        return;
+    }
+
+    usuario = _repo.leer(pos);
+    cout << "Informacion del Sprint: "<<endl;
+
+    usuario.Mostrar();
+     cout << endl << "Quiere eliminarlo S/N:";
+     cin >> eliminado;
+
+    if(eliminado== 's' || eliminado == 'S')
+    {        
+      if(archivoUser.eliminar(pos))
+      {
+        cout << "El Usuario fue eliminado correctamente "<<endl;
+      }
+      else
+      {
+        cout << "Ocurrio un error en la eliminacion del Usuario"<<endl;
+      }
+    }
+    
+    system("pause");
 }

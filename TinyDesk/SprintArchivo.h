@@ -10,8 +10,9 @@ class SprintArchivo
     bool guardar(Sprint registro);
     bool guardar(int pos, Sprint registro);
     int  buscarID(int id);
+    bool eliminar(int pos);
+    
     Sprint leer(int pos);
-
     int leerTodos(Sprint registros[], int cantidad);
     int getCantidadRegistros();
     int getNuevoID();

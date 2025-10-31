@@ -13,6 +13,10 @@ int Ticket::getIdTicket()
     return _idTicket;
 }
 
+int Ticket::getIdSprint(){
+    return _idSprint;
+}
+
 std::string Ticket::getStatus()
 {
     return _status;
@@ -38,6 +42,10 @@ Fecha Ticket::getFechaFin()
     return _fechaFin.toString();
 }
 
+Fecha Ticket::getFechaFinalizada(){
+    return _fechaFinalizada.toString();
+}
+
 void Ticket::setIdEmpleado(int idEmpleado)
 {
     _idEmpleado=idEmpleado;
@@ -46,6 +54,10 @@ void Ticket::setIdEmpleado(int idEmpleado)
 void Ticket::setIdTicket(int idTicket)
 {
     _idTicket=idTicket;
+}
+
+void Ticket::setIdSprint(int idSprint){
+    _idSprint = idSprint;
 }
 
 void Ticket::setStatus(std::string status)
