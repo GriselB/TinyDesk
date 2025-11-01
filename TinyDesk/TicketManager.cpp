@@ -37,7 +37,6 @@ void TicketManager::crearTicket() {
 
     if(_repo.yaExisteTicketEmpleadoSprint(t))
     {
-      delete t;
       cout << "Ya existe un registro con el Empleado asignado a ese Sprint";
       return;
     }
