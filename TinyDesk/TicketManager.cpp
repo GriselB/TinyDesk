@@ -35,6 +35,13 @@ void TicketManager::crearTicket() {
     cin >> idSprint;
     t.setIdSprint(idSprint);
 
+    if(_repo.yaExisteTicketEmpleadoSprint(t))
+    {
+      delete t;
+      cout << "Ya existe un registro con el Empleado asignado a ese Sprint";
+      return;
+    }
+
     cin.ignore();
     cout << "Estado: ";
     getline(cin, status);
