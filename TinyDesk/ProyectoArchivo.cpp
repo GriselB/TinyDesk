@@ -4,9 +4,7 @@
 
 
 ProyectoArchivo::ProyectoArchivo(std::string nombreArchivo)
-: _nombreArchivo(nombreArchivo)
-{
-
+: _nombreArchivo(nombreArchivo){
 }
 bool ProyectoArchivo::guardar(Proyecto registro)
 {

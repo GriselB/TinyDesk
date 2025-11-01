@@ -64,6 +64,8 @@
 		<Unit filename="SprintManager.h" />
 		<Unit filename="Ticket.cpp" />
 		<Unit filename="Ticket.h" />
+		<Unit filename="TicketManager.cpp" />
+		<Unit filename="TicketManager.h" />
 		<Unit filename="TinyDesk.cbp" />
 		<Unit filename="TinyDesk.depend" />
 		<Unit filename="TinyDesk.layout" />

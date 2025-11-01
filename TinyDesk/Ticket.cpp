@@ -46,6 +46,10 @@ Fecha Ticket::getFechaFinalizada(){
     return _fechaFinalizada.toString();
 }
 
+bool Ticket::getActivo() const {
+    return _activo;
+}
+
 void Ticket::setIdEmpleado(int idEmpleado)
 {
     _idEmpleado=idEmpleado;
@@ -91,5 +95,9 @@ void Ticket::setFechaFin()
 void Ticket::setFechaFinalizada()
 {
     _fechaFinalizada = Fecha("finalizacion");
+}
+
+void Ticket::setActivo(bool activo) {
+    _activo = activo;
 }
 

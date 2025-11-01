@@ -15,6 +15,7 @@ public:
     Fecha getFechaInicio();
     Fecha getFechaFin();
     Fecha getFechaFinalizada();
+    bool getActivo() const;
 
     //Setters
     void setIdEmpleado(int idEmpleado);
@@ -26,6 +27,7 @@ public:
     void setFechaInicio();
     void setFechaFin();
     void setFechaFinalizada();
+    void setActivo(bool activo);
 
 private:
     int _idEmpleado;
@@ -37,4 +39,6 @@ private:
     char _status[20];
     char _prioridad[20];
     char _descripcionTarea[250];
+
+    bool _activo = true;
 };

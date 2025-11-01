@@ -5,6 +5,7 @@
 
 class ProyectoManager
 {
+
 public:
     ProyectoManager();
     void crearProyecto();
