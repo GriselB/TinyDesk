@@ -57,28 +57,25 @@ int TicketArchivo::getCantidadRegistros()
 }
 int TicketArchivo::buscarID(int id)
 {
+    FILE* pFile = fopen(_nombreArchivo.c_str(), "rb");
+    if (pFile == nullptr) {
+        return -1;
+    }
     Ticket registro;
-    FILE *pFile;
-    int pos = id -1;
+    int index = 0;
 
-    pFile = fopen(_nombreArchivo.c_str(), "rb");
-
-    if (pFile == nullptr)
-    {
-        return pos;
-    }
-
-    while (fread(&registro, sizeof(Ticket), 1, pFile))
-    {
-        if (registro.getIdTicket() == id)
-        {
-            pos = ftell(pFile) / sizeof(Ticket) - 1;
-            break;
+    while (fread(&registro, sizeof(Ticket), 1, pFile) == 1) {
+        if (registro.getIdTicket() == id) {
+            fclose(pFile);
+            return index;
         }
+        index++;
     }
+
     fclose(pFile);
-    return pos;
+    return -1;
 }
+
 
 int TicketArchivo::getNuevoID()
 {
@@ -109,10 +106,48 @@ bool existe = false;
 }
 
 bool TicketArchivo::eliminar(int pos) {
-    Ticket reg;
-    if (!leer(pos, reg)) return false;
+    if (pos < 0) return false;
 
-    if (!reg.getActivo()) return true;
-    reg.setActivo(false);
-    return guardar(reg);
+    FILE* f = fopen(_nombreArchivo.c_str(), "rb+");
+    if (!f) return false;
+
+    Ticket r;
+    bool ok = (fseek(f, pos * (int)sizeof(Ticket), SEEK_SET) == 0) &&
+              (fread(&r, sizeof(Ticket), 1, f) == 1);
+
+    if (!ok) { fclose(f); return false; }
+    if (!r.getActivo()) { fclose(f); return true; }   // ya estaba dado de baja
+
+    r.setActivo(false);
+
+    ok = (fseek(f, pos * (int)sizeof(Ticket), SEEK_SET) == 0) &&
+         (fwrite(&r, sizeof(Ticket), 1, f) == 1);
+
+    fclose(f);
+    return ok;
 }
+
+bool TicketArchivo::yaExisteTicketEmpleadoSprint(Ticket &ticket)
+{
+    FILE* pFile = fopen(_nombreArchivo.c_str(), "rb");
+    if (pFile == nullptr) {
+        return -1;
+    }
+    Ticket registro;
+    int index = 0;
+
+    while (fread(&registro, sizeof(Ticket), 1, pFile) == 1) {
+        if (registro.getIdEmpleado() == ticket.getIdEmpleado() &&
+            registro.getIdSprint() == ticket.getIdSprint() &&
+            registro.getActivo()
+           ) {
+            fclose(pFile);
+            return true;
+        }
+        index++;
+    }
+
+    fclose(pFile);
+    return false;
+}
+
