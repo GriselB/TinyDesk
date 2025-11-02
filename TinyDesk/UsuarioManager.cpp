@@ -120,19 +120,22 @@ void UsuarioManager::eliminarUsuario(){
     char eliminado;
     
     cout << "---- ELIMINAR USUARIO ----" << endl;
-    cout << "Ingrese ID del Usuario a desactivar: ";
+    cout << "Ingrese ID del Usuario a desactivar (0 para salir): ";
     cin >> id;
 
+    if(id == 0){
+        return;
+    }
     pos = _repo.buscarID(id);
     
     if (pos < 0) {
-        cout << "No existe un sprint con ese ID." << endl;
-        system("pause");
+        cout << "No existe un Usuario con ese ID." << endl;
+        pause();
         return;
     }
 
     usuario = _repo.leer(pos);
-    cout << "Informacion del Sprint: "<<endl;
+    cout << "Informacion del Usuario: "<<endl;
 
     usuario.Mostrar();
      cout << endl << "Quiere eliminarlo S/N:";
@@ -150,5 +153,5 @@ void UsuarioManager::eliminarUsuario(){
       }
     }
     
-    system("pause");
+    pause();
 }
