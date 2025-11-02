@@ -127,27 +127,3 @@ bool TicketArchivo::eliminar(int pos) {
     return ok;
 }
 
-bool TicketArchivo::yaExisteTicketEmpleadoSprint(Ticket &ticket)
-{
-    FILE* pFile = fopen(_nombreArchivo.c_str(), "rb");
-    if (pFile == nullptr) {
-        return -1;
-    }
-    Ticket registro;
-    int index = 0;
-
-    while (fread(&registro, sizeof(Ticket), 1, pFile) == 1) {
-        if (registro.getIdEmpleado() == ticket.getIdEmpleado() &&
-            registro.getIdSprint() == ticket.getIdSprint() &&
-            registro.getActivo()
-           ) {
-            fclose(pFile);
-            return true;
-        }
-        index++;
-    }
-
-    fclose(pFile);
-    return false;
-}
-

@@ -15,7 +15,6 @@ public:
     int getNuevoID();
     bool guardar(Ticket ticket);
     bool eliminar(int pos);
-    bool yaExisteTicketEmpleadoSprint(Ticket &ticket);
 
 private:
     std::string _nombreArchivo;
