@@ -9,6 +9,7 @@ public:
     int getIdEmpleado();
     int getIdTicket();
     int getIdSprint();
+    int getIdEmpleado();
     std::string getStatus();
     std::string getPrioridad();
     std::string getDescripcionTarea();
@@ -33,6 +34,7 @@ private:
     int _idEmpleado;
     int _idTicket;
     int _idSprint;
+    int _idProyecto;
     Fecha _fechaInicio;
     Fecha _fechaFin;
     Fecha _fechaFinalizada;

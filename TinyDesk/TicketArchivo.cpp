@@ -55,6 +55,7 @@ int TicketArchivo::getCantidadRegistros()
 
     return (int)(bytes / (long)sizeof(Ticket));
 }
+
 int TicketArchivo::buscarID(int id)
 {
     FILE* pFile = fopen(_nombreArchivo.c_str(), "rb");
@@ -86,6 +87,8 @@ int cantidad = getCantidadRegistros();
         return 1;
     }
 Ticket ultimoTicket;
+
+//Hay que buscar si existe en el mismo proyecto y en el sprint para tener el nuevo id
 
 bool ticketAnteriorExiste = leer(cantidad - 1, ultimoTicket);
     if (ticketAnteriorExiste){

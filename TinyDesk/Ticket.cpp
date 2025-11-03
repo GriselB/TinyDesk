@@ -17,6 +17,10 @@ int Ticket::getIdSprint(){
     return _idSprint;
 }
 
+int Ticket::getIdProyecto(){
+    return _idProyecto;
+}
+
 std::string Ticket::getStatus()
 {
     return _status;
@@ -62,6 +66,10 @@ void Ticket::setIdTicket(int idTicket)
 
 void Ticket::setIdSprint(int idSprint){
     _idSprint = idSprint;
+}
+
+void Ticket::setIdProyecto(int idProyecto){
+    _idProyecto = idProyecto;
 }
 
 void Ticket::setStatus(std::string status)

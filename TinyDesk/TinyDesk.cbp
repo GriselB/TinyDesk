@@ -37,6 +37,10 @@
 		<Unit filename="ArchivoRol.cpp" />
 		<Unit filename="ArchivoRol.h" />
 		<Unit filename="Area.cpp" />
+		<Unit filename="CreacionAdminMenu.cpp" />
+		<Unit filename="CreacionAdminMenu.h" />
+		<Unit filename="CreacionAdminMenuManager.cpp" />
+		<Unit filename="CreacionAdminMenuManager.h" />
 		<Unit filename="Estado.cpp" />
 		<Unit filename="Estado.h" />
 		<Unit filename="Fecha.cpp" />

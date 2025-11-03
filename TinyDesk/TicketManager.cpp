@@ -11,6 +11,7 @@ void TicketManager::mostrarTicket(Ticket ticket) {
     cout << "ID: " << ticket.getIdTicket()
          << " | Empleado: " << ticket.getIdEmpleado()
          << " | Sprint: " << ticket.getIdSprint()
+         << " | Proyecto: " << ticket.getIdProyecto()
          << " | Estado: " << ticket.getStatus()
          << " | Prioridad: " << ticket.getPrioridad()
          << " | Activo: " << (ticket.getActivo() ? "SI" : "NO")
@@ -24,9 +25,6 @@ void TicketManager::crearTicket() {
     int idEmpleado, idSprint;
     string status, prioridad, descripcion;
 
-    int nuevoId = _repo.getNuevoID();
-    t.setIdTicket(nuevoId);
-
     cout << "Empleado asignado (ingresar ID): ";
     cin >> idEmpleado;
     t.setIdEmpleado(idEmpleado);
@@ -34,6 +32,16 @@ void TicketManager::crearTicket() {
     cout << "Sprint asignado (ingresar ID): ";
     cin >> idSprint;
     t.setIdSprint(idSprint);
+
+    cout << "Proyecto asignado (ingresar ID): ";
+    cin >> idProyecto;
+    t.setIdProyecto(idProyecto);
+
+    //booleano que exista sprint y proyecto
+    // if si existe pasar
+
+    int nuevoId = _repo.getNuevoID();
+    t.setIdTicket(nuevoId);
 
     cin.ignore();
     cout << "Estado: ";
@@ -79,15 +87,16 @@ void TicketManager::reactivarTicket() {
     Ticket r;
     if (!_repo.leer(pos, r)) { cout << "Error al leer el ticket.\n"; return; }
 
-    if (r.getActivo()) { cout << "El ticket ya está activo.\n"; return; }
+    if (r.getStatus()) { cout << "El ticket ya está activo.\n"; return; }
 
-    r.setActivo(true);
+    r.setStatus(true);
 
     if (_repo.guardar(r)) cout << "Ticket reactivado.\n";
     else cout << "No se pudo reactivar el ticket.\n";
 }
 
 void TicketManager::finalizarTicket() {
+    //AGREGAR FECHA DE FINALIZADO
     int id;
     cout << "Ingrese ID de ticket para cerrarlo: ";
     cin >> id;
@@ -215,19 +224,24 @@ void TicketManager::cambiarSprint() {
     else cout << "No se pudo actualizar.\n";
 }
 
-void TicketManager::listarTickets() {
-    int n = _repo.getCantidadRegistros();
-    if (n == 0) {
-        cout << "No hay tickets creados.\n";
-        return;
-    }
+void TicketManager::cambiarProyecto() {
+    int id;
+    cout << "ID de ticket: ";
+    cin >> id;
 
-    cout << "\n===== TICKETS CREADOS =====\n";
-    for (int i = 0; i < n; i++) {
-        Ticket r;
-        bool existeTicket = _repo.leer(i, r);
-        if (!existeTicket) continue;
-        if (!r.getActivo()) continue;
-        mostrarTicket(r);
-    }
+    int pos = _repo.buscarID(id);
+    if (pos < 0) { cout << "No existe un ticket con ese ID " << id << "\n"; return; }
+
+    Ticket r;
+    if (!_repo.leer(pos, r)) { cout << "Error al leer el ticket.\n"; return; }
+
+    int proyecto;
+    cout << "Nuevo ID de proyecto: ";
+    cin >> proyecto;
+    r.setIdProyecto(proyecto);
+
+    if (_repo.guardar(r)) cout << "Sprint actualizado.\n";
+    else cout << "No se pudo actualizar.\n";
 }
+
+
