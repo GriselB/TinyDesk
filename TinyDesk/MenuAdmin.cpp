@@ -55,19 +55,19 @@ void MenuAdmin::ejecutarOpcion(int opcion) {
         case 1:
             menuCrear();
             break;
-            
+
         case 2:
             menuModificar();
             break;
-            
+
         case 3:
             menuListados();
             break;
-            
+
         case 4:
             menuReportes();
             break;
-            
+
         case 0:
             cout << "Volviendo al menu principal..." << endl;
             pause();
@@ -76,7 +76,10 @@ void MenuAdmin::ejecutarOpcion(int opcion) {
 }
 
 void MenuAdmin::menuCrear() {
+
     cout << "menu crear" << endl;
+    CreacionAdminMenu creacionMenu;
+    creacionMenu.run("CREACION");
     pause();
 
 }

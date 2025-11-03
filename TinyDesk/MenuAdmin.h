@@ -7,6 +7,7 @@
 
 #pragma once
 #include "ListadoAdminMenu.h"
+#include "CreacionAdminMenu.h"
 
 class MenuAdmin {
 private:
