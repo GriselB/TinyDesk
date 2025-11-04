@@ -12,6 +12,7 @@ using namespace std;
 void ListadoAdminManager::listarProyectos() {
     clear();
         ProyectoManager pM;
+    cout << "----- PROYECTOS -----" << endl;
         pM.listarProyectos();
 }
 
@@ -25,6 +26,8 @@ void ListadoAdminManager::listarSprintsPorProyectos() {
     int cantProyectos = archivoProyecto.getCantidadRegistros();
     int cantSprints = archivoSprint.getCantidadRegistros();
 
+    cout << "----- SPRINTS POR PROYECTO -----" << endl;
+
     if (cantProyectos <= 0) {
         cout << "No hay proyectos registrados." << endl;
         pause();
@@ -36,8 +39,6 @@ void ListadoAdminManager::listarSprintsPorProyectos() {
         pause();
         return;
     }
-
-    cout << "----- SPRINTS POR PROYECTO -----" << endl;
 
     for (int i = 0; i < cantProyectos; i++) {
         Proyecto proyecto = archivoProyecto.leer(i);
@@ -75,6 +76,8 @@ void ListadoAdminManager::listarTicketsPorSprints() {
     int cantTickets = -1;//archivoTicket.getCantidadRegistros();
     int cantUsuarios = archivoUsuario.getCantidadRegistros();
 
+    cout << "----- TICKETS POR PROYECTO Y SPRINT -----" << endl;
+
     if (cantProy <= 0) {
         cout << "No hay proyectos registrados aun." << endl;
         pause();
@@ -90,8 +93,6 @@ void ListadoAdminManager::listarTicketsPorSprints() {
         pause();
         return;
     }
-
-    cout << "----- TICKETS POR PROYECTO Y SPRINT -----" << endl;
 
     for (int i = 0; i < cantProy; i++) {
         Proyecto proyecto = archivoProyecto.leer(i);

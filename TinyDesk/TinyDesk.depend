@@ -664,3 +664,262 @@
 	"MenuAdmin.h"
 	"utils.h"
 
+1761870250 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\fecha.cpp
+	<iostream>
+	"Fecha.h"
+
+1761870250 c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\fecha.h
+	<string>
+
+1761315542 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\main.cpp
+	<iostream>
+	"App.h"
+
+1762261532 c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\app.h
+	"UsuarioManager.h"
+	"MenuAdmin.h"
+	"MenuUsuario.h"
+
+1762262459 c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\usuariomanager.h
+	<string>
+	"Usuario.h"
+	"Sesion.h"
+	"UsuarioArchivo.h"
+	"ArchivoRol.h"
+	"SesionArchivo.h"
+	"utils.h"
+
+1761924572 c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\usuario.h
+	"Fecha.h"
+	"area.h"
+
+1761924572 c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\area.h
+	<string>
+
+1762262071 c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\sesion.h
+
+1761924572 c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\usuarioarchivo.h
+	<string>
+	"Usuario.h"
+
+1761201864 c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\archivorol.h
+	<string>
+	"Rol.h"
+
+1761924572 c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\rol.h
+	<string>
+
+1762263128 c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\sesionarchivo.h
+	"Sesion.h"
+
+1761199534 c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\utils.h
+	<string>
+
+1762263128 c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\menuadmin.h
+	"ListadoAdminMenu.h"
+	"CreacionAdminMenu.h"
+	"SesionArchivo.h"
+
+1761924572 c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\listadoadminmenu.h
+	"cstring"
+	"ListadoAdminManager.h"
+
+1761924572 c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\listadoadminmanager.h
+	"Ticket.h"
+	"ProyectoManager.h"
+	"UsuarioManager.h"
+	"SprintManager.h"
+
+1762018675 c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\ticket.h
+	<string>
+	"Fecha.h"
+
+1762018675 c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\proyectomanager.h
+	<string>
+	"Proyecto.h"
+	"ProyectoArchivo.h"
+
+1761924572 c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\proyecto.h
+	<string>
+	"Fecha.h"
+
+1761924572 c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\proyectoarchivo.h
+	<string>
+	"Proyecto.h"
+
+1761924572 c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\sprintmanager.h
+	<string>
+	"Sprint.h"
+	"SprintArchivo.h"
+
+1761924572 c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\sprint.h
+	<string>
+	"Fecha.h"
+	"Estado.h"
+	"Area.h"
+	"Proyecto.h"
+
+1761924572 c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\estado.h
+	<string>
+
+1761924572 c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\sprintarchivo.h
+	<string>
+	"Sprint.h"
+
+1762152105 c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\creacionadminmenu.h
+	"cstring"
+	"CreacionAdminMenuManager.h"
+
+1762152105 c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\creacionadminmenumanager.h
+	"ProyectoManager.h"
+	"SprintManager.h"
+	"TicketManager.h"
+
+1762018675 c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\ticketmanager.h
+	<string>
+	"Ticket.h"
+	"TicketArchivo.h"
+
+1762094349 c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\ticketarchivo.h
+	<string>
+	"utils.h"
+	"Ticket.h"
+
+1762264391 c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\menuusuario.h
+	"SesionArchivo.h"
+	"TareasUsuarioManager.h"
+
+1762264391 c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\tareasusuariomanager.h
+	"SesionArchivo.h"
+	"ProyectoArchivo.h"
+	"SprintArchivo.h"
+	"TicketArchivo.h"
+	"TicketManager.h"
+
+1761924572 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\sprintmanager.cpp
+	<iostream>
+	"SprintManager.h"
+	"Sprint.h"
+
+1761199534 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\utils.cpp
+	<iostream>
+	"utils.h"
+
+1762261532 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\app.cpp
+	<iostream>
+	"App.h"
+
+1761924572 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\archivorol.cpp
+	<iostream>
+	"ArchivoRol.h"
+
+1761924572 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\area.cpp
+	<iostream>
+	<cstring>
+	"area.h"
+
+1762152105 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\creacionadminmenu.cpp
+	<iostream>
+	"CreacionAdminMenu.h"
+
+1761924572 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\estado.cpp
+	<iostream>
+	<cstring>
+	"Estado.h"
+
+1762261532 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\listadoadminmanager.cpp
+	<iostream>
+	"ListadoAdminManager.h"
+
+1762036374 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\listadoadminmenu.cpp
+	<iostream>
+	"ListadoAdminMenu.h"
+
+1762263128 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\menuadmin.cpp
+	<iostream>
+	"MenuAdmin.h"
+	"utils.h"
+
+1762264391 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\menuusuario.cpp
+	<iostream>
+	"MenuUsuario.h"
+	"utils.h"
+
+1761924572 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\proyecto.cpp
+	<cstring>
+	<iostream>
+	"Proyecto.h"
+	"Fecha.h"
+	"utils.h"
+
+1762018675 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\proyectoarchivo.cpp
+	<iostream>
+	"Proyecto.h"
+	"ProyectoArchivo.h"
+
+1761924572 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\proyectomanager.cpp
+	<iostream>
+	"ProyectoManager.h"
+	"Proyecto.h"
+
+1761924572 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\rol.cpp
+	<iostream>
+	<cstring>
+	"Rol.h"
+
+1762263128 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\sesionarchivo.cpp
+	<iostream>
+	"SesionArchivo.h"
+
+1761924572 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\sprint.cpp
+	<cstring>
+	<iostream>
+	"Sprint.h"
+	"Fecha.h"
+	"Proyecto.h"
+	"area.h"
+
+1761924572 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\sprintarchivo.cpp
+	<iostream>
+	"SprintArchivo.h"
+
+1762277158 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\tareasusuariomanager.cpp
+	<iostream>
+	"TareasUsuarioManager.h"
+
+1762018675 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\ticket.cpp
+	<cstring>
+	<iostream>
+	"Ticket.h"
+	"Fecha.h"
+
+1762094349 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\ticketarchivo.cpp
+	<iostream>
+	"TicketManager.h"
+
+1762094349 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\ticketmanager.cpp
+	<iostream>
+	"TicketManager.h"
+	"Ticket.h"
+
+1761924572 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\usuario.cpp
+	<iostream>
+	<cstring>
+	"Usuario.h"
+
+1761924572 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\usuarioarchivo.cpp
+	<iostream>
+	"UsuarioArchivo.h"
+
+1762263128 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\usuariomanager.cpp
+	<iostream>
+	"UsuarioManager.h"
+
+1762277063 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\creacionadminmenumanager.cpp
+	"CreacionAdminMenuManager.h"
+
+1762277200 source:c:\users\sebaa\onedrive\escritorio\programación\programacion 2\tinydesk\sesion.cpp
+	<iostream>
+	<cstring>
+	"Sesion.h"
+

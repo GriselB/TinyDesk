@@ -8,6 +8,7 @@
 #pragma once
 #include "ListadoAdminMenu.h"
 #include "CreacionAdminMenu.h"
+#include "SesionArchivo.h"
 
 class MenuAdmin {
 private:

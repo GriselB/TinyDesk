@@ -1,5 +1,7 @@
 #pragma once
 #include "UsuarioManager.h"
+#include "MenuAdmin.h"
+#include "MenuUsuario.h"
 
 class App
 {

@@ -1,6 +1,5 @@
 #include <iostream>
 #include "App.h"
-#include "MenuAdmin.h"
 
 using namespace std;
 
@@ -55,7 +54,8 @@ void App::ejecutarOpcion(int opcion){
       }
       else if (rol == 2) {
           // ejecutar menú-empleado
-          cout<<"User, idRol=2"<<endl;
+          MenuUsuario menuUsuario;
+          menuUsuario.run();
       }
       else {
           cout << "Credenciales invalidas o usuario inactivo." << endl;

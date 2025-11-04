@@ -8,8 +8,10 @@
 #pragma once
 #include <string>
 #include "Usuario.h"
+#include "Sesion.h"
 #include "UsuarioArchivo.h"
 #include "ArchivoRol.h"
+#include "SesionArchivo.h"
 #include "utils.h"
 
 class UsuarioManager {

@@ -3,6 +3,9 @@
 
 using namespace std;
 
-void CreacionAdminMenuManager::crearProyectos(){};
-void CreacionAdminMenuManager::crearSprintsPorProyectos(){};
-void CreacionAdminMenuManager::crearTicketsPorSprintsProyecto(){};
+void CreacionAdminMenuManager::crearProyectos(){
+}
+void CreacionAdminMenuManager::crearSprintsPorProyectos(){
+}
+void CreacionAdminMenuManager::crearTicketsPorSprintsProyecto(){
+}
