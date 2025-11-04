@@ -25,20 +25,22 @@ void Estado::setNombre(std::string nombre)
 void Estado::mostrar()
 {
     cout<<"Id del Estado: "<<_idEstado<<endl;
-    cout<<"Nombre del Estadio: "<<_nombre<<endl;
+    cout<<"Nombre del Estado: "<<_nombre<<endl;
 }
 void Estado::seleccionarEstado()
 {
     int opcion;
     do{
         cout<<"--- Seleccione el Estado ---"<<endl;
-        cout<<"--- Opcion 1 - Disponible || Opcion 2 - No disponible ---"<<endl;
+        cout<<"--- Opcion 0 - No disponible !! Opcion 1 - Disponible ||  || Opcion 2 - Finalizado  ---"<<endl;
         cin>>opcion;
-        if(opcion==1)
+        if(opcion==0)
+            setIdEstado(0);
+        else if(opcion==1)
             setIdEstado(1);
         else if(opcion==2)
             setIdEstado(2);
         else
             cout<<"Opcion de Estado invalida"<<endl;
-    }while(opcion!=1 && opcion!=2);
+    }while(opcion!=0 && opcion!=1 && opcion!=2);
 }

@@ -10,7 +10,7 @@ void CreacionAdminMenu::run(string titulo) {
         clear();
 
         cout << "===== " << titulo << " ====="<<endl;
-        cout << "1 - Creac Proyecto"<<endl;
+        cout << "1 - Crear Proyecto"<<endl;
         cout << "2 - Crear Sprint (por proyecto)"<<endl;
         cout << "3 - Crear Ticket (por sprint y proyecto)"<<endl;
         cout << "---------------------------"<<endl;

@@ -43,6 +43,10 @@
 		<Unit filename="CreacionAdminMenuManager.h" />
 		<Unit filename="Estado.cpp" />
 		<Unit filename="Estado.h" />
+		<Unit filename="EstadoArchivo.cpp" />
+		<Unit filename="EstadoArchivo.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="Fecha.cpp" />
 		<Unit filename="Fecha.h" />
 		<Unit filename="ListadoAdminManager.cpp" />
