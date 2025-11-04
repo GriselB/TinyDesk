@@ -50,7 +50,7 @@ void SprintManager::mostrar(int pos, bool activo) {
         cout << "Posicion de sprint invalida."<<endl;
         return;
     }
-    
+
     Sprint sprint = sprintArch.leer(pos);
     cout << "ID Sprint: " << sprint.getIdSprint() << endl;
     cout << "Nombre: "  << sprint.getNombre() << endl;
@@ -73,6 +73,7 @@ void SprintManager::generarNombre() {
 
 void SprintManager::cargarFecha(Fecha &f, const string nombre) {
     int dia, mes, anio;
+    bool b;
     cout << "Ingrese d�a de " << nombre << ": ";
     cin >> dia;
     cout << "Ingrese mes de " << nombre << ": ";
@@ -80,7 +81,7 @@ void SprintManager::cargarFecha(Fecha &f, const string nombre) {
     cout << "Ingrese a�o de " << nombre << ": ";
     cin >> anio;
 
-    f.setDia(dia);
+    f.setDia(dia,mes,b);
     f.setMes(mes);
     f.setAnio(anio);
 }
@@ -92,13 +93,13 @@ void SprintManager::crearSprint() {
     cout << "---- CREAR NUEVO SPRINT ----" << endl;
     Sprint sprint;
     Cargar();
-    
+
     sprint.setIdSprint(_repo.getNuevoID());
-    sprint.setStatus("Pendiente");  
+    sprint.setStatus("Pendiente");
     sprint.setActivo(true);
 
-    
-    
+
+
 
     if (_repo.guardar(sprint)) {
         cout << "Sprint guardado con éxito."<<endl;
@@ -126,7 +127,7 @@ void SprintManager::listarSprints() {
         exit(-100);
         return;
     }
-  
+
 
     _repo.leerTodos(reg, cantReg);
 
@@ -165,7 +166,7 @@ void SprintManager::finalizarSprint() {
     int id, pos;
     Sprint sprint;
     char finalizado;
-    
+
     cout << "---- FINALIZAR SPRINT ----" << endl;
     cout << "ID del Sprint a finalizar: ";
     cin >> id;
@@ -178,7 +179,7 @@ void SprintManager::finalizarSprint() {
     }
 
     sprint = _repo.leer(pos);
-    
+
     cout << "Informacion del Sprint: "<<endl;
 
     Mostrar(sprint);
@@ -191,7 +192,7 @@ void SprintManager::finalizarSprint() {
         sprint.setFechaFinalizada();
         cout << "El Sprint fue eliminado correctamente "<<endl;
     }
-    
+
     if(_repo.guardar(pos, sprint))
     {
       cout << "El Sprint fue finalizado correctamente "<<endl;
@@ -200,8 +201,8 @@ void SprintManager::finalizarSprint() {
     {
       cout << "Ocurrio un error, no pudimos finalziar el Sprint"  << endl;
     }
-    
-    
+
+
 
     system("pause");
 }
@@ -211,13 +212,13 @@ void SprintManager::eliminarSprintLogico() {
     Sprint sprint;
     SprintArchivo archivoSprint;
     char eliminado;
-    
+
     cout << "---- ELIMINAR TAREA ----" << endl;
     cout << "Ingrese ID del Sprint a desactivar: ";
     cin >> id;
 
     pos = _repo.buscarID(id);
-    
+
     if (pos < 0) {
         cout << "No existe un sprint con ese ID." << endl;
         system("pause");
@@ -232,7 +233,7 @@ void SprintManager::eliminarSprintLogico() {
      cin >> eliminado;
 
     if(eliminado== 's' || eliminado == 'S')
-    {  
+    {
       if(archivoSprint.eliminar(pos))
       {
         cout << "El Sprint fue eliminado correctamente "<<endl;
@@ -242,6 +243,6 @@ void SprintManager::eliminarSprintLogico() {
         cout << "Ocurrio un error en la eliminacion del Sprint"  << endl;
       }
     }
-    
+
     system("pause");
 }

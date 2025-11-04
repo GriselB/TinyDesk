@@ -8,9 +8,9 @@ Fecha::Fecha()
 
 }
 
-Fecha::Fecha (int dia, int mes, int anio)
+Fecha::Fecha (int dia, int mes, int anio, bool b)
 {
-  setDia(dia);
+  setDia(dia,mes,b);
   setMes(mes);
   setAnio(anio);
 }
@@ -18,15 +18,17 @@ Fecha::Fecha (int dia, int mes, int anio)
 Fecha::Fecha(std::string nombre)
 {
     int dia,mes,anio;
-    cout << "Ingrese dia de "<<nombre<<": ";
-    cin >> dia;
-    setDia(dia);
-    cout << "Ingrese mes de "<<nombre<<": ";
-    cin >> mes;
-    setMes(mes);
+    bool b;
     cout << "Ingrese anio de "<<nombre<<": ";
     cin >> anio;
     setAnio(anio);
+    b=comprobarBisiesto(anio);
+    cout << "Ingrese mes de "<<nombre<<": ";
+    cin >> mes;
+    setMes(mes);
+    cout << "Ingrese dia de "<<nombre<<": ";
+    cin >> dia;
+    setDia(dia,mes,b);
 }
 
 int Fecha::getDia()
@@ -34,12 +36,25 @@ int Fecha::getDia()
   return _dia;
 }
 
-void Fecha::setDia(int dia)
+void Fecha::setDia(int dia,int mes,bool b)
 {
-    while(dia<0 || dia>31)
+    int vMesBisiesto[12] = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    int vMes[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    if (b)
     {
-        cout<<"Ingrese un dia entre 1 y 31: "<<endl;
-        cin>>dia;
+        while(dia>vMesBisiesto[mes-1])
+        {
+            cout<<"Ingrese un dia valido para el mes "<<mes<<" en un anio bisiesto: "<<endl;
+            cin>>dia;
+        }
+    }
+    else
+    {
+        while(dia>vMes[mes-1])
+        {
+            cout<<"Ingrese un dia valido para el mes "<<mes<<" en un anio no bisiesto: "<<endl;
+            cin>>dia;
+        }
     }
     _dia = dia;
 }
@@ -72,6 +87,14 @@ void Fecha::setAnio(int anio)
         cin>>anio;
     }
     _anio = anio;
+}
+
+bool Fecha::comprobarBisiesto(int anio)
+{
+    if ((anio % 4 == 0 && anio % 100 != 0) || (anio % 400 == 0))
+        return true;
+    else
+        return false;
 }
 
 string Fecha::toString()
