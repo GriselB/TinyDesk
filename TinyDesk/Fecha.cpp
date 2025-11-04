@@ -38,11 +38,10 @@ int Fecha::getDia()
 
 void Fecha::setDia(int dia,int mes,bool b)
 {
-    int vMesBisiesto[12] = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-    int vMes[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    int vMes[12] = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
     if (b)
     {
-        while(dia>vMesBisiesto[mes-1])
+        while(dia>vMes[mes-1])
         {
             cout<<"Ingrese un dia valido para el mes "<<mes<<" en un anio bisiesto: "<<endl;
             cin>>dia;
@@ -50,6 +49,7 @@ void Fecha::setDia(int dia,int mes,bool b)
     }
     else
     {
+        vMes[1]=28;
         while(dia>vMes[mes-1])
         {
             cout<<"Ingrese un dia valido para el mes "<<mes<<" en un anio no bisiesto: "<<endl;
