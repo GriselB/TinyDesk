@@ -2,6 +2,7 @@
 #include <iostream>
 #include "Proyecto.h"
 #include "Fecha.h"
+#include "Estado.h"
 #include "utils.h"
 
 using namespace std;
@@ -94,12 +95,15 @@ void Proyecto::cargar()
 }
 void Proyecto::mostrar()
 {
+    Estado estado;
     string vecEstado[3]={"No Disponible","Disponible","Finalizado"};
     std::cout<<"Id del proyecto: "<<getIdProyecto()<<std::endl;
     std::cout<<"Nombre del proyecto: "<<getNombre()<<std::endl;
     std::cout<<"Descripción del proyecto: "<<getDescripcion()<<std::endl;
     std::cout<<"Fecha de inicio del proyecto: "<<getFechaInicio()<<std::endl;
     std::cout<<"Fecha de fin del proyecto: "<<getFechaFin()<<std::endl;
-    std::cout<<"Fecha de finalización del proyecto: "<<getFechaFinalizada()<<std::endl;
-    std::cout<<"Id del estado del proyecto: "<<vecEstado[getIdEstado()-1]<<std::endl;
+    if(estado.getIdEstado()==2)
+        std::cout<<"Fecha de finalización del proyecto: "<<getFechaFinalizada()<<std::endl;
+    //std::cout<<"Estado del proyecto: "<<vecEstado[getIdEstado()-1]<<std::endl;
+    std::cout<<"Estado del proyecto: "<<estado.getNombreEstado(getIdEstado()-1)<<std::endl;
 }

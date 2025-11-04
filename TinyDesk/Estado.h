@@ -5,12 +5,17 @@ class Estado
 {
 public:
     int getIdEstado();
-    std::string getNombre();
+    std::string getNombreEstado(int n);
     void setIdEstado(int idEstado);
-    void setNombre(std::string nombre);
+    //void setNombre(std::string nombre);
     void mostrar();
     void seleccionarEstado();
 private:
     int _idEstado;
-    char _nombre[20];
+    //char _nombre[20];
+    const char *_nombres[3] = {
+    "No Disponible","Disponible","Finalizado"
+    };
+
+
 };
