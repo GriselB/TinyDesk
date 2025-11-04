@@ -14,7 +14,6 @@ void ListadoAdminManager::listarProyectos() {
         ProyectoManager pM;
     cout << "----- PROYECTOS -----" << endl;
         pM.listarProyectos();
-        pause();
         clear();
 }
 

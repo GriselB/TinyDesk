@@ -90,15 +90,16 @@ void Proyecto::cargar()
     cin>>descripcion;
     setFechaInicio();
     setFechaFin();
-    setIdEstado(1);
+    setIdEstado(2);
 }
 void Proyecto::mostrar()
 {
+    string vecEstado[3]={"No Disponible","Disponible","Finalizado"};
     std::cout<<"Id del proyecto: "<<getIdProyecto()<<std::endl;
     std::cout<<"Nombre del proyecto: "<<getNombre()<<std::endl;
     std::cout<<"Descripción del proyecto: "<<getDescripcion()<<std::endl;
     std::cout<<"Fecha de inicio del proyecto: "<<getFechaInicio()<<std::endl;
     std::cout<<"Fecha de fin del proyecto: "<<getFechaFin()<<std::endl;
     std::cout<<"Fecha de finalización del proyecto: "<<getFechaFinalizada()<<std::endl;
-    std::cout<<"Id del estado del proyecto: "<<getIdEstado()<<std::endl;
+    std::cout<<"Id del estado del proyecto: "<<vecEstado[getIdEstado()-1]<<std::endl;
 }
