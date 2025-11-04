@@ -20,12 +20,12 @@ Fecha::Fecha(std::string nombre)
     int dia,mes,anio;
     cout << "Ingrese dia de "<<nombre<<": ";
     cin >> dia;
+    setDia(dia);
     cout << "Ingrese mes de "<<nombre<<": ";
     cin >> mes;
+    setMes(mes);
     cout << "Ingrese anio de "<<nombre<<": ";
     cin >> anio;
-    setDia(dia);
-    setMes(mes);
     setAnio(anio);
 }
 
@@ -36,8 +36,12 @@ int Fecha::getDia()
 
 void Fecha::setDia(int dia)
 {
-    if(dia>0 && dia<31)
-        _dia = dia;
+    while(dia<0 || dia>31)
+    {
+        cout<<"Ingrese un dia entre 1 y 31: "<<endl;
+        cin>>dia;
+    }
+    _dia = dia;
 }
 
 int Fecha::getMes()
@@ -47,7 +51,11 @@ int Fecha::getMes()
 
 void Fecha::setMes(int mes)
 {
-    if(mes>0 && mes<13)
+    while(mes<0 || mes>13)
+    {
+        cout<<"Ingrese un mes entre 1 y 12: "<<endl;
+        cin>>mes;
+    }
         _mes = mes;
 }
 
@@ -58,8 +66,12 @@ int Fecha::getAnio()
 
 void Fecha::setAnio(int anio)
 {
-    if(anio>1900)
-        _anio = anio;
+    while(anio<1900)
+    {
+        cout<<"Ingrese un anio valido: "<<endl;
+        cin>>anio;
+    }
+    _anio = anio;
 }
 
 string Fecha::toString()
