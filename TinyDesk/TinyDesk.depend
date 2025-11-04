@@ -77,11 +77,11 @@
 	<string>
 	"Usuario.h"
 
-1762271903 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\fecha.cpp
+1762279112 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\fecha.cpp
 	<iostream>
 	"Fecha.h"
 
-1762275202 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\main.cpp
+1762280544 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\main.cpp
 	<iostream>
 	"App.h"
 
@@ -115,7 +115,7 @@
 	<string>
 	"Fecha.h"
 
-1762274909 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\estado.cpp
+1762275717 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\estado.cpp
 	<iostream>
 	<cstring>
 	"Estado.h"
@@ -123,14 +123,14 @@
 1762271903 c:\users\max\desktop\tp final\tinydesk\tinydesk\estado.h
 	<string>
 
-1762271903 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\proyecto.cpp
+1762280418 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\proyecto.cpp
 	<cstring>
 	<iostream>
 	"Proyecto.h"
 	"Fecha.h"
 	"utils.h"
 
-1762271903 c:\users\max\desktop\tp final\tinydesk\tinydesk\proyecto.h
+1762280358 c:\users\max\desktop\tp final\tinydesk\tinydesk\proyecto.h
 	<string>
 	"Fecha.h"
 
@@ -445,7 +445,7 @@
 	"Sprint.h"
 	"SprintArchivo.h"
 
-1762271903 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\proyectoarchivo.cpp
+1762277175 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\proyectoarchivo.cpp
 	<iostream>
 	"Proyecto.h"
 	"ProyectoArchivo.h"
@@ -454,7 +454,7 @@
 	<string>
 	"Proyecto.h"
 
-1762271903 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\proyectomanager.cpp
+1762279915 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\proyectomanager.cpp
 	<iostream>
 	"ProyectoManager.h"
 	"Proyecto.h"
@@ -977,7 +977,7 @@
 	"TicketArchivo.h"
 	"TicketManager.h"
 
-1762271903 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\listadoadminmanager.cpp
+1762279460 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\listadoadminmanager.cpp
 	<iostream>
 	"ListadoAdminManager.h"
 
@@ -994,7 +994,7 @@
 	<iostream>
 	"CreacionAdminMenu.h"
 
-1762271903 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\creacionadminmenumanager.cpp
+1762280594 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\creacionadminmenumanager.cpp
 	"CreacionAdminMenuManager.h"
 
 1762271903 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\menuusuario.cpp

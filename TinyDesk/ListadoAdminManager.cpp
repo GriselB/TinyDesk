@@ -14,6 +14,8 @@ void ListadoAdminManager::listarProyectos() {
         ProyectoManager pM;
     cout << "----- PROYECTOS -----" << endl;
         pM.listarProyectos();
+        pause();
+        clear();
 }
 
 void ListadoAdminManager::listarSprintsPorProyectos() {
@@ -33,7 +35,7 @@ void ListadoAdminManager::listarSprintsPorProyectos() {
         pause();
         return;
     }
-    
+
     if(cantSprints<=0){
         cout << "No hay sprint registrados." << endl;
         pause();
@@ -48,12 +50,12 @@ void ListadoAdminManager::listarSprintsPorProyectos() {
 
         for (int j = 0; j < cantSprints; j++) {
             Sprint sprint = archivoSprint.leer(j);
-            
+
             if (sprint.getIdProyecto() == proyecto.getIdProyecto()) {
                 sprintMng.mostrar(j, true);
                 tieneSprint = true;
             }
-            
+
         }
         if (!tieneSprint) cout << "   -- No tiene sprints asignados --" << endl;
         cout << "---------------------------------------------" << endl;

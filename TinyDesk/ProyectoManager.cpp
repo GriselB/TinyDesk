@@ -2,19 +2,24 @@
 #include "ProyectoManager.h"
 #include "Proyecto.h"
 
+using namespace std;
 
 ProyectoManager::ProyectoManager()
 {
 
 }
+
+
+
+
 void ProyectoManager::crearProyecto()
 {
     system("cls");
 
-    std::cout << "---- CREAR NUEVO PROYECTO ----" << std::endl;
+    cout << "---- CREAR NUEVO PROYECTO ----" << endl;
     Proyecto proyecto;
-    proyecto.cargar();
     proyecto.setIdProyecto(_repo.getNuevoID());
+    proyecto.cargar();
     if(_repo.guardar(proyecto))
 
     {
@@ -50,6 +55,7 @@ void ProyectoManager::listarProyectos()
         vecProyectos[i].mostrar();
     }
     system("pause");
+
     delete [] vecProyectos;
 }
 void ProyectoManager::mostrarProyectoPorId()

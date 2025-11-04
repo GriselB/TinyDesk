@@ -8,10 +8,10 @@ public:
     int getIdProyecto();
     std::string getNombre();
     std::string getDescripcion();
-    Fecha getFechaInicio();
-    Fecha getFechaFin();
+    std::string getFechaInicio();
+    std::string getFechaFin();
+    std::string getFechaFinalizada();
     int getIdEstado();
-    Fecha getFechaFinalizada();
     void setIdProyecto(int idProyecto);
     void setNombre(std::string nombre);
     void setDescripcion(std::string descripcion);

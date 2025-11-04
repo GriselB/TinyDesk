@@ -47,7 +47,7 @@ int ProyectoArchivo::leerTodos(Proyecto registros[], int cantidad)
         return 0;
     }
 
-    result = fread(registros, sizeof(Proyecto), cantidad, pFile);  ////////////////////
+    result = fread(registros, sizeof(Proyecto), cantidad, pFile);
     fclose(pFile);
 
     return result;
