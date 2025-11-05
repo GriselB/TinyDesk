@@ -69,14 +69,19 @@ void MenuAdmin::ejecutarOpcion(int opcion) {
             break;
 
         case 0:
-            cout << "Volviendo al menu principal..." << endl;
+            cout << "Cerrando sesión.." << endl;
+            SesionArchivo sesArch;
+            sesArch.cerrarSesion();
             pause();
             break;
     }
 }
 
 void MenuAdmin::menuCrear() {
+
     cout << "menu crear" << endl;
+    CreacionAdminMenu creacionMenu;
+    creacionMenu.run("CREACION");
     pause();
 
 }

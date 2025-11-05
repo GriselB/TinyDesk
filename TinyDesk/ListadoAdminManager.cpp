@@ -12,7 +12,9 @@ using namespace std;
 void ListadoAdminManager::listarProyectos() {
     clear();
         ProyectoManager pM;
+    cout << "----- PROYECTOS -----" << endl;
         pM.listarProyectos();
+        clear();
 }
 
 void ListadoAdminManager::listarSprintsPorProyectos() {
@@ -25,19 +27,19 @@ void ListadoAdminManager::listarSprintsPorProyectos() {
     int cantProyectos = archivoProyecto.getCantidadRegistros();
     int cantSprints = archivoSprint.getCantidadRegistros();
 
+    cout << "----- SPRINTS POR PROYECTO -----" << endl;
+
     if (cantProyectos <= 0) {
         cout << "No hay proyectos registrados." << endl;
         pause();
         return;
     }
-    
+
     if(cantSprints<=0){
         cout << "No hay sprint registrados." << endl;
         pause();
         return;
     }
-
-    cout << "----- SPRINTS POR PROYECTO -----" << endl;
 
     for (int i = 0; i < cantProyectos; i++) {
         Proyecto proyecto = archivoProyecto.leer(i);
@@ -47,12 +49,12 @@ void ListadoAdminManager::listarSprintsPorProyectos() {
 
         for (int j = 0; j < cantSprints; j++) {
             Sprint sprint = archivoSprint.leer(j);
-            
+
             if (sprint.getIdProyecto() == proyecto.getIdProyecto()) {
                 sprintMng.mostrar(j, true);
                 tieneSprint = true;
             }
-            
+
         }
         if (!tieneSprint) cout << "   -- No tiene sprints asignados --" << endl;
         cout << "---------------------------------------------" << endl;
@@ -75,6 +77,8 @@ void ListadoAdminManager::listarTicketsPorSprints() {
     int cantTickets = -1;//archivoTicket.getCantidadRegistros();
     int cantUsuarios = archivoUsuario.getCantidadRegistros();
 
+    cout << "----- TICKETS POR PROYECTO Y SPRINT -----" << endl;
+
     if (cantProy <= 0) {
         cout << "No hay proyectos registrados aun." << endl;
         pause();
@@ -90,8 +94,6 @@ void ListadoAdminManager::listarTicketsPorSprints() {
         pause();
         return;
     }
-
-    cout << "----- TICKETS POR PROYECTO Y SPRINT -----" << endl;
 
     for (int i = 0; i < cantProy; i++) {
         Proyecto proyecto = archivoProyecto.leer(i);

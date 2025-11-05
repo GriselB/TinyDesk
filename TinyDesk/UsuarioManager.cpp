@@ -84,6 +84,15 @@ int UsuarioManager::iniciarSesion() {
         if (user.getEmail()==email && user.getPassword()==pass && user.getActivo()) {
             cout << "Login OK."<<endl;
             cout << "------- Bienvenido, " << user.getNombre() << "!  -------" << endl;
+            
+            Sesion sesion(user.getIdUsuario(),
+                          user.getIdArea(),
+                          user.getIdRol(),
+                          user.getNombre(),
+                          user.getApellido()
+                          );
+            SesionArchivo sesArch;
+            sesArch.guardar(sesion);
             pause();
             
             int idRol = user.getIdRol();

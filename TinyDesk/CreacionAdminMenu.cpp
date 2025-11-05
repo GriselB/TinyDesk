@@ -10,9 +10,9 @@ void CreacionAdminMenu::run(string titulo) {
         clear();
 
         cout << "===== " << titulo << " ====="<<endl;
-        cout << "1 - Proyecto"<<endl;
-        cout << "2 - Sprint (por proyecto)"<<endl;
-        cout << "3 - Ticket (por sprint y proyecto)"<<endl;
+        cout << "1 - Crear Proyecto"<<endl;
+        cout << "2 - Crear Sprint (por proyecto)"<<endl;
+        cout << "3 - Crear Ticket (por sprint y proyecto)"<<endl;
         cout << "---------------------------"<<endl;
         cout << "0 - Volver"<<endl;
         cout << "Opcion: ";
@@ -20,15 +20,15 @@ void CreacionAdminMenu::run(string titulo) {
 
         switch (opcion) {
             case 1:
-                _listadoAdminManager.listarProyectos();
+                _creacionAdminMenuManager.crearProyectos();
                 break;
 
             case 2:
-                _listadoAdminManager.listarSprintsPorProyectos();
+                _creacionAdminMenuManager.crearSprintsPorProyectos();
                 break;
 
             case 3:
-                _listadoAdminManager.listarTicketsPorSprints();
+                _creacionAdminMenuManager.crearTicketsPorSprintsProyecto();
                 break;
 
             case 0:
