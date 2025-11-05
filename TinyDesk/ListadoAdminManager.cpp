@@ -116,6 +116,7 @@ void ListadoAdminManager::listarTicketsPorSprints() {
 
                 tieneTickets = true;
 
+
                 string usuarioAsignado = "-- sin usuario asignado --";
                 int idEmpleado = ticket.getIdEmpleado();
 
