@@ -40,15 +40,13 @@ void Area::seleccionar() {
     int idArea;
     string nombres[5] = {"Administración", "Backend", "Frontend", "QA", "UX/UI"};
 
-    Area area;
-
     do {
         mostrarOpciones();
         cout << "Ingrese el ID del área: ";
         cin >> idArea;
     } while (idArea < 1 || idArea > 5);
 
-    area.setIdArea(idArea);
-    area.setNombreArea(nombres[idArea - 1]);
+    setIdArea(idArea);
+    setNombreArea(nombres[idArea - 1]);
 
 }

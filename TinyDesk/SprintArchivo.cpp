@@ -146,3 +146,20 @@ bool SprintArchivo::eliminar(int pos){
   }
   return false;
 }
+
+int SprintArchivo::contarPorProyecto(int idProyecto) {
+    FILE *p = fopen("sprints.dat", "rb");
+    if (p == nullptr) return 0;
+
+    Sprint sprint;
+    int contador = 0;
+
+    while (fread(&sprint, sizeof(Sprint), 1, p)) {
+        if (sprint.getIdProyecto() == idProyecto) {
+            contador++;
+        }
+    }
+
+    fclose(p);
+    return contador;
+}

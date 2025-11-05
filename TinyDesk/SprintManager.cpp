@@ -1,166 +1,164 @@
 #include <iostream>
+#include <string>
 #include "SprintManager.h"
+#include "SprintArchivo.h"
+#include "Fecha.h"
+#include "Area.h"
+#include "Proyecto.h"
+#include "ProyectoManager.h"
 #include "Sprint.h"
+#include "utils.h"
 
 using namespace std;
 
 SprintManager::SprintManager() { }
 
-void SprintManager::Cargar() {
+//----------------------------------------------
+void SprintManager::crearSprint() {
+    cout << "---- CREAR NUEVO SPRINT ----" << endl;
+    int idProyecto = seleccionarProyecto(); 
 
-    string nombreSprint;
-    int idArea, idProyecto;
-    Fecha fechaInicio, fechaFin;
-    Sprint sprint;
+    if (idProyecto == -1) {
+        cout << "No se seleccionó ningún proyecto. Cancelando creación." << endl;
+        return;
+    }
 
-    cargarFecha(fechaInicio, "inicio");
-    sprint.setFechaInicio(fechaInicio);
-
-    cargarFecha(fechaFin, "fin");
-    sprint.setFechaFin(fechaFin);
-
-    generarNombre();
-
-    Area area;
-    area.mostrarOpciones();
-
-    sprint.setActivo(true);
+    Cargar(idProyecto);
 }
+//----------------------------------------------
+
+int SprintManager::seleccionarProyecto() {
+    ProyectoManager proyecto;
+    proyecto.listarProyectos();
+
+    int idProyecto;
+    cout << "\nIngrese el ID del proyecto al que pertenece el sprint (o -1 para cancelar): ";
+    cin >> idProyecto;
+
+    return idProyecto;
+}
+
+
+//-------------------------------------------
+void SprintManager::Cargar(int idProyecto) {
+    int idSprint;
+    string nombreSprint;
+    bool activo = true;
+    char opcion;
+
+    Sprint sprint;
+    
+    
+  
+    // --- Control de número de sprint por proyecto ---
+    int cantidadExistente = _repo.contarPorProyecto(idProyecto);
+    _contadorSprint = cantidadExistente + 1;
+    _ultimoProyectoID = idProyecto;
+
+    // Generar un nuevo ID automático
+    idSprint = _repo.getNuevoID();
+    sprint.setIdSprint(idSprint);
+
+    cout << "\n=== CARGA DE NUEVO SPRINT ===" << endl;
+    cout << "Sprint #" << idSprint << endl;
+
+    // Cargar fechas usando la clase Fecha
+    sprint.setFechaInicio();
+    sprint.setFechaFin();
+
+  
+
+    // Generar nombre automático
+    nombreSprint = "Sprint " + to_string(_contadorSprint)+" ("+sprint.getFechaInicio()+" - "+sprint.getFechaFin()+")";
+    sprint.setNombre(nombreSprint);
+
+    // Cargar área
+    Area area;
+    area.seleccionar(); 
+    sprint.setIdArea(area.getIdArea());
+
+    // Asignar proyecto y estado
+    sprint.setIdProyecto(idProyecto);
+    sprint.setActivo(activo);
+
+    // Mostrar resumen antes de guardar
+    cout << "\n=== RESUMEN DEL SPRINT CARGADO ===" << endl;
+    cout << "Nombre: " << sprint.getNombre() << endl;
+    cout << "Proyecto ID: " << sprint.getIdProyecto() << endl;
+    cout << "Área ID: " << sprint.getIdArea() << endl;
+    cout << "Inicio: " << sprint.getFechaInicio()<< endl;
+    cout << "Fin: " << sprint.getFechaFin() << endl;
+    cout << "Estado: " << (sprint.getActivo() ? "Activo" : "Inactivo") << endl;
+    cout << "===================================" << endl;
+
+    // Confirmación antes de guardar
+    cout << "\n¿Desea guardar este sprint? (S/N): ";
+    cin >> opcion;
+
+    if (toupper(opcion) == 'S') {
+        if (_repo.guardar(sprint)) {
+            cout << "\nSprint guardado exitosamente." << endl;
+        } else {
+            cout << "\nError al guardar el sprint." << endl;
+        }
+    } else {
+        cout << "\nOperación cancelada. No se guardó el sprint." << endl;
+    }
+}
+
+//----------------------------------------------
+
+//----------------------------------------------
 
 void SprintManager::Mostrar(Sprint sprint) {
-    Proyecto proyecto;
     cout << "ID Sprint: " << sprint.getIdSprint() << endl;
-    cout << "Nombre: "  << sprint.getNombre() << endl;
-
-    cout << "Proyecto: " << proyecto.getIdProyecto() << endl;
-
-    cout << "ID �rea: " << sprint.getIdArea() << endl;
-
-    cout << "Fecha Inicio: " << sprint.getFechaInicio().toString() << endl;
-    cout << "Fecha Fin:   " << sprint.getFechaFin().toString() << endl;
-
-    cout << "Activo: " << (sprint.getActivo() ? "S�" : "No") << endl;
+    cout << "Nombre: " << sprint.getNombre() << endl;
+    cout << "Proyecto ID: " << sprint.getIdProyecto() << endl;
+    cout << "Área ID: " << sprint.getIdArea() << endl;
+    cout << "Fecha Inicio: "; sprint.getFechaInicio();
+    cout << "Fecha Fin: "; sprint.getFechaFin();
+    cout << "Activo: " << (sprint.getActivo() ? "Sí" : "No") << endl;
+    cout << endl;
 }
+
+//----------------------------------------------
 
 void SprintManager::mostrar(int pos, bool activo) {
-    //Proyecto proyecto;
-    SprintArchivo sprintArch;
-    int cant = sprintArch.getCantidadRegistros();
-    if (pos < 0 || pos >= cant) {
-        cout << "Posicion de sprint invalida."<<endl;
-        return;
-    }
-
-    Sprint sprint = sprintArch.leer(pos);
-    cout << "ID Sprint: " << sprint.getIdSprint() << endl;
-    cout << "Nombre: "  << sprint.getNombre() << endl;
-    cout << "ID �rea: " << sprint.getIdArea() << endl;
-    cout << "Fecha Inicio: " << sprint.getFechaInicio().toString() << endl;
-    cout << "Fecha Fin:   " << sprint.getFechaFin().toString() << endl;
-    if(activo){
-        cout << "Activo: " << (sprint.getActivo() ? "S�" : "No") << endl;
-    }
-}
-
-void SprintManager::generarNombre() {
-  Proyecto proyecto;
-  Sprint sprint;
-    string nombre = proyecto.getNombre() + " - Sprint " + to_string(sprint.getIdSprint()) +
-                    " (" + sprint.getFechaInicio().toString() + " - " +
-                    sprint.getFechaFin().toString() + ")";
-    sprint.setNombre(nombre);
-}
-
-void SprintManager::cargarFecha(Fecha &f, const string nombre) {
-    int dia, mes, anio;
-    bool b;
-    cout << "Ingrese d�a de " << nombre << ": ";
-    cin >> dia;
-    cout << "Ingrese mes de " << nombre << ": ";
-    cin >> mes;
-    cout << "Ingrese a�o de " << nombre << ": ";
-    cin >> anio;
-
-    f.setDia(dia,mes,b);
-    f.setMes(mes);
-    f.setAnio(anio);
-}
-
-void SprintManager::crearSprint() {
-
-    system("cls");
-
-    cout << "---- CREAR NUEVO SPRINT ----" << endl;
-    Sprint sprint;
-    Cargar();
-
-    sprint.setIdSprint(_repo.getNuevoID());
-    sprint.setStatus("Pendiente");
-    sprint.setActivo(true);
-
-
-
-
-    if (_repo.guardar(sprint)) {
-        cout << "Sprint guardado con éxito."<<endl;
-        cout << "ID: " << sprint.getIdSprint() << endl;
-        system("pause");
-    } else {
-        cout << "Error al guardar el sprint." << endl;
-        system("pause");
-    }
-}
-
-
-void SprintManager::listarSprints() {
-    int cantReg = _repo.getCantidadRegistros();
-    if (cantReg <= 0) {
-        cout << "No hay sprints cargados." << endl;
-        system("pause");
-        return;
-    }
-
-    Sprint *reg = new Sprint[cantReg];
-    if (reg == NULL) {
-        cout << "Sin memoria." << endl;
-        system("pause");
-        exit(-100);
-        return;
-    }
-
-
-    _repo.leerTodos(reg, cantReg);
-
-    system("cls");
-    cout<<"---- LISTA DE SPRINTS ----" << endl;
-    for (int i = 0; i < cantReg; i++) {
-        //reg[i] Mostrar();
-        Sprint sprint = _repo.leer(i);
-        Mostrar(sprint);
-        cout << "--------------------------------" << endl;
-    }
-    system("pause");
-
-    delete [] reg;
-}
-
-
-void SprintManager::mostrarSprintPorID() {
-    int id;
-    cout << "Ingrese ID del Sprint: ";
-    cin >> id;
-
-    int pos = _repo.buscarID(id);
     if (pos < 0) {
-        cout << "No existe un Sprint con ese ID." << endl;
-        system("pause");
+        cout << "Posición de sprint inválida." << endl;
         return;
     }
 
     Sprint sprint = _repo.leer(pos);
     Mostrar(sprint);
-    system("pause");
 }
+
+//----------------------------------------------
+
+
+void SprintManager::listarSprints() {
+    int cantReg = _repo.getCantidadRegistros();
+    if (cantReg <= 0) {
+        cout << "No hay sprints registrados." << endl;
+        return;
+    }
+
+    Sprint *reg = new Sprint[cantReg];
+    if (reg == nullptr) {
+        cout << "Error de memoria." << endl;
+        exit(-100);
+    }
+
+    _repo.leerTodos(reg, cantReg);
+
+    for (int i = 0; i < cantReg; i++) {
+        Mostrar(reg[i]);
+    }
+
+    delete[] reg;
+}
+
+//----------------------------------------------
 
 void SprintManager::finalizarSprint() {
     int id, pos;
@@ -173,75 +171,59 @@ void SprintManager::finalizarSprint() {
 
     pos = _repo.buscarID(id);
     if (pos < 0) {
-        cout << "No existe un Sprint con ese ID." << endl;
-        system("pause");
+        cout << "No existe un sprint con ese ID." << endl;
         return;
     }
 
     sprint = _repo.leer(pos);
 
-    cout << "Informacion del Sprint: "<<endl;
-
+    cout << "Información del Sprint: " << endl;
     Mostrar(sprint);
-     cout << endl << "Quiere finalizarlo S/N:";
-     cin >> finalizado;
 
-    if(finalizado== 's' || finalizado == 'S')
-    {
-        sprint.setStatus("Finalizado");
+    cout << "¿Desea finalizar el sprint? (s/n): ";
+    cin >> finalizado;
+
+    if (finalizado == 's' || finalizado == 'S') {
         sprint.setFechaFinalizada();
-        cout << "El Sprint fue eliminado correctamente "<<endl;
-    }
+        sprint.setActivo(false);
 
-    if(_repo.guardar(pos, sprint))
-    {
-      cout << "El Sprint fue finalizado correctamente "<<endl;
+        if (_repo.guardar(pos, sprint)) {
+            cout << "El Sprint fue finalizado correctamente." << endl;
+        } else {
+            cout << "Ocurrió un error al finalizar el Sprint." << endl;
+        }
     }
-    else
-    {
-      cout << "Ocurrio un error, no pudimos finalziar el Sprint"  << endl;
-    }
-
-
 
     system("pause");
 }
 
+//----------------------------------------------
+
 void SprintManager::eliminarSprintLogico() {
     int id, pos;
     Sprint sprint;
-    SprintArchivo archivoSprint;
     char eliminado;
 
-    cout << "---- ELIMINAR TAREA ----" << endl;
+    cout << "---- ELIMINAR SPRINT ----" << endl;
     cout << "Ingrese ID del Sprint a desactivar: ";
     cin >> id;
 
     pos = _repo.buscarID(id);
-
     if (pos < 0) {
         cout << "No existe un sprint con ese ID." << endl;
         system("pause");
         return;
     }
 
-    sprint = _repo.leer(pos);
-    cout << "Informacion del Sprint: "<<endl;
+    cout << "¿Confirma eliminar el Sprint? (s/n): ";
+    cin >> eliminado;
 
-    Mostrar(sprint);
-     cout << endl << "Quiere eliminarlo S/N:";
-     cin >> eliminado;
-
-    if(eliminado== 's' || eliminado == 'S')
-    {
-      if(archivoSprint.eliminar(pos))
-      {
-        cout << "El Sprint fue eliminado correctamente "<<endl;
-      }
-      else
-      {
-        cout << "Ocurrio un error en la eliminacion del Sprint"  << endl;
-      }
+    if (eliminado == 's' || eliminado == 'S') {
+        if (_repo.eliminar(pos)) {
+            cout << "El Sprint fue eliminado correctamente." << endl;
+        } else {
+            cout << "Ocurrió un error en la eliminación del Sprint." << endl;
+        }
     }
 
     system("pause");

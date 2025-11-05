@@ -11,6 +11,7 @@ class SprintArchivo
     bool guardar(int pos, Sprint registro);
     int  buscarID(int id);
     bool eliminar(int pos);
+    int contarPorProyecto(int idProyecto);
     
     Sprint leer(int pos);
     int leerTodos(Sprint registros[], int cantidad);

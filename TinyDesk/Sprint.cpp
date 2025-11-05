@@ -36,20 +36,27 @@ int Sprint::getIdArea()
     return _idArea;
 }
 
-std::string Sprint::getStatus()
+string Sprint::getStatus()
 {
     return string(_status);
 }
 
-Fecha Sprint::getFechaInicio()
+string  Sprint::getFechaInicio()
 {
-    return _fechaInicio;
+    return _fechaInicio.toString();
 }
 
-Fecha Sprint::getFechaFin()
+string  Sprint::getFechaFin()
 {
-    return _fechaFin;
+    return _fechaFin.toString();
 }
+
+string Sprint::getFechaFinalizada()
+{
+    return _fechaFinalizada.toString();
+}
+
+
 
 // Setters
 
@@ -80,14 +87,15 @@ void Sprint::setStatus(std::string status)
     _status[19] = '\0';
 }
 
-void Sprint::setFechaInicio(const Fecha &f)
+
+void Sprint::setFechaInicio()
 {
-    _fechaInicio = f;
+    _fechaInicio = Fecha("inicio");
 }
 
-void Sprint::setFechaFin(const Fecha &f)
+void Sprint::setFechaFin()
 {
-    _fechaFin = f;
+    _fechaFin = Fecha("fin");
 }
 
 void Sprint::setFechaFinalizada()

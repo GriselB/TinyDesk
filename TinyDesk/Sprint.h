@@ -28,9 +28,9 @@ public:
     int getIdProyecto();
     int getIdArea();
     std::string getStatus();
-    Fecha getFechaInicio();
-    Fecha getFechaFin();
-    Fecha getFechaFinalizada();
+    std::string getFechaInicio();
+    std::string getFechaFin();
+    std::string getFechaFinalizada();
     bool getActivo();
     
     //setters
@@ -40,8 +40,8 @@ public:
     //void setNombre(std::string nombre);
     void setNombre(const std::string &nombre);
     void setIdArea(int idArea);
-    void setFechaInicio(const Fecha &f);
-    void setFechaFin(const Fecha &f);
+    void setFechaInicio();
+    void setFechaFin();
     void setFechaFinalizada();
     void setActivo(bool activo);
 };
