@@ -123,7 +123,7 @@
 1762310207 c:\users\max\desktop\tp final\tinydesk\tinydesk\estado.h
 	<string>
 
-1762310207 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\proyecto.cpp
+1762316238 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\proyecto.cpp
 	<cstring>
 	<iostream>
 	"Proyecto.h"
@@ -477,7 +477,7 @@
 	<string>
 	"Proyecto.h"
 
-1762314207 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\proyectomanager.cpp
+1762316077 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\proyectomanager.cpp
 	<iostream>
 	"ProyectoManager.h"
 	"Proyecto.h"
@@ -1001,7 +1001,7 @@
 	"TicketArchivo.h"
 	"TicketManager.h"
 
-1762310207 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\listadoadminmanager.cpp
+1762314479 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\listadoadminmanager.cpp
 	<iostream>
 	"ListadoAdminManager.h"
 
@@ -1180,10 +1180,11 @@
 	"SprintManager.h"
 	"TicketManager.h"
 
-1762310208 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\modificacionadminmenu.cpp
+1762315040 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\modificacionadminmenu.cpp
 	<iostream>
 	"ModificacionAdminMenu.h"
 
-1762310208 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\modificacionadminmenumanager.cpp
+1762315294 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\modificacionadminmenumanager.cpp
+	<iostream>
 	"ModificacionAdminMenuManager.h"
 

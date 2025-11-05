@@ -111,7 +111,9 @@ void ProyectoManager::finalizarProyecto()
         return;
     }
     Proyecto proyecto=_repo.leer(pos);
-    proyecto.getFechaFinalizada();
+    //proyecto.getFechaFinalizada();
+    proyecto.setFechaFinalizada();
+    proyecto.setIdEstado(3);
     FILE *pFile=fopen("proyectos.dat","rb+");
     if(pFile != nullptr)
     {
@@ -139,7 +141,7 @@ void ProyectoManager::bajaLogicaProyecto()
         return;
     }
     Proyecto proyecto=_repo.leer(pos);
-    proyecto.setIdEstado(0);
+    proyecto.setIdEstado(1);
     FILE *pFile=fopen("proyectos.dat","rb+");
     if(pFile != nullptr)
     {

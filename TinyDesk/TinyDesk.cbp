@@ -95,6 +95,10 @@
 		<Unit filename="UsuarioManager.h" />
 		<Unit filename="area.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="modificacionAdminMenu.cpp" />
+		<Unit filename="modificacionAdminMenu.h" />
+		<Unit filename="modificacionAdminMenuManager.cpp" />
+		<Unit filename="modificacionAdminMenuManager.h" />
 		<Unit filename="utils.cpp" />
 		<Unit filename="utils.h" />
 		<Extensions>

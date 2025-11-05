@@ -102,7 +102,7 @@ void Proyecto::mostrar()
     cout<<"Descripción del proyecto: "<<getDescripcion()<<endl;
     cout<<"Fecha de inicio del proyecto: "<<getFechaInicio()<<endl;
     cout<<"Fecha de fin del proyecto: "<<getFechaFin()<<endl;
-    if(estado.getIdEstado()==2)
+    if(getIdEstado()==3)
         cout<<"Fecha de finalización del proyecto: "<<getFechaFinalizada()<<endl;
     cout<<"Estado del proyecto: "<<estado.getNombreEstado(getIdEstado()-1)<<endl;
     cout<<"-----------------------------------------------"<<endl;
