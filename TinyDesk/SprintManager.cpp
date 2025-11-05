@@ -81,9 +81,9 @@ void SprintManager::cargarFecha(Fecha &f, const string nombre) {
     cout << "Ingrese a�o de " << nombre << ": ";
     cin >> anio;
 
-    f.setDia(dia,mes,b);
-    f.setMes(mes);
-    f.setAnio(anio);
+//    f.setDia(dia,mes,b);
+//    f.setMes(mes);
+//    f.setAnio(anio);
 }
 
 void SprintManager::crearSprint() {
