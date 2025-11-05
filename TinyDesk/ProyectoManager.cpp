@@ -9,9 +9,6 @@ ProyectoManager::ProyectoManager()
 
 }
 
-
-
-
 void ProyectoManager::crearProyecto()
 {
     system("cls");
@@ -53,6 +50,34 @@ void ProyectoManager::listarProyectos()
     for(int i=0;i<cant;i++)
     {
         vecProyectos[i].mostrar();
+    }
+    system("pause");
+
+    delete [] vecProyectos;
+}
+
+void ProyectoManager::listarProyectosNombreID()
+{
+    int cant = _repo.getCantidadRegistros();
+    if(cant<=0)
+    {
+        std::cout<<"No hay proyectos cargados"<<std::endl;
+        system("pause");
+        return;
+    }
+    Proyecto *vecProyectos = new Proyecto[cant];
+    if(vecProyectos==nullptr)
+    {
+        std::cout << "No se pudo asignar memoria" << std::endl;
+        system("pause");
+        exit(-1);
+    }
+    _repo.leerTodos(vecProyectos,cant);
+    std::cout<<" ------- Lista de Proyectos ------- "<<std::endl;
+    for(int i=0;i<cant;i++)
+    {
+        cout<<"Id del proyecto: "<<vecProyectos[i].getIdProyecto()<<endl;
+        cout<<"Nombre del proyecto: "<<vecProyectos[i].getNombre()<<endl;
     }
     system("pause");
 
