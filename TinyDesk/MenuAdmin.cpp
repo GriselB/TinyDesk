@@ -79,7 +79,6 @@ void MenuAdmin::ejecutarOpcion(int opcion) {
 
 void MenuAdmin::menuCrear() {
 
-    cout << "menu crear" << endl;
     CreacionAdminMenu creacionMenu;
     creacionMenu.run("CREACION");
     pause();
@@ -87,7 +86,8 @@ void MenuAdmin::menuCrear() {
 }
 
 void MenuAdmin::menuModificar() {
-    cout << "menu modificar" << endl;
+    ModificacionAdminMenu modificacionMenu;
+    modificacionMenu.run("MODIFICAR");
     pause();
 }
 

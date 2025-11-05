@@ -2,6 +2,7 @@
 #include <iostream>
 #include "Proyecto.h"
 #include "Fecha.h"
+#include "Estado.h"
 #include "utils.h"
 
 using namespace std;
@@ -82,23 +83,27 @@ void Proyecto::cargar()
 {
     string nombre, descripcion;
     Fecha inicio,fin,finalizada;
-    cout<<"Ingrese un nombre de proyecto: ";
-    cin>>nombre;
+    cout << "Ingrese un nombre de proyecto: ";
+    cin.ignore();
+    getline(cin, nombre);
     setNombre(nombre);
-    cout<<"Ingrese una descripcion del proyecto: ";
+    cout << "Ingrese una descripcion del proyecto: ";
+    getline(cin, descripcion);
     setDescripcion(descripcion);
-    cin>>descripcion;
     setFechaInicio();
     setFechaFin();
-    setIdEstado(1);
+    setIdEstado(2);
 }
 void Proyecto::mostrar()
 {
-    std::cout<<"Id del proyecto: "<<getIdProyecto()<<std::endl;
-    std::cout<<"Nombre del proyecto: "<<getNombre()<<std::endl;
-    std::cout<<"Descripción del proyecto: "<<getDescripcion()<<std::endl;
-    std::cout<<"Fecha de inicio del proyecto: "<<getFechaInicio()<<std::endl;
-    std::cout<<"Fecha de fin del proyecto: "<<getFechaFin()<<std::endl;
-    std::cout<<"Fecha de finalización del proyecto: "<<getFechaFinalizada()<<std::endl;
-    std::cout<<"Id del estado del proyecto: "<<getIdEstado()<<std::endl;
+    Estado estado;
+    cout<<"Id del proyecto: "<<getIdProyecto()<<endl;
+    cout<<"Nombre del proyecto: "<<getNombre()<<endl;
+    cout<<"Descripción del proyecto: "<<getDescripcion()<<endl;
+    cout<<"Fecha de inicio del proyecto: "<<getFechaInicio()<<endl;
+    cout<<"Fecha de fin del proyecto: "<<getFechaFin()<<endl;
+    if(estado.getIdEstado()==2)
+        cout<<"Fecha de finalización del proyecto: "<<getFechaFinalizada()<<endl;
+    cout<<"Estado del proyecto: "<<estado.getNombreEstado(getIdEstado()-1)<<endl;
+    cout<<"-----------------------------------------------"<<endl;
 }
