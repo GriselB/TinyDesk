@@ -43,6 +43,7 @@ void Fecha::setDia(int dia,int mes,bool b)
     {
         while(dia>vMes[mes-1])
         {
+            cin.clear();
             cout<<"Ingrese un dia valido para el mes "<<mes<<" en un anio bisiesto: "<<endl;
             cin>>dia;
         }
@@ -52,6 +53,7 @@ void Fecha::setDia(int dia,int mes,bool b)
         vMes[1]=28;
         while(dia>vMes[mes-1])
         {
+            cin.clear();
             cout<<"Ingrese un dia valido para el mes "<<mes<<" en un anio no bisiesto: "<<endl;
             cin>>dia;
         }
@@ -68,6 +70,7 @@ void Fecha::setMes(int &mes)
 {
     while(mes<1 || mes>12)
     {
+        cin.clear();
         cout<<"Ingrese un mes entre 1 y 12: "<<endl;
         cin>>mes;
     }

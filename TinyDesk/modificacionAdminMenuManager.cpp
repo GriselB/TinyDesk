@@ -13,7 +13,8 @@ void ModificacionAdminMenuManager::modificarProyectos(){
 
         cout << "===== Modificar Proyecto ====="<<endl;
         cout << "1 - Finalizar Proyecto"<<endl;
-        cout << "2 - Baja Logica de Proyecto"<<endl;
+        cout << "2 - Dar de Baja el Proyecto"<<endl;
+        cout << "3 - Dar de Alta el Proyecto"<<endl;
         cout << "---------------------------"<<endl;
         cout << "0 - Volver"<<endl;
         cout << "Opcion: ";
@@ -26,6 +27,10 @@ void ModificacionAdminMenuManager::modificarProyectos(){
 
             case 2:
                proy.bajaLogicaProyecto();
+                break;
+
+            case 3:
+               proy.altaLogicaProyecto();
                 break;
 
             case 0:

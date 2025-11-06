@@ -77,7 +77,7 @@
 	<string>
 	"Usuario.h"
 
-1762392726 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\fecha.cpp
+1762398939 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\fecha.cpp
 	<iostream>
 	"Fecha.h"
 
@@ -480,12 +480,13 @@
 	<string>
 	"Proyecto.h"
 
-1762390161 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\proyectomanager.cpp
+1762398819 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\proyectomanager.cpp
 	<iostream>
 	"ProyectoManager.h"
 	"Proyecto.h"
+	"utils.h"
 
-1762314207 c:\users\max\desktop\tp final\tinydesk\tinydesk\proyectomanager.h
+1762398612 c:\users\max\desktop\tp final\tinydesk\tinydesk\proyectomanager.h
 	<string>
 	"Proyecto.h"
 	"ProyectoArchivo.h"
@@ -1189,7 +1190,7 @@
 	<iostream>
 	"ModificacionAdminMenu.h"
 
-1762390161 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\modificacionadminmenumanager.cpp
+1762398670 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\modificacionadminmenumanager.cpp
 	<iostream>
 	"ModificacionAdminMenuManager.h"
 
