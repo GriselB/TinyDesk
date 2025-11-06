@@ -93,21 +93,10 @@ void MenuAdmin::menuModificar() {
 
 void MenuAdmin::menuListados() {
     ListadoAdminMenu listadoMenu;
-    listadoMenu.run("Listado");
+    listadoMenu.run("LISTADO");
 }
 
 void MenuAdmin::menuReportes() {
-    clear();
-    cout << "      --- REPORTES ---" << endl;
-    cout << "1- Porcentaje de Tickets completado por usuario" << endl;
-    cout << "2- Porcentaje de Tickets sin terminar" << endl;
-    cout << "3- Porcentaje de Sprints completados por proyecto" << endl;
-    cout << "4- Porcentaje de Sprint sin terminar por proyecto" << endl;
-    cout << "-----------------" << endl;
-    cout << "0- Volver" << endl;
-    cout << "Opcion: ";
-    int opcion;
-    cin >> opcion;
-    cout << "Has elegido el reporte " << opcion << endl;
-    pause();
+    ReportesAdminMenu reportesAdminMenu;
+    reportesAdminMenu.run("REPORTES");
 }
