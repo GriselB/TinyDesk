@@ -70,14 +70,14 @@
 	"Fecha.h"
 	"area.h"
 
-1762310207 c:\users\max\desktop\tp final\tinydesk\tinydesk\fecha.h
+1762391703 c:\users\max\desktop\tp final\tinydesk\tinydesk\fecha.h
 	<string>
 
 1762310207 c:\users\max\desktop\tp final\tinydesk\tinydesk\usuarioarchivo.h
 	<string>
 	"Usuario.h"
 
-1762310207 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\fecha.cpp
+1762392726 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\fecha.cpp
 	<iostream>
 	"Fecha.h"
 
@@ -415,12 +415,12 @@
 	<iostream>
 	"ArchivoRol.h"
 
-1762310207 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\area.cpp
+1762390161 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\area.cpp
 	<iostream>
 	<cstring>
 	"area.h"
 
-1762310207 c:\users\max\desktop\tp final\tinydesk\tinydesk\area.h
+1762390161 c:\users\max\desktop\tp final\tinydesk\tinydesk\area.h
 	<string>
 
 1762310207 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\rol.cpp
@@ -428,7 +428,7 @@
 	<cstring>
 	"Rol.h"
 
-1762310207 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\sprint.cpp
+1762390161 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\sprint.cpp
 	<cstring>
 	<iostream>
 	"Sprint.h"
@@ -436,7 +436,7 @@
 	"Proyecto.h"
 	"area.h"
 
-1762310207 c:\users\max\desktop\tp final\tinydesk\tinydesk\sprint.h
+1762390161 c:\users\max\desktop\tp final\tinydesk\tinydesk\sprint.h
 	<string>
 	"Fecha.h"
 	"Estado.h"
@@ -451,7 +451,7 @@
 	<string>
 	"Sprint.h"
 
-1762310207 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\sprintmanager.cpp
+1762390161 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\sprintmanager.cpp
 	<iostream>
 	<string>
 	"SprintManager.h"
@@ -480,7 +480,7 @@
 	<string>
 	"Proyecto.h"
 
-1762316077 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\proyectomanager.cpp
+1762390161 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\proyectomanager.cpp
 	<iostream>
 	"ProyectoManager.h"
 	"Proyecto.h"
@@ -958,10 +958,11 @@
 1762310207 c:\users\max\desktop\tp final\tinydesk\tinydesk\sesionarchivo.h
 	"Sesion.h"
 
-1762310207 c:\users\max\desktop\tp final\tinydesk\tinydesk\menuadmin.h
+1762390356 c:\users\max\desktop\tp final\tinydesk\tinydesk\menuadmin.h
 	"ListadoAdminMenu.h"
 	"CreacionAdminMenu.h"
 	"modificacionAdminMenu.h"
+	"ReportesAdminMenu.h"
 	"SesionArchivo.h"
 
 1762310207 c:\users\max\desktop\tp final\tinydesk\tinydesk\listadoadminmenu.h
@@ -1012,7 +1013,7 @@
 	<iostream>
 	"ListadoAdminMenu.h"
 
-1762310207 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\menuadmin.cpp
+1762390356 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\menuadmin.cpp
 	<iostream>
 	"MenuAdmin.h"
 	"utils.h"
@@ -1188,15 +1189,28 @@
 	<iostream>
 	"ModificacionAdminMenu.h"
 
-1762315294 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\modificacionadminmenumanager.cpp
+1762390161 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\modificacionadminmenumanager.cpp
 	<iostream>
 	"ModificacionAdminMenuManager.h"
+
+1762388184 ated upstream
 
 1762309505 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\modificacionadminmenu.h
 	"cstring"
 	"ModificacionAdminMenuManager.h"
 
 1762309505 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\modificacionadminmenumanager.h
+
+1762390356 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\reportesadminmenumanager.cpp
+	<iostream>
+	"ReportesAdminMenuManager.h"
+
+1762390356 c:\users\max\desktop\tp final\tinydesk\tinydesk\reportesadminmenumanager.h
+	"ProyectoManager.h"
+	"SprintManager.h"
+	"TicketManager.h"
+
+1762387541 shed changes
 	"ProyectoManager.h"
 	"SprintManager.h"
 	"TicketManager.h"
@@ -1208,4 +1222,14 @@
 1762383657 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\modificacionadminmenumanager.cpp
 	<iostream>
 	"ModificacionAdminMenuManager.h"
+
+1762383657 ionAdminMenuManager.h"
+
+1762390356 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\reportesadminmenu.cpp
+	<iostream>
+	"ReportesAdminMenu.h"
+
+1762390356 c:\users\max\desktop\tp final\tinydesk\tinydesk\reportesadminmenu.h
+	<cstring>
+	"ReportesAdminMenuManager.h"
 

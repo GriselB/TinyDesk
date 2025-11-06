@@ -64,9 +64,9 @@ int Fecha::getMes()
   return _mes;
 }
 
-void Fecha::setMes(int mes)
+void Fecha::setMes(int &mes)
 {
-    while(mes<0 || mes>13)
+    while(mes<1 || mes>12)
     {
         cout<<"Ingrese un mes entre 1 y 12: "<<endl;
         cin>>mes;
@@ -79,10 +79,11 @@ int Fecha::getAnio()
   return _anio;
 }
 
-void Fecha::setAnio(int anio)
+void Fecha::setAnio(int &anio)
 {
-    while(anio<1900)
+    while(anio<2025 || anio >2050)
     {
+        cin.clear();
         cout<<"Ingrese un anio valido: "<<endl;
         cin>>anio;
     }

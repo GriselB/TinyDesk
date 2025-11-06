@@ -63,6 +63,10 @@
 		<Unit filename="ProyectoArchivo.h" />
 		<Unit filename="ProyectoManager.cpp" />
 		<Unit filename="ProyectoManager.h" />
+		<Unit filename="ReportesAdminMenu.cpp" />
+		<Unit filename="ReportesAdminMenu.h" />
+		<Unit filename="ReportesAdminMenuManager.cpp" />
+		<Unit filename="ReportesAdminMenuManager.h" />
 		<Unit filename="Rol.cpp" />
 		<Unit filename="Rol.h" />
 		<Unit filename="Roles.dat" />
