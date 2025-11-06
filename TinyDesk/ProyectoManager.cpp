@@ -78,6 +78,7 @@ void ProyectoManager::listarProyectosNombreID()
     {
         cout<<"Id del proyecto: "<<vecProyectos[i].getIdProyecto()<<endl;
         cout<<"Nombre del proyecto: "<<vecProyectos[i].getNombre()<<endl;
+        cout<<" ----------------------------------- "<<endl;
     }
     system("pause");
 

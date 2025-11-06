@@ -9,7 +9,7 @@ class Sprint {
 private:
     int _idProyecto;
     int _idSprint;
-    int  _idArea;
+    Area _area;
     Fecha _fechaInicio;
     Fecha _fechaFin;
     Fecha _fechaFinalizada;
@@ -26,7 +26,7 @@ public:
     std::string getNombre();
     int getIdSprint();
     int getIdProyecto();
-    int getIdArea();
+    Area getArea();
     std::string getStatus();
     std::string getFechaInicio();
     std::string getFechaFin();
@@ -39,10 +39,12 @@ public:
     void setStatus(std::string status);
     //void setNombre(std::string nombre);
     void setNombre(const std::string &nombre);
-    void setIdArea(int idArea);
+    void setArea(const Area &a);
     void setFechaInicio();
     void setFechaFin();
     void setFechaFinalizada();
     void setActivo(bool activo);
 };
+
+
 

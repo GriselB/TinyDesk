@@ -164,12 +164,12 @@
 	<string>
 	"Usuario.h"
 
-1762285523 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\estado.cpp
+1762309505 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\estado.cpp
 	<iostream>
 	<cstring>
 	"Estado.h"
 
-1761868143 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\estado.h
+1762309505 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\estado.h
 	<string>
 
 1762285523 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\fecha.cpp
@@ -180,11 +180,12 @@
 	<iostream>
 	"App.h"
 
-1762285523 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\proyecto.cpp
+1762381863 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\proyecto.cpp
 	<cstring>
 	<iostream>
 	"Proyecto.h"
 	"Fecha.h"
+	"Estado.h"
 	"utils.h"
 
 1762285523 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\proyecto.h
@@ -221,15 +222,15 @@
 1761440410 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\utils.h
 	<string>
 
-1762305003 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\area.cpp
+1762386055 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\area.cpp
 	<iostream>
 	<cstring>
 	"area.h"
 
-1761868144 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\area.h
+1762386054 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\area.h
 	<string>
 
-1762302148 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\sprint.cpp
+1762387169 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\sprint.cpp
 	<cstring>
 	<iostream>
 	"Sprint.h"
@@ -319,7 +320,7 @@
 	"Fecha.h"
 	"Proyecto.h"
 
-1762302261 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\sprint.h
+1762386916 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\sprint.h
 	<string>
 	"Fecha.h"
 	"Estado.h"
@@ -334,15 +335,17 @@
 	<string>
 	"Sprint.h"
 
-1762304981 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\sprintmanager.cpp
+1762387169 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\sprintmanager.cpp
 	<iostream>
 	<string>
 	"SprintManager.h"
+	"SprintArchivo.h"
 	"Fecha.h"
 	"Area.h"
 	"Proyecto.h"
 	"ProyectoManager.h"
 	"Sprint.h"
+	"utils.h"
 
 1762304239 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\sprintmanager.h
 	<string>
@@ -496,12 +499,12 @@
 	<string>
 	"Proyecto.h"
 
-1762285523 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\proyectomanager.cpp
+1762382197 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\proyectomanager.cpp
 	<iostream>
 	"ProyectoManager.h"
 	"Proyecto.h"
 
-1762285523 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\proyectomanager.h
+1762381863 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\proyectomanager.h
 	<string>
 	"Proyecto.h"
 	"ProyectoArchivo.h"
@@ -1071,9 +1074,10 @@
 1762285523 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\sesionarchivo.h
 	"Sesion.h"
 
-1762285523 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\menuadmin.h
+1762309505 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\menuadmin.h
 	"ListadoAdminMenu.h"
 	"CreacionAdminMenu.h"
+	"modificacionAdminMenu.h"
 	"SesionArchivo.h"
 
 1761926542 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\listadoadminmenu.h
@@ -1131,7 +1135,7 @@
 	<string>
 	"Estado.h"
 
-1762285523 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\listadoadminmanager.cpp
+1762309505 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\listadoadminmanager.cpp
 	<iostream>
 	"ListadoAdminManager.h"
 
@@ -1139,7 +1143,7 @@
 	<iostream>
 	"ListadoAdminMenu.h"
 
-1762296608 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\menuadmin.cpp
+1762309505 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\menuadmin.cpp
 	<iostream>
 	"MenuAdmin.h"
 	"utils.h"
@@ -1185,6 +1189,23 @@
 	"ModificacionAdminMenu.h"
 
 1762315294 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\modificacionadminmenumanager.cpp
+	<iostream>
+	"ModificacionAdminMenuManager.h"
+
+1762309505 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\modificacionadminmenu.h
+	"cstring"
+	"ModificacionAdminMenuManager.h"
+
+1762309505 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\modificacionadminmenumanager.h
+	"ProyectoManager.h"
+	"SprintManager.h"
+	"TicketManager.h"
+
+1762309505 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\modificacionadminmenu.cpp
+	<iostream>
+	"ModificacionAdminMenu.h"
+
+1762383657 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\modificacionadminmenumanager.cpp
 	<iostream>
 	"ModificacionAdminMenuManager.h"
 

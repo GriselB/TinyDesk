@@ -29,10 +29,11 @@ void SprintManager::crearSprint() {
 
 int SprintManager::seleccionarProyecto() {
     ProyectoManager proyecto;
-    proyecto.listarProyectos();
+    cout << "A continuacion se mostrara la lista de proyectos para asignar el Sprint"<< endl;
+    proyecto.listarProyectosNombreID();
 
     int idProyecto;
-    cout << "\nIngrese el ID del proyecto al que pertenece el sprint (o -1 para cancelar): ";
+    cout << "Ingrese el ID del proyecto al que pertenece el sprint (o -1 para cancelar): ";
     cin >> idProyecto;
 
     return idProyecto;
@@ -75,8 +76,8 @@ void SprintManager::Cargar(int idProyecto) {
     // Cargar área
     Area area;
     area.seleccionar(); 
-    sprint.setIdArea(area.getIdArea());
-
+    sprint.setArea(area);
+    
     // Asignar proyecto y estado
     sprint.setIdProyecto(idProyecto);
     sprint.setActivo(activo);
@@ -85,7 +86,7 @@ void SprintManager::Cargar(int idProyecto) {
     cout << "\n=== RESUMEN DEL SPRINT CARGADO ===" << endl;
     cout << "Nombre: " << sprint.getNombre() << endl;
     cout << "Proyecto ID: " << sprint.getIdProyecto() << endl;
-    cout << "Área ID: " << sprint.getIdArea() << endl;
+    cout << "Área ID: " << sprint.getArea().getNombreArea() << endl;
     cout << "Inicio: " << sprint.getFechaInicio()<< endl;
     cout << "Fin: " << sprint.getFechaFin() << endl;
     cout << "Estado: " << (sprint.getActivo() ? "Activo" : "Inactivo") << endl;
@@ -98,11 +99,14 @@ void SprintManager::Cargar(int idProyecto) {
     if (toupper(opcion) == 'S') {
         if (_repo.guardar(sprint)) {
             cout << "\nSprint guardado exitosamente." << endl;
+            pause();
         } else {
             cout << "\nError al guardar el sprint." << endl;
+            pause();
         }
     } else {
         cout << "\nOperación cancelada. No se guardó el sprint." << endl;
+        pause();
     }
 }
 
@@ -114,10 +118,10 @@ void SprintManager::Mostrar(Sprint sprint) {
     cout << "ID Sprint: " << sprint.getIdSprint() << endl;
     cout << "Nombre: " << sprint.getNombre() << endl;
     cout << "Proyecto ID: " << sprint.getIdProyecto() << endl;
-    cout << "Área ID: " << sprint.getIdArea() << endl;
-    cout << "Fecha Inicio: "; sprint.getFechaInicio();
-    cout << "Fecha Fin: "; sprint.getFechaFin();
-    cout << "Activo: " << (sprint.getActivo() ? "Sí" : "No") << endl;
+    cout << "Área ID: " << sprint.getArea().getNombreArea() << endl;
+    cout << "Fecha Inicio: " << sprint.getFechaInicio() << endl;
+    cout << "Fecha Fin: " << sprint.getFechaFin() << endl;
+    cout << "Activo: " << (sprint.getActivo() ? "Si" : "No") << endl;
     cout << endl;
 }
 
@@ -189,12 +193,14 @@ void SprintManager::finalizarSprint() {
 
         if (_repo.guardar(pos, sprint)) {
             cout << "El Sprint fue finalizado correctamente." << endl;
+            pause();
         } else {
             cout << "Ocurrió un error al finalizar el Sprint." << endl;
+            pause();
         }
     }
 
-    system("pause");
+    pause();
 }
 
 //----------------------------------------------
@@ -211,7 +217,7 @@ void SprintManager::eliminarSprintLogico() {
     pos = _repo.buscarID(id);
     if (pos < 0) {
         cout << "No existe un sprint con ese ID." << endl;
-        system("pause");
+        pause();
         return;
     }
 
@@ -221,10 +227,12 @@ void SprintManager::eliminarSprintLogico() {
     if (eliminado == 's' || eliminado == 'S') {
         if (_repo.eliminar(pos)) {
             cout << "El Sprint fue eliminado correctamente." << endl;
+            pause();
         } else {
             cout << "Ocurrió un error en la eliminación del Sprint." << endl;
+            pause();
         }
     }
 
-    system("pause");
+    pause();
 }

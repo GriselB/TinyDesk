@@ -31,10 +31,16 @@ int Sprint::getIdProyecto()
     return _idProyecto;
 }
 
-int Sprint::getIdArea()
+/*int Sprint::getIdArea()
 {
     return _idArea;
+}*/
+
+Area Sprint::getArea() 
+{ 
+  return _area; 
 }
+  
 
 string Sprint::getStatus()
 {
@@ -76,9 +82,14 @@ void Sprint::setIdProyecto(int idProyecto)
     _idProyecto = idProyecto;
 }
 
-void Sprint::setIdArea(int idArea)
+/*void Sprint::setIdArea(int idArea)
 {
     _idArea = idArea;
+}
+*/
+void Sprint::setArea(const Area &a) 
+{
+   _area = a; 
 }
 
 void Sprint::setStatus(std::string status)

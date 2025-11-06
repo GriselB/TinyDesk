@@ -2,6 +2,7 @@
 #include<iostream>
 #include "ModificacionAdminMenuManager.h"
 
+
 using namespace std;
 
 void ModificacionAdminMenuManager::modificarProyectos(){
@@ -39,6 +40,38 @@ void ModificacionAdminMenuManager::modificarProyectos(){
     } while (opcion != 0);
 }
 void ModificacionAdminMenuManager::modificarSprintsPorProyectos(){
+   SprintManager sprint;
+    int opcion;
+    do {
+        clear();
+
+        cout << "===== Modificar Sprint ====="<<endl;
+        cout << "1 - Finalizar Sprint"<<endl;
+        cout << "2 - Baja Logica de Sprint"<<endl;
+        cout << "---------------------------"<<endl;
+        cout << "0 - Volver"<<endl;
+        cout << "Opcion: ";
+        cin >> opcion;
+
+        switch (opcion) {
+            case 1:
+                sprint.finalizarSprint();
+                break;
+
+            case 2:
+                sprint.eliminarSprintLogico();
+                break;
+
+            case 0:
+                break;
+
+            default:
+                cout << "Opcion invalida. Elija una opcion correcta"<<endl;
+                pause();
+                break;
+        }
+
+    } while (opcion != 0);
 }
 void ModificacionAdminMenuManager::modificarTicketsPorSprintsProyecto(){
 }
