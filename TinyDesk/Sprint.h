@@ -27,23 +27,21 @@ public:
     int getIdSprint();
     int getIdProyecto();
     Area getArea();
-    std::string getStatus();
+    int getIdEstado();
     std::string getFechaInicio();
     std::string getFechaFin();
     std::string getFechaFinalizada();
-    bool getActivo();
+   
     
     //setters
     void setIdProyecto(int idProyecto);
     void setIdSprint(int idTicket);
-    void setStatus(std::string status);
-    //void setNombre(std::string nombre);
+    void setIdEstado(int idEstado);
     void setNombre(const std::string &nombre);
     void setArea(const Area &a);
     void setFechaInicio();
     void setFechaFin();
     void setFechaFinalizada();
-    void setActivo(bool activo);
 };
 
 

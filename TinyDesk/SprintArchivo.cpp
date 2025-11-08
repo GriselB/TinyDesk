@@ -141,7 +141,7 @@ bool SprintArchivo::eliminar(int pos){
   Sprint sprint = leer(pos);
   
   if(sprint.getIdSprint() != -1){
-      sprint.setActivo(false);
+      sprint.setIdEstado(0);
     return guardar(pos, sprint);
   }
   return false;

@@ -8,6 +8,7 @@
 #include "ProyectoManager.h"
 #include "Sprint.h"
 #include "utils.h"
+#include "Estado.h"
 
 using namespace std;
 
@@ -18,7 +19,7 @@ void SprintManager::crearSprint() {
     cout << "---- CREAR NUEVO SPRINT ----" << endl;
     int idProyecto = seleccionarProyecto(); 
 
-    if (idProyecto == -1) {
+    if (idProyecto == 0) {
         cout << "No se seleccionó ningún proyecto. Cancelando creación." << endl;
         return;
     }
@@ -33,9 +34,9 @@ int SprintManager::seleccionarProyecto() {
     proyecto.listarProyectosNombreID();
 
     int idProyecto;
-    cout << "Ingrese el ID del proyecto al que pertenece el sprint (o -1 para cancelar): ";
+    cout << "Ingrese el ID del proyecto al que pertenece el sprint (0 para cancelar): ";
     cin >> idProyecto;
-
+    clear();
     return idProyecto;
 }
 
@@ -48,51 +49,44 @@ void SprintManager::Cargar(int idProyecto) {
     char opcion;
 
     Sprint sprint;
+    Area area;
+    Estado estado;
     
-    
-  
-    // --- Control de número de sprint por proyecto ---
     int cantidadExistente = _repo.contarPorProyecto(idProyecto);
     _contadorSprint = cantidadExistente + 1;
     _ultimoProyectoID = idProyecto;
 
-    // Generar un nuevo ID automático
     idSprint = _repo.getNuevoID();
     sprint.setIdSprint(idSprint);
 
     cout << "\n=== CARGA DE NUEVO SPRINT ===" << endl;
     cout << "Sprint #" << idSprint << endl;
 
-    // Cargar fechas usando la clase Fecha
     sprint.setFechaInicio();
     sprint.setFechaFin();
 
-  
-
-    // Generar nombre automático
     nombreSprint = "Sprint " + to_string(_contadorSprint)+" ("+sprint.getFechaInicio()+" - "+sprint.getFechaFin()+")";
     sprint.setNombre(nombreSprint);
 
-    // Cargar área
-    Area area;
+
     area.seleccionar(); 
     sprint.setArea(area);
     
-    // Asignar proyecto y estado
     sprint.setIdProyecto(idProyecto);
-    sprint.setActivo(activo);
+    sprint.setIdEstado(1);
 
     // Mostrar resumen antes de guardar
     cout << "\n=== RESUMEN DEL SPRINT CARGADO ===" << endl;
-    cout << "Nombre: " << sprint.getNombre() << endl;
+    /*cout << "Nombre: " << sprint.getNombre() << endl;
     cout << "Proyecto ID: " << sprint.getIdProyecto() << endl;
     cout << "Área ID: " << sprint.getArea().getNombreArea() << endl;
     cout << "Inicio: " << sprint.getFechaInicio()<< endl;
     cout << "Fin: " << sprint.getFechaFin() << endl;
-    cout << "Estado: " << (sprint.getActivo() ? "Activo" : "Inactivo") << endl;
+    cout << "Estado: " << estado.getNombreEstado(getIdEstado()-1)<< endl;*/
+    Mostrar(sprint);
     cout << "===================================" << endl;
 
-    // Confirmación antes de guardar
+
     cout << "\n¿Desea guardar este sprint? (S/N): ";
     cin >> opcion;
 
@@ -115,13 +109,16 @@ void SprintManager::Cargar(int idProyecto) {
 //----------------------------------------------
 
 void SprintManager::Mostrar(Sprint sprint) {
+    Estado estado;
     cout << "ID Sprint: " << sprint.getIdSprint() << endl;
     cout << "Nombre: " << sprint.getNombre() << endl;
     cout << "Proyecto ID: " << sprint.getIdProyecto() << endl;
     cout << "Área ID: " << sprint.getArea().getNombreArea() << endl;
     cout << "Fecha Inicio: " << sprint.getFechaInicio() << endl;
     cout << "Fecha Fin: " << sprint.getFechaFin() << endl;
-    cout << "Activo: " << (sprint.getActivo() ? "Si" : "No") << endl;
+    cout << "Estado: " << estado.getNombreEstado(sprint.getIdEstado()) << endl;
+    if(sprint.getIdEstado()==2)
+        cout<<"Fecha de finalizacion del sprint: "<<sprint.getFechaFinalizada()<<endl;
     cout << endl;
 }
 
@@ -189,7 +186,7 @@ void SprintManager::finalizarSprint() {
 
     if (finalizado == 's' || finalizado == 'S') {
         sprint.setFechaFinalizada();
-        sprint.setActivo(false);
+        sprint.setIdEstado(2);
 
         if (_repo.guardar(pos, sprint)) {
             cout << "El Sprint fue finalizado correctamente." << endl;
