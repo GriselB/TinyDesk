@@ -47,7 +47,7 @@ void ProyectoManager::listarProyectos()
         exit(-1);
     }
     _repo.leerTodos(vecProyectos,cant);
-    cout<<" ------- Lista de Proyectos ------- "<<endl;
+    cout << "                   ----- PROYECTOS -----" << endl;
     for(int i=0;i<cant;i++)
     {
         vecProyectos[i].mostrar();

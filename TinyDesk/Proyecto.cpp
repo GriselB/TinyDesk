@@ -97,13 +97,13 @@ void Proyecto::cargar()
 void Proyecto::mostrar()
 {
     Estado estado;
-    cout<<"Id del proyecto: "<<getIdProyecto()<<endl;
     cout<<"Nombre del proyecto: "<<getNombre()<<endl;
+    cout<<"Id del proyecto: "<<getIdProyecto()<<endl;
     cout<<"Descripción del proyecto: "<<getDescripcion()<<endl;
     cout<<"Fecha de inicio del proyecto: "<<getFechaInicio()<<endl;
     cout<<"Fecha de fin del proyecto: "<<getFechaFin()<<endl;
     if(getIdEstado()==3)
         cout<<"Fecha de finalización del proyecto: "<<getFechaFinalizada()<<endl;
     cout<<"Estado del proyecto: "<<estado.getNombreEstado(getIdEstado()-1)<<endl;
-    cout<<"-----------------------------------------------"<<endl;
+    cout<<"--------------------------------"<<endl;
 }
