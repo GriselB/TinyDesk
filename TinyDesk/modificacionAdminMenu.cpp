@@ -13,6 +13,7 @@ void ModificacionAdminMenu::run(string titulo) {
         cout << "1 - Modificar Proyecto"<<endl;
         cout << "2 - Modificar Sprint (por proyecto)"<<endl;
         cout << "3 - Modificacion Ticket (por sprint y proyecto)"<<endl;
+        cout << "4 - Modificacion Usuario"<<endl;
         cout << "---------------------------"<<endl;
         cout << "0 - Volver"<<endl;
         cout << "Opcion: ";
@@ -30,7 +31,10 @@ void ModificacionAdminMenu::run(string titulo) {
             case 3:
                 _modificacionAdminMenuManager.modificarTicketsPorSprintsProyecto();
                 break;
-
+                
+            case 4:
+                _modificacionAdminMenuManager.modificarUsuario();
+                
             case 0:
                 break;
 

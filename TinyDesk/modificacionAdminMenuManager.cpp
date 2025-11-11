@@ -80,3 +80,8 @@ void ModificacionAdminMenuManager::modificarSprintsPorProyectos(){
 }
 void ModificacionAdminMenuManager::modificarTicketsPorSprintsProyecto(){
 }
+
+void ModificacionAdminMenuManager::modificarUsuario(){
+    UsuarioManager userMgr;
+    userMgr.eliminarUsuario();
+}
