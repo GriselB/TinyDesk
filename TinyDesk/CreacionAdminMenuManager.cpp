@@ -8,6 +8,8 @@ void CreacionAdminMenuManager::crearProyectos(){
     proy.crearProyecto();
 }
 void CreacionAdminMenuManager::crearSprintsPorProyectos(){
+  SprintManager sprint;
+  sprint.crearSprint();
 }
 void CreacionAdminMenuManager::crearTicketsPorSprintsProyecto(){
 }

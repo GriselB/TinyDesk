@@ -42,7 +42,7 @@ void TareasUsuarioManager::listarTareasUsuario() {
         for (int j = 0; j < cantSpr; ++j) {
             Sprint spr = archivoSprint.leer(j);
             if(spr.getIdSprint() == -1) continue;
-            if (!spr.getActivo()) continue;
+            if (spr.getIdEstado()!= 2) continue;
             if (spr.getIdProyecto() != proy.getIdProyecto()) continue;
 
             bool imprimioEncabezadoSprint = false;

@@ -12,10 +12,10 @@ class Fecha
     void setDia(int dia,int mes,bool b);
 
     int getMes();
-    void setMes(int mes);
+    void setMes(int &mes);
 
     int getAnio();
-    void setAnio(int anio);
+    void setAnio(int &anio);
 
     bool comprobarBisiesto(int anio);
 

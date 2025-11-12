@@ -12,7 +12,8 @@ using namespace std;
 void ListadoAdminManager::listarProyectos() {
     clear();
         ProyectoManager pM;
-    cout << "----- PROYECTOS -----" << endl;
+    //cout << "----- PROYECTOS -----" << endl;
+    cout << endl;
         pM.listarProyectos();
         clear();
 }
@@ -27,7 +28,9 @@ void ListadoAdminManager::listarSprintsPorProyectos() {
     int cantProyectos = archivoProyecto.getCantidadRegistros();
     int cantSprints = archivoSprint.getCantidadRegistros();
 
-    cout << "----- SPRINTS POR PROYECTO -----" << endl;
+    cout << "                       ----- SPRINTS POR PROYECTO -----" << endl;
+    cout << endl;
+
 
     if (cantProyectos <= 0) {
         cout << "No hay proyectos registrados." << endl;
@@ -52,12 +55,13 @@ void ListadoAdminManager::listarSprintsPorProyectos() {
 
             if (sprint.getIdProyecto() == proyecto.getIdProyecto()) {
                 sprintMng.mostrar(j, true);
+                cout << "-------------------------------" << endl;
                 tieneSprint = true;
             }
 
         }
         if (!tieneSprint) cout << "   -- No tiene sprints asignados --" << endl;
-        cout << "---------------------------------------------" << endl;
+        cout << "-------------------------" << endl;
     }
 
     pause();
