@@ -93,11 +93,11 @@ void ListadoAdminManager::listarTicketsPorSprints() {
         pause();
         return;
     }
-    if (cantTickets <= 0) {
-        cout << "No hay tickets registrados aun." << endl;
-        pause();
-        return;
-    }
+//    if (cantTickets <= 0) {
+//        cout << "No hay tickets registrados aun." << endl;
+//        pause();
+//        return;
+//    }
 
     for (int i = 0; i < cantProy; i++) {
         Proyecto proyecto = archivoProyecto.leer(i);
@@ -114,10 +114,10 @@ void ListadoAdminManager::listarTicketsPorSprints() {
 
             bool tieneTickets = false;
 
-            for (int k = 0; k < cantTickets; k++) {
-                //Ticket ticket;
+            for (int k = 0; k < 1; k++) { //cantTickets
+                Ticket ticket;
                 //archivoTicket.leer(k, ticket); Para llamarlo y que liste los tickets se tiene que pasar la posicion y el objeto ticket
-                if (ticket.getIdSprint() != sprint.getIdSprint()) continue;
+                //if (ticket.getIdSprint() != sprint.getIdSprint()) continue;
 
                 tieneTickets = true;
 

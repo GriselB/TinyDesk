@@ -27,8 +27,8 @@ void TicketManager::crearTicket() {
 
     int idEmpleado, idSprint=-1, idProyecto=-1;
     string status, prioridad, descripcion;
-    proyectoM.listarProyectosNombreID();
 
+    proyectoM.listarProyectosNombreID();
     cout << "Seleccione el id del proyecto a asignar:";
     cin >> idProyecto;
 
@@ -40,6 +40,7 @@ void TicketManager::crearTicket() {
         //clear();
         //}
     //}
+
     t.setIdProyecto(idProyecto);
     clear();
 
@@ -68,6 +69,7 @@ void TicketManager::crearTicket() {
 
     int nuevoId = _repo.getNuevoID(idProyecto, idSprint);
     t.setIdTicket(nuevoId);
+
 
     cout << "Seleccione el id del empleado asignado/n"<< endl;
     cin >> idEmpleado;
@@ -135,9 +137,14 @@ void TicketManager::reactivarTicket() {
 
 void TicketManager::finalizarTicket() {
     int id;
+
+    //listar tickets
     cout << "Ingrese ID de ticket para cerrarlo: ";
     cin >> id;
 
+    //tiene que recibir idProyecto y idSprint
+
+    //corregir buscarid
     int pos = _repo.buscarID(id);
     if (pos < 0) { cout << "No existe un ticket con ese ID " << id << "\n"; return; }
 
@@ -163,6 +170,7 @@ void TicketManager::modificarDescripcion() {
     cout << "ID de ticket: ";
     cin >> id;
 
+    //pasar idProyecto y pasar idSprint, nuevo buscarid
     int pos = _repo.buscarID(id);
     if (pos < 0) { cout << "No existe un ticket con ese ID " << id << "\n"; return; }
 
@@ -184,6 +192,7 @@ void TicketManager::modificarPrioridad() {
     cout << "ID de ticket: ";
     cin >> id;
 
+    //pasar idProyecto y pasar idSprint, nuevo buscarid
     int pos = _repo.buscarID(id);
     if (pos < 0) { cout << "No existe un ticket con ese ID" << id << "\n"; return; }
 
@@ -205,6 +214,7 @@ void TicketManager::modificarStatus() {
     cout << "ID de ticket: ";
     cin >> id;
 
+    //pasar idProyecto y pasar idSprint, nuevo buscarid
     int pos = _repo.buscarID(id);
     if (pos < 0) { cout << "No existe un ticket con ese ID " << id << "\n"; return; }
 
@@ -226,6 +236,7 @@ void TicketManager::asignarNuevoEmpleado() {
     cout << "ID de ticket: ";
     cin >> id;
 
+    //pasar idProyecto y pasar idSprint, nuevo buscarid
     int pos = _repo.buscarID(id);
     if (pos < 0) { cout << "No existe un ticket con ese ID " << id << "\n"; return; }
 
@@ -238,26 +249,6 @@ void TicketManager::asignarNuevoEmpleado() {
     r.setIdEmpleado(empleado);
 
     if (_repo.guardar(r)) cout << "Empleado reasignado.\n";
-    else cout << "No se pudo actualizar.\n";
-}
-
-void TicketManager::cambiarSprint() {
-    int id;
-    cout << "ID de ticket: ";
-    cin >> id;
-
-    int pos = _repo.buscarID(id);
-    if (pos < 0) { cout << "No existe un ticket con ese ID " << id << "\n"; return; }
-
-    Ticket r;
-    if (!_repo.leer(pos, r)) { cout << "Error al leer el ticket.\n"; return; }
-
-    int sprint;
-    cout << "Nuevo ID de sprint: ";
-    cin >> sprint;
-    r.setIdSprint(sprint);
-
-    if (_repo.guardar(r)) cout << "Sprint actualizado.\n";
     else cout << "No se pudo actualizar.\n";
 }
 
@@ -279,12 +270,11 @@ int idSprint, idProyecto;
 
     cout << "\n===== TICKETS CREADOS =====\n";
 
-
     for (int i = 0; i < n; i++) {
     Ticket r;
     bool existeTicket = _repo.leer(i, r);
         if (!existeTicket) continue;
-        if ((_repo.buscarIDTicketSprintProyecto(r.getIdTicket(), idProyecto, idSprint) != -1) && r.getActivo() == true) // Agregar valor que sea activo
+        if ((_repo.buscarIDTicketSprintProyecto(r.getIdTicket(), idProyecto, idSprint) != -1) && r.getActivo() == true)
         mostrarTicket(r);
     }
 }

@@ -77,7 +77,7 @@ Ticket t;
 int ultimoId;
 
     FILE* f = fopen(_nombreArchivo.c_str(), "rb");
-    if (!f) return 1;
+    if (!f) return -1;
 
     while(fread(&t, sizeof(Ticket), 1, f) == 1){
         if (t.getIdProyecto() == idProyecto && t.getIdSprint() == idSprint){

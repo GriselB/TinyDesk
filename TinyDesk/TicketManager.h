@@ -20,8 +20,6 @@ public:
     void modificarPrioridad();
     void modificarStatus();
     void asignarNuevoEmpleado();
-    void cambiarSprint();
-    //Lo cree solo para poder revisar los tickets
     void listarTickets();
 
 private:
