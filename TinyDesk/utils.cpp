@@ -27,10 +27,10 @@ int buscarMaximo(int vec[], int cant){
   return indexMax;
 }
 
-void cleanBuffer() {
+/*void cleanBuffer() {
     int aux;
     while ((aux = std::cin.get()) != '\n' && aux != EOF) {}
-}
+}*/
 
 
 void cleanBuffer() {

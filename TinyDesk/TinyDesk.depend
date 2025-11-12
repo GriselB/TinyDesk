@@ -180,7 +180,7 @@
 	<iostream>
 	"App.h"
 
-1762381863 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\proyecto.cpp
+1762902293 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\proyecto.cpp
 	<cstring>
 	<iostream>
 	"Proyecto.h"
@@ -215,7 +215,7 @@
 	<iostream>
 	"UsuarioManager.h"
 
-1761440410 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\utils.cpp
+1762906775 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\utils.cpp
 	<iostream>
 	"utils.h"
 
@@ -336,7 +336,7 @@
 	<string>
 	"Sprint.h"
 
-1762564683 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\sprintmanager.cpp
+1762565064 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\sprintmanager.cpp
 	<iostream>
 	<string>
 	"SprintManager.h"
@@ -502,7 +502,7 @@
 	<string>
 	"Proyecto.h"
 
-1762551550 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\proyectomanager.cpp
+1762902293 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\proyectomanager.cpp
 	<iostream>
 	"ProyectoManager.h"
 	"Proyecto.h"
@@ -1141,7 +1141,7 @@
 	<string>
 	"Estado.h"
 
-1762309505 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\listadoadminmanager.cpp
+1762902293 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\listadoadminmanager.cpp
 	<iostream>
 	"ListadoAdminManager.h"
 
@@ -1204,7 +1204,11 @@
 	"cstring"
 	"ModificacionAdminMenuManager.h"
 
-1762309505 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\modificacionadminmenumanager.h
+1762902293 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\modificacionadminmenumanager.h
+	"ProyectoManager.h"
+	"SprintManager.h"
+	"TicketManager.h"
+	"UsuarioManager.h"
 
 1762390356 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\reportesadminmenumanager.cpp
 	<iostream>
@@ -1220,11 +1224,11 @@
 	"SprintManager.h"
 	"TicketManager.h"
 
-1762309505 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\modificacionadminmenu.cpp
+1762902293 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\modificacionadminmenu.cpp
 	<iostream>
 	"ModificacionAdminMenu.h"
 
-1762551550 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\modificacionadminmenumanager.cpp
+1762902293 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\modificacionadminmenumanager.cpp
 	<iostream>
 	"ModificacionAdminMenuManager.h"
 
