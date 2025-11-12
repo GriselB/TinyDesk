@@ -73,12 +73,12 @@ void ListadoAdminManager::listarTicketsPorSprints() {
 
     ProyectoArchivo archivoProyecto;
     SprintArchivo archivoSprint;
-    //ArchivoTicket archivoTicket;
+    //TicketArchivo archivoTicket;
     UsuarioArchivo archivoUsuario;
 
     int cantProy = archivoProyecto.getCantidadRegistros();
     int cantSprints = archivoSprint.getCantidadRegistros();
-    int cantTickets = -1;//archivoTicket.getCantidadRegistros();
+    //int cantTickets = archivoTicket.getCantidadRegistros();
     int cantUsuarios = archivoUsuario.getCantidadRegistros();
 
     cout << "----- TICKETS POR PROYECTO Y SPRINT -----" << endl;
@@ -115,7 +115,8 @@ void ListadoAdminManager::listarTicketsPorSprints() {
             bool tieneTickets = false;
 
             for (int k = 0; k < cantTickets; k++) {
-                Ticket ticket ;//= archivoTicket.Leer(k);
+                //Ticket ticket;
+                //archivoTicket.leer(k, ticket); Para llamarlo y que liste los tickets se tiene que pasar la posicion y el objeto ticket
                 if (ticket.getIdSprint() != sprint.getIdSprint()) continue;
 
                 tieneTickets = true;

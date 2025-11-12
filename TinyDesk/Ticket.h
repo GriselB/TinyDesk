@@ -9,7 +9,7 @@ public:
     int getIdEmpleado();
     int getIdTicket();
     int getIdSprint();
-    int getIdEmpleado();
+    int getIdProyecto();
     std::string getStatus();
     std::string getPrioridad();
     std::string getDescripcionTarea();
@@ -22,6 +22,7 @@ public:
     void setIdEmpleado(int idEmpleado);
     void setIdTicket(int idTicket);
     void setIdSprint(int idSprint);
+    void setIdProyecto (int idProyecto);
     void setStatus(std::string status);
     void setPrioridad(std::string prioridad);
     void setDescripcionTarea(std::string descripcionTarea);

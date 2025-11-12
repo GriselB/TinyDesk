@@ -2,6 +2,8 @@
 #include <string>
 #include "Ticket.h"
 #include "TicketArchivo.h"
+#include "ProyectoManager.h"
+#include "SprintManager.h"
 
 class TicketManager
 {
@@ -24,4 +26,6 @@ public:
 
 private:
     TicketArchivo _repo;
+    ProyectoManager proyectoM;
+    SprintManager sprintM;
 };

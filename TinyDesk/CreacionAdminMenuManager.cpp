@@ -12,4 +12,6 @@ void CreacionAdminMenuManager::crearSprintsPorProyectos(){
   sprint.crearSprint();
 }
 void CreacionAdminMenuManager::crearTicketsPorSprintsProyecto(){
+    TicketManager ticket;
+    ticket.crearTicket();
 }

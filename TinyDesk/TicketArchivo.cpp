@@ -6,11 +6,10 @@ using namespace std;
 TicketArchivo::TicketArchivo(std::string nombreArchivo)
 : _nombreArchivo(nombreArchivo) {}
 
-//Nota mental: va a recibir el ticket vacío por referencia, y luego lo llena para devolverlo
 bool TicketArchivo::leer(int pos, Ticket &ticket)
 {
-    FILE *pFile;
-    bool result;
+FILE *pFile;
+bool result;
     pFile=fopen(_nombreArchivo.c_str(),"rb");
     if(pFile==nullptr)
     {
@@ -25,13 +24,11 @@ bool TicketArchivo::leer(int pos, Ticket &ticket)
 
 int TicketArchivo::leerTodos(Ticket tickets[], int cantidad)
 {
-  int result;
-  FILE *pFile;
-
+int result;
+FILE *pFile;
   pFile = fopen(_nombreArchivo.c_str(), "rb");
 
-  if (pFile == nullptr)
-  {
+  if (pFile == nullptr){
     return 0;
   }
 
@@ -42,9 +39,8 @@ int TicketArchivo::leerTodos(Ticket tickets[], int cantidad)
   return result;
 }
 
-int TicketArchivo::getCantidadRegistros()
-{
-    FILE *pFile = fopen(_nombreArchivo.c_str(), "rb");
+int TicketArchivo::getCantidadRegistros(){
+FILE *pFile = fopen(_nombreArchivo.c_str(), "rb");
     if (pFile == nullptr) return 0;
 
     if (fseek(pFile, 0, SEEK_END) != 0) { fclose(pFile); return 0; }
@@ -56,9 +52,8 @@ int TicketArchivo::getCantidadRegistros()
     return (int)(bytes / (long)sizeof(Ticket));
 }
 
-int TicketArchivo::buscarID(int id)
-{
-    FILE* pFile = fopen(_nombreArchivo.c_str(), "rb");
+int TicketArchivo::buscarID(int id){
+FILE* pFile = fopen(_nombreArchivo.c_str(), "rb");
     if (pFile == nullptr) {
         return -1;
     }
@@ -77,29 +72,63 @@ int TicketArchivo::buscarID(int id)
     return -1;
 }
 
+int TicketArchivo::getNuevoID(int idProyecto, int idSprint){
+Ticket t;
+int ultimoId;
 
-int TicketArchivo::getNuevoID()
-{
+    FILE* f = fopen(_nombreArchivo.c_str(), "rb");
+    if (!f) return 1;
 
-int cantidad = getCantidadRegistros();
-    if(cantidad == 0)
-    {
-        return 1;
+    while(fread(&t, sizeof(Ticket), 1, f) == 1){
+        if (t.getIdProyecto() == idProyecto && t.getIdSprint() == idSprint){
+            if (t.getIdTicket() > ultimoId)
+                ultimoId = t.getIdTicket();
+        }
     }
-Ticket ultimoTicket;
+    fclose(f);
+    return ultimoId + 1;
 
-//Hay que buscar si existe en el mismo proyecto y en el sprint para tener el nuevo id
-
-bool ticketAnteriorExiste = leer(cantidad - 1, ultimoTicket);
-    if (ticketAnteriorExiste){
-        return ultimoTicket.getIdTicket()+1;
-    }
-    else{
-        return 1;
-    }
 }
 
-bool TicketArchivo::guardar(Ticket ticket) {
+int TicketArchivo::getNuevoIdTicketSprint(int idProyecto, int idSprint){
+    FILE* f = fopen(_nombreArchivo.c_str(), "rb");
+    if (!f) return 1;
+
+    Ticket ticket;
+    int maxId = 0;
+
+    while (fread(&ticket, sizeof(Ticket), 1, f) == 1) {
+        if (ticket.getIdProyecto() == idProyecto && ticket.getIdSprint() == idSprint){
+            if (ticket.getIdTicket() > maxId) maxId = ticket.getIdTicket();
+        }
+    }
+
+    fclose(f);
+    return maxId + 1;
+
+}
+
+int TicketArchivo::buscarIDTicketSprintProyecto(int idTicket, int idProyecto, int idSprint){
+    FILE* pFile = fopen(_nombreArchivo.c_str(), "rb");
+    if (pFile == nullptr){
+        return -1;
+    }
+    Ticket t;
+    int index = 0;
+
+    while (fread(&t, sizeof(Ticket), 1, pFile) == 1) {
+        if (t.getIdTicket() == idTicket && t.getIdSprint() == idSprint && t.getIdProyecto() == idProyecto){
+            fclose(pFile);
+            return index;
+        }
+        index++;
+    }
+
+    fclose(pFile);
+    return -1;
+}
+
+bool TicketArchivo::guardar(Ticket ticket){
 bool existe = false;
     FILE *pFile = fopen(_nombreArchivo.c_str(), "ab");
     if (pFile == nullptr) return existe;
@@ -108,25 +137,17 @@ bool existe = false;
     return (escritos == 1);
 }
 
-bool TicketArchivo::eliminar(int pos) {
-    if (pos < 0) return false;
+bool TicketArchivo::darDeBaja(int idTicket, int idProyecto, int idSprint){
+int pos = buscarIDTicketSprintProyecto(idTicket, idProyecto, idSprint);
 
-    FILE* f = fopen(_nombreArchivo.c_str(), "rb+");
-    if (!f) return false;
+ if (pos != -1){
+    Ticket ticket;
 
-    Ticket r;
-    bool ok = (fseek(f, pos * (int)sizeof(Ticket), SEEK_SET) == 0) &&
-              (fread(&r, sizeof(Ticket), 1, f) == 1);
+    bool pudoLeer = leer(pos, ticket);
 
-    if (!ok) { fclose(f); return false; }
-    if (!r.getActivo()) { fclose(f); return true; }   // ya estaba dado de baja
-
-    r.setActivo(false);
-
-    ok = (fseek(f, pos * (int)sizeof(Ticket), SEEK_SET) == 0) &&
-         (fwrite(&r, sizeof(Ticket), 1, f) == 1);
-
-    fclose(f);
-    return ok;
+    ticket.setActivo(false);
+    return guardar(ticket);
+  }
+  return false;
 }
 
