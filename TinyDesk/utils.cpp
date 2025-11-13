@@ -55,7 +55,6 @@ void clear() {
 void pause() {
     #ifdef _WIN64
         system("pause");
-    clear();
     #endif
 
     #ifdef __linux__
@@ -65,7 +64,6 @@ void pause() {
             std::cout << "Ingresar 0 para continuar.\n";
             std::cin >> aux;
         } while (aux != 0);
-    clear();
     #endif
 
     #ifdef __APPLE__
@@ -81,7 +79,6 @@ void pause() {
                 std::cout << "Ingresar 0 para continuar.\n";
             }
         }
-    clear();
     #endif
 }
 
