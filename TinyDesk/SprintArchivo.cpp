@@ -105,12 +105,12 @@ int SprintArchivo::getCantidadRegistros()
   return cantidad;
 }
 
-int SprintArchivo::getNuevoID()
+int SprintArchivo::getNuevoID(int idProyecto)
 {
-  return getCantidadRegistros() + 1;
+  return contarPorProyecto( idProyecto) +1;
 }
 
-int SprintArchivo::buscarID(int id)
+int SprintArchivo::buscarID(int idSprint, int idProyecto)
 {
   Sprint registro;
   FILE *pFile;
@@ -125,7 +125,7 @@ int SprintArchivo::buscarID(int id)
 
   while (fread(&registro, sizeof(Sprint), 1, pFile))
   {
-    if (registro.getIdSprint() == id)
+    if (registro.getIdSprint() == idSprint && registro.getIdProyecto() == idProyecto)
     {
       pos = ftell(pFile) / sizeof(Sprint) - 1;
       break;

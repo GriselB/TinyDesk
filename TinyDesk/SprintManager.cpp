@@ -52,11 +52,11 @@ void SprintManager::Cargar(int idProyecto) {
     Area area;
     Estado estado;
     
-    int cantidadExistente = _repo.contarPorProyecto(idProyecto);
-    _contadorSprint = cantidadExistente + 1;
-    _ultimoProyectoID = idProyecto;
+//    int cantidadExistente = _repo.contarPorProyecto(idProyecto);
+//    _contadorSprint = cantidadExistente + 1;
+//    _ultimoProyectoID = idProyecto;
 
-    idSprint = _repo.getNuevoID();
+    idSprint = _repo.getNuevoID(idProyecto);
     sprint.setIdSprint(idSprint);
 
     cout << "\n=== CARGA DE NUEVO SPRINT ===" << endl;
@@ -65,7 +65,7 @@ void SprintManager::Cargar(int idProyecto) {
     sprint.setFechaInicio();
     sprint.setFechaFin();
 
-    nombreSprint = "Sprint " + to_string(_contadorSprint)+" ("+sprint.getFechaInicio()+" - "+sprint.getFechaFin()+")";
+    nombreSprint = "Sprint " + to_string(idSprint)+" ("+sprint.getFechaInicio()+" - "+sprint.getFechaFin()+")";
     sprint.setNombre(nombreSprint);
 
 
@@ -110,8 +110,8 @@ void SprintManager::Cargar(int idProyecto) {
 
 void SprintManager::Mostrar(Sprint sprint) {
     Estado estado;
-    cout << "ID Sprint: " << sprint.getIdSprint() << endl;
-    cout << "Nombre: " << sprint.getNombre() << endl;
+    //cout << "Sprint: " << sprint.getIdSprint() << endl;
+    cout <<  sprint.getNombre() << endl;
     cout << "Proyecto ID: " << sprint.getIdProyecto() << endl;
     cout << "Área ID: " << sprint.getArea().getNombreArea() << endl;
     cout << "Fecha Inicio: " << sprint.getFechaInicio() << endl;
@@ -162,15 +162,26 @@ void SprintManager::listarSprints() {
 //----------------------------------------------
 
 void SprintManager::finalizarSprint() {
-    int id, pos;
+    int id_proyecto, id_sprint, pos;
     Sprint sprint;
     char finalizado;
+    ProyectoManager proyecto;
 
     cout << "---- FINALIZAR SPRINT ----" << endl;
-    cout << "ID del Sprint a finalizar: ";
-    cin >> id;
+    cout << "                         " << endl;
+    cout << "---- SELECCIONA UN PROYECTO ----" << endl;
+    
+    proyecto.listarProyectosNombreID();
+    
+    cout << "Ingrese el ID del proyecto: ";
+    cin >> id_proyecto;
+    
+    listarSprintsPorIDProyectos(id_proyecto);
+    
+    cout << "Ingrese el ID del Sprint a finalizar: ";
+    cin >> id_sprint;
 
-    pos = _repo.buscarID(id);
+    pos = _repo.buscarID(id_sprint, id_proyecto);
     if (pos < 0) {
         cout << "No existe un sprint con ese ID." << endl;
         return;
@@ -203,15 +214,26 @@ void SprintManager::finalizarSprint() {
 //----------------------------------------------
 
 void SprintManager::eliminarSprintLogico() {
-    int id, pos;
+    int id_sprint, id_proyecto, pos;
     Sprint sprint;
     char eliminado;
+    ProyectoManager proyecto;
 
     cout << "---- ELIMINAR SPRINT ----" << endl;
-    cout << "Ingrese ID del Sprint a desactivar: ";
-    cin >> id;
+    cout << "                         " << endl;
+    cout << "---- SELECCIONA UN PROYECTO ----" << endl;
+    
+    proyecto.listarProyectosNombreID();
+    
+    cout << "Ingrese el ID del proyecto: ";
+    cin >> id_proyecto;
+    
+    listarSprintsPorIDProyectos(id_proyecto);
+    
+    cout << "Ingrese el ID del Sprint a Eliminar: ";
+    cin >> id_sprint;
 
-    pos = _repo.buscarID(id);
+    pos = _repo.buscarID(id_sprint, id_proyecto);
     if (pos < 0) {
         cout << "No existe un sprint con ese ID." << endl;
         pause();
@@ -232,4 +254,108 @@ void SprintManager::eliminarSprintLogico() {
     }
 
     pause();
+}
+
+//--------------------------------------------------------------
+
+void SprintManager::listarSprintsPorIDProyectos(int idProyecto) {
+   clear();
+
+    ProyectoArchivo archivoProyecto;
+    SprintArchivo archivoSprint;
+    SprintManager sprintMng;
+    Proyecto proyecto;
+
+    int cantProyectos = archivoProyecto.getCantidadRegistros();
+    int cantSprints = archivoSprint.getCantidadRegistros();
+
+    cout << "                       ----- SPRINTS POR PROYECTO -----" << endl;
+    cout << endl;
+
+    if (cantProyectos <= 0) {
+        cout << "No hay proyectos registrados." << endl;
+        pause();
+        return;
+    }
+
+    if (cantSprints <= 0) {
+        cout << "No hay sprints registrados." << endl;
+        pause();
+        return;
+    }
+
+
+    bool encontrado = false;
+
+    for (int i = 0; i < cantProyectos; i++) {
+        proyecto = archivoProyecto.leer(i);
+        if (proyecto.getIdProyecto() == idProyecto) {
+            encontrado = true;
+            break;
+        }
+    }
+
+    if (!encontrado) {
+        cout << "No se encontró un proyecto con el ID " << idProyecto << "." << endl;
+        pause();
+        return;
+    }
+
+    cout << "Proyecto: " << proyecto.getNombre() 
+         << " (ID: " << proyecto.getIdProyecto() << ")" << endl;
+    cout << "--------------------------------------" << endl;
+
+    bool tieneSprint = false;
+
+    for (int j = 0; j < cantSprints; j++) {
+        Sprint sprint = archivoSprint.leer(j);
+
+        if (sprint.getIdProyecto() == idProyecto) {
+            sprintMng.mostrar(j, true);
+            cout << "--------------------------------------" << endl;
+            tieneSprint = true;
+        }
+    }
+
+    if (!tieneSprint) {
+        cout << "   -- Este proyecto no tiene sprints asignados --" << endl;
+    }
+
+    //pause();
+}
+
+
+bool SprintManager::ExisteSprint(int idSprint, int idProyecto) {
+    SprintArchivo archivoSprint;
+    Sprint sprint;
+    
+    int cantSprints = archivoSprint.getCantidadRegistros();
+
+    for (int j = 0; j < cantSprints; j++) {
+        sprint = archivoSprint.leer(j);
+
+        if (sprint.getIdProyecto() == idProyecto && sprint.getIdSprint() == idSprint) {
+            return true;  
+        }
+    }
+
+    return false;  
+}
+
+bool SprintManager::SprintEstaActivo(int idSprint, int idProyecto) {
+    SprintArchivo archivoSprint;
+    Sprint sprint;
+    
+    int cantSprints = archivoSprint.getCantidadRegistros();
+
+    for (int i = 0; i < cantSprints; i++) {
+        sprint = archivoSprint.leer(i);
+
+        if (sprint.getIdSprint() == idSprint && sprint.getIdProyecto() == idProyecto) {
+            
+            return (sprint.getIdEstado() == 1);
+        }
+    }
+
+    return false; 
 }

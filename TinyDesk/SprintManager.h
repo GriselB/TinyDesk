@@ -21,15 +21,16 @@ protected:
 public:
     SprintManager();
 
-    // Carga y gestión de sprints
+
     void ListarProyectos();
     void crearSprint();
     void listarProyectos(); 
     void listarSprints();
     void mostrar(int pos, bool activo);
+    void listarSprintsPorIDProyectos(int idProyecto);
+    bool ExisteSprint(int idSprint, int idProyecto);
+    bool SprintEstaActivo(int idSprint, int idProyecto); 
     
-
-    // Gestión de estado
     void finalizarSprint();
-    void eliminarSprintLogico();  // Eliminación lógica (activo = false)
+    void eliminarSprintLogico();  
 };

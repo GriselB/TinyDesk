@@ -67,6 +67,7 @@ void ListadoAdminManager::listarSprintsPorProyectos() {
     pause();
 }
 
+
 /// OJO LOS COMENTADOS..   ‼️ QUITAR CUANDO SE INTEGRE TICKET ARCHIVO Y MANAGER ‼️
 void ListadoAdminManager::listarTicketsPorSprints() {
     clear();

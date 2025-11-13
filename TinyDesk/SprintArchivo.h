@@ -9,14 +9,14 @@ class SprintArchivo
 
     bool guardar(Sprint registro);
     bool guardar(int pos, Sprint registro);
-    int  buscarID(int id);
+    int  buscarID(int idSprint, int idProyecto);
     bool eliminar(int pos);
     int contarPorProyecto(int idProyecto);
     
     Sprint leer(int pos);
     int leerTodos(Sprint registros[], int cantidad);
     int getCantidadRegistros();
-    int getNuevoID();
+    int getNuevoID(int idProyecto);
 
   private:
     std::string _nombreArchivo;
