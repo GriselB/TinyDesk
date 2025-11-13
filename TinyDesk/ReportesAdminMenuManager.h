@@ -6,7 +6,7 @@
 
 class ReportesAdminMenuManager {
 public:
-    void ticketsCompletadosPorUsuario();
+    void PorcentajeTicketsCompletadosPorUsuario();
     void ticketsSinTerminar();
     void sprintsCompletadosPorProyecto();
     void sprintsSinTerminarPorProyecto();

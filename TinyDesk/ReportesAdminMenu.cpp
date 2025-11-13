@@ -23,7 +23,7 @@ void ReportesAdminMenu::run(string titulo) {
 
         switch (opcion) {
             case 1:
-                _reportesAdminMenuManager.ticketsCompletadosPorUsuario();
+                _reportesAdminMenuManager.PorcentajeTicketsCompletadosPorUsuario();
                 break;
 
             case 2:

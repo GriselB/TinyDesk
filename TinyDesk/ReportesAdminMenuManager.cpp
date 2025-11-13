@@ -4,14 +4,81 @@
 
 using namespace std;
 
-void ReportesAdminMenuManager::ticketsCompletadosPorUsuario(){
-cout<<"ticketsCompletadosPorUsuario"<<endl;
-pause();
+void ReportesAdminMenuManager::PorcentajeTicketsCompletadosPorUsuario(){
+    clear();
+    UsuarioArchivo usuarioRepo;
+    TicketArchivo ticketRepo;
+    const string AREAS[5] = {"Administracion", "Backend", "Frontend", "QA", "UX/UI"};
+    
+    int cantidadUsuarios = usuarioRepo.getCantidadRegistros();
+    if(cantidadUsuarios < 1){
+        cout << "No hay usuarios registrados" << endl;
+        pause();
+        return;;
+    }
+    
+    int cantidadTicket = ticketRepo.getCantidadRegistros();
+    if(cantidadTicket < 1){
+        cout << "No hay tickets registrados" << endl;
+        pause();
+        return;;
+    }
+    
+    Ticket *vecTickets = new Ticket[cantidadTicket];
+    int leidos = ticketRepo.leerTodos(vecTickets, cantidadTicket);
+    if(leidos < 1){
+        cout << "Error al leer los tickets" << endl;
+        delete [] vecTickets;
+        pause();
+        return;;
+    }
+    cout << "------- PORCENTAJE DE TICKETS COMPLETADOS POR USUARIO -------" << endl;
+    
+    for(int i=0; i<cantidadTicket; i++){
+        Usuario user = usuarioRepo.leer(i);
+        if( !user.getActivo() ) continue;
+        int total = 0;
+        int finalizados = 0;
+        
+        for(int j=0; j<leidos ; j++){
+            Ticket &ticket = vecTickets[j];
+            
+            //if(!ticket.getActivo()) continue;  ??????!!!!???? verificar cuando modifiquen estado
+            
+            if( ticket.getIdEmpleado() == user.getIdUsuario() ) {
+                total ++;
+                // cambiar verificacion con estado una vez que lo incorporen
+                if(!ticket.getFechaFinalizada().toString().empty() || ticket.getStatus() == "Finalizado"){
+                    finalizados ++;
+                }
+            }
+        }
+        
+        float porcentaje = 0.0;
+        
+        if(total > 0){
+            porcentaje = (finalizados * 100.0) / float(total);
+        }
+        
+        cout << "Usuario: " << user.getNombre() << " " << user.getApellido() << endl;
+        cout << "ID: " << user.getIdUsuario() << endl;
+        cout << "Area: " << AREAS[user.getIdArea()-1] << endl;
+        cout << "Total tickets asignados: " << total << endl;
+        cout << "Total tickets finalizados: " << finalizados << endl;
+        cout << "PORCENTAJE TICKETS COMPLETADOS: " << porcentaje << "%" << endl;
+        cout << "------------------------------------------------------" << endl;
+
+    }
+    
+    delete [] vecTickets;
+    pause();
 }
+
 void ReportesAdminMenuManager::ticketsSinTerminar(){
 cout<<"ticketsSinTerminar"<<endl;
 pause();
 }
+
 void ReportesAdminMenuManager::sprintsCompletadosPorProyecto(){
 
  clear();
