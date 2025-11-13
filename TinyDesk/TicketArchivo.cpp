@@ -137,6 +137,16 @@ bool existe = false;
     return (escritos == 1);
 }
 
+bool TicketArchivo::guardarCambios(int pos, Ticket &t) {
+    FILE* f = fopen(_nombreArchivo.c_str(), "rb+");
+    if (!f) return false;
+
+    fseek(f, pos * sizeof(Ticket), SEEK_SET);
+    bool ok = fwrite(&t, sizeof(Ticket), 1, f);
+    fclose(f);
+    return ok;
+}
+
 bool TicketArchivo::darDeBaja(int idTicket, int idProyecto, int idSprint){
 int pos = buscarIDTicketSprintProyecto(idTicket, idProyecto, idSprint);
 
@@ -146,7 +156,7 @@ int pos = buscarIDTicketSprintProyecto(idTicket, idProyecto, idSprint);
     bool pudoLeer = leer(pos, ticket);
 
     ticket.setActivo(false);
-    return guardar(ticket);
+    return guardarCambios(pos, ticket);
   }
   return false;
 }

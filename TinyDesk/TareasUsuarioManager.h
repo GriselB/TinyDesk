@@ -9,7 +9,6 @@
 #include "SesionArchivo.h"
 #include "ProyectoArchivo.h"
 #include "SprintArchivo.h"
-#include "TicketArchivo.h"
 #include "TicketManager.h"
 
 class TareasUsuarioManager{

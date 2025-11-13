@@ -21,6 +21,7 @@ public:
     void modificarStatus();
     void asignarNuevoEmpleado();
     void listarTickets();
+    bool finalizarTicketUsuario(int idProyecto, int idSprint, int idTicket, int idUsuario);
 
 private:
     TicketArchivo _repo;

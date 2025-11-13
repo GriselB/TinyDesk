@@ -165,6 +165,62 @@ void TicketManager::finalizarTicket() {
     else cout << "Error al actualizar el ticket.\n";
 }
 
+bool TicketManager::finalizarTicketUsuario(int idProyecto, int idSprint, int idTicket, int idUsuario){
+    TicketArchivo repo;
+
+    int pos = repo.buscarIDTicketSprintProyecto(idTicket, idProyecto, idSprint);
+    if (pos < 0) {
+        cout << "No existe un ticket con esa combinacion de IDs." << endl;
+        return false;
+    }
+
+    Ticket t;
+    if (!repo.leer(pos, t)) {
+        cout << "Error al leer el ticket." << endl;
+        return false;
+    }
+
+    if (!t.getActivo()) {
+        cout << "El ticket esta inactivo." << endl;
+        return false;
+    }
+
+    if (t.getIdEmpleado() != idUsuario) {
+        cout << "No puede finalizar un ticket que no le pertenece." << endl;
+        return false;
+    }
+
+    if (!t.getFechaFinalizada().toString().empty()) {
+        cout << "Este ticket ya fue finalizado." << endl;
+        return false;
+    }
+
+    // Mostrar ticket antes de finalizar
+    cout << "--- TICKET:";
+    mostrarTicket(t);
+
+    char opc;
+    cout << "ÀFinalizar este ticket? (S/N): ";
+    cin >> opc;
+
+    if (opc != 'S' && opc != 's') {
+        cout << "Accion cancelada." << endl;
+        return false;
+    }
+
+    t.setActivo(false);
+    t.setStatus("Finalizado");
+    t.setFechaFinalizada();
+
+    if (repo.guardarCambios(pos, t)) {
+        cout << "Ticket finalizado correctamente." << endl;
+        return true;
+    }
+
+    cout << "Error al guardar el ticket.";
+    return false;
+}
+
 void TicketManager::modificarDescripcion() {
     int id;
     cout << "ID de ticket: ";
