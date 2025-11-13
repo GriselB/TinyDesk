@@ -100,3 +100,28 @@ int ProyectoArchivo::buscarID(int id)
     fclose(pFile);
     return pos;
 }
+
+int ProyectoArchivo::buscarIDyAlta(int id)
+{
+    Proyecto registro;
+    FILE *pFile;
+    int pos = -1;
+
+    pFile = fopen(_nombreArchivo.c_str(), "rb");
+
+    if (pFile == nullptr)
+    {
+        return pos;
+    }
+
+    while (fread(&registro, sizeof(Proyecto), 1, pFile))
+    {
+        if (registro.getIdProyecto() == id && registro.getIdEstado() == 1)
+        {
+            pos = ftell(pFile) / sizeof(Proyecto) - 1;
+            break;
+        }
+    }
+    fclose(pFile);
+    return pos;
+}

@@ -92,7 +92,7 @@ void Proyecto::cargar()
     setDescripcion(descripcion);
     setFechaInicio();
     setFechaFin();
-    setIdEstado(2);
+    setIdEstado(1);
 }
 void Proyecto::mostrar()
 {
@@ -102,8 +102,8 @@ void Proyecto::mostrar()
     cout<<"Descripción del proyecto: "<<getDescripcion()<<endl;
     cout<<"Fecha de inicio del proyecto: "<<getFechaInicio()<<endl;
     cout<<"Fecha de fin del proyecto: "<<getFechaFin()<<endl;
-    if(getIdEstado()==3)
+    if(getIdEstado()==2)
         cout<<"Fecha de finalización del proyecto: "<<getFechaFinalizada()<<endl;
-    cout<<"Estado del proyecto: "<<estado.getNombreEstado(getIdEstado()-1)<<endl;
+    cout<<"Estado del proyecto: "<<estado.getNombreEstado(getIdEstado())<<endl;
     cout<<"--------------------------------"<<endl;
 }

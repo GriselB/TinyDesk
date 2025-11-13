@@ -113,20 +113,20 @@ void ProyectoManager::finalizarProyecto()
         return;
     }
     Proyecto proyecto=_repo.leer(pos);
-    if(proyecto.getIdEstado()==3)
+    if(proyecto.getIdEstado()==2)
     {
         cout<<"El proyecto ya fue finalizado anteriormente"<<endl;
         pause();
         return;
     }
-    if(proyecto.getIdEstado()==1)
+    if(proyecto.getIdEstado()==0)
     {
         cout<<"El proyecto no se encuentra disponible"<<endl;
         pause();
         return;
     }
     proyecto.setFechaFinalizada();
-    proyecto.setIdEstado(3);
+    proyecto.setIdEstado(2);
     FILE *pFile=fopen("proyectos.dat","rb+");
     if(pFile != nullptr)
     {
@@ -154,19 +154,19 @@ void ProyectoManager::bajaLogicaProyecto()
         return;
     }
     Proyecto proyecto=_repo.leer(pos);
-    if(proyecto.getIdEstado()==3)
+    if(proyecto.getIdEstado()==2)
     {
         cout<<"El proyecto ya fue finalizado anteriormente"<<endl;
         pause();
         return;
     }
-    if(proyecto.getIdEstado()==1)
+    if(proyecto.getIdEstado()==0)
     {
         cout<<"El proyecto ya se encuentra dado de baja"<<endl;
         pause();
         return;
     }
-    proyecto.setIdEstado(1);
+    proyecto.setIdEstado(0);
     FILE *pFile=fopen("proyectos.dat","rb+");
     if(pFile != nullptr)
     {
@@ -195,19 +195,19 @@ void ProyectoManager::altaLogicaProyecto()
         return;
     }
     Proyecto proyecto=_repo.leer(pos);
-    if(proyecto.getIdEstado()==3)
+    if(proyecto.getIdEstado()==2)
     {
         cout<<"El proyecto ya fue finalizado anteriormente"<<endl;
         pause();
         return;
     }
-    if(proyecto.getIdEstado()==2)
+    if(proyecto.getIdEstado()==1)
     {
         cout<<"El proyecto ya se encuentra dado de alta"<<endl;
         pause();
         return;
     }
-    proyecto.setIdEstado(2);
+    proyecto.setIdEstado(1);
     FILE *pFile=fopen("proyectos.dat","rb+");
     if(pFile != nullptr)
     {
