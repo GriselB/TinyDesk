@@ -68,18 +68,17 @@ void ListadoAdminManager::listarSprintsPorProyectos() {
 }
 
 
-/// OJO LOS COMENTADOS..   ‼️ QUITAR CUANDO SE INTEGRE TICKET ARCHIVO Y MANAGER ‼️
 void ListadoAdminManager::listarTicketsPorSprints() {
     clear();
 
     ProyectoArchivo archivoProyecto;
     SprintArchivo archivoSprint;
-    //TicketArchivo archivoTicket;
+    TicketArchivo archivoTicket;
     UsuarioArchivo archivoUsuario;
 
     int cantProy = archivoProyecto.getCantidadRegistros();
     int cantSprints = archivoSprint.getCantidadRegistros();
-    //int cantTickets = archivoTicket.getCantidadRegistros();
+    int cantTickets = archivoTicket.getCantidadRegistros();
     int cantUsuarios = archivoUsuario.getCantidadRegistros();
 
     cout << "----- TICKETS POR PROYECTO Y SPRINT -----" << endl;
@@ -94,31 +93,35 @@ void ListadoAdminManager::listarTicketsPorSprints() {
         pause();
         return;
     }
-//    if (cantTickets <= 0) {
-//        cout << "No hay tickets registrados aun." << endl;
-//        pause();
-//        return;
-//    }
+    if (cantTickets <= 0) {
+        cout << "No hay tickets registrados aun." << endl;
+        pause();
+        return;
+    }
 
     for (int i = 0; i < cantProy; i++) {
         Proyecto proyecto = archivoProyecto.leer(i);
+        if(proyecto.getIdProyecto() == -1) continue;
+        
         cout << "Proyecto " << proyecto.getIdProyecto() << ": " << proyecto.getNombre() << endl;
 
         bool tieneSprint = false;
 
         for (int j = 0; j < cantSprints; j++) {
             Sprint sprint = archivoSprint.leer(j);
+            if(sprint.getIdSprint() == -1) continue;
             if (sprint.getIdProyecto() != proyecto.getIdProyecto()) continue;
 
             tieneSprint = true;
-            cout << "   Sprint " << sprint.getIdSprint() << ": " << sprint.getNombre() << endl;
+            cout << "   Sprint " << sprint.getNombre() << endl;
 
             bool tieneTickets = false;
 
-            for (int k = 0; k < 1; k++) { //cantTickets
+            for (int k = 0; k < cantTickets; k++) {
                 Ticket ticket;
-                //archivoTicket.leer(k, ticket); Para llamarlo y que liste los tickets se tiene que pasar la posicion y el objeto ticket
-                //if (ticket.getIdSprint() != sprint.getIdSprint()) continue;
+                if(!archivoTicket.leer(k, ticket)) continue;
+                if(ticket.getIdProyecto() != proyecto.getIdProyecto()) continue;
+                if(ticket.getIdSprint() != sprint.getIdSprint()) continue;
 
                 tieneTickets = true;
 
@@ -134,7 +137,7 @@ void ListadoAdminManager::listarTicketsPorSprints() {
                     }
                 }
 
-                cout << "      • Ticket " << ticket.getIdTicket()<< ": " << ticket.getDescripcionTarea() << endl;
+                cout << "      • Ticket " << ticket.getIdTicket() << endl;
                 cout << "        Asignado a: " << usuarioAsignado << endl;
                 cout << "        Descripcion: " << ticket.getDescripcionTarea() << endl;
                 cout << "        Prioridad: " << ticket.getPrioridad() << endl;
