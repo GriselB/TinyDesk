@@ -22,6 +22,8 @@ public:
     void mostrarUsuarios();
     int iniciarSesion();
     void eliminarUsuario();
+    bool verificarUsuarioArea(int usuarioId, int area);
+    bool existeUsuario(int usuarioId);
 
 private:
     UsuarioArchivo _repo;

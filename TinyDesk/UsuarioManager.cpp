@@ -122,6 +122,34 @@ bool UsuarioManager::existeEmail(string email) {
     return false;
 }
 
+bool UsuarioManager::verificarUsuarioArea(int usuarioId, int area){
+    int pos = _repo.buscarID(usuarioId);
+    if(pos<0){
+        cout<<"No existe usuario con Id ingresado"<<endl;
+        return false;
+    }
+    
+    Usuario user = _repo.leer(pos);
+    if (user.getIdUsuario() == -1) return false;
+    
+    if(user.getIdArea() == area){
+        return true;
+    }
+    return false;
+}
+
+bool UsuarioManager::existeUsuario(int usuarioId){
+    int pos = _repo.buscarID(usuarioId);
+    if(pos<0) return false;
+    
+    Usuario user = _repo.leer(pos);
+    
+    if(user.getIdUsuario() == -1) return false;
+    
+    return user.getActivo();
+}
+
+
 void UsuarioManager::eliminarUsuario(){
     int id, pos;
     Usuario usuario;
