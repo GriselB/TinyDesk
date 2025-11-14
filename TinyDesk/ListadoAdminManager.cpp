@@ -143,7 +143,7 @@ void ListadoAdminManager::listarTicketsPorSprints() {
                 cout << "        Prioridad: " << ticket.getPrioridad() << endl;
                 cout << "        Fecha inicio: " << ticket.getFechaInicio().toString() << endl;
                 cout << "        Fecha a finalizar: " << ticket.getFechaFin().toString() << endl;
-                if (!ticket.getFechaFinalizada().toString().empty()) {
+                if (ticket.getFechaFinalizada().getAnio()!=0) {
                     cout<<"        Fecha finalizada: " << ticket.getFechaFinalizada().toString()<<endl;
                 } else {
                     cout << "        Status: " << ticket.getStatus() << endl;

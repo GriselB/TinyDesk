@@ -25,8 +25,8 @@ void ReportesAdminMenuManager::PorcentajeTicketsCompletadosPorUsuario(){
     }
     
     Ticket *vecTickets = new Ticket[cantidadTicket];
-    int leidos = ticketRepo.leerTodos(vecTickets, cantidadTicket);
-    if(leidos < 1){
+    int ticketsLeidos = ticketRepo.leerTodos(vecTickets, cantidadTicket);
+    if(ticketsLeidos < 1){
         cout << "Error al leer los tickets" << endl;
         delete [] vecTickets;
         pause();
@@ -34,13 +34,13 @@ void ReportesAdminMenuManager::PorcentajeTicketsCompletadosPorUsuario(){
     }
     cout << "------- PORCENTAJE DE TICKETS COMPLETADOS POR USUARIO -------" << endl;
     
-    for(int i=0; i<cantidadTicket; i++){
+    for(int i=0; i<cantidadUsuarios; i++){
         Usuario user = usuarioRepo.leer(i);
         if( !user.getActivo() ) continue;
         int total = 0;
         int finalizados = 0;
         
-        for(int j=0; j<leidos ; j++){
+        for(int j=0; j<ticketsLeidos ; j++){
             Ticket &ticket = vecTickets[j];
             
             //if(!ticket.getActivo()) continue;  ??????!!!!???? verificar cuando modifiquen estado
@@ -48,7 +48,7 @@ void ReportesAdminMenuManager::PorcentajeTicketsCompletadosPorUsuario(){
             if( ticket.getIdEmpleado() == user.getIdUsuario() ) {
                 total ++;
                 // cambiar verificacion con estado una vez que lo incorporen
-                if(!ticket.getFechaFinalizada().toString().empty() || ticket.getStatus() == "Finalizado"){
+                if(ticket.getFechaFinalizada().getAnio()!=0 || ticket.getStatus() == "Finalizado"){
                     finalizados ++;
                 }
             }

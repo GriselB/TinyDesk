@@ -190,7 +190,7 @@ bool TicketManager::finalizarTicketUsuario(int idProyecto, int idSprint, int idT
         return false;
     }
 
-    if (!t.getFechaFinalizada().toString().empty()) {
+    if (t.getFechaFinalizada().getAnio()!=0) {
         cout << "Este ticket ya fue finalizado." << endl;
         return false;
     }
