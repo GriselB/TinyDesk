@@ -95,4 +95,10 @@ bool fechaMenorOIgual(Fecha esMenor, Fecha esMayor) {
     return true;
 }
 
+std::string evaluarCV(double cv){
+    if (cv<=20) return std::string("rendimiento del usuario muy constante");
+    if (cv<=30) return std::string("rendimiento del usuario bastante constante");
+    if (cv<=40) return std::string("rendimiento del usuario variable");
+    return std::string("rendimiento del usuario muy malo");
+}
 
