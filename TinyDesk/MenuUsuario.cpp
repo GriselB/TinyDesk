@@ -59,7 +59,7 @@ void MenuUsuario::ejecutarOpcion(int opcion) {
         case 2:
             finalizarTicket();
             break;
-            
+
         case 3:
             reportes();
 
@@ -85,6 +85,8 @@ void MenuUsuario::finalizarTicket(){
 }
 
 void MenuUsuario::reportes(){
-    
+    clear();
+    ReportesUsuarioMenu reportesUsuarioMenu;
+    reportesUsuarioMenu.run("Reportes de Usuario");
 }
 

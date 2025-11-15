@@ -67,6 +67,14 @@
 		<Unit filename="ReportesAdminMenu.h" />
 		<Unit filename="ReportesAdminMenuManager.cpp" />
 		<Unit filename="ReportesAdminMenuManager.h" />
+		<Unit filename="ReportesUsuarioMenu.cpp" />
+		<Unit filename="ReportesUsuarioMenu.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="ReportesUsuarioMenuManager.cpp" />
+		<Unit filename="ReportesUsuarioMenuManager.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="Rol.cpp" />
 		<Unit filename="Rol.h" />
 		<Unit filename="Roles.dat" />

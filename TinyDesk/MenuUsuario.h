@@ -8,6 +8,7 @@
 #pragma once
 #include "SesionArchivo.h"
 #include "TareasUsuarioManager.h"
+#include "ReportesUsuarioMenu.h"
 
 class MenuUsuario {
 private:

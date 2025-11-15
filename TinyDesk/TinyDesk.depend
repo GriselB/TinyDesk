@@ -1148,9 +1148,10 @@
 	"UsuarioManager.h"
 	<cmath>
 
-1763172308 c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\menuusuario.h
+1763176982 c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\menuusuario.h
 	"SesionArchivo.h"
 	"TareasUsuarioManager.h"
+	"ReportesUsuarioMenu.h"
 
 1763172308 c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\tareasusuariomanager.h
 	"SesionArchivo.h"
@@ -1208,7 +1209,7 @@
 	"MenuAdmin.h"
 	"utils.h"
 
-1763172308 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\menuusuario.cpp
+1763176888 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\menuusuario.cpp
 	<iostream>
 	"MenuUsuario.h"
 	"utils.h"
@@ -1234,7 +1235,7 @@
 	"Proyecto.h"
 	"ProyectoArchivo.h"
 
-1763175678 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\proyectomanager.cpp
+1763175791 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\proyectomanager.cpp
 	<iostream>
 	"ProyectoManager.h"
 	"Proyecto.h"
@@ -1323,4 +1324,23 @@
 1763172308 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\utils.cpp
 	<iostream>
 	"utils.h"
+
+1763176606 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\reportesusuariomenu.cpp
+	<iostream>
+	"ReportesUsuarioMenu.h"
+
+1763177054 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\reportesusuariomenumanager.cpp
+	<iostream>
+	"ReportesUsuarioMenuManager.h"
+
+1763176433 c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\reportesusuariomenu.h
+	<cstring>
+	"ReportesUsuarioMenuManager.h"
+
+1763176510 c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\reportesusuariomenumanager.h
+	"ProyectoManager.h"
+	"SprintManager.h"
+	"TicketManager.h"
+	"UsuarioManager.h"
+	<cmath>
 
