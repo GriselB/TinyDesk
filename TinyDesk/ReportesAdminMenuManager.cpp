@@ -77,28 +77,26 @@ void ReportesAdminMenuManager::PorcentajeTicketsCompletadosPorUsuario(){
                 double desvio = sqrt(varianza);
                 double cv = (desvio / finalizados) * 100.0;
                 
-                cout << "--- Tickets Finalizados en total ---" << endl;
+                cout << "___ Tickets Finalizados en total ___" << endl;
                 cout << "Porcentaje completados: " << porcentaje << "%" << endl;
-                cout << "Desvío estándar: " << round(desvio * 10000.0) / 10000.0
-                << "  -> Dispersión del desempeño" << endl;
-                cout << "Coeficiente de variación: " << round(cv * 100.0) / 100.0
-                << "% -> Consistencia del desempeño" << endl;
+                cout << "Desvío estándar: "
+                << round(desvio * 10000.0) / 10000.0 << "  -> Dispersión del promedio" << endl;
+                cout << "Coeficiente de variación: "
+                << round(cv * 100.0) / 100.0 << evaluarCV(cv) << endl;
                 
                 if(finalizadosATiempo > 0){
-                    cout << "--- Tickets Finalizados A Tiempo ---" << endl;
-                    
                     float mediaATiempo = finalizadosATiempo / float(totalTicketsUsuario);
                     double porcentajeATiempo = round(mediaATiempo * 10000.0) / 100.0;
                     double varianzaATiempo = totalTicketsUsuario * mediaATiempo * (1 - mediaATiempo);
                     double desvioATiempo = sqrt(varianzaATiempo);
                     double cvATiempo = (desvioATiempo / finalizadosATiempo) * 100.0;
                     
-                    
-                    cout << "Porcentaje a tiempo: " << porcentajeATiempo << "%" << endl;
-                    cout << "Desvío a tiempo: " << round(desvioATiempo * 10000.0) / 10000.0 << endl;
-                    cout << "Coeficiente de variación a tiempo: "
-                    << round(cvATiempo * 100.0) / 100.0
-                    << "% -> Consistencia en cumplir dentro de la fecha" << endl;
+                    cout << "___ Tickets Finalizados A Tiempo ___" << endl;
+                    cout << "Porcentaje, a tiempo: " << porcentajeATiempo << "%" << endl;
+                    cout << "Desvío, a tiempo: "
+                    << round(desvioATiempo * 10000.0) / 10000.0 << "  -> Dispersión del promedio" << endl;
+                    cout << "Coeficiente de variación, a tiempo: "
+                    << round(cvATiempo * 100.0) / 100.0 << evaluarCV(cvATiempo) << endl;
                 } else {
                     cout << "El usuario no completó ninguna tarea a tiempo." << endl;
                 }
