@@ -6,6 +6,7 @@
 //
 
 #pragma once
+#include "area.h"
 
 class Sesion {
 private:
