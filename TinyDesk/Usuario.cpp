@@ -11,67 +11,12 @@
 
 using namespace std;
 
-void Usuario::Cargar() {
-
-    string nombre, apellido, email, pass;
-    int idArea, idRol;
-
-    cout << "Nombre: ";
-    cin>>nombre;
-    setNombre(nombre);
-
-    cout << "Apellido: ";
-    cin>>apellido;
-    setApellido(apellido);
-
-    cout << "Email: ";
-    cin>>email;
-    setEmail(email);
-
-    cout << "Password: ";
-    cin>>pass;
-    setPassword(pass);
-
-    do{
-        _area.mostrarOpciones();
-        
-        cout << "ID área: ";
-        cin >> idArea;
-    }while(idArea < 1 or idArea > 5);
-    setIdArea(idArea);
-    
-    do{
-        cout << "ID de rol (1 para admin, 2 para empleado) : ";
-        cin >> idRol;
-    }while(idRol != 1 and idRol != 2);
-    setIdRol(idRol);
-
-    setActivo(true);
-}
-
-void Usuario::Mostrar() {
-    const string AREAS[5] = {"Administracion", "Backend", "Frontend", "QA", "UX/UI"};
-    const string ROLES[2] = {"Administrador", "Usuario"};
-    
-    cout<<"ID Usuario: "<<getIdUsuario()<<endl;
-    cout<<"Nombre: "  <<getNombre()<<endl;
-    cout<<"Apellido: "<<getApellido()<<endl;
-    cout<<"Email: "<<getEmail()<<endl;
-    cout<<"ID Área: "<<getIdArea()<<endl;
-    cout<<"ID Rol: "<<getIdRol()<<endl;
-    int idArea = getIdArea();
-    cout << "Area: " << AREAS[idArea-1] <<endl;
-    int idRol = getIdRol();
-    cout << "Rol: "<< ROLES[idRol-1] <<endl;
-    cout<<"Activo: "<<(getActivo() ? "Sí" : "No") << "\n";
-}
-
 string Usuario::getNombre() { return _nombre; }
 string Usuario::getPassword() { return _password; }
 string Usuario::getApellido() { return _apellido; }
 string Usuario::getEmail() { return _email; }
 int Usuario::getIdUsuario() { return _idUsuario; }
-int Usuario::getIdArea() { return _idArea; }
+Area Usuario::getArea() { return _area; }
 int Usuario::getIdRol() { return _idRol; }
 bool Usuario::getActivo() { return _activo; }
 
@@ -99,10 +44,13 @@ void Usuario::setIdUsuario(int idUsuario){
     _idUsuario = idUsuario;
 }
 
-void Usuario::setIdArea(int idArea){
-    _idArea = idArea;
+//void Usuario::setIdArea(int idArea){
+//    _idArea = idArea;
+//}
+void Usuario::setArea(Area &area)
+{
+   _area = area;
 }
-
 void Usuario::setIdRol(int idRol){
     _idRol = idRol;
 }

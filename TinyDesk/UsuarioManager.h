@@ -7,8 +7,6 @@
 
 #pragma once
 #include <string>
-#include "Usuario.h"
-#include "Sesion.h"
 #include "UsuarioArchivo.h"
 #include "ArchivoRol.h"
 #include "SesionArchivo.h"
@@ -22,8 +20,11 @@ public:
     void mostrarUsuarios();
     int iniciarSesion();
     void eliminarUsuario();
-    bool verificarUsuarioArea(int usuarioId, int area);
+//    bool verificarUsuarioArea(int usuarioId, int area);
     bool existeUsuario(int usuarioId);
+    void cargarUsuario(Usuario &user);
+    void mostrarUsuario(Usuario &usuario);
+    
 
 private:
     UsuarioArchivo _repo;
@@ -31,4 +32,3 @@ private:
 
     bool existeEmail(std::string email);
 };
-

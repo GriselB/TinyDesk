@@ -10,7 +10,8 @@
 class Sesion {
 private:
     int  _idUsuario;
-    int  _idArea;
+    //int  _idArea;
+    Area _area;
     int  _idRol;
     char _nombre[20];
     char _apellido[20];
@@ -18,24 +19,22 @@ private:
 public:
     Sesion();
 
-    Sesion(int idUsuario, int idArea, int idRol, std::string nombre, std::string apellido);
+    Sesion(int idUsuario, Area &area, int idRol, std::string nombre, std::string apellido);
 
     // Setters
     void setIdUsuario(int v);
-    void setIdArea(int v);
+    void setArea(Area &area);
     void setIdRol(int v);
     void setNombre(std::string v);
     void setApellido(std::string v);
 
     // Getters
     int  getIdUsuario();
-    int  getIdArea();
+    Area getArea();
     int  getIdRol();
     std::string getNombre();
     std::string getApellido();
 
     // Metodos
     void clear();
-
-//    bool valida() { return _idUsuario > 0; }
 };
