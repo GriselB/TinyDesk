@@ -22,29 +22,20 @@ string Proyecto::getDescripcion()
     return _descripcion;
 }
 
-string Proyecto::getFechaInicio()
-{
-    return _fechaInicio.toString();
-}
-Fecha Proyecto::getFechaInicioTipoFecha()
+
+Fecha Proyecto::getFechaInicio()
 {
     return _fechaInicio;
 }
 
-string Proyecto::getFechaFin()
-{
-    return _fechaFin.toString();
-}
-Fecha Proyecto::getFechaFinTipoFecha()
+
+Fecha Proyecto::getFechaFin()
 {
     return _fechaFin;
 }
 
-string Proyecto::getFechaFinalizada()
-{
-    return _fechaFinalizada.toString();
-}
-Fecha Proyecto::getFechaFinalizadaTipoFecha()
+
+Fecha Proyecto::getFechaFinalizada()
 {
     return _fechaFinalizada;
 }
@@ -120,10 +111,10 @@ void Proyecto::mostrar()
     cout<<"Nombre del proyecto: "<<getNombre()<<endl;
     cout<<"Id del proyecto: "<<getIdProyecto()<<endl;
     cout<<"Descripción del proyecto: "<<getDescripcion()<<endl;
-    cout<<"Fecha de inicio del proyecto: "<<getFechaInicio()<<endl;
-    cout<<"Fecha de fin del proyecto: "<<getFechaFin()<<endl;
+    cout<<"Fecha de inicio del proyecto: "<<getFechaInicio().toString()<<endl;
+    cout<<"Fecha de fin del proyecto: "<<getFechaFin().toString()<<endl;
     if(getIdEstado()==2)
-        cout<<"Fecha de finalización del proyecto: "<<getFechaFinalizada()<<endl;
+        cout<<"Fecha de finalización del proyecto: "<<getFechaFinalizada().toString()<<endl;
     cout<<"Estado del proyecto: "<<estado.getNombreEstado(getIdEstado())<<endl;
     cout<<"--------------------------------"<<endl;
 }

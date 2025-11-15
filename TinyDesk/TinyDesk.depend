@@ -1072,7 +1072,7 @@
 	"Proyecto.h"
 	"ProyectoArchivo.h"
 
-1763172308 c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\proyecto.h
+1763175519 c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\proyecto.h
 	<string>
 	"Fecha.h"
 
@@ -1221,7 +1221,7 @@
 	<iostream>
 	"ModificacionAdminMenuManager.h"
 
-1763172308 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\proyecto.cpp
+1763175609 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\proyecto.cpp
 	<cstring>
 	<iostream>
 	"Proyecto.h"
@@ -1234,7 +1234,7 @@
 	"Proyecto.h"
 	"ProyectoArchivo.h"
 
-1763172308 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\proyectomanager.cpp
+1763175678 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\proyectomanager.cpp
 	<iostream>
 	"ProyectoManager.h"
 	"Proyecto.h"
@@ -1302,7 +1302,7 @@
 	<iostream>
 	"TicketManager.h"
 
-1763173486 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\ticketmanager.cpp
+1763175474 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\ticketmanager.cpp
 	<iostream>
 	"TicketManager.h"
 	"Ticket.h"

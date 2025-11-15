@@ -126,14 +126,13 @@ void ProyectoManager::finalizarProyecto()
         return;
     }
     proyecto.setFechaFinalizada();
-    Fecha a =  proyecto.getFechaFinTipoFecha();
-    Fecha b = proyecto.getFechaFinalizadaTipoFecha();
-    cout<<a.getAnio();
+    Fecha a =  proyecto.getFechaFin();
+    Fecha b = proyecto.getFechaFinalizada();
     while(!fechaMenorOIgual(a,b))
     {
-        cout<<"Fecha de finalizacion posterior a fecha de fin, fecha invalida"<<endl;
+        cout<<"Fecha de finalizacion posterior a fecha de fin esperada. Fecha invalida"<<endl;
         proyecto.setFechaFinalizada();
-        b = proyecto.getFechaFinalizadaTipoFecha();
+        b = proyecto.getFechaFinalizada();
     }
     proyecto.setIdEstado(2);
     FILE *pFile=fopen("proyectos.dat","rb+");
