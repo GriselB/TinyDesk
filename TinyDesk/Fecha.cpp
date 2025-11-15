@@ -106,15 +106,4 @@ string Fecha::toString()
   return to_string(_dia) + "/"+ to_string(_mes) + "/" + to_string(_anio);
 }
 
-bool Fecha::fechaMenorOIgual(Fecha esMenor, Fecha esMayor) {
-    if (esMenor.getAnio() < esMayor.getAnio()) return true;
-    if (esMenor.getAnio() > esMayor.getAnio()) return false;
 
-    if (esMenor.getMes() < esMayor.getMes()) return true;
-    if (esMenor.getMes() > esMayor.getMes()) return false;
-
-    if (esMenor.getDia() < esMayor.getDia()) return true;
-    if (esMenor.getDia() > esMayor.getDia()) return false;
-
-    return true;
-}

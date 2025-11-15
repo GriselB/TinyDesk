@@ -17,13 +17,13 @@ std::string cargarCadena()
 
 int buscarMaximo(int vec[], int cant){
   int indexMax = 0;
-  
+
   for(int i=1; i<cant; i++){
     if(vec[i] > vec[indexMax]){
-      indexMax = i;    
-    }  
+      indexMax = i;
+    }
   }
-  
+
   return indexMax;
 }
 
@@ -80,6 +80,19 @@ void pause() {
             }
         }
     #endif
+}
+
+bool fechaMenorOIgual(Fecha esMenor, Fecha esMayor) {
+    if (esMenor.getAnio() > esMayor.getAnio()) return false;
+    if (esMenor.getAnio() < esMayor.getAnio()) return true;
+
+    if (esMenor.getMes() < esMayor.getMes()) return true;
+    if (esMenor.getMes() > esMayor.getMes()) return false;
+
+    if (esMenor.getDia() < esMayor.getDia()) return true;
+    if (esMenor.getDia() > esMayor.getDia()) return false;
+
+    return true;
 }
 
 

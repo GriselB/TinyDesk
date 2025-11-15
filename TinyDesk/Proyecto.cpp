@@ -26,16 +26,29 @@ string Proyecto::getFechaInicio()
 {
     return _fechaInicio.toString();
 }
+Fecha Proyecto::getFechaInicioTipoFecha()
+{
+    return _fechaInicio;
+}
 
 string Proyecto::getFechaFin()
 {
     return _fechaFin.toString();
+}
+Fecha Proyecto::getFechaFinTipoFecha()
+{
+    return _fechaFin;
 }
 
 string Proyecto::getFechaFinalizada()
 {
     return _fechaFinalizada.toString();
 }
+Fecha Proyecto::getFechaFinalizadaTipoFecha()
+{
+    return _fechaFinalizada;
+}
+
 
 int Proyecto::getIdEstado()
 {
@@ -92,6 +105,13 @@ void Proyecto::cargar()
     setDescripcion(descripcion);
     setFechaInicio();
     setFechaFin();
+    while(!fechaMenorOIgual(_fechaInicio,_fechaFin))
+    {
+        cout<<"Fecha de Fin anterior a Fecha de Inicio"<<endl;
+        cout<<"Ingrese una fecha valida"<<endl;
+        setFechaInicio();
+        setFechaFin();
+    }
     setIdEstado(1);
 }
 void Proyecto::mostrar()

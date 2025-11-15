@@ -9,8 +9,11 @@ public:
     std::string getNombre();
     std::string getDescripcion();
     std::string getFechaInicio();
+    Fecha getFechaInicioTipoFecha();
     std::string getFechaFin();
+    Fecha getFechaFinTipoFecha();
     std::string getFechaFinalizada();
+    Fecha getFechaFinalizadaTipoFecha();
     int getIdEstado();
     void setIdProyecto(int idProyecto);
     void setNombre(std::string nombre);

@@ -18,8 +18,6 @@ class Fecha
     void setAnio(int &anio);
 
     bool comprobarBisiesto(int anio);
-    
-    bool fechaMenorOIgual(Fecha esMenor,Fecha esMayor);
 
     std::string toString(); // DD/MM/YYYY
 
