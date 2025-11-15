@@ -3,6 +3,8 @@
 #include "ProyectoManager.h"
 #include "SprintManager.h"
 #include "TicketManager.h"
+#include "UsuarioManager.h"
+#include <cmath>
 
 class ReportesAdminMenuManager {
 public:
