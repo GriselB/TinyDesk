@@ -4,6 +4,7 @@
 #include "SprintManager.h"
 #include "TicketManager.h"
 #include "UsuarioManager.h"
+#include "Sesion.h"
 #include <cmath>
 
 class ReportesUsuarioMenuManager {
