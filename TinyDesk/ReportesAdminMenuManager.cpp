@@ -38,6 +38,7 @@ void ReportesAdminMenuManager::PorcentajeTicketsCompletadosPorUsuario(){
     for(int i=0; i<cantidadUsuarios; i++){
         Usuario user = usuarioRepo.leer(i);
         if( !user.getActivo() ) continue;
+        if(user.getIdRol() == 1) continue;
         
         int totalTicketsUsuario = 0;
         int finalizados = 0;
