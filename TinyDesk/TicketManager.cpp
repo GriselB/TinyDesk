@@ -158,8 +158,15 @@ void TicketManager::finalizarTicket() {
     getline(cin, nuevoStatus);
     if (nuevoStatus.empty()) nuevoStatus = "Finalizado";
     r.setStatus(nuevoStatus);
-
+    Fecha a = r.getFechaInicio();
     r.setFechaFinalizada();
+    Fecha b = r.getFechaFinalizada();
+    while(!fechaMenorOIgual(a,b))
+    {
+        cout<<"Fecha de finalizacion anteror a fecha de inicio, fecha invalida"<<endl;
+        r.setFechaFinalizada();
+        b = r.getFechaFinalizada();
+    }
 
     if (_repo.guardar(r)) cout << "Ticket finalizado.\n";
     else cout << "Error al actualizar el ticket.\n";

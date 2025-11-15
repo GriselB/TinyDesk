@@ -38,16 +38,17 @@ std::string Ticket::getDescripcionTarea()
 
 Fecha Ticket::getFechaInicio()
 {
-    return _fechaInicio.toString();
+    return _fechaInicio;
 }
 
 Fecha Ticket::getFechaFin()
 {
-    return _fechaFin.toString();
+    return _fechaFin;
 }
 
-Fecha Ticket::getFechaFinalizada(){
-    return _fechaFinalizada.toString();
+Fecha Ticket::getFechaFinalizada()
+{
+    return _fechaFinalizada;
 }
 
 bool Ticket::getActivo() const {

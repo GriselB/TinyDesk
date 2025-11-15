@@ -131,7 +131,7 @@ void ProyectoManager::finalizarProyecto()
     cout<<a.getAnio();
     while(!fechaMenorOIgual(a,b))
     {
-        cout<<"Fecha de finalizacion anterior a fecha de fin, fecha invalida"<<endl;
+        cout<<"Fecha de finalizacion posterior a fecha de fin, fecha invalida"<<endl;
         proyecto.setFechaFinalizada();
         b = proyecto.getFechaFinalizadaTipoFecha();
     }
