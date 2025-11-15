@@ -8,7 +8,6 @@ void ReportesAdminMenuManager::PorcentajeTicketsCompletadosPorUsuario(){
     clear();
     UsuarioArchivo usuarioRepo;
     TicketArchivo ticketRepo;
-    Fecha fecha;
     const string AREAS[5] = {"Administracion", "Backend", "Frontend", "QA", "UX/UI"};
     
     int cantidadUsuarios = usuarioRepo.getCantidadRegistros();
@@ -54,7 +53,7 @@ void ReportesAdminMenuManager::PorcentajeTicketsCompletadosPorUsuario(){
                 // cambiar verificacion con estado una vez que lo incorporen
                 if(ticket.getStatus() == "Finalizado"){
                     finalizados ++;
-                    if(fecha.fechaMenorOIgual(ticket.getFechaFinalizada(), ticket.getFechaFin())){
+                    if(fechaMenorOIgual(ticket.getFechaFinalizada(), ticket.getFechaFin())){
                         finalizadosATiempo++;
                     }
                 }
