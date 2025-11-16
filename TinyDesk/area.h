@@ -11,7 +11,7 @@ class Area
   public:
     //getter
     int getIdArea();
-    std::string getNombre();
+    std::string getNombreArea();
     
     //setter
     void setIdArea(int idArea);

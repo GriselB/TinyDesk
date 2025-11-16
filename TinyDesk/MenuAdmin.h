@@ -7,6 +7,10 @@
 
 #pragma once
 #include "ListadoAdminMenu.h"
+#include "CreacionAdminMenu.h"
+#include "modificacionAdminMenu.h"
+#include "ReportesAdminMenu.h"
+#include "SesionArchivo.h"
 
 class MenuAdmin {
 private:

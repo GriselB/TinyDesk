@@ -16,14 +16,14 @@ private:
     char _password[50];
     char  _apellido[20];
     char  _email[30];
-    int  _idArea;
+    //int  _idArea;
     int   _idRol;
     bool  _activo;
     Area _area;
     
 public:
-    void Cargar();
-    void Mostrar();
+//    void Cargar();
+//    void Mostrar();
     
     //getters
     std::string getNombre();
@@ -31,7 +31,8 @@ public:
     std::string getApellido();
     std::string getEmail();
     int  getIdUsuario();
-    int  getIdArea();
+    //int  getIdArea();
+    Area getArea();
     int  getIdRol();
     bool getActivo();
     
@@ -41,7 +42,8 @@ public:
     void setApellido(std::string apellido);
     void setEmail(std::string email);
     void setIdUsuario(int idUsuario);
-    void setIdArea(int idArea);
+    //void setIdArea(int idArea);
+    void setArea(Area &area);
     void setIdRol(int idRol);
     void setActivo(bool activo);
 };

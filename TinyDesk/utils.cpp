@@ -17,19 +17,39 @@ std::string cargarCadena()
 
 int buscarMaximo(int vec[], int cant){
   int indexMax = 0;
-  
+
   for(int i=1; i<cant; i++){
     if(vec[i] > vec[indexMax]){
-      indexMax = i;    
-    }  
+      indexMax = i;
+    }
   }
-  
+
   return indexMax;
 }
+
+/*void cleanBuffer() {
+    int aux;
+    while ((aux = std::cin.get()) != '\n' && aux != EOF) {}
+}*/
+
 
 void cleanBuffer() {
     int aux;
     while ((aux = std::cin.get()) != '\n' && aux != EOF) {}
+}
+
+void clear() {
+    #ifdef _WIN64
+        system("cls");
+    #endif
+
+    #ifdef __linux__
+        system("clear");
+    #endif
+
+    #ifdef __APPLE__
+        system("clear");
+    #endif
 }
 
 void pause() {
@@ -62,16 +82,23 @@ void pause() {
     #endif
 }
 
-void clear() {
-    #ifdef _WIN64
-        system("cls");
-    #endif
+bool fechaMenorOIgual(Fecha esMenor, Fecha esMayor) {
+    if (esMenor.getAnio() > esMayor.getAnio()) return false;
+    if (esMenor.getAnio() < esMayor.getAnio()) return true;
 
-    #ifdef __linux__
-        system("clear");
-    #endif
+    if (esMenor.getMes() < esMayor.getMes()) return true;
+    if (esMenor.getMes() > esMayor.getMes()) return false;
 
-    #ifdef __APPLE__
-        system("clear");
-    #endif
+    if (esMenor.getDia() < esMayor.getDia()) return true;
+    if (esMenor.getDia() > esMayor.getDia()) return false;
+
+    return true;
 }
+
+std::string evaluarCV(double cv){
+    if (cv<=20) return std::string("rendimiento del usuario muy constante");
+    if (cv<=30) return std::string("rendimiento del usuario bastante constante");
+    if (cv<=40) return std::string("rendimiento del usuario variable");
+    return std::string("rendimiento del usuario muy malo");
+}
+

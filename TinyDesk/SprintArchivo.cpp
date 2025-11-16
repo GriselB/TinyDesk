@@ -105,12 +105,12 @@ int SprintArchivo::getCantidadRegistros()
   return cantidad;
 }
 
-int SprintArchivo::getNuevoID()
+int SprintArchivo::getNuevoID(int idProyecto)
 {
-  return getCantidadRegistros() + 1;
+  return contarPorProyecto( idProyecto) +1;
 }
 
-int SprintArchivo::buscarID(int id)
+int SprintArchivo::buscarID(int idSprint, int idProyecto)
 {
   Sprint registro;
   FILE *pFile;
@@ -125,7 +125,7 @@ int SprintArchivo::buscarID(int id)
 
   while (fread(&registro, sizeof(Sprint), 1, pFile))
   {
-    if (registro.getIdSprint() == id)
+    if (registro.getIdSprint() == idSprint && registro.getIdProyecto() == idProyecto)
     {
       pos = ftell(pFile) / sizeof(Sprint) - 1;
       break;
@@ -141,8 +141,25 @@ bool SprintArchivo::eliminar(int pos){
   Sprint sprint = leer(pos);
   
   if(sprint.getIdSprint() != -1){
-      sprint.setActivo(false);
+      sprint.setIdEstado(0);
     return guardar(pos, sprint);
   }
   return false;
+}
+
+int SprintArchivo::contarPorProyecto(int idProyecto) {
+    FILE *p = fopen("sprints.dat", "rb");
+    if (p == nullptr) return 0;
+
+    Sprint sprint;
+    int contador = 0;
+
+    while (fread(&sprint, sizeof(Sprint), 1, p)) {
+        if (sprint.getIdProyecto() == idProyecto) {
+            contador++;
+        }
+    }
+
+    fclose(p);
+    return contador;
 }

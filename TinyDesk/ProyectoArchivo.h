@@ -12,6 +12,7 @@ public:
     int getCantidadRegistros();
     int getNuevoID();
     int buscarID(int id);
+    int buscarIDyAlta(int id);
 
 
 private:

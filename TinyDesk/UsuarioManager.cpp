@@ -12,13 +12,69 @@ using namespace std;
 
 UsuarioManager::UsuarioManager() { }
 
+void UsuarioManager::cargarUsuario(Usuario &user) {
+
+    string nombre, apellido, email, pass;
+    int idRol;
+    Area area;
+
+    cout << "Nombre: ";
+    cin>>nombre;
+    user.setNombre(nombre);
+
+    cout << "Apellido: ";
+    cin>>apellido;
+    user.setApellido(apellido);
+
+    cout << "Email: ";
+    cin>>email;
+    user.setEmail(email);
+
+    cout << "Password: ";
+    cin>>pass;
+    user.setPassword(pass);
+
+    
+    do{
+        cout << "ID de rol (1 para admin, 2 para empleado) : ";
+        cin >> idRol;
+    }while(idRol != 1 and idRol != 2);
+    user.setIdRol(idRol);
+    
+    if(idRol==2){
+        area.seleccionar();
+        user.setArea(area);
+    }
+    if(idRol==1){
+        area.setIdArea(1);
+        area.setNombreArea("Administración");
+        user.setArea(area);
+    }
+
+    user.setActivo(true);
+}
+
+void UsuarioManager::mostrarUsuario(Usuario &usuario) {
+    const string ROLES[2] = {"Administrador", "Usuario"};
+    
+    cout<<"ID Usuario: "<<usuario.getIdUsuario()<<endl;
+    cout<<"Nombre: "  <<usuario.getNombre()<<endl;
+    cout<<"Apellido: "<<usuario.getApellido()<<endl;
+    cout<<"Email: "<<usuario.getEmail()<<endl;
+    cout<<"ID Rol: "<<usuario.getIdRol()<<endl;
+    cout<<"Area: " << usuario.getArea().getNombreArea() <<endl;
+    int idRol = usuario.getIdRol();
+    cout<<"Rol: "<< ROLES[idRol-1] <<endl;
+    cout<<"Activo: "<<(usuario.getActivo() ? "Sí" : "No") << "\n";
+}
+
 void UsuarioManager::crearUsuario() {
     Usuario user;
     user.setIdUsuario(_repo.getNuevoID());
 
     cout << "---- CREAR NUEVO USUARIO ----" << endl;
 
-    user.Cargar();
+    cargarUsuario(user);
 
     if (existeEmail(user.getEmail())) {
         cout << "Error: ya existe un usuario con ese email." << endl;
@@ -59,7 +115,7 @@ void UsuarioManager::mostrarUsuarios() {
 
     cout<<"                        ---- LISTA DE USUARIOS ----" << endl;
     for (int i = 0; i < cantReg; i++) {
-        reg[i].Mostrar();
+        mostrarUsuario(reg[i]);
         cout << "--------------------------------" << endl;
     }
 
@@ -84,6 +140,17 @@ int UsuarioManager::iniciarSesion() {
         if (user.getEmail()==email && user.getPassword()==pass && user.getActivo()) {
             cout << "Login OK."<<endl;
             cout << "------- Bienvenido, " << user.getNombre() << "!  -------" << endl;
+            
+            Sesion sesion;
+            sesion.setIdUsuario(user.getIdUsuario());
+            Area area = user.getArea();
+            sesion.setArea(area);
+            sesion.setIdRol(user.getIdRol());
+            sesion.setNombre(user.getNombre());
+            sesion.setApellido(user.getApellido());
+            
+            SesionArchivo sesArch;
+            sesArch.guardar(sesion);
             pause();
             
             int idRol = user.getIdRol();
@@ -113,6 +180,18 @@ bool UsuarioManager::existeEmail(string email) {
     return false;
 }
 
+bool UsuarioManager::existeUsuario(int usuarioId){
+    int pos = _repo.buscarID(usuarioId);
+    if(pos<0) return false;
+    
+    Usuario user = _repo.leer(pos);
+    
+    if(user.getIdUsuario() == -1) return false;
+    
+    return user.getActivo();
+}
+
+
 void UsuarioManager::eliminarUsuario(){
     int id, pos;
     Usuario usuario;
@@ -120,26 +199,29 @@ void UsuarioManager::eliminarUsuario(){
     char eliminado;
     
     cout << "---- ELIMINAR USUARIO ----" << endl;
-    cout << "Ingrese ID del Usuario a desactivar: ";
+    cout << "Ingrese ID del Usuario a desactivar (0 para salir): ";
     cin >> id;
 
+    if(id == 0){
+        return;
+    }
     pos = _repo.buscarID(id);
     
     if (pos < 0) {
-        cout << "No existe un sprint con ese ID." << endl;
-        system("pause");
+        cout << "No existe un Usuario con ese ID." << endl;
+        pause();
         return;
     }
 
     usuario = _repo.leer(pos);
-    cout << "Informacion del Sprint: "<<endl;
+    cout << "Informacion del Usuario: "<<endl;
 
-    usuario.Mostrar();
+    mostrarUsuario(usuario);
      cout << endl << "Quiere eliminarlo S/N:";
      cin >> eliminado;
 
     if(eliminado== 's' || eliminado == 'S')
-    {        
+    {
       if(archivoUser.eliminar(pos))
       {
         cout << "El Usuario fue eliminado correctamente "<<endl;
@@ -150,5 +232,5 @@ void UsuarioManager::eliminarUsuario(){
       }
     }
     
-    system("pause");
+    pause();
 }

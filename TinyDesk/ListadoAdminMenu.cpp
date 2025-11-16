@@ -41,7 +41,8 @@ void ListadoAdminMenu::run(string titulo) {
                 
             case 4:
                 _listadoAdminManager.listarUsuarios();
-
+                break;
+                
             case 0:
                 break;
 

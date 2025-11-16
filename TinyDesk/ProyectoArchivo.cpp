@@ -47,7 +47,7 @@ int ProyectoArchivo::leerTodos(Proyecto registros[], int cantidad)
         return 0;
     }
 
-    result = fread(registros, sizeof(Proyecto), cantidad, pFile);  ////////////////////
+    result = fread(registros, sizeof(Proyecto), cantidad, pFile);
     fclose(pFile);
 
     return result;
@@ -92,6 +92,31 @@ int ProyectoArchivo::buscarID(int id)
     while (fread(&registro, sizeof(Proyecto), 1, pFile))
     {
         if (registro.getIdProyecto() == id)
+        {
+            pos = ftell(pFile) / sizeof(Proyecto) - 1;
+            break;
+        }
+    }
+    fclose(pFile);
+    return pos;
+}
+
+int ProyectoArchivo::buscarIDyAlta(int id)
+{
+    Proyecto registro;
+    FILE *pFile;
+    int pos = -1;
+
+    pFile = fopen(_nombreArchivo.c_str(), "rb");
+
+    if (pFile == nullptr)
+    {
+        return pos;
+    }
+
+    while (fread(&registro, sizeof(Proyecto), 1, pFile))
+    {
+        if (registro.getIdProyecto() == id && registro.getIdEstado() == 1)
         {
             pos = ftell(pFile) / sizeof(Proyecto) - 1;
             break;

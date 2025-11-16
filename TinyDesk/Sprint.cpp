@@ -4,6 +4,7 @@
 #include "Fecha.h"
 #include "Proyecto.h"
 #include "area.h"
+#include "Estado.h"
 
 using namespace std;
 
@@ -14,11 +15,11 @@ using namespace std;
 string Sprint::getNombre() 
 { 
   return string(_nombre);   
-}  
-
-bool Sprint::getActivo() 
-{ 
-  return _activo; 
+}
+  
+int Sprint::getIdEstado()
+{
+    return _idEstado;
 }
 
 int Sprint::getIdSprint()
@@ -31,25 +32,29 @@ int Sprint::getIdProyecto()
     return _idProyecto;
 }
 
-int Sprint::getIdArea()
+
+Area Sprint::getArea() 
+{ 
+  return _area; 
+}
+  
+
+string  Sprint::getFechaInicio()
 {
-    return _idArea;
+    return _fechaInicio.toString();
 }
 
-std::string Sprint::getStatus()
+string  Sprint::getFechaFin()
 {
-    return string(_status);
+    return _fechaFin.toString();
 }
 
-Fecha Sprint::getFechaInicio()
+string Sprint::getFechaFinalizada()
 {
-    return _fechaInicio;
+    return _fechaFinalizada.toString();
 }
 
-Fecha Sprint::getFechaFin()
-{
-    return _fechaFin;
-}
+
 
 // Setters
 
@@ -69,25 +74,25 @@ void Sprint::setIdProyecto(int idProyecto)
     _idProyecto = idProyecto;
 }
 
-void Sprint::setIdArea(int idArea)
+void Sprint::setArea(const Area &a) 
 {
-    _idArea = idArea;
+   _area = a; 
 }
 
-void Sprint::setStatus(std::string status)
+void Sprint::setIdEstado(int idEstado)
 {
-    strncpy(_status, status.c_str(), 19);
-    _status[19] = '\0';
+    _idEstado=idEstado;
 }
 
-void Sprint::setFechaInicio(const Fecha &f)
+
+void Sprint::setFechaInicio()
 {
-    _fechaInicio = f;
+    _fechaInicio = Fecha("inicio");
 }
 
-void Sprint::setFechaFin(const Fecha &f)
+void Sprint::setFechaFin()
 {
-    _fechaFin = f;
+    _fechaFin = Fecha("fin");
 }
 
 void Sprint::setFechaFinalizada()
@@ -95,6 +100,4 @@ void Sprint::setFechaFinalizada()
     _fechaFinalizada = Fecha("finalizacion");
 }
 
-void Sprint::setActivo(bool activo){
-    _activo = activo;
-}
+

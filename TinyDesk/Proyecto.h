@@ -10,8 +10,8 @@ public:
     std::string getDescripcion();
     Fecha getFechaInicio();
     Fecha getFechaFin();
-    int getIdEstado();
     Fecha getFechaFinalizada();
+    int getIdEstado();
     void setIdProyecto(int idProyecto);
     void setNombre(std::string nombre);
     void setDescripcion(std::string descripcion);

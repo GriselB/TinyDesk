@@ -10,9 +10,11 @@ public:
     ProyectoManager();
     void crearProyecto();
     void listarProyectos();
+    void listarProyectosNombreID();
     void mostrarProyectoPorId();
     void finalizarProyecto();
     void bajaLogicaProyecto();
+    void altaLogicaProyecto();
 private:
     ProyectoArchivo _repo;
 };

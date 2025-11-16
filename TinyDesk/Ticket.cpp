@@ -17,6 +17,10 @@ int Ticket::getIdSprint(){
     return _idSprint;
 }
 
+int Ticket::getIdProyecto(){
+    return _idProyecto;
+}
+
 std::string Ticket::getStatus()
 {
     return _status;
@@ -34,16 +38,17 @@ std::string Ticket::getDescripcionTarea()
 
 Fecha Ticket::getFechaInicio()
 {
-    return _fechaInicio.toString();
+    return _fechaInicio;
 }
 
 Fecha Ticket::getFechaFin()
 {
-    return _fechaFin.toString();
+    return _fechaFin;
 }
 
-Fecha Ticket::getFechaFinalizada(){
-    return _fechaFinalizada.toString();
+Fecha Ticket::getFechaFinalizada()
+{
+    return _fechaFinalizada;
 }
 
 bool Ticket::getActivo() const {
@@ -62,6 +67,10 @@ void Ticket::setIdTicket(int idTicket)
 
 void Ticket::setIdSprint(int idSprint){
     _idSprint = idSprint;
+}
+
+void Ticket::setIdProyecto(int idProyecto){
+    _idProyecto = idProyecto;
 }
 
 void Ticket::setStatus(std::string status)
