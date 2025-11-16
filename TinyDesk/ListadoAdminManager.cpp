@@ -51,10 +51,11 @@ void ListadoAdminManager::listarSprintsPorProyectos() {
         bool tieneSprint = false;
 
         for (int j = 0; j < cantSprints; j++) {
-            Sprint sprint = archivoSprint.leer(j);
+            int pos = archivoSprint.buscarID(j, i);
+            Sprint sprint = archivoSprint.leer(pos);
 
             if (sprint.getIdProyecto() == proyecto.getIdProyecto()) {
-                sprintMng.mostrar(j, true);
+                sprintMng.mostrar(pos, true);
                 cout << "-------------------------------" << endl;
                 tieneSprint = true;
             }
@@ -108,7 +109,8 @@ void ListadoAdminManager::listarTicketsPorSprints() {
         bool tieneSprint = false;
 
         for (int j = 0; j < cantSprints; j++) {
-            Sprint sprint = archivoSprint.leer(j);
+            int pos = archivoSprint.buscarID(j, i);
+            Sprint sprint = archivoSprint.leer(pos);
             if(sprint.getIdSprint() == -1) continue;
             if (sprint.getIdProyecto() != proyecto.getIdProyecto()) continue;
 
@@ -119,7 +121,9 @@ void ListadoAdminManager::listarTicketsPorSprints() {
 
             for (int k = 0; k < cantTickets; k++) {
                 Ticket ticket;
-                if(!archivoTicket.leer(k, ticket)) continue;
+                int pos = archivoTicket.buscarIDTicketSprintProyecto(k, i, j);
+                if(pos < 0) return;
+                if(!archivoTicket.leer(pos, ticket)) continue;
                 if(ticket.getIdProyecto() != proyecto.getIdProyecto()) continue;
                 if(ticket.getIdSprint() != sprint.getIdSprint()) continue;
 
@@ -127,18 +131,20 @@ void ListadoAdminManager::listarTicketsPorSprints() {
 
 
                 string usuarioAsignado = "-- sin usuario asignado --";
+                string apellidoUsuarioAsignado = "";
                 int idEmpleado = ticket.getIdEmpleado();
 
                 for (int u = 0; u < cantUsuarios; u++) {
                     Usuario user = archivoUsuario.leer(u);
                     if (user.getIdUsuario() == idEmpleado) {
                         usuarioAsignado = user.getNombre();
+                        apellidoUsuarioAsignado = user.getApellido();
                         break;
                     }
                 }
 
                 cout << "      • Ticket " << ticket.getIdTicket() << endl;
-                cout << "        Asignado a: " << usuarioAsignado << endl;
+                cout << "        Asignado a: " << usuarioAsignado << apellidoUsuarioAsignado << endl;
                 cout << "        Descripcion: " << ticket.getDescripcionTarea() << endl;
                 cout << "        Prioridad: " << ticket.getPrioridad() << endl;
                 cout << "        Fecha inicio: " << ticket.getFechaInicio().toString() << endl;
