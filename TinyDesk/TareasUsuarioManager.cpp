@@ -18,46 +18,43 @@ void TareasUsuarioManager::listarTareasUsuario() {
         pause();
         return;
     }
-
+    
     TicketManager ticketMgr;
     ProyectoArchivo archivoProyecto;
     SprintArchivo   archivoSprint;
     TicketArchivo   archivoTicket;
-
+    
     int cantProy = archivoProyecto.getCantidadRegistros();
     int cantSpr  = archivoSprint.getCantidadRegistros();
     int cantTick = archivoTicket.getCantidadRegistros();
-
+    
     bool hayTicket = false;
     int totalTicketsPendientes = 0;
-
-    // 2) PROYECTOS
+    
     for (int i = 0; i < cantProy; ++i) {
         Proyecto proy = archivoProyecto.leer(i);
         if (proy.getIdEstado() == -1) continue;
-
+        
         bool imprimioEncabezadoProyecto = false;
-
-        // 3) SPRINTS del proyecto actual
+        
         for (int j = 0; j < cantSpr; ++j) {
-            Sprint spr = archivoSprint.leer(j);
+            int pos = archivoSprint.buscarID(j, i);
+            Sprint spr = archivoSprint.leer(pos);
             if(spr.getIdSprint() == -1) continue;
             if (spr.getIdEstado()!= 2) continue;
             if (spr.getIdProyecto() != proy.getIdProyecto()) continue;
-
+            
             bool imprimioEncabezadoSprint = false;
-
-            // 4) TICKETS del (proyecto, sprint) y del USUARIO de sesión
+            
             for (int k = 0; k < cantTick; ++k) {
                 Ticket t;
-                if (!archivoTicket.leer(k, t)) continue;
-
+                int pos = archivoTicket.buscarIDTicketSprintProyecto(k, i, j);
+                if (!archivoTicket.leer(pos, t)) continue;
                 if (!t.getActivo()) continue;
-                ///Descomentar cuando ticket tenga idProyecto
-                //if (t.getIdProyecto() != proy.getIdProyecto()) continue;
+                if (t.getIdProyecto() != proy.getIdProyecto()) continue;
                 if (t.getIdSprint()   != spr.getIdSprint()) continue;
                 if (t.getIdEmpleado() != ses.getIdUsuario()) continue;
-
+                
                 if (!imprimioEncabezadoProyecto) {
                     cout << "=== PROYECTO " << proy.getIdProyecto() << " - " << proy.getNombre() << " ==="<<endl;
                     imprimioEncabezadoProyecto = true;
@@ -66,8 +63,7 @@ void TareasUsuarioManager::listarTareasUsuario() {
                     cout << "  -- Sprint #" << spr.getIdSprint() << endl;
                     imprimioEncabezadoSprint = true;
                 }
-
-                // Mostrar ticket
+                
                 ticketMgr.mostrarTicket(t);
                 cout << "-------------------------------"<<endl;
                 cout << "-------------------------------"<<endl;
@@ -76,7 +72,7 @@ void TareasUsuarioManager::listarTareasUsuario() {
             }
         }
     }
-
+    
     cout << "===================================================="<<endl;
     if(totalTicketsPendientes){
         cout << "Usted tiene " << totalTicketsPendientes << " tickets pendientes." << endl;
@@ -84,14 +80,13 @@ void TareasUsuarioManager::listarTareasUsuario() {
     if (!hayTicket) {
         cout << "Hora de pedir tareas nuevas. Usted no tiene tareas asignadas."<<endl;
     }
-
+    
     pause();
 }
 
 void TareasUsuarioManager::finalizarTicket() {
     clear();
 
-    // 1) Obtener usuario que inicio sesion
     Sesion ses;
     SesionArchivo sesArch;
     if (!sesArch.leer(ses)) {
@@ -115,7 +110,6 @@ void TareasUsuarioManager::finalizarTicket() {
 
     cout << "=========== TUS TICKETS ===========" <<endl;
 
-    // 2) Mostrar todos los tickets agrupados por proyecto y sprint
     for (int i = 0; i < cantProy; i++) {
         Proyecto proy = archivoProyecto.leer(i);
         if (proy.getIdProyecto() == -1) continue;
@@ -123,7 +117,8 @@ void TareasUsuarioManager::finalizarTicket() {
         bool imprimioProy = false;
 
         for (int j = 0; j < cantSpr; j++) {
-            Sprint spr = archivoSprint.leer(j);
+            int pos = archivoSprint.buscarID(j, i);
+            Sprint spr = archivoSprint.leer(pos);
             if (spr.getIdEstado() == 0 || spr.getIdEstado() == 2) continue;
             if (spr.getIdProyecto() != proy.getIdProyecto()) continue;
 
@@ -131,13 +126,11 @@ void TareasUsuarioManager::finalizarTicket() {
 
             for (int k = 0; k < cantTick; k++) {
                 Ticket t;
-                if (!archivoTicket.leer(k, t)) continue;
+                int pos = archivoTicket.buscarIDTicketSprintProyecto(k, i, j);
+                if (!archivoTicket.leer(pos, t)) continue;
+
                 if (!t.getActivo()) continue;
-
-                // Solo tickets del usuario
                 if (t.getIdEmpleado() != idUsuario) continue;
-
-                // Solo proyecto y sprint relacionados
                 if (t.getIdProyecto() != proy.getIdProyecto()) continue;
                 if (t.getIdSprint()   != spr.getIdSprint()) continue;
 
@@ -175,9 +168,7 @@ void TareasUsuarioManager::finalizarTicket() {
     cout << "=====================================" << endl;
     cout << "Seleccione el ticket a finalizar." << endl;
 
-    // 3) Pedimos las claves compuestas
     int idProyecto, idSprint, idTicket;
-
     cout << "ID Proyecto : ";
     cin >> idProyecto;
 
