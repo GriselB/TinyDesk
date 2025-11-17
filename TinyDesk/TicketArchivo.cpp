@@ -72,25 +72,7 @@ FILE* pFile = fopen(_nombreArchivo.c_str(), "rb");
     return -1;
 }
 
-int TicketArchivo::getNuevoID(int idProyecto, int idSprint){
-Ticket t;
-int ultimoId;
-
-    FILE* f = fopen(_nombreArchivo.c_str(), "rb");
-    if (!f) return -1;
-
-    while(fread(&t, sizeof(Ticket), 1, f) == 1){
-        if (t.getIdProyecto() == idProyecto && t.getIdSprint() == idSprint){
-            if (t.getIdTicket() > ultimoId)
-                ultimoId = t.getIdTicket();
-        }
-    }
-    fclose(f);
-    return ultimoId + 1;
-
-}
-
-int TicketArchivo::getNuevoIdTicketSprint(int idProyecto, int idSprint){
+int TicketArchivo::getNuevoIdTicket(int idProyecto, int idSprint){
     FILE* f = fopen(_nombreArchivo.c_str(), "rb");
     if (!f) return 1;
 
@@ -128,16 +110,7 @@ int TicketArchivo::buscarIDTicketSprintProyecto(int idTicket, int idProyecto, in
     return -1;
 }
 
-bool TicketArchivo::guardar(Ticket ticket){
-bool existe = false;
-    FILE *pFile = fopen(_nombreArchivo.c_str(), "ab");
-    if (pFile == nullptr) return existe;
-    size_t escritos = fwrite(&ticket, sizeof(Ticket), 1, pFile);
-    fclose(pFile);
-    return (escritos == 1);
-}
-
-bool TicketArchivo::guardarCambios(int pos, Ticket &t) {
+bool TicketArchivo::guardar(int pos, Ticket &t) {
     FILE* f = fopen(_nombreArchivo.c_str(), "rb+");
     if (!f) return false;
 
@@ -155,8 +128,7 @@ int pos = buscarIDTicketSprintProyecto(idTicket, idProyecto, idSprint);
 
     bool pudoLeer = leer(pos, ticket);
 
-    ticket.setActivo(false);
-    return guardarCambios(pos, ticket);
+    return guardar(pos, ticket);
   }
   return false;
 }

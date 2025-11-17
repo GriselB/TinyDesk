@@ -8,186 +8,89 @@ TicketManager::TicketManager(){
 }
 
 void TicketManager::mostrarTicket(Ticket ticket) {
-    cout << "ID: " << ticket.getIdTicket()
-         << " | Empleado: " << ticket.getIdEmpleado()
-         << " | Sprint: " << ticket.getIdSprint()
-         << " | Proyecto: " << ticket.getIdProyecto()
-         << " | Estado: " << ticket.getStatus()
-         << " | Prioridad: " << ticket.getPrioridad()
-         << " | Activo: " << (ticket.getActivo() ? "SI" : "NO")
-         << "\n    Descripcion: " << ticket.getDescripcionTarea()
-         << "\n";
+    cout << "======================== \n"
+         << " | ID: " << ticket.getIdTicket() << "\n"
+         << " | Empleado: " << ticket.getIdEmpleado() << "\n"
+         << " | Sprint: " << ticket.getIdSprint() << "\n"
+         << " | Proyecto: " << ticket.getIdProyecto() << "\n"
+         << " | Estado: " << ticket.getStatus() << "\n"
+         << " | Prioridad: " << ticket.getPrioridad() << "\n"
+         << " | Activo: " << (ticket.getStatus()) << "\n"
+         << " | Descripcion: " << ticket.getDescripcionTarea() << "\n"
+         << "======================== \n";
 }
 
 void TicketManager::crearTicket() {
-    Ticket t;
+Ticket t;
+Proyecto pro;
+Sprint spr;
 
-    //Proyecto pro;
-    //Sprint spr;
+string prioridad, descripcion, opcion;
+int idEmpleado;
 
-    int idEmpleado, idSprint=-1, idProyecto=-1;
-    string status, prioridad, descripcion;
 
-    proyectoM.listarProyectosNombreID();
-    cout << "Seleccione el id del proyecto a asignar:";
-    cin >> idProyecto;
-
-    // ¿Que manera hay de poder verificar si el numero de proyecto que ingreso existe sin acceder al repo desde el ticketManager? ¿Se puede hacer algo dentro del manager de proyecto?
-    //if (idProyecto == -1){
-        //clear();
-        //cout << "El numero ingresado no corresponde a un proyecto existente" << endl;
-        //pause();
-        //clear();
-        //}
-    //}
-
-    t.setIdProyecto(idProyecto);
     clear();
-
-    //while(idSprint == -1){
-    cout << "SPRINTS DISPONIBLES"<< endl;
-    cout << "---------------------"<< endl;
-    sprintM.listarSprints();
-    //sprint. <--- funcion para listar los sprints que tengan asociados el nro de proyecto que se selecciono antes
-
-
-    cout << "Seleccione el id del sprint a asignar:";
-    cin >> idSprint;
-
-    //idSprint = spr.getIdSprint(idSprint);
-
-    // Mismo caso que arriba, que se puede hacer para verificar que existe ese sprint y ese proyecto
-    //if (idSprint == -1){
-        //clear();
-        //cout << "El numero ingresado no corresponde a un sprint existente" << endl;
-        //pause();
-        //clear();
-        //}
-    //}
-    t.setIdSprint(idSprint);
-    clear();
-
-    int nuevoId = _repo.getNuevoID(idProyecto, idSprint);
+    cargarProyectoSprint(1, t);
+    int nuevoId = _repo.getNuevoIdTicket(t.getIdProyecto(), t.getIdSprint());
     t.setIdTicket(nuevoId);
 
-
-    cout << "Seleccione el id del empleado asignado/n"<< endl;
+    cout << "--- Seleccione el id del empleado asignado ---"<< endl;
     cin >> idEmpleado;
     t.setIdEmpleado(idEmpleado);
+    clear();
 
-    cin.ignore();
-    cout << "Estado: ";
-    getline(cin, status);
-    t.setStatus(status);
-    cout << "Prioridad: ";
-    getline(cin, prioridad);
-    t.setPrioridad(prioridad);
-    cout << "Descripcion: ";
-    getline(cin, descripcion);
+    cout<<"--- Seleccione Prioridad ---"<<endl;
+    cout<<"--- Baja, Media, Alta  ---"<<endl;
+    cin >> opcion;
+
+
+    cout << "--- Detalle la descripcion --- ";
+    cin >> descripcion;
+
     t.setDescripcionTarea(descripcion);
 
-    t.setFechaInicio();
-    t.setActivo(true);
+    t.setStatus(0);
 
-    if (_repo.guardar(t)) {
-        cout << "Nuevo ticket creado: " << descripcion << "\n";
+    if (_repo.guardar(t.getIdTicket(), t)) {
+        clear();
+        cout << "Nuevo ticket creado" << "\n";
+        mostrarTicket(t);
+        pause();
     } else {
+        clear();
         cout << "Error al crear el ticket.\n";
+        pause();
     }
+
 }
 
 void TicketManager::bajaTicket() {
-    int id, idProyecto, idSprint;
+    Ticket t;
+    cargarProyectoSprint(0, t);
 
-    cout << "Ingrese el id del proyecto del que quiera listar.\n";
-    cin >> idProyecto;
-    // ¿Se puede crear una función desde proyectomanager que verifique si el id que se esta enviando existe?
-    cout << "Ingrese el id del sprint del que quiera listar.\n";
-    cin >> idSprint;
-    // ¿Se puede crear una función desde sprintmanager que verifique si el id que se esta enviando existe?
-
-    cout << "Ingrese el ID del ticket para darlo de baja: ";
-    cin >> id;
-
-    int pos = _repo.buscarID(id);
-    if (pos < 0) { cout << "No existe un ticket con ese ID " << id << "\n"; return; }
-
-    if (_repo.darDeBaja(pos, idProyecto, idSprint)) cout << "Ticket dado de baja logicamente.\n";
+    if (_repo.darDeBaja(t.getIdTicket(), t.getIdProyecto(), t.getIdSprint())) cout << "Ticket dado de baja exitosamente.\n";
     else cout << "No se pudo dar de baja el ticket.\n";
 }
 
 void TicketManager::reactivarTicket() {
-    int id;
-    cout << "Ingrese ID de ticket a reactivar: ";
-    cin >> id;
+Ticket t;
 
-    int pos = _repo.buscarID(id);
-    if (pos < 0) { cout << "No existe un ticket con ese ID " << id << "\n"; return; }
+    cargarProyectoSprint(0, t);
 
-    Ticket r;
-    if (!_repo.leer(pos, r)) { cout << "Error al leer el ticket.\n"; return; }
+    if (t.getStatus() == 1) { cout << "El ticket ya está activo.\n"; return; }
 
-    if (r.getStatus() == "1") { cout << "El ticket ya está activo.\n"; return; }
+    t.setStatus(2);
 
-    r.setStatus("2");
-
-    if (_repo.guardar(r)) cout << "Ticket reactivado.\n";
+    if (_repo.guardar(t.getIdTicket(), t)) cout << "Ticket reactivado.\n";
     else cout << "No se pudo reactivar el ticket.\n";
 }
 
-void TicketManager::finalizarTicket() {
-    int id;
+bool TicketManager::finalizarTicketUsuario(int idUsuario){
+Ticket t;
 
-    //listar tickets
-    cout << "Ingrese ID de ticket para cerrarlo: ";
-    cin >> id;
+    cargarProyectoSprint(0, t);
 
-    //tiene que recibir idProyecto y idSprint
-
-    //corregir buscarid
-    int pos = _repo.buscarID(id);
-    if (pos < 0) { cout << "No existe un ticket con ese ID " << id << "\n"; return; }
-
-    Ticket r;
-    if (!_repo.leer(pos, r)) { cout << "Error al leer el ticket.\n"; return; }
-    if (!r.getActivo()) { cout << "El ticket está inactivo.\n"; return; }
-
-    cin.ignore();
-    string nuevoStatus;
-    cout << "Estado (Presione enter para confirmar): ";
-    getline(cin, nuevoStatus);
-    if (nuevoStatus.empty()) nuevoStatus = "Finalizado";
-    r.setStatus(nuevoStatus);
-    Fecha a = r.getFechaInicio();
-    r.setFechaFinalizada();
-    Fecha b = r.getFechaFinalizada();
-    while(!fechaMenorOIgual(a,b))
-    {
-        cout<<"Fecha de finalizacion anteror a fecha de inicio, fecha invalida"<<endl;
-        r.setFechaFinalizada();
-        b = r.getFechaFinalizada();
-    }
-
-    if (_repo.guardar(r)) cout << "Ticket finalizado.\n";
-    else cout << "Error al actualizar el ticket.\n";
-}
-
-bool TicketManager::finalizarTicketUsuario(int idProyecto, int idSprint, int idTicket, int idUsuario){
-    TicketArchivo repo;
-
-    int pos = repo.buscarIDTicketSprintProyecto(idTicket, idProyecto, idSprint);
-    if (pos < 0) {
-        cout << "No existe un ticket con esa combinacion de IDs." << endl;
-        return false;
-    }
-
-    Ticket t;
-    if (!repo.leer(pos, t)) {
-        cout << "Error al leer el ticket." << endl;
-        return false;
-    }
-
-    if (!t.getActivo()) {
+    if (t.getStatus() == 2) {
         cout << "El ticket esta inactivo." << endl;
         return false;
     }
@@ -202,7 +105,6 @@ bool TicketManager::finalizarTicketUsuario(int idProyecto, int idSprint, int idT
         return false;
     }
 
-    // Mostrar ticket antes de finalizar
     cout << "--- TICKET:";
     mostrarTicket(t);
 
@@ -215,11 +117,11 @@ bool TicketManager::finalizarTicketUsuario(int idProyecto, int idSprint, int idT
         return false;
     }
 
-    t.setActivo(false);
-    t.setStatus("Finalizado");
-    t.setFechaFinalizada();
+    Fecha fecha("TICKET");
+    t.setStatus(2);
+    t.setFechaFinalizada(fecha);
 
-    if (repo.guardarCambios(pos, t)) {
+    if (_repo.guardar(t.getIdTicket(), t)) {
         cout << "Ticket finalizado correctamente." << endl;
         return true;
     }
@@ -229,94 +131,64 @@ bool TicketManager::finalizarTicketUsuario(int idProyecto, int idSprint, int idT
 }
 
 void TicketManager::modificarDescripcion() {
-    int id;
-    cout << "ID de ticket: ";
-    cin >> id;
+Ticket t;
 
-    //pasar idProyecto y pasar idSprint, nuevo buscarid
-    int pos = _repo.buscarID(id);
-    if (pos < 0) { cout << "No existe un ticket con ese ID " << id << "\n"; return; }
-
-    Ticket r;
-    if (!_repo.leer(pos, r)) { cout << "Error al leer el ticket.\n"; return; }
+    cargarProyectoSprint(0, t);
 
     string desc;
     cin.ignore();
     cout << "Nueva descripcion: ";
     getline(cin, desc);
-    r.setDescripcionTarea(desc);
+    t.setDescripcionTarea(desc);
 
-    if (_repo.guardar(r)) cout << "Descripcion actualizada.\n";
+    if (_repo.guardar(t.getIdTicket(), t)) cout << "Descripcion actualizada.\n";
     else cout << "No se pudo actualizar.\n";
 }
 
 void TicketManager::modificarPrioridad() {
-    int id;
-    cout << "ID de ticket: ";
-    cin >> id;
+Ticket t;
 
-    //pasar idProyecto y pasar idSprint, nuevo buscarid
-    int pos = _repo.buscarID(id);
-    if (pos < 0) { cout << "No existe un ticket con ese ID" << id << "\n"; return; }
-
-    Ticket r;
-    if (!_repo.leer(pos, r)) { cout << "Error al leer el ticket.\n"; return; }
+    cargarProyectoSprint(0, t);
 
     string prio;
     cin.ignore();
     cout << "Establecer nueva prioridad: ";
     getline(cin, prio);
-    r.setPrioridad(prio);
+    t.setPrioridad(prio);
 
-    if (_repo.guardar(r)) cout << "Prioridad actualizada.\n";
+    if (_repo.guardar(t.getIdTicket(), t)) cout << "Prioridad actualizada.\n";
     else cout << "No se pudo actualizar.\n";
 }
 
 void TicketManager::modificarStatus() {
-    int id;
-    cout << "ID de ticket: ";
-    cin >> id;
+Ticket t;
+int st;
 
-    //pasar idProyecto y pasar idSprint, nuevo buscarid
-    int pos = _repo.buscarID(id);
-    if (pos < 0) { cout << "No existe un ticket con ese ID " << id << "\n"; return; }
+    cargarProyectoSprint(0, t);
 
-    Ticket r;
-    if (!_repo.leer(pos,r)) { cout << "Error al leer el ticket.\n"; return; }
-
-    string st;
-    cin.ignore();
     cout << "Nuevo estado: ";
-    getline(cin, st);
-    r.setStatus(st);
+    cin >> st;
 
-    if (_repo.guardar(r)) cout << "Estado actualizado.\n";
+    if (_repo.guardar(t.getIdTicket(), t)) cout << "Estado actualizado.\n";
     else cout << "No se pudo actualizar.\n";
 }
 
-void TicketManager::asignarNuevoEmpleado() {
-    int id;
-    cout << "ID de ticket: ";
-    cin >> id;
+// Funciona pero habria que hacer una funcion que valide si el usuario que ingresa pertenece al area del sprint del ticket
+//void TicketManager::asignarNuevoEmpleado() {
+//Ticket t;
 
-    //pasar idProyecto y pasar idSprint, nuevo buscarid
-    int pos = _repo.buscarID(id);
-    if (pos < 0) { cout << "No existe un ticket con ese ID " << id << "\n"; return; }
+    //cargarProyectoSprint(0, t);
 
-    Ticket r;
-    if (!_repo.leer(pos,r)) { cout << "Error al leer el ticket.\n"; return; }
+    //int empleado;
+    //cout << "Nuevo ID de empleado: ";
+    //cin >> empleado;
+    //t.setIdEmpleado(empleado);
 
-    int empleado;
-    cout << "Nuevo ID de empleado: ";
-    cin >> empleado;
-    r.setIdEmpleado(empleado);
+    //if (_repo.guardar(t.getIdTicket(), t)) cout << "Empleado reasignado.\n";
+    //else cout << "No se pudo actualizar.\n";
+//}
 
-    if (_repo.guardar(r)) cout << "Empleado reasignado.\n";
-    else cout << "No se pudo actualizar.\n";
-}
-
-void TicketManager::listarTickets() {
-int idSprint, idProyecto;
+void TicketManager::listarTickets(int idProyecto, int idSprint) {
 
     int n = _repo.getCantidadRegistros();
     if (n == 0) {
@@ -324,21 +196,72 @@ int idSprint, idProyecto;
         return;
     }
 
-    cout << "Ingrese el id del proyecto del que quiera listar.\n";
-    cin >> idProyecto;
-    // ¿Se puede crear una función desde proyectomanager que verifique si el id que se esta enviando existe?
-    cout << "Ingrese el id del sprint del que quiera listar.\n";
-    cin >> idSprint;
-    // ¿Se puede crear una función desde sprintmanager que verifique si el id que se esta enviando existe?
-
     cout << "\n===== TICKETS CREADOS =====\n";
 
     for (int i = 0; i < n; i++) {
     Ticket r;
     bool existeTicket = _repo.leer(i, r);
         if (!existeTicket) continue;
-        if ((_repo.buscarIDTicketSprintProyecto(r.getIdTicket(), idProyecto, idSprint) != -1) && r.getActivo() == true)
+        if ((_repo.buscarIDTicketSprintProyecto(r.getIdTicket(), idProyecto, idSprint) != -1) && r.getStatus() == 0 && r.getStatus() != 2)
         mostrarTicket(r);
+    }
+}
+
+void TicketManager::cargarProyectoSprint(bool nuevo, Ticket &t){
+int idProyecto = -1, idSprint, idTicket = -1;
+
+ProyectoManager proyectoM;
+
+//Falta validar que el proyecto esté activo, y buscarId debería estar en el manager.
+    //while (_proyectoA.buscarID(idProyecto) == -1){
+
+    proyectoM.listarProyectosNombreID();
+    cout << "--- Ingrese el numero de proyecto ---";
+    cin >> idProyecto;
+
+    // No estaria funcionando bien
+    //idproyecto = _proyectoa.buscaridyalta(idproyecto);
+        //if (idproyecto == -1){
+            //clear();
+            //cout << "el numero ingresado no corresponde a un proyecto existente" << endl;
+            //pause();
+            //clear();
+        //}
+    //}
+    t.setIdProyecto(idProyecto);
+
+    while(!sprintManager.ExisteSprint(idSprint, idProyecto)){
+
+    clear();
+    cout << "--- Seleccione el numero de sprint ---";
+
+    sprintManager.listarSprintsPorIDProyectos(idProyecto);
+
+    cin >> idSprint;
+
+        if (!sprintManager.ExisteSprint(idSprint, idProyecto) && !sprintManager.SprintEstaActivo(idSprint, idProyecto)){
+            clear();
+            cout << "El numero ingresado no corresponde a un sprint existente" << endl;
+            pause();
+        }
+    }
+    t.setIdSprint(idSprint);
+    clear();
+
+    if (!nuevo){
+        while(idTicket == -1){
+            listarTickets(idProyecto, idSprint);
+            cout << "--- Seleccione el ticket ---";
+            cin >> idTicket;
+
+            idTicket = _repo.buscarIDTicketSprintProyecto(idTicket, idProyecto, idSprint);
+                if (idTicket == -1){
+                    clear();
+                    cout << "El numero ingresado no corresponde a un ticket existente" << endl;
+                    pause();
+                }
+        }
+    _repo.leer(idTicket, t);
     }
 }
 

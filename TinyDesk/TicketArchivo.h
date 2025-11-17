@@ -12,12 +12,10 @@ public:
     int leerTodos(Ticket tickets[], int cantidad);
     int getCantidadRegistros();
     int buscarID(int id);
-    int getNuevoID(int idProyecto, int idSprint);
     int buscarIDTicketSprintProyecto(int id, int idProyecto, int idSprint);
-    int getNuevoIdTicketSprint(int idProyecto, int idSprint);
-    bool guardar(Ticket ticket);
+    int getNuevoIdTicket(int idProyecto, int idSprint);
     bool darDeBaja(int idTicket, int idProyecto, int idSprint);
-    bool guardarCambios(int pos, Ticket &t);
+    bool guardar(int pos, Ticket &t);
 
 private:
     std::string _nombreArchivo;

@@ -4,6 +4,7 @@
 #include "TicketArchivo.h"
 #include "ProyectoManager.h"
 #include "SprintManager.h"
+#include "ProyectoArchivo.h"
 
 class TicketManager
 {
@@ -14,17 +15,26 @@ public:
     void crearTicket();
     void bajaTicket();
     void reactivarTicket();
-    void finalizarTicket();
 
     void modificarDescripcion();
     void modificarPrioridad();
     void modificarStatus();
     void asignarNuevoEmpleado();
-    void listarTickets();
-    bool finalizarTicketUsuario(int idProyecto, int idSprint, int idTicket, int idUsuario);
+    void listarTicketsPorProyectoSprint(int idProyecto, int idSprint);
+    void listarTodosLosTickets();
+    void listarTickets(int idProyecto, int idSprint);
+    void cargarProyectoSprint(bool nuevo, Ticket &ticket);
+
+    bool finalizarTicketUsuario(int idUsuario);
 
 private:
     TicketArchivo _repo;
-    ProyectoManager proyectoM;
-    SprintManager sprintM;
+    ProyectoManager proyectoManager;
+    SprintManager sprintManager;
+    Proyecto p;
+    Fecha f;
+    Estado estado;
+
+    ProyectoArchivo _proyectoA;
+
 };
