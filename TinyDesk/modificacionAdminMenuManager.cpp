@@ -87,9 +87,8 @@ void ModificacionAdminMenuManager::modificarTicketsPorSprintsProyecto(){
         cout << "==== Modificar Ticket ====" << endl;
         cout << "1. Modificar descripcion" << endl;
         cout << "2. Modificar estado" << endl;
-        cout << "3. Modificar empleado" << endl;
-        cout << "4. Finalizar ticket" << endl;
-        cout << "5. Reactivar ticket" << endl;
+        cout << "3. Finalizar ticket" << endl;
+        cout << "4. Reactivar ticket" << endl;
         cout << "0. Volver" << endl;
         cin >> opcion;
 
@@ -103,17 +102,13 @@ void ModificacionAdminMenuManager::modificarTicketsPorSprintsProyecto(){
                 break;
 
             case 3:
-                ticket.asignarNuevoEmpleado();
-                break;
-
-            case 4:
                 cout << "Ingrese id de Usuario" << endl;
                 cin >> usuario;
                 ticket.finalizarTicketUsuario(usuario);
 
                 break;
 
-            case 5:
+            case 4:
                 ticket.reactivarTicket();
                 break;
 

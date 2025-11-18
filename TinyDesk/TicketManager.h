@@ -19,7 +19,7 @@ public:
     void modificarDescripcion();
     void modificarPrioridad();
     void modificarStatus();
-    void asignarNuevoEmpleado();
+    //void asignarNuevoEmpleado();
     void listarTicketsPorProyectoSprint(int idProyecto, int idSprint);
     void listarTodosLosTickets();
     void listarTickets(int idProyecto, int idSprint);

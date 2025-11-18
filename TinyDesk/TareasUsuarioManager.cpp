@@ -18,43 +18,43 @@ void TareasUsuarioManager::listarTareasUsuario() {
         pause();
         return;
     }
-    
+
     TicketManager ticketMgr;
     ProyectoArchivo archivoProyecto;
     SprintArchivo   archivoSprint;
     TicketArchivo   archivoTicket;
-    
+
     int cantProy = archivoProyecto.getCantidadRegistros();
     int cantSpr  = archivoSprint.getCantidadRegistros();
     int cantTick = archivoTicket.getCantidadRegistros();
-    
+
     bool hayTicket = false;
     int totalTicketsPendientes = 0;
-    
+
     for (int i = 0; i < cantProy; ++i) {
         Proyecto proy = archivoProyecto.leer(i);
         if (proy.getIdEstado() == -1) continue;
-        
+
         bool imprimioEncabezadoProyecto = false;
-        
+
         for (int j = 0; j < cantSpr; ++j) {
             int pos = archivoSprint.buscarID(j, i);
             Sprint spr = archivoSprint.leer(pos);
             if(spr.getIdSprint() == -1) continue;
             if (spr.getIdEstado()!= 2) continue;
             if (spr.getIdProyecto() != proy.getIdProyecto()) continue;
-            
+
             bool imprimioEncabezadoSprint = false;
-            
+
             for (int k = 0; k < cantTick; ++k) {
                 Ticket t;
                 int pos = archivoTicket.buscarIDTicketSprintProyecto(k, i, j);
                 if (!archivoTicket.leer(pos, t)) continue;
-                if (!t.getActivo()) continue;
+                if (t.getStatus() == 0) continue;
                 if (t.getIdProyecto() != proy.getIdProyecto()) continue;
                 if (t.getIdSprint()   != spr.getIdSprint()) continue;
                 if (t.getIdEmpleado() != ses.getIdUsuario()) continue;
-                
+
                 if (!imprimioEncabezadoProyecto) {
                     cout << "=== PROYECTO " << proy.getIdProyecto() << " - " << proy.getNombre() << " ==="<<endl;
                     imprimioEncabezadoProyecto = true;
@@ -63,7 +63,7 @@ void TareasUsuarioManager::listarTareasUsuario() {
                     cout << "  -- Sprint #" << spr.getIdSprint() << endl;
                     imprimioEncabezadoSprint = true;
                 }
-                
+
                 ticketMgr.mostrarTicket(t);
                 cout << "-------------------------------"<<endl;
                 cout << "-------------------------------"<<endl;
@@ -72,7 +72,7 @@ void TareasUsuarioManager::listarTareasUsuario() {
             }
         }
     }
-    
+
     cout << "===================================================="<<endl;
     if(totalTicketsPendientes){
         cout << "Usted tiene " << totalTicketsPendientes << " tickets pendientes." << endl;
@@ -80,7 +80,7 @@ void TareasUsuarioManager::listarTareasUsuario() {
     if (!hayTicket) {
         cout << "Hora de pedir tareas nuevas. Usted no tiene tareas asignadas."<<endl;
     }
-    
+
     pause();
 }
 
@@ -129,7 +129,7 @@ void TareasUsuarioManager::finalizarTicket() {
                 int pos = archivoTicket.buscarIDTicketSprintProyecto(k, i, j);
                 if (!archivoTicket.leer(pos, t)) continue;
 
-                if (!t.getActivo()) continue;
+                if (t.getStatus() == 0) continue;
                 if (t.getIdEmpleado() != idUsuario) continue;
                 if (t.getIdProyecto() != proy.getIdProyecto()) continue;
                 if (t.getIdSprint()   != spr.getIdSprint()) continue;
@@ -180,7 +180,7 @@ void TareasUsuarioManager::finalizarTicket() {
 
     // 4) Finalizar ticket
     TicketManager tm;
-    tm.finalizarTicketUsuario(idProyecto, idSprint, idTicket, idUsuario);
+    tm.finalizarTicketUsuario(idUsuario);
 
     pause();
 }

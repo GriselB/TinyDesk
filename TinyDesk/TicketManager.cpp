@@ -13,7 +13,7 @@ void TicketManager::mostrarTicket(Ticket ticket) {
          << " | Empleado: " << ticket.getIdEmpleado() << "\n"
          << " | Sprint: " << ticket.getIdSprint() << "\n"
          << " | Proyecto: " << ticket.getIdProyecto() << "\n"
-         << " | Estado: " << ticket.getStatus() << "\n"
+         << " | Estado: " << estado.getNombreEstado(ticket.getStatus()) << "\n"
          << " | Prioridad: " << ticket.getPrioridad() << "\n"
          << " | Activo: " << (ticket.getStatus()) << "\n"
          << " | Descripcion: " << ticket.getDescripcionTarea() << "\n"
@@ -208,43 +208,42 @@ void TicketManager::listarTickets(int idProyecto, int idSprint) {
 }
 
 void TicketManager::cargarProyectoSprint(bool nuevo, Ticket &t){
-int idProyecto = -1, idSprint, idTicket = -1;
+int idProyecto, idSprint, idTicket = -1;
 
-ProyectoManager proyectoM;
+ProyectoManager proyectoManager;
+SprintManager sprintManager;
 
-//Falta validar que el proyecto esté activo, y buscarId debería estar en el manager.
-    //while (_proyectoA.buscarID(idProyecto) == -1){
+    while (proyectoManager.buscarIDyAlta(idProyecto) == -1){
+        proyectoManager.listarProyectosNombreID();
+        cout << "--- Ingrese el numero de proyecto ---";
+        cin >> idProyecto;
 
-    proyectoM.listarProyectosNombreID();
-    cout << "--- Ingrese el numero de proyecto ---";
-    cin >> idProyecto;
+        idProyecto = proyectoManager.buscarIDyAlta(idProyecto);
 
-    // No estaria funcionando bien
-    //idproyecto = _proyectoa.buscaridyalta(idproyecto);
-        //if (idproyecto == -1){
-            //clear();
-            //cout << "el numero ingresado no corresponde a un proyecto existente" << endl;
-            //pause();
-            //clear();
-        //}
-    //}
+            if (idProyecto == -1){
+                clear();
+                cout << "el numero ingresado no corresponde a un proyecto existente" << endl;
+                pause();
+                clear();
+            }
+        }
+
     t.setIdProyecto(idProyecto);
 
     while(!sprintManager.ExisteSprint(idSprint, idProyecto)){
+        clear();
+        cout << "--- Seleccione el numero de sprint ---";
 
-    clear();
-    cout << "--- Seleccione el numero de sprint ---";
+        sprintManager.listarSprintsPorIDProyectos(idProyecto);
+        cin >> idSprint;
 
-    sprintManager.listarSprintsPorIDProyectos(idProyecto);
-
-    cin >> idSprint;
-
-        if (!sprintManager.ExisteSprint(idSprint, idProyecto) && !sprintManager.SprintEstaActivo(idSprint, idProyecto)){
-            clear();
-            cout << "El numero ingresado no corresponde a un sprint existente" << endl;
-            pause();
-        }
+            if (!sprintManager.ExisteSprint(idSprint, idProyecto) && !sprintManager.SprintEstaActivo(idSprint, idProyecto)){
+                clear();
+                cout << "El numero ingresado no corresponde a un sprint existente" << endl;
+                pause();
+            }
     }
+
     t.setIdSprint(idSprint);
     clear();
 
@@ -262,6 +261,7 @@ ProyectoManager proyectoM;
                 }
         }
     _repo.leer(idTicket, t);
+
     }
 }
 
