@@ -208,14 +208,15 @@ void TicketManager::listarTickets(int idProyecto, int idSprint) {
 }
 
 void TicketManager::cargarProyectoSprint(bool nuevo, Ticket &t){
-int idProyecto, idSprint, idTicket = -1;
+int idProyecto, idSprint, idTicket;
 
 ProyectoManager proyectoManager;
 SprintManager sprintManager;
 
     while (proyectoManager.buscarIDyAlta(idProyecto) == -1){
         proyectoManager.listarProyectosNombreID();
-        cout << "--- Ingrese el numero de proyecto ---";
+        cout << "--- Ingrese el numero de proyecto ---\n";
+        cout << "Numero de proyecto: ";
         cin >> idProyecto;
 
         idProyecto = proyectoManager.buscarIDyAlta(idProyecto);
@@ -232,9 +233,9 @@ SprintManager sprintManager;
 
     while(!sprintManager.ExisteSprint(idSprint, idProyecto)){
         clear();
-        cout << "--- Seleccione el numero de sprint ---";
-
         sprintManager.listarSprintsPorIDProyectos(idProyecto);
+        cout << "--- Seleccione el numero de sprint ---\n";
+        cout << "Numero de Sprint: ";
         cin >> idSprint;
 
             if (!sprintManager.ExisteSprint(idSprint, idProyecto) && !sprintManager.SprintEstaActivo(idSprint, idProyecto)){

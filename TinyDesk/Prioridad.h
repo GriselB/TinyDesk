@@ -5,7 +5,7 @@ class Prioridad
 {
 public:
     int getIdPrioridad();
-    std::string getDescripcionPrioridado(int n);
+    std::string getDescripcionPrioridad(int n);
     void setIdPrioridad(int idPrioridad);
     void mostrar();
     void seleccionarPrioridad();
