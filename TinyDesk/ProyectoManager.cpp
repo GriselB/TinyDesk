@@ -90,7 +90,7 @@ void ProyectoManager::mostrarProyectoPorId()
     int id,pos;
     cout<<"Ingrese numero Id del Proyecto a buscar: "<<endl;
     cin>>id;
-    pos= _repo.buscarID(id);
+    pos= buscarID(id);
     if(pos<0)
     {
         cout<<"No existe un Proyecto con dicho ID"<<endl;
@@ -98,6 +98,7 @@ void ProyectoManager::mostrarProyectoPorId()
         return;
     }
     Proyecto proyecto=_repo.leer(pos);
+    proyecto.mostrar();
     pause();
 }
 void ProyectoManager::finalizarProyecto()
@@ -105,7 +106,7 @@ void ProyectoManager::finalizarProyecto()
     int id,pos;
     cout<<"Ingrese numero Id del Proyecto a finalizar: "<<endl;
     cin>>id;
-    pos= _repo.buscarID(id);
+    pos= buscarID(id);
     if(pos<0)
     {
         cout<<"No existe un Proyecto con dicho ID"<<endl;
@@ -154,7 +155,7 @@ void ProyectoManager::bajaLogicaProyecto()
     int id,pos;
     cout<<"Ingrese numero Id del Proyecto a finalizar: "<<endl;
     cin>>id;
-    pos= _repo.buscarID(id);
+    pos= buscarID(id);
     if(pos<0)
     {
         cout<<"No existe un Proyecto con dicho ID"<<endl;
@@ -195,7 +196,7 @@ void ProyectoManager::altaLogicaProyecto()
     int id,pos;
     cout<<"Ingrese numero Id del Proyecto a finalizar: "<<endl;
     cin>>id;
-    pos= _repo.buscarID(id);
+    pos= buscarID(id);
     if(pos<0)
     {
         cout<<"No existe un Proyecto con dicho ID"<<endl;
@@ -229,4 +230,32 @@ void ProyectoManager::altaLogicaProyecto()
         cout<<"No se pudo cargar el archivo"<<endl;
     }
     pause();
+}
+
+int ProyectoManager::buscarID(int id)
+{
+    ProyectoArchivo proyectoArchivo;
+    Proyecto proyecto;
+
+    int cantidadRegistros = proyectoArchivo.getCantidadRegistros();
+
+    for(int i=0;i<cantidadRegistros;i++)
+    {
+        proyecto=proyectoArchivo.leer(i);
+        if(proyecto.getIdProyecto()==id)
+            return i;
+    }
+    return -1;
+}
+
+int ProyectoManager::buscarIDyAlta(int id)
+{
+    ProyectoArchivo proyectoArchivo;
+    Proyecto proyecto;
+    int pos = buscarID(id);
+    if(pos != -1 && proyectoArchivo.leer(pos).getIdEstado()==1)
+        return pos;
+    else
+        return -1;
+
 }

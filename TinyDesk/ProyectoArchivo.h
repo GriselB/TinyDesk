@@ -11,9 +11,6 @@ public:
     int leerTodos(Proyecto registros[], int cantidad);
     int getCantidadRegistros();
     int getNuevoID();
-    int buscarID(int id);
-    int buscarIDyAlta(int id);
-
 
 private:
     std::string _nombreArchivo;
