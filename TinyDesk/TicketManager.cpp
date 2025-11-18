@@ -137,10 +137,11 @@ Ticket t;
 
     string desc;
     cin.ignore();
-    cout << "Nueva descripcion: ";
-    getline(cin, desc);
-    t.setDescripcionTarea(desc);
+    cout << "DESCRIPCION ACTUAL: " << t.getDescripcionTarea();
+    cout << "NUEVA DESCRIPCION: ";
+    cin >> desc;
 
+    t.setDescripcionTarea(desc);
     if (_repo.guardar(t.getIdTicket(), t)) cout << "Descripcion actualizada.\n";
     else cout << "No se pudo actualizar.\n";
 }
@@ -152,8 +153,9 @@ Ticket t;
 
     string prio;
     cin.ignore();
-    cout << "Establecer nueva prioridad: ";
-    getline(cin, prio);
+    cout << "PRIORIDAD ACTUAL" << t.getPrioridad();
+    cout << "ESTABLECER NUEVA PRIORIDAD: ";
+    cin >> prio;
     t.setPrioridad(prio);
 
     if (_repo.guardar(t.getIdTicket(), t)) cout << "Prioridad actualizada.\n";
@@ -166,7 +168,8 @@ int st;
 
     cargarProyectoSprint(0, t);
 
-    cout << "Nuevo estado: ";
+    cout << "ESTADO ACTUAL: " << estado.getNombreEstado(t.getStatus());
+    cout << "NUEVO ESTADO: ";
     cin >> st;
 
     if (_repo.guardar(t.getIdTicket(), t)) cout << "Estado actualizado.\n";
@@ -208,7 +211,7 @@ void TicketManager::listarTickets(int idProyecto, int idSprint) {
 }
 
 void TicketManager::cargarProyectoSprint(bool nuevo, Ticket &t){
-int idProyecto, idSprint, idTicket;
+int idProyecto = -1, idSprint, idTicket;
 
 ProyectoManager proyectoManager;
 SprintManager sprintManager;
@@ -219,9 +222,9 @@ SprintManager sprintManager;
         cout << "Numero de proyecto: ";
         cin >> idProyecto;
 
-        idProyecto = proyectoManager.buscarIDyAlta(idProyecto);
+        int pos = proyectoManager.buscarIDyAlta(idProyecto);
 
-            if (idProyecto == -1){
+            if (pos == -1){
                 clear();
                 cout << "el numero ingresado no corresponde a un proyecto existente" << endl;
                 pause();

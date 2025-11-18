@@ -4,7 +4,6 @@
 #include "TicketArchivo.h"
 #include "ProyectoManager.h"
 #include "SprintManager.h"
-#include "ProyectoArchivo.h"
 
 class TicketManager
 {
@@ -34,7 +33,4 @@ private:
     Proyecto p;
     Fecha f;
     Estado estado;
-
-    ProyectoArchivo _proyectoA;
-
 };
