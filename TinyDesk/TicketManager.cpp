@@ -15,7 +15,7 @@ void TicketManager::mostrarTicket(Ticket ticket) {
          << " | Proyecto: " << ticket.getIdProyecto() << "\n"
          << " | Estado: " << estado.getNombreEstado(ticket.getStatus()) << "\n"
          << " | Prioridad: " << ticket.getPrioridad() << "\n"
-         << " | Activo: " << (ticket.getStatus()) << "\n"
+         << " | Estado: " << (ticket.getStatus()) << "\n"
          << " | Descripcion: " << ticket.getDescripcionTarea() << "\n"
          << "======================== \n";
 }
@@ -40,21 +40,24 @@ int idEmpleado;
     clear();
 
     cout<<"--- Seleccione Prioridad ---"<<endl;
-    cout<<"--- Baja, Media, Alta  ---"<<endl;
+    cout<<"--- 1) Baja, 2) Media, 3) Alta  ---"<<endl;
     cin >> opcion;
 
+    t.setPrioridad(opcion);
 
     cout << "--- Detalle la descripcion --- ";
     cin >> descripcion;
 
     t.setDescripcionTarea(descripcion);
 
-    t.setStatus(0);
+    t.setStatus(1);
+    mostrarTicket(t);
+        pause();
 
-    if (_repo.guardar(t.getIdTicket(), t)) {
+    if (_repo.guardarNuevo(t)) {
         clear();
         cout << "Nuevo ticket creado" << "\n";
-        mostrarTicket(t);
+
         pause();
     } else {
         clear();
@@ -226,7 +229,7 @@ SprintManager sprintManager;
 
             if (pos == -1){
                 clear();
-                cout << "el numero ingresado no corresponde a un proyecto existente" << endl;
+                cout << "El numero ingresado no corresponde a un proyecto existente" << endl;
                 pause();
                 clear();
             }

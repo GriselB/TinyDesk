@@ -16,6 +16,7 @@ public:
     int getNuevoIdTicket(int idProyecto, int idSprint);
     bool darDeBaja(int idTicket, int idProyecto, int idSprint);
     bool guardar(int pos, Ticket &t);
+    bool guardarNuevo(Ticket &t);
 
 private:
     std::string _nombreArchivo;

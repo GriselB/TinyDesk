@@ -120,6 +120,16 @@ bool TicketArchivo::guardar(int pos, Ticket &t) {
     return ok;
 }
 
+bool TicketArchivo::guardarNuevo(Ticket &ticket){
+bool existe = false;
+    FILE *pFile = fopen(_nombreArchivo.c_str(), "ab");
+    if (pFile == nullptr) return existe;
+    size_t escritos = fwrite(&ticket, sizeof(Ticket), 1, pFile);
+    fclose(pFile);
+    return (escritos == 1);
+}
+
+
 bool TicketArchivo::darDeBaja(int idTicket, int idProyecto, int idSprint){
 int pos = buscarIDTicketSprintProyecto(idTicket, idProyecto, idSprint);
 
