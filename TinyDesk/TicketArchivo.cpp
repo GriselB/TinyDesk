@@ -111,7 +111,7 @@ int TicketArchivo::buscarIDTicketSprintProyecto(int idTicket, int idProyecto, in
 }
 
 bool TicketArchivo::guardar(int pos, Ticket &t) {
-    FILE* f = fopen(_nombreArchivo.c_str(), "rb+");
+    FILE* f = fopen(_nombreArchivo.c_str(), "rb");
     if (!f) return false;
 
     fseek(f, pos * sizeof(Ticket), SEEK_SET);

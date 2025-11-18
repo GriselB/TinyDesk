@@ -22,9 +22,10 @@ public:
     void listarTicketsPorProyectoSprint(int idProyecto, int idSprint);
     void listarTodosLosTickets();
     void listarTickets(int idProyecto, int idSprint);
-    void cargarProyectoSprint(bool nuevo, Ticket &ticket);
+    bool cargarProyectoSprint(bool nuevo, Ticket &ticket);
 
     bool finalizarTicketUsuario(int idUsuario);
+    bool cancelarOperacion(int opcion);
 
 private:
     TicketArchivo _repo;

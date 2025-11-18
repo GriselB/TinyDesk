@@ -1,4 +1,6 @@
 #include <iostream>
+#include <string>
+#include "utils.h"
 #include "TicketManager.h"
 #include "Ticket.h"
 
@@ -8,6 +10,7 @@ TicketManager::TicketManager(){
 }
 
 void TicketManager::mostrarTicket(Ticket ticket) {
+
     cout << "======================== \n"
          << " | ID: " << ticket.getIdTicket() << "\n"
          << " | Empleado: " << ticket.getIdEmpleado() << "\n"
@@ -21,50 +24,59 @@ void TicketManager::mostrarTicket(Ticket ticket) {
 }
 
 void TicketManager::crearTicket() {
-Ticket t;
-Proyecto pro;
-Sprint spr;
+    Ticket t;
+    Proyecto pro;
+    Sprint spr;
 
-string prioridad, descripcion, opcion;
-int idEmpleado;
-
+    string prioridad, descripcion;
+    char opcion;
+    int idEmpleado;
 
     clear();
-    cargarProyectoSprint(1, t);
+    cout << "=== Nuevo ticket ===\n\n";
+
+    if (!cargarProyectoSprint(1, t)) {
+        return;
+    }
+
     int nuevoId = _repo.getNuevoIdTicket(t.getIdProyecto(), t.getIdSprint());
     t.setIdTicket(nuevoId);
 
-    cout << "--- Seleccione el id del empleado asignado ---"<< endl;
+    cout << "ID de empleado asignado: ";
     cin >> idEmpleado;
     t.setIdEmpleado(idEmpleado);
     clear();
 
-    cout<<"--- Seleccione Prioridad ---"<<endl;
-    cout<<"--- 1) Baja, 2) Media, 3) Alta  ---"<<endl;
-    cin >> opcion;
+    cout << "Prioridad (1=Baja, 2=Media, 3=Alta): ";
+    cin >> prioridad;
+    t.setPrioridad(prioridad);
 
-    t.setPrioridad(opcion);
-
-    cout << "--- Detalle la descripcion --- ";
+    cout << "Descripcion: ";
     cin >> descripcion;
-
     t.setDescripcionTarea(descripcion);
 
     t.setStatus(1);
+
+    clear();
+    cout << "Resumen del ticket:\n\n";
     mostrarTicket(t);
-        pause();
 
-    if (_repo.guardarNuevo(t)) {
-        clear();
-        cout << "Nuevo ticket creado" << "\n";
+    cout << "\nConfirmar ticket (S/N): ";
+    cin >> opcion;
 
-        pause();
+    if (toupper(opcion) == 'S') {
+        if (_repo.guardarNuevo(t)) {
+            clear();
+            cout << "Ticket creado correctamente.\n";
+        } else {
+            clear();
+            cout << "Error al crear el ticket.\n";
+            pause();
+        }
     } else {
-        clear();
-        cout << "Error al crear el ticket.\n";
+        cout << "\nOperacion cancelada.\n";
         pause();
     }
-
 }
 
 void TicketManager::bajaTicket() {
@@ -78,7 +90,9 @@ void TicketManager::bajaTicket() {
 void TicketManager::reactivarTicket() {
 Ticket t;
 
-    cargarProyectoSprint(0, t);
+    if (!cargarProyectoSprint(1, t)) {
+        return;
+    }
 
     if (t.getStatus() == 1) { cout << "El ticket ya está activo.\n"; return; }
 
@@ -91,20 +105,22 @@ Ticket t;
 bool TicketManager::finalizarTicketUsuario(int idUsuario){
 Ticket t;
 
-    cargarProyectoSprint(0, t);
+    if (!cargarProyectoSprint(1, t)) {
+        return false;
+    }
 
     if (t.getStatus() == 2) {
-        cout << "El ticket esta inactivo." << endl;
+        cout << "El ticket esta inactivo.\n" << endl;
         return false;
     }
 
     if (t.getIdEmpleado() != idUsuario) {
-        cout << "No puede finalizar un ticket que no le pertenece." << endl;
+        cout << "No puede finalizar un ticket que no le pertenece.\n" << endl;
         return false;
     }
 
     if (t.getFechaFinalizada().getAnio()!=0) {
-        cout << "Este ticket ya fue finalizado." << endl;
+        cout << "Este ticket ya fue finalizado.\n" << endl;
         return false;
     }
 
@@ -116,7 +132,7 @@ Ticket t;
     cin >> opc;
 
     if (opc != 'S' && opc != 's') {
-        cout << "Accion cancelada." << endl;
+        cout << "Accion cancelada.\n" << endl;
         return false;
     }
 
@@ -125,22 +141,24 @@ Ticket t;
     t.setFechaFinalizada(fecha);
 
     if (_repo.guardar(t.getIdTicket(), t)) {
-        cout << "Ticket finalizado correctamente." << endl;
+        cout << "Ticket finalizado correctamente.\n" << endl;
         return true;
     }
 
-    cout << "Error al guardar el ticket.";
+    cout << "Error al guardar el ticket.\n";
     return false;
 }
 
 void TicketManager::modificarDescripcion() {
 Ticket t;
 
-    cargarProyectoSprint(0, t);
+    if (!cargarProyectoSprint(1, t)) {
+        return;
+    }
 
     string desc;
     cin.ignore();
-    cout << "DESCRIPCION ACTUAL: " << t.getDescripcionTarea();
+    cout << "DESCRIPCION ACTUAL: " << t.getDescripcionTarea() << "\n" ;
     cout << "NUEVA DESCRIPCION: ";
     cin >> desc;
 
@@ -152,11 +170,13 @@ Ticket t;
 void TicketManager::modificarPrioridad() {
 Ticket t;
 
-    cargarProyectoSprint(0, t);
+    if (!cargarProyectoSprint(1, t)) {
+        return;
+    }
 
     string prio;
     cin.ignore();
-    cout << "PRIORIDAD ACTUAL" << t.getPrioridad();
+    cout << "PRIORIDAD ACTUAL" << t.getPrioridad() << "\n" ;
     cout << "ESTABLECER NUEVA PRIORIDAD: ";
     cin >> prio;
     t.setPrioridad(prio);
@@ -169,11 +189,22 @@ void TicketManager::modificarStatus() {
 Ticket t;
 int st;
 
-    cargarProyectoSprint(0, t);
+    if (!cargarProyectoSprint(1, t)) {
+        return;
+    }
 
-    cout << "ESTADO ACTUAL: " << estado.getNombreEstado(t.getStatus());
+    cout << "ESTADO ACTUAL: " << estado.getNombreEstado(t.getStatus()) << "\n" ;
     cout << "NUEVO ESTADO: ";
     cin >> st;
+
+    while(st < 0 || st > 2){
+
+        cout << "NO EXISTE ESE NUMERO DE ESTADO" << "\n" ;
+        cout << "NUEVO ESTADO: ";
+        cin >> st;
+    }
+
+    t.setStatus(st);
 
     if (_repo.guardar(t.getIdTicket(), t)) cout << "Estado actualizado.\n";
     else cout << "No se pudo actualizar.\n";
@@ -208,13 +239,14 @@ void TicketManager::listarTickets(int idProyecto, int idSprint) {
     Ticket r;
     bool existeTicket = _repo.leer(i, r);
         if (!existeTicket) continue;
-        if ((_repo.buscarIDTicketSprintProyecto(r.getIdTicket(), idProyecto, idSprint) != -1) && r.getStatus() == 0 && r.getStatus() != 2)
+        if ((_repo.buscarIDTicketSprintProyecto(r.getIdTicket(), idProyecto, idSprint) != -1))
         mostrarTicket(r);
     }
+    pause();
 }
 
-void TicketManager::cargarProyectoSprint(bool nuevo, Ticket &t){
-int idProyecto = -1, idSprint, idTicket;
+bool TicketManager::cargarProyectoSprint(bool nuevo, Ticket &t){
+int idProyecto = -1, idSprint, idTicket = -1;
 
 ProyectoManager proyectoManager;
 SprintManager sprintManager;
@@ -222,8 +254,13 @@ SprintManager sprintManager;
     while (proyectoManager.buscarIDyAlta(idProyecto) == -1){
         proyectoManager.listarProyectosNombreID();
         cout << "--- Ingrese el numero de proyecto ---\n";
+        cout << "Presione 0 para salir\n";
         cout << "Numero de proyecto: ";
         cin >> idProyecto;
+
+        if(!cancelarOperacion(idProyecto)){
+            return false;
+        };
 
         int pos = proyectoManager.buscarIDyAlta(idProyecto);
 
@@ -241,8 +278,13 @@ SprintManager sprintManager;
         clear();
         sprintManager.listarSprintsPorIDProyectos(idProyecto);
         cout << "--- Seleccione el numero de sprint ---\n";
+        cout << "Presione 0 para salir\n";
         cout << "Numero de Sprint: ";
         cin >> idSprint;
+
+        if(!cancelarOperacion(idSprint)){
+            return false;
+        };
 
             if (!sprintManager.ExisteSprint(idSprint, idProyecto) && !sprintManager.SprintEstaActivo(idSprint, idProyecto)){
                 clear();
@@ -256,9 +298,16 @@ SprintManager sprintManager;
 
     if (!nuevo){
         while(idTicket == -1){
+
             listarTickets(idProyecto, idSprint);
-            cout << "--- Seleccione el ticket ---";
+
+            cout << "--- Seleccione el ticket ---\n";
+            cout << "Presione 0 para salir\n";
+            cout << "Numero de ticket: ";
             cin >> idTicket;
+            if (!cancelarOperacion(idTicket)){
+                return false;
+            }
 
             idTicket = _repo.buscarIDTicketSprintProyecto(idTicket, idProyecto, idSprint);
                 if (idTicket == -1){
@@ -267,8 +316,18 @@ SprintManager sprintManager;
                     pause();
                 }
         }
+
     _repo.leer(idTicket, t);
 
     }
+}
+
+bool TicketManager::cancelarOperacion (int opcion){
+if (opcion == 0) {
+            clear();
+            cout << "Operacion cancelada.\n";
+            pause();
+            return false;
+        }
 }
 
