@@ -1011,16 +1011,14 @@
 	"MenuAdmin.h"
 	"MenuUsuario.h"
 
-1763172308 c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\usuariomanager.h
+1763223596 c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\usuariomanager.h
 	<string>
-	"Usuario.h"
-	"Sesion.h"
 	"UsuarioArchivo.h"
 	"ArchivoRol.h"
 	"SesionArchivo.h"
 	"utils.h"
 
-1763172308 c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\usuario.h
+1763223596 c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\usuario.h
 	"Fecha.h"
 	"area.h"
 
@@ -1030,7 +1028,8 @@
 1763172308 c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\area.h
 	<string>
 
-1763172308 c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\sesion.h
+1763223596 c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\sesion.h
+	"area.h"
 
 1763172308 c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\usuarioarchivo.h
 	<string>
@@ -1067,7 +1066,7 @@
 	"SprintManager.h"
 	"TicketManager.h"
 
-1763172308 c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\proyectomanager.h
+1763434764 c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\proyectomanager.h
 	<string>
 	"Proyecto.h"
 	"ProyectoArchivo.h"
@@ -1076,7 +1075,7 @@
 	<string>
 	"Fecha.h"
 
-1763172308 c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\proyectoarchivo.h
+1763434764 c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\proyectoarchivo.h
 	<string>
 	"Proyecto.h"
 
@@ -1192,7 +1191,7 @@
 	<iostream>
 	"Fecha.h"
 
-1763172308 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\listadoadminmanager.cpp
+1763433698 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\listadoadminmanager.cpp
 	<iostream>
 	"ListadoAdminManager.h"
 
@@ -1200,7 +1199,7 @@
 	<iostream>
 	"ListadoAdminMenu.h"
 
-1763172927 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\main.cpp
+1763436119 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\main.cpp
 	<iostream>
 	"App.h"
 
@@ -1230,12 +1229,12 @@
 	"Estado.h"
 	"utils.h"
 
-1763172308 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\proyectoarchivo.cpp
+1763434764 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\proyectoarchivo.cpp
 	<iostream>
 	"Proyecto.h"
 	"ProyectoArchivo.h"
 
-1763175791 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\proyectomanager.cpp
+1763435975 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\proyectomanager.cpp
 	<iostream>
 	"ProyectoManager.h"
 	"Proyecto.h"
@@ -1245,7 +1244,7 @@
 	<iostream>
 	"ReportesAdminMenu.h"
 
-1763172353 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\reportesadminmenumanager.cpp
+1763223596 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\reportesadminmenumanager.cpp
 	<iostream>
 	"ReportesAdminMenuManager.h"
 
@@ -1254,7 +1253,7 @@
 	<cstring>
 	"Rol.h"
 
-1763172308 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\sesion.cpp
+1763223596 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\sesion.cpp
 	<iostream>
 	<cstring>
 	"Sesion.h"
@@ -1289,7 +1288,7 @@
 	"utils.h"
 	"Estado.h"
 
-1763172308 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\tareasusuariomanager.cpp
+1763433698 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\tareasusuariomanager.cpp
 	<iostream>
 	"TareasUsuarioManager.h"
 
@@ -1308,7 +1307,7 @@
 	"TicketManager.h"
 	"Ticket.h"
 
-1763172308 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\usuario.cpp
+1763223596 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\usuario.cpp
 	<iostream>
 	<cstring>
 	"Usuario.h"
@@ -1317,7 +1316,7 @@
 	<iostream>
 	"UsuarioArchivo.h"
 
-1763172308 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\usuariomanager.cpp
+1763223596 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\usuariomanager.cpp
 	<iostream>
 	"UsuarioManager.h"
 
@@ -1337,10 +1336,11 @@
 	<cstring>
 	"ReportesUsuarioMenuManager.h"
 
-1763176510 c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\reportesusuariomenumanager.h
+1763433698 c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\reportesusuariomenumanager.h
 	"ProyectoManager.h"
 	"SprintManager.h"
 	"TicketManager.h"
 	"UsuarioManager.h"
+	"Sesion.h"
 	<cmath>
 

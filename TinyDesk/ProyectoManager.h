@@ -15,6 +15,8 @@ public:
     void finalizarProyecto();
     void bajaLogicaProyecto();
     void altaLogicaProyecto();
+    int buscarID(int id);
+    int buscarIDyAlta(int id);
 private:
     ProyectoArchivo _repo;
 };
