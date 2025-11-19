@@ -78,10 +78,14 @@ void TicketManager::crearTicket() {
 
 void TicketManager::bajaTicket() {
     Ticket t;
+    int pos;
 
+    cargarProyectoSprint(0, t, pos);
+    t.setStatus(0);
 
-    if (_repo.darDeBaja(t.getIdTicket(), t.getIdProyecto(), t.getIdSprint())) cout << "Ticket dado de baja exitosamente.\n";
+    if (_repo.guardar(pos, t)) cout << "Ticket dado de baja exitosamente.\n";
     else cout << "No se pudo dar de baja el ticket.\n";
+    pause();
 }
 
 void TicketManager::reactivarTicket() {
@@ -89,13 +93,13 @@ Ticket t;
 int pos;
 
     cargarProyectoSprint(0, t, pos);
-
     if (t.getStatus() == 1) { cout << "El ticket ya está activo.\n"; return; }
 
-    t.setStatus(2);
+    t.setStatus(1);
 
     if (_repo.guardar(pos, t)) cout << "Ticket reactivado.\n";
     else cout << "No se pudo reactivar el ticket.\n";
+    pause();
 }
 
 bool TicketManager::finalizarTicketUsuario(int idUsuario){

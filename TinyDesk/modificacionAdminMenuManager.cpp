@@ -89,6 +89,7 @@ void ModificacionAdminMenuManager::modificarTicketsPorSprintsProyecto(){
         cout << "2. Modificar estado" << endl;
         cout << "3. Finalizar ticket" << endl;
         cout << "4. Reactivar ticket" << endl;
+        cout << "5. Dar de baja ticket" << endl;
         cout << "0. Volver" << endl;
         cin >> opcion;
 
@@ -110,6 +111,10 @@ void ModificacionAdminMenuManager::modificarTicketsPorSprintsProyecto(){
 
             case 4:
                 ticket.reactivarTicket();
+                break;
+
+            case 5:
+                ticket.bajaTicket();
                 break;
 
             case 0:
