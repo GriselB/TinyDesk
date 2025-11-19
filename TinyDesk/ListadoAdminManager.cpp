@@ -46,16 +46,17 @@ void ListadoAdminManager::listarSprintsPorProyectos() {
 
     for (int i = 0; i < cantProyectos; i++) {
         Proyecto proyecto = archivoProyecto.leer(i);
+        if(proyecto.getIdProyecto() == -1) continue;
         cout << "       Proyecto " << proyecto.getIdProyecto() << ": " << proyecto.getNombre() << endl;
 
         bool tieneSprint = false;
 
         for (int j = 0; j < cantSprints; j++) {
-            int pos = archivoSprint.buscarID(j, i);
-            Sprint sprint = archivoSprint.leer(pos);
-
+            Sprint sprint = archivoSprint.leer(j);
+            
+            if(sprint.getIdSprint() == -1) continue;
             if (sprint.getIdProyecto() == proyecto.getIdProyecto()) {
-                sprintMng.mostrar(pos, true);
+                sprintMng.mostrar(j, true);
                 cout << "-------------------------------" << endl;
                 tieneSprint = true;
             }
@@ -109,7 +110,6 @@ void ListadoAdminManager::listarTicketsPorSprints() {
         bool tieneSprint = false;
 
         for (int j = 0; j < cantSprints; j++) {
-            //int pos = archivoSprint.buscarID(j, i);
             Sprint sprint = archivoSprint.leer(j);
             if(sprint.getIdSprint() == -1) continue;
             if (sprint.getIdProyecto() != proyecto.getIdProyecto()) continue;
@@ -121,8 +121,6 @@ void ListadoAdminManager::listarTicketsPorSprints() {
 
             for (int k = 0; k < cantTickets; k++) {
                 Ticket ticket;
-                //int pos = archivoTicket.buscarIDTicketSprintProyecto(k, i, j);
-                //if(pos < 0) continue;
                 if(!archivoTicket.leer(k, ticket)) continue;
                 if(ticket.getIdProyecto() != proyecto.getIdProyecto()) continue;
                 if(ticket.getIdSprint() != sprint.getIdSprint()) continue;
