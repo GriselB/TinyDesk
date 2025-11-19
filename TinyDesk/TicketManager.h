@@ -22,7 +22,7 @@ public:
     void listarTicketsPorProyectoSprint(int idProyecto, int idSprint);
     void listarTodosLosTickets();
     void listarTickets(int idProyecto, int idSprint);
-    bool cargarProyectoSprint(bool nuevo, Ticket &ticket);
+    void cargarProyectoSprint(bool nuevo, Ticket &ticket, int &pos);
 
     bool finalizarTicketUsuario(int idUsuario);
     bool cancelarOperacion(int opcion);
