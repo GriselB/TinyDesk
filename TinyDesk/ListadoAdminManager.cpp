@@ -51,11 +51,11 @@ void ListadoAdminManager::listarSprintsPorProyectos() {
         bool tieneSprint = false;
 
         for (int j = 0; j < cantSprints; j++) {
-            int pos = archivoSprint.buscarID(j, i);
-            Sprint sprint = archivoSprint.leer(pos);
+            //int pos = archivoSprint.buscarID(j, i);
+            Sprint sprint = archivoSprint.leer(j);
 
             if (sprint.getIdProyecto() == proyecto.getIdProyecto()) {
-                sprintMng.mostrar(pos, true);
+                sprintMng.mostrar(j, true);
                 cout << "-------------------------------" << endl;
                 tieneSprint = true;
             }

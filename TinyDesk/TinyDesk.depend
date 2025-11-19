@@ -139,16 +139,14 @@
 	"MenuAdmin.h"
 	"MenuUsuario.h"
 
-1762285523 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\usuariomanager.h
+1763409852 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\usuariomanager.h
 	<string>
-	"Usuario.h"
-	"Sesion.h"
 	"UsuarioArchivo.h"
 	"ArchivoRol.h"
 	"SesionArchivo.h"
 	"utils.h"
 
-1761926542 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\usuario.h
+1763409852 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\usuario.h
 	"Fecha.h"
 	"area.h"
 
@@ -167,7 +165,7 @@
 1762309505 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\estado.h
 	<string>
 
-1762551550 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\fecha.cpp
+1763409852 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\fecha.cpp
 	<iostream>
 	"Fecha.h"
 
@@ -175,7 +173,7 @@
 	<iostream>
 	"App.h"
 
-1762902293 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\proyecto.cpp
+1763409852 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\proyecto.cpp
 	<cstring>
 	<iostream>
 	"Proyecto.h"
@@ -183,21 +181,21 @@
 	"Estado.h"
 	"utils.h"
 
-1762285523 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\proyecto.h
+1763409852 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\proyecto.h
 	<string>
 	"Fecha.h"
 
-1762996152 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\ticket.cpp
+1763510396 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\ticket.cpp
 	<cstring>
 	<iostream>
 	"Ticket.h"
 	"Fecha.h"
 
-1762996152 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\ticket.h
+1763510396 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\ticket.h
 	<string>
 	"Fecha.h"
 
-1761926542 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\usuario.cpp
+1763409852 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\usuario.cpp
 	<iostream>
 	<cstring>
 	"Usuario.h"
@@ -206,16 +204,17 @@
 	<iostream>
 	"UsuarioArchivo.h"
 
-1762285523 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\usuariomanager.cpp
+1763409852 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\usuariomanager.cpp
 	<iostream>
 	"UsuarioManager.h"
 
-1762906775 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\utils.cpp
+1763409852 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\utils.cpp
 	<iostream>
 	"utils.h"
 
-1761440410 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\utils.h
+1763409852 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\utils.h
 	<string>
+	"Fecha.h"
 
 1762386055 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\area.cpp
 	<iostream>
@@ -323,7 +322,7 @@
 	"Area.h"
 	"Proyecto.h"
 
-1763005435 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\sprintarchivo.cpp
+1763509624 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\sprintarchivo.cpp
 	<iostream>
 	"SprintArchivo.h"
 
@@ -331,7 +330,7 @@
 	<string>
 	"Sprint.h"
 
-1763005537 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\sprintmanager.cpp
+1763511633 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\sprintmanager.cpp
 	<iostream>
 	<string>
 	"SprintManager.h"
@@ -477,22 +476,22 @@
 	"Proyecto.h"
 	"ProyectoArchivo.h"
 
-1762285523 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\proyectoarchivo.cpp
+1763504796 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\proyectoarchivo.cpp
 	<iostream>
 	"Proyecto.h"
 	"ProyectoArchivo.h"
 
-1761926542 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\proyectoarchivo.h
+1763504796 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\proyectoarchivo.h
 	<string>
 	"Proyecto.h"
 
-1762902293 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\proyectomanager.cpp
+1763504796 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\proyectomanager.cpp
 	<iostream>
 	"ProyectoManager.h"
 	"Proyecto.h"
 	"utils.h"
 
-1762551550 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\proyectomanager.h
+1763504796 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\proyectomanager.h
 	<string>
 	"Proyecto.h"
 	"ProyectoArchivo.h"
@@ -858,7 +857,8 @@
 
 1762132306 source:c:\users\katy\documents\nuevo tp\tinydesk\tinydesk\creacionadminmenumanager.cpp
 
-1762285523 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\sesion.h
+1763409852 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\sesion.h
+	"area.h"
 
 1762285523 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\sesionarchivo.h
 	"Sesion.h"
@@ -874,11 +874,11 @@
 	"cstring"
 	"ListadoAdminManager.h"
 
-1762996152 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\listadoadminmanager.h
-	"Ticket.h"
+1763409852 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\listadoadminmanager.h
 	"ProyectoManager.h"
 	"UsuarioManager.h"
 	"SprintManager.h"
+	"TicketManager.h"
 
 1762996152 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\creacionadminmenu.h
 	"cstring"
@@ -889,14 +889,14 @@
 	"SprintManager.h"
 	"TicketManager.h"
 
-1762996152 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\ticketmanager.h
+1763510396 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\ticketmanager.h
 	<string>
 	"Ticket.h"
 	"TicketArchivo.h"
 	"ProyectoManager.h"
 	"SprintManager.h"
 
-1762996152 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\ticketarchivo.h
+1763510396 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\ticketarchivo.h
 	<string>
 	"utils.h"
 	"Ticket.h"
@@ -915,20 +915,22 @@
 	<cstring>
 	"ReportesAdminMenuManager.h"
 
-1762551550 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\reportesadminmenumanager.h
+1763409852 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\reportesadminmenumanager.h
 	"ProyectoManager.h"
 	"SprintManager.h"
 	"TicketManager.h"
+	"UsuarioManager.h"
+	<cmath>
 
-1762285523 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\menuusuario.h
+1763409852 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\menuusuario.h
 	"SesionArchivo.h"
 	"TareasUsuarioManager.h"
+	"ReportesUsuarioMenu.h"
 
-1762285523 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\tareasusuariomanager.h
+1763409852 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\tareasusuariomanager.h
 	"SesionArchivo.h"
 	"ProyectoArchivo.h"
 	"SprintArchivo.h"
-	"TicketArchivo.h"
 	"TicketManager.h"
 
 1762996152 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\creacionadminmenu.cpp
@@ -946,7 +948,7 @@
 	<string>
 	"Estado.h"
 
-1763005435 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\listadoadminmanager.cpp
+1763511633 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\listadoadminmanager.cpp
 	<iostream>
 	"ListadoAdminManager.h"
 
@@ -959,7 +961,7 @@
 	"MenuAdmin.h"
 	"utils.h"
 
-1762285523 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\menuusuario.cpp
+1763409852 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\menuusuario.cpp
 	<iostream>
 	"MenuUsuario.h"
 	"utils.h"
@@ -968,19 +970,19 @@
 	<iostream>
 	"ModificacionAdminMenu.h"
 
-1762902293 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\modificacionadminmenumanager.cpp
+1763510396 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\modificacionadminmenumanager.cpp
 	<iostream>
 	"ModificacionAdminMenuManager.h"
 
-1762551550 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\reportesadminmenu.cpp
+1763409852 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\reportesadminmenu.cpp
 	<iostream>
 	"ReportesAdminMenu.h"
 
-1762911477 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\reportesadminmenumanager.cpp
+1763510396 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\reportesadminmenumanager.cpp
 	<iostream>
 	"ReportesAdminMenuManager.h"
 
-1762296608 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\sesion.cpp
+1763409852 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\sesion.cpp
 	<iostream>
 	<cstring>
 	"Sesion.h"
@@ -989,15 +991,15 @@
 	<iostream>
 	"SesionArchivo.h"
 
-1762562117 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\tareasusuariomanager.cpp
+1763510396 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\tareasusuariomanager.cpp
 	<iostream>
 	"TareasUsuarioManager.h"
 
-1762996152 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\ticketarchivo.cpp
+1763510396 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\ticketarchivo.cpp
 	<iostream>
 	"TicketManager.h"
 
-1762996152 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\ticketmanager.cpp
+1763510396 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\ticketmanager.cpp
 	<iostream>
 	"TicketManager.h"
 	"Ticket.h"
@@ -1343,4 +1345,24 @@
 	"UsuarioManager.h"
 	"Sesion.h"
 	<cmath>
+
+1763409852 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\reportesusuariomenu.h
+	<cstring>
+	"ReportesUsuarioMenuManager.h"
+
+1763409852 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\reportesusuariomenumanager.h
+	"ProyectoManager.h"
+	"SprintManager.h"
+	"TicketManager.h"
+	"UsuarioManager.h"
+	"Sesion.h"
+	<cmath>
+
+1763409852 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\reportesusuariomenu.cpp
+	<iostream>
+	"ReportesUsuarioMenu.h"
+
+1763409852 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\reportesusuariomenumanager.cpp
+	<iostream>
+	"ReportesUsuarioMenuManager.h"
 
