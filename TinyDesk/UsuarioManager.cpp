@@ -140,17 +140,6 @@ int UsuarioManager::iniciarSesion() {
         if (user.getEmail()==email && user.getPassword()==pass && user.getActivo()) {
             cout << "Login OK."<<endl;
             cout << "------- Bienvenido, " << user.getNombre() << "!  -------" << endl;
-            
-            Sesion sesion;
-            sesion.setIdUsuario(user.getIdUsuario());
-            Area area = user.getArea();
-            sesion.setArea(area);
-            sesion.setIdRol(user.getIdRol());
-            sesion.setNombre(user.getNombre());
-            sesion.setApellido(user.getApellido());
-            
-            SesionArchivo sesArch;
-            sesArch.guardar(sesion);
             pause();
             
             int idRol = user.getIdRol();
@@ -162,6 +151,16 @@ int UsuarioManager::iniciarSesion() {
             if(rol.getPermisosEscritura()){
                 return 1;
             } else {
+                Sesion sesion;
+                sesion.setIdUsuario(user.getIdUsuario());
+                Area area = user.getArea();
+                sesion.setArea(area);
+                sesion.setIdRol(user.getIdRol());
+                sesion.setNombre(user.getNombre());
+                sesion.setApellido(user.getApellido());
+                
+                SesionArchivo sesArch;
+                sesArch.guardar(sesion);
                 return 2;
             }
         }
