@@ -201,3 +201,52 @@ void ReportesAdminMenuManager::sprintsSinTerminarPorProyecto(){
 cout<<"sprintsSinTerminarPorProyecto"<<endl;
 pause();
 }
+
+void ReportesAdminMenuManager::proyectosCompletados()
+{
+    int total;
+    float completados, resultado;
+    ProyectoArchivo proyectoArchivo;
+    total = proyectoArchivo.getCantidadRegistros();
+    completados = 0;
+    for (int i=0;i<total;i++)
+    {
+        if(proyectoArchivo.leer(i).getIdEstado()== 2)
+            completados++;
+    }
+    resultado = (completados/total)*100;
+    cout<<"La cantidad de proyectos completados es del: "<<resultado<<"%"<<endl;
+    cout<<"La cantidad de proyectos no completados es del: "<<100-resultado<<"%"<<endl;
+    cout<<completados<<endl;
+    cout<<total<<endl;
+    pause();
+
+}
+
+void ReportesAdminMenuManager::proyectosFinalizadosATiempo()
+{
+    int total;
+    float finalizados, finalizadosATiempo, resultado;
+    Fecha fin, finalizada;
+    ProyectoArchivo proyectoArchivo;
+    total = proyectoArchivo.getCantidadRegistros();
+    finalizados = 0;
+    finalizadosATiempo = 0;
+    for(int i=0;i<total;i++)
+    {
+        if(proyectoArchivo.leer(i).getIdEstado()==2)
+        {
+            finalizados++;
+            fin=proyectoArchivo.leer(i).getFechaFin();
+            finalizada=proyectoArchivo.leer(i).getFechaFinalizada();
+            if(fechaMenorOIgual(finalizada,fin))
+                finalizadosATiempo++;
+        }
+    }
+    resultado=(finalizadosATiempo/finalizados)*100;
+    if(finalizados == 0 )
+        resultado = 0;
+    cout<<"El porcentaje de proyectos finalizados a tiempo es de: "<<resultado<<"%"<<endl;
+    cout<<"El porcentaje de proyectos finalizados fuera de tiempo es de: "<<100-resultado<<"%"<<endl;
+    pause();
+}

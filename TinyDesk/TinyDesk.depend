@@ -1103,18 +1103,18 @@
 1763172308 c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\estado.h
 	<string>
 
-1763172308 c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\ticketmanager.h
+1763526910 c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\ticketmanager.h
 	<string>
 	"Ticket.h"
 	"TicketArchivo.h"
 	"ProyectoManager.h"
 	"SprintManager.h"
 
-1763172308 c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\ticket.h
+1763526910 c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\ticket.h
 	<string>
 	"Fecha.h"
 
-1763172308 c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\ticketarchivo.h
+1763526910 c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\ticketarchivo.h
 	<string>
 	"utils.h"
 	"Ticket.h"
@@ -1142,7 +1142,7 @@
 	<cstring>
 	"ReportesAdminMenuManager.h"
 
-1763172308 c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\reportesadminmenumanager.h
+1763676268 c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\reportesadminmenumanager.h
 	"ProyectoManager.h"
 	"SprintManager.h"
 	"TicketManager.h"
@@ -1193,15 +1193,15 @@
 	<iostream>
 	"Fecha.h"
 
-1763433698 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\listadoadminmanager.cpp
+1763670931 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\listadoadminmanager.cpp
 	<iostream>
 	"ListadoAdminManager.h"
 
-1763172308 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\listadoadminmenu.cpp
+1763526910 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\listadoadminmenu.cpp
 	<iostream>
 	"ListadoAdminMenu.h"
 
-1763436119 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\main.cpp
+1763487347 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\main.cpp
 	<iostream>
 	"App.h"
 
@@ -1219,7 +1219,7 @@
 	<iostream>
 	"ModificacionAdminMenu.h"
 
-1763172308 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\modificacionadminmenumanager.cpp
+1763526910 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\modificacionadminmenumanager.cpp
 	<iostream>
 	"ModificacionAdminMenuManager.h"
 
@@ -1236,17 +1236,17 @@
 	"Proyecto.h"
 	"ProyectoArchivo.h"
 
-1763435975 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\proyectomanager.cpp
+1763676268 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\proyectomanager.cpp
 	<iostream>
 	"ProyectoManager.h"
 	"Proyecto.h"
 	"utils.h"
 
-1763172308 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\reportesadminmenu.cpp
+1763676268 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\reportesadminmenu.cpp
 	<iostream>
 	"ReportesAdminMenu.h"
 
-1763223596 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\reportesadminmenumanager.cpp
+1763676268 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\reportesadminmenumanager.cpp
 	<iostream>
 	"ReportesAdminMenuManager.h"
 
@@ -1290,22 +1290,24 @@
 	"utils.h"
 	"Estado.h"
 
-1763433698 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\tareasusuariomanager.cpp
+1763526910 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\tareasusuariomanager.cpp
 	<iostream>
 	"TareasUsuarioManager.h"
 
-1763172630 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\ticket.cpp
+1763526910 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\ticket.cpp
 	<cstring>
 	<iostream>
 	"Ticket.h"
 	"Fecha.h"
 
-1763172308 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\ticketarchivo.cpp
+1763526910 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\ticketarchivo.cpp
 	<iostream>
 	"TicketManager.h"
 
-1763175474 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\ticketmanager.cpp
+1763526910 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\ticketmanager.cpp
 	<iostream>
+	<string>
+	"utils.h"
 	"TicketManager.h"
 	"Ticket.h"
 
@@ -1318,11 +1320,11 @@
 	<iostream>
 	"UsuarioArchivo.h"
 
-1763223596 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\usuariomanager.cpp
+1763526910 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\usuariomanager.cpp
 	<iostream>
 	"UsuarioManager.h"
 
-1763172308 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\utils.cpp
+1763526315 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\utils.cpp
 	<iostream>
 	"utils.h"
 

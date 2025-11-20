@@ -12,4 +12,6 @@ public:
     void ticketsSinTerminar();
     void sprintsCompletadosPorProyecto();
     void sprintsSinTerminarPorProyecto();
+    void proyectosCompletados();
+    void proyectosFinalizadosATiempo();
 };
