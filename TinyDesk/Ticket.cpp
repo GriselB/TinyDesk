@@ -21,7 +21,7 @@ int Ticket::getIdProyecto(){
     return _idProyecto;
 }
 
-std::string Ticket::getStatus()
+int Ticket::getStatus()
 {
     return _status;
 }
@@ -51,10 +51,6 @@ Fecha Ticket::getFechaFinalizada()
     return _fechaFinalizada;
 }
 
-bool Ticket::getActivo() const {
-    return _activo;
-}
-
 void Ticket::setIdEmpleado(int idEmpleado)
 {
     _idEmpleado=idEmpleado;
@@ -73,10 +69,9 @@ void Ticket::setIdProyecto(int idProyecto){
     _idProyecto = idProyecto;
 }
 
-void Ticket::setStatus(std::string status)
+void Ticket::setStatus(int status)
 {
-    strncpy(_status, status.c_str(), 19);
-    _status[19] = '\0';
+    _status = status;
 }
 
 void Ticket::setPrioridad(std::string prioridad)
@@ -91,22 +86,18 @@ void Ticket::setDescripcionTarea(std::string descripcionTarea)
     _descripcionTarea[249] = '\0';
 }
 
-void Ticket::setFechaInicio()
+void Ticket::setFechaInicio(Fecha fecha)
 {
-    _fechaInicio = Fecha("inicio");
+    _fechaInicio = fecha;
 }
 
-void Ticket::setFechaFin()
+void Ticket::setFechaFin(Fecha fecha)
 {
-    _fechaFin = Fecha("fin");
+    _fechaFin = fecha;
 }
 
-void Ticket::setFechaFinalizada()
+void Ticket::setFechaFinalizada(Fecha fecha)
 {
-    _fechaFinalizada = Fecha("finalizacion");
-}
-
-void Ticket::setActivo(bool activo) {
-    _activo = activo;
+    _fechaFinalizada = fecha;
 }
 

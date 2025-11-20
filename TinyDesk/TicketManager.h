@@ -14,17 +14,24 @@ public:
     void crearTicket();
     void bajaTicket();
     void reactivarTicket();
-    void finalizarTicket();
 
     void modificarDescripcion();
     void modificarPrioridad();
     void modificarStatus();
-    void asignarNuevoEmpleado();
-    void listarTickets();
-    bool finalizarTicketUsuario(int idProyecto, int idSprint, int idTicket, int idUsuario);
+    //void asignarNuevoEmpleado();
+    void listarTicketsPorProyectoSprint(int idProyecto, int idSprint);
+    void listarTodosLosTickets();
+    void listarTickets(int idProyecto, int idSprint);
+    void cargarProyectoSprint(bool nuevo, Ticket &ticket, int &pos);
+
+    bool finalizarTicketUsuario(int idUsuario);
+    bool cancelarOperacion(int opcion);
 
 private:
     TicketArchivo _repo;
-    ProyectoManager proyectoM;
-    SprintManager sprintM;
+    ProyectoManager proyectoManager;
+    SprintManager sprintManager;
+    Proyecto p;
+    Fecha f;
+    Estado estado;
 };

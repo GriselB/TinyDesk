@@ -79,6 +79,55 @@ void ModificacionAdminMenuManager::modificarSprintsPorProyectos(){
     } while (opcion != 0);
 }
 void ModificacionAdminMenuManager::modificarTicketsPorSprintsProyecto(){
+    TicketManager ticket;
+    int opcion, usuario;
+
+    do{
+        clear();
+        cout << "==== Modificar Ticket ====" << endl;
+        cout << "1. Modificar descripcion" << endl;
+        cout << "2. Modificar estado" << endl;
+        cout << "3. Finalizar ticket" << endl;
+        cout << "4. Reactivar ticket" << endl;
+        cout << "5. Dar de baja ticket" << endl;
+        cout << "0. Volver" << endl;
+        cin >> opcion;
+
+        switch (opcion) {
+            case 1:
+                ticket.modificarDescripcion();
+                break;
+
+            case 2:
+                ticket.modificarStatus();
+                break;
+
+            case 3:
+                cout << "Ingrese id de Usuario" << endl;
+                cin >> usuario;
+                ticket.finalizarTicketUsuario(usuario);
+
+                break;
+
+            case 4:
+                ticket.reactivarTicket();
+                break;
+
+            case 5:
+                ticket.bajaTicket();
+                break;
+
+            case 0:
+                break;
+
+            default:
+                cout << "Opcion invalida. Elija una opcion correcta"<<endl;
+                pause();
+                break;
+        }
+
+    }
+    while (opcion != 0);
 }
 
 void ModificacionAdminMenuManager::modificarUsuario(){

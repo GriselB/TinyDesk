@@ -38,11 +38,11 @@ void ListadoAdminMenu::run(string titulo) {
             case 3:
                 _listadoAdminManager.listarTicketsPorSprints();
                 break;
-                
+
             case 4:
                 _listadoAdminManager.listarUsuarios();
                 break;
-                
+
             case 0:
                 break;
 

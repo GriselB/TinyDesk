@@ -10,26 +10,24 @@ public:
     int getIdTicket();
     int getIdSprint();
     int getIdProyecto();
-    std::string getStatus();
+    int getStatus();
     std::string getPrioridad();
     std::string getDescripcionTarea();
     Fecha getFechaInicio();
     Fecha getFechaFin();
     Fecha getFechaFinalizada();
-    bool getActivo() const;
 
     //Setters
     void setIdEmpleado(int idEmpleado);
     void setIdTicket(int idTicket);
     void setIdSprint(int idSprint);
     void setIdProyecto (int idProyecto);
-    void setStatus(std::string status);
+    void setStatus(int status);
     void setPrioridad(std::string prioridad);
     void setDescripcionTarea(std::string descripcionTarea);
-    void setFechaInicio();
-    void setFechaFin();
-    void setFechaFinalizada();
-    void setActivo(bool activo);
+    void setFechaInicio(Fecha fecha);
+    void setFechaFin(Fecha fecha);
+    void setFechaFinalizada(Fecha fecha);
 
 private:
     int _idEmpleado;
@@ -39,9 +37,7 @@ private:
     Fecha _fechaInicio;
     Fecha _fechaFin;
     Fecha _fechaFinalizada;
-    char _status[20];
+    int _status;
     char _prioridad[20];
     char _descripcionTarea[250];
-
-    bool _activo = true;
 };
