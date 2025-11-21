@@ -204,6 +204,7 @@ pause();
 
 void ReportesAdminMenuManager::proyectosCompletados()
 {
+    clear();
     int total;
     float completados, resultado;
     ProyectoArchivo proyectoArchivo;
@@ -215,6 +216,7 @@ void ReportesAdminMenuManager::proyectosCompletados()
             completados++;
     }
     resultado = (completados/total)*100;
+    cout<<" ------------ PROYECTOS COMPLETADOS ------------ "<<endl;
     cout<<"La cantidad de proyectos completados es del: "<<resultado<<"%"<<endl;
     cout<<"La cantidad de proyectos no completados es del: "<<100-resultado<<"%"<<endl;
     cout<<completados<<endl;
@@ -225,6 +227,7 @@ void ReportesAdminMenuManager::proyectosCompletados()
 
 void ReportesAdminMenuManager::proyectosFinalizadosATiempo()
 {
+    clear();
     int total;
     float finalizados, finalizadosATiempo, resultado;
     Fecha fin, finalizada;
@@ -246,6 +249,7 @@ void ReportesAdminMenuManager::proyectosFinalizadosATiempo()
     resultado=(finalizadosATiempo/finalizados)*100;
     if(finalizados == 0 )
         resultado = 0;
+    cout<<" ------------ PROYECTOS FINALIZADOS A TIEMPO ------------ "<<endl;
     cout<<"El porcentaje de proyectos finalizados a tiempo es de: "<<resultado<<"%"<<endl;
     cout<<"El porcentaje de proyectos finalizados fuera de tiempo es de: "<<100-resultado<<"%"<<endl;
     pause();
