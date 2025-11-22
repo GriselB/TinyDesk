@@ -149,7 +149,7 @@ void ReportesAdminMenuManager::estadisticasDetalladasDeUnUsuario(){
         
         // Area
         for (int s = 0; s < cantSprints; s++) {
-            Sprint sp = vecSprints[s];
+            Sprint &sp = vecSprints[s];
             if ( sp.getIdProyecto() != t.getIdProyecto() ) continue;
             if ( sp.getIdSprint() != t.getIdSprint() ) continue;
             if (sp.getArea().getIdArea() == idArea) {
@@ -212,10 +212,10 @@ void ReportesAdminMenuManager::estadisticasDetalladasDeUnUsuario(){
         
         // finalizadas a tiempo - usuario -
         if (finalizadosATiempoUser > 0) {
-            mediaUserATiempo = finalizadosATiempoUser / float(totalUser);
+            mediaUserATiempo = finalizadosATiempoUser / float(finalizadosUser);
             porcentajeUserATiempo = round(mediaUserATiempo * 10000.0) / 100.0;
             
-            double varUsrTime = totalUser * mediaUserATiempo * (1 - mediaUserATiempo);
+            double varUsrTime = finalizadosUser * mediaUserATiempo * (1 - mediaUserATiempo);
             double desvioUsrTime = sqrt(varUsrTime);
             cvUserATiempo = (desvioUsrTime / finalizadosATiempoUser) * 100.0;
             
@@ -239,7 +239,7 @@ void ReportesAdminMenuManager::estadisticasDetalladasDeUnUsuario(){
         porcentajeATiempoGlobal = round(mediaATiempoGlobal * 10000.0) / 100.0;
         double varGlobATiempo = finalizadosGlobal * mediaATiempoGlobal * (1 - mediaATiempoGlobal);
         double desvioGlobATiempo = sqrt(varGlobATiempo);
-        cvGlobalATiempo = (desvioGlobATiempo / finalizadosGlobal) * 100.0;
+        cvGlobalATiempo = (desvioGlobATiempo / finalizadosATiempoGlobal) * 100.0;
     }
     
     // estadisticas del area del usuario
@@ -255,7 +255,7 @@ void ReportesAdminMenuManager::estadisticasDetalladasDeUnUsuario(){
         porcentajeATiempoArea = round(mediaATiempoArea * 10000.0) / 100.0;
         double varAreaATiempo = finalizadosArea * mediaATiempoArea * (1 - mediaATiempoArea);
         double desvioAreaATiempo = sqrt(varAreaATiempo);
-        cvAreaATiempo = (desvioAreaATiempo / finalizadosArea) * 100.0;
+        cvAreaATiempo = (desvioAreaATiempo / finalizadosATiempoArea) * 100.0;
     }
     
     if (totalUser > 0 && finalizadosUser > 0){

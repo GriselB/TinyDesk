@@ -11,4 +11,5 @@ class ReportesUsuarioMenuManager {
 public:
     void PorcentajeTicketsCompletadosDelUsuario();
     void ticketsSinTerminarDelUsuario();
+    void estadisticaCompletaDelUsuario();
 };

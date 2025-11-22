@@ -9,8 +9,9 @@ void ReportesUsuarioMenu::run(string titulo) {
     do {
         clear();
     cout << "      --- "<< titulo <<" ---" << endl;
-    cout << "1- Porcentaje de Tickets completado del usuario" << endl;
-    cout << "2- Porcentaje de Tickets sin terminar del usuario" << endl;
+    cout << "1 - Porcentaje de Tickets completado del usuario" << endl;
+    cout << "2 - Porcentaje de Tickets sin terminar del usuario" << endl;
+    cout << "3 - Estadistica Completa del Usuario" << endl;
     cout << "-----------------" << endl;
     cout << "0- Volver" << endl;
     cout << "Opcion: ";
@@ -21,13 +22,17 @@ void ReportesUsuarioMenu::run(string titulo) {
 
         switch (opcion) {
             case 1:
-                _reportesUsuarioMenuManager.PorcentajeTicketsCompletadosDelUsuario();
+                _reportesUsuarioMenuManager.porcentajeTicketsCompletadosDelUsuario();
                 break;
 
             case 2:
                 _reportesUsuarioMenuManager.ticketsSinTerminarDelUsuario();
                 break;
 
+            case 3:
+                _reportesUsuarioMenuManager.estadisticaCompletaDelUsuario();
+                break;
+                
             case 0:
                 break;
 
