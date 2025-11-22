@@ -9,7 +9,7 @@ void ReportesAdminMenu::run(string titulo) {
     do {
         clear();
     cout << "      --- "<< titulo <<" ---" << endl;
-    cout << "1- Porcentaje de Tickets completado por usuario" << endl;
+    cout << "1- Estadistica Completa del Usuario" << endl;
     cout << "2- Porcentaje de Tickets sin terminar" << endl;
     cout << "3- Porcentaje de Sprints completados por proyecto" << endl;
     cout << "4- Porcentaje de Sprint sin terminar por proyecto" << endl;
@@ -25,7 +25,7 @@ void ReportesAdminMenu::run(string titulo) {
 
         switch (opcion) {
             case 1:
-                _reportesAdminMenuManager.PorcentajeTicketsCompletadosPorUsuario();
+                _reportesAdminMenuManager.estadisticaCompletaDelUsuario();
                 break;
 
             case 2:
