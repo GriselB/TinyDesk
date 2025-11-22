@@ -29,7 +29,8 @@ public:
     void mostrar(int pos, bool activo);
     void listarSprintsPorIDProyectos(int idProyecto);
     bool ExisteSprint(int idSprint, int idProyecto);
-    bool SprintEstaActivo(int idSprint, int idProyecto); 
+    bool SprintEstaActivo(int idSprint, int idProyecto);
+    Fecha obtenerUltimaFechaFinPorArea(int idProyecto, int idArea); 
     
     void finalizarSprint();
     void eliminarSprintLogico();  

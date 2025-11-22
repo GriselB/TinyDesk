@@ -5,6 +5,7 @@
 #include "Proyecto.h"
 #include "area.h"
 #include "Estado.h"
+#include "utils.h"
 
 using namespace std;
 
@@ -15,6 +16,11 @@ using namespace std;
 string Sprint::getNombre() 
 { 
   return string(_nombre);   
+}
+
+string Sprint::getProyectoDelSprint() 
+{ 
+  return string(_nombreProyecto);   
 }
   
 int Sprint::getIdEstado()
@@ -39,19 +45,19 @@ Area Sprint::getArea()
 }
   
 
-string  Sprint::getFechaInicio()
+Fecha  Sprint::getFechaInicio()
 {
-    return _fechaInicio.toString();
+    return _fechaInicio;
 }
 
-string  Sprint::getFechaFin()
+Fecha  Sprint::getFechaFin()
 {
-    return _fechaFin.toString();
+    return _fechaFin;
 }
 
-string Sprint::getFechaFinalizada()
+Fecha Sprint::getFechaFinalizada()
 {
-    return _fechaFinalizada.toString();
+    return _fechaFinalizada;
 }
 
 
@@ -61,6 +67,12 @@ string Sprint::getFechaFinalizada()
 void Sprint::setNombre(const std::string &nombre)
 {
     strncpy(_nombre, nombre.c_str(), 49);
+    _nombre[49] = '\0';
+}
+
+void Sprint::setProyectoDelSprint(const std::string &nombreProyecto)
+{
+    strncpy(_nombreProyecto, nombreProyecto.c_str(), 49);
     _nombre[49] = '\0';
 }
 
@@ -98,6 +110,14 @@ void Sprint::setFechaFin()
 void Sprint::setFechaFinalizada()
 {
     _fechaFinalizada = Fecha("finalizacion");
+}
+
+void Sprint::setFechaInicio(Fecha f) {
+    _fechaInicio = f;
+}
+
+void Sprint::setFechaFin(Fecha f) {
+    _fechaFin = f;
 }
 
 

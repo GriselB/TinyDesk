@@ -127,11 +127,11 @@ void ProyectoManager::finalizarProyecto()
         return;
     }
     proyecto.setFechaFinalizada();
-    Fecha a =  proyecto.getFechaFin();
+    Fecha a =  proyecto.getFechaInicio();
     Fecha b = proyecto.getFechaFinalizada();
     while(!fechaMenorOIgual(a,b))
     {
-        cout<<"Fecha de finalizacion posterior a fecha de fin esperada. Fecha invalida"<<endl;
+        cout<<"Fecha de finalizacion anterior a fecha de inicio. Fecha invalida"<<endl;
         proyecto.setFechaFinalizada();
         b = proyecto.getFechaFinalizada();
     }

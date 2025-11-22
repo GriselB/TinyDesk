@@ -4,114 +4,295 @@
 
 using namespace std;
 
-void ReportesAdminMenuManager::PorcentajeTicketsCompletadosPorUsuario(){
+void ReportesAdminMenuManager::estadisticasDetalladasDeUnUsuario(){
     clear();
+    
     UsuarioArchivo usuarioRepo;
-    TicketArchivo ticketRepo;
-
-    int cantidadUsuarios = usuarioRepo.getCantidadRegistros();
-    if(cantidadUsuarios < 1){
-        cout << "No hay usuarios registrados" << endl;
+    TicketArchivo  ticketRepo;
+    SprintArchivo  sprintRepo;
+    
+    int cantUsuarios = usuarioRepo.getCantidadRegistros();
+    if (cantUsuarios < 1) {
+        cout << "No hay usuarios registrados." << endl;
         pause();
         return;
     }
-
-    int cantidadTicket = ticketRepo.getCantidadRegistros();
-    if(cantidadTicket < 1){
-        cout << "No hay tickets registrados" << endl;
+    
+    int cantTickets = ticketRepo.getCantidadRegistros();
+    if (cantTickets < 1) {
+        cout << "No hay tickets registrados." << endl;
         pause();
         return;
     }
-
-    Ticket *vecTickets = new Ticket[cantidadTicket];
-    int leidos = ticketRepo.leerTodos(vecTickets, cantidadTicket);
-    if(leidos < 1){
-        cout << "Error al leer los tickets" << endl;
+    
+    int cantSprints = sprintRepo.getCantidadRegistros();
+    if (cantSprints < 1) {
+        cout << "No hay sprints registrados." << endl;
+        pause();
+        return;
+    }
+    
+    cout << "=========== SELECCION DE USUARIO ===========" << endl;
+    for (int i = 0; i < cantUsuarios; i++) {
+        Usuario u = usuarioRepo.leer(i);
+        if ( !u.getActivo() ) continue;
+        if (u.getIdRol() == 1) continue;
+        
+        cout << "ID: " << u.getIdUsuario() << endl;
+        cout << " | Nombre: " << u.getNombre() << " " << u.getApellido() << endl;
+        cout << " | Area: " << u.getArea().getNombreArea() << endl;
+    }
+    cout << "---------------------------------------------" << endl;
+    cout << "---------------------------------------------" << endl;
+    
+    int idUsuarioSel;
+    cout << "Ingrese el ID de usuario para ver sus estadisticas: ";
+    cin >> idUsuarioSel;
+    
+    int posUsuario = usuarioRepo.buscarID(idUsuarioSel);
+    if (posUsuario < 0) {
+        cout << "No existe un usuario con ese ID." << endl;
+        pause();
+        return;
+    }
+    
+    Usuario userSelected = usuarioRepo.leer(posUsuario);
+    if(userSelected.getIdUsuario() == -1){
+        cout << "El usuario seleccionado no existe." << endl;
+        pause();
+        return;
+    }
+    if ( !userSelected.getActivo() ) {
+        cout << "El usuario seleccionado esta dado de baja." << endl;
+        pause();
+        return;
+    }
+    if (userSelected.getIdRol() == 1) {
+        cout << "El usuario seleccionado es administrador. Este reporte es solo para empleados." << endl;
+        pause();
+        return;
+    }
+    clear();
+    
+    Ticket *vecTickets = new Ticket[cantTickets];
+    if (ticketRepo.leerTodos(vecTickets, cantTickets) < 1) {
+        cout << "Error al leer los tickets." << endl;
         delete [] vecTickets;
         pause();
         return;
     }
-    cout << "------- ESTADISTICAS DE TICKETS COMPLETADOS POR USUARIO -------" << endl;
-
-    for(int i=0; i<cantidadUsuarios; i++){
-        Usuario user = usuarioRepo.leer(i);
-        if( !user.getActivo() ) continue;
-        if(user.getIdRol() == 1) continue;
-
-        int totalTicketsUsuario = 0;
-        int finalizados = 0;
-        int finalizadosATiempo = 0;
-
-        for(int j=0; j<leidos ; j++){
-            Ticket &ticket = vecTickets[j];
-
-            //if(!ticket.getActivo()) continue;  ‼️ verificar cuando modifiquen estado
-
-            if( ticket.getIdEmpleado() == user.getIdUsuario() ) {
-                totalTicketsUsuario ++;
-                // cambiar verificacion con estado una vez que lo incorporen
-                if(ticket.getStatus() == 2){
-                    finalizados ++;
-                    if(fechaMenorOIgual(ticket.getFechaFinalizada(), ticket.getFechaFin())){
-                        finalizadosATiempo++;
+    
+    Sprint *vecSprints = new Sprint[cantSprints];
+    if (sprintRepo.leerTodos(vecSprints, cantSprints) < 1) {
+        cout << "Error al leer los sprints." << endl;
+        delete [] vecTickets;
+        delete [] vecSprints;
+        pause();
+        return;
+    }
+    
+    // Global
+    int totalGlobal = 0;
+    int finalizadosGlobal = 0;
+    int finalizadosATiempoGlobal = 0;
+    float mediaGlobal = 0.0;
+    double porcentajeGlobal = 0.0;
+    double cvGlobal = 0.0;
+    float mediaATiempoGlobal = 0.0;
+    double porcentajeATiempoGlobal = 0.0;
+    double cvGlobalATiempo = 0.0;
+    
+    // Area del usuario
+    int totalArea = 0;
+    int finalizadosArea = 0;
+    int finalizadosATiempoArea = 0;
+    float mediaArea = 0.0;
+    float porcenajeArea = 0.0;
+    float cvArea = 0.0;
+    float mediaATiempoArea = 0.0;
+    double porcentajeATiempoArea = 0.0;
+    double cvAreaATiempo = 0.0;
+    
+    // Usuario
+    int totalUser = 0;
+    int finalizadosUser = 0;
+    int finalizadosATiempoUser = 0;
+    float mediaUser = 0.0;
+    double porcentajeUser = 0.0;
+    double cvUser = 0.0;
+    float mediaUserATiempo = 0.0;
+    double porcentajeUserATiempo = 0.0;
+    double cvUserATiempo = 0.0;
+    
+    int idArea = userSelected.getArea().getIdArea();
+    string nombreAreaUsuario = userSelected.getArea().getNombreArea();
+    
+    for (int i = 0; i < cantTickets; i++) {
+        Ticket &t = vecTickets[i];
+        
+        bool esFinalizado = false;
+        bool esFinalizadoATiempo = false;
+        
+        if (t.getStatus() == 2) {
+            esFinalizado = true;
+        }
+        
+        // Global
+        totalGlobal++;
+        if (esFinalizado) {
+            finalizadosGlobal++;
+            if ( fechaMenorOIgual( t.getFechaFinalizada(), t.getFechaFin() )) {
+                finalizadosATiempoGlobal++;
+                esFinalizadoATiempo = true;
+            }
+        }
+        
+        // Area
+        for (int s = 0; s < cantSprints; s++) {
+            Sprint &sp = vecSprints[s];
+            if ( sp.getIdProyecto() != t.getIdProyecto() ) continue;
+            if ( sp.getIdSprint() != t.getIdSprint() ) continue;
+            if (sp.getArea().getIdArea() == idArea) {
+                totalArea++;
+                if (esFinalizado) {
+                    finalizadosArea++;
+                    if (esFinalizadoATiempo) {
+                        finalizadosATiempoArea++;
                     }
                 }
-
+                break;
             }
         }
-
-        cout << "Usuario: " << user.getNombre() << " " << user.getApellido() << endl;
-        cout << "ID: " << user.getIdUsuario() << endl;
-        cout << "Area: " << user.getArea().getNombreArea() << endl;
-        cout << "Total tickets asignados: " << totalTicketsUsuario << endl;
-        cout << "Total tickets finalizados: " << finalizados << endl;
-
-        if(totalTicketsUsuario>0) {
-            if(finalizados > 0){
-                float media = finalizados / float(totalTicketsUsuario);
-
-                double porcentaje = round(media * 10000.0) / 100.0;
-                double varianza = totalTicketsUsuario * media * (1-media);
-                double desvio = sqrt(varianza);
-                double cv = (desvio / finalizados) * 100.0;
-
-                cout << "___ Tickets Finalizados en total ___" << endl;
-                cout << "Porcentaje completados: " << porcentaje << "%" << endl;
-                cout << "Desvío estándar: "
-                << round(desvio * 10000.0) / 10000.0 << "  -> Dispersión del promedio" << endl;
-                cout << "Coeficiente de variación: "
-                << round(cv * 100.0) / 100.0 << evaluarCV(cv) << endl;
-
-                if(finalizadosATiempo > 0){
-                    float mediaATiempo = finalizadosATiempo / float(totalTicketsUsuario);
-                    double porcentajeATiempo = round(mediaATiempo * 10000.0) / 100.0;
-                    double varianzaATiempo = totalTicketsUsuario * mediaATiempo * (1 - mediaATiempo);
-                    double desvioATiempo = sqrt(varianzaATiempo);
-                    double cvATiempo = (desvioATiempo / finalizadosATiempo) * 100.0;
-
-                    cout << "___ Tickets Finalizados A Tiempo ___" << endl;
-                    cout << "Porcentaje, a tiempo: " << porcentajeATiempo << "%" << endl;
-                    cout << "Desvío, a tiempo: "
-                    << round(desvioATiempo * 10000.0) / 10000.0 << "  -> Dispersión del promedio" << endl;
-                    cout << "Coeficiente de variación, a tiempo: "
-                    << round(cvATiempo * 100.0) / 100.0 << evaluarCV(cvATiempo) << endl;
-                } else {
-                    cout << "El usuario no completó ninguna tarea a tiempo." << endl;
-                }
+        
+        // Usuario
+        if ( t.getIdEmpleado() != userSelected.getIdUsuario() ) continue;
+        totalUser++;
+        if (esFinalizado) {
+            finalizadosUser++;
+            if (esFinalizadoATiempo) {
+                finalizadosATiempoUser++;
             }
-            else {
-                cout << "El usuario no completó ninguna tarea." << endl;
-            }
-
-        } else {
-            cout << "El Usuario no tiene Tickets Asignados." << endl;
         }
-
-        cout << "------------------------------------------------------" << endl;
-
+        
     }
-
+    
+    clear();
+    cout << "               =========== REPORTE DETALLADO DE USUARIO ===========" << endl;
+    cout << "Usuario: " << userSelected.getNombre() << " " << userSelected.getApellido() << endl;
+    cout << "ID: " << userSelected.getIdUsuario() << endl;
+    cout << "Area: " << nombreAreaUsuario << endl;
+    cout << "-----------------------------------------------" << endl << endl;
+    
+    // estadisticas del usuario
+    if (totalUser == 0) {
+        cout << "El usuario no tiene tickets asignados." << endl;
+        delete [] vecTickets;
+        delete [] vecSprints;
+        pause();
+        return;
+    } else if (finalizadosUser == 0) {
+        cout << "El usuario no finalizo ningun ticket (todos pendientes)." << endl;
+        delete [] vecTickets;
+        delete [] vecSprints;
+        pause();
+        return;
+    } else {
+        mediaUser = finalizadosUser / float(totalUser);
+        porcentajeUser = round(mediaUser * 10000.0) / 100.0;
+        double varUsr = totalUser * mediaUser * (1 - mediaUser);
+        double desvioUsr = sqrt(varUsr);
+        cvUser = (desvioUsr / finalizadosUser) * 100.0;
+        
+        cout << "       ---> ESTADISTICAS DEL USUARIO" << endl;
+        cout << "Total tickets asignados al usuario: " << totalUser << endl;
+        cout << "Total tickets finalizados: " << finalizadosUser << endl;
+        cout << "Tickets aun sin finalizar: " << (totalUser - finalizadosUser) << endl;
+        cout << "Total tickets finalizados a tiempo: " << finalizadosATiempoUser << endl;
+        cout << "Porcentaje de tickets completados: " << porcentajeUser << "%" << endl;
+        
+        // finalizadas a tiempo - usuario -
+        if (finalizadosATiempoUser > 0) {
+            mediaUserATiempo = finalizadosATiempoUser / float(finalizadosUser);
+            porcentajeUserATiempo = round(mediaUserATiempo * 10000.0) / 100.0;
+            
+            double varUsrTime = finalizadosUser * mediaUserATiempo * (1 - mediaUserATiempo);
+            double desvioUsrTime = sqrt(varUsrTime);
+            cvUserATiempo = (desvioUsrTime / finalizadosATiempoUser) * 100.0;
+            
+            cout << "Porcentaje de tickets completados a tiempo: " << porcentajeUserATiempo << "%" << endl;
+            cout << "Coeficiente de variacion: " << round(cvUserATiempo * 100.0) / 100.0 << evaluarCV(cvUserATiempo) << endl;
+        } else {
+            cout << "El usuario no tiene ningun ticket finalizado a tiempo." << endl;
+        }
+    }
+    
+    // estadisticas de la empresa
+    if (totalGlobal > 0 && finalizadosGlobal > 0) {
+        mediaGlobal = finalizadosGlobal / float(totalGlobal);
+        porcentajeGlobal = round(mediaGlobal * 10000.0) / 100.0;
+        double varGlob = totalGlobal * mediaGlobal * (1 - mediaGlobal);
+        double desvioGlob = sqrt(varGlob);
+        cvGlobal = (desvioGlob / finalizadosGlobal) * 100.0;
+        
+        // a tiempo
+        mediaATiempoGlobal = finalizadosATiempoGlobal / float(finalizadosGlobal);
+        porcentajeATiempoGlobal = round(mediaATiempoGlobal * 10000.0) / 100.0;
+        double varGlobATiempo = finalizadosGlobal * mediaATiempoGlobal * (1 - mediaATiempoGlobal);
+        double desvioGlobATiempo = sqrt(varGlobATiempo);
+        cvGlobalATiempo = (desvioGlobATiempo / finalizadosATiempoGlobal) * 100.0;
+    }
+    
+    // estadisticas del area del usuario
+    if (totalArea > 0 && finalizadosArea > 0) {
+        mediaArea = finalizadosArea / float(totalArea);
+        porcenajeArea = round(mediaArea * 10000.0) / 100.0;
+        double varArea = totalArea * mediaArea * (1 - mediaArea);
+        double desvioArea = sqrt(varArea);
+        cvArea = (desvioArea / finalizadosArea) * 100.0;
+        
+        // a tiempo
+        mediaATiempoArea = finalizadosATiempoArea / float(finalizadosArea);
+        porcentajeATiempoArea = round(mediaATiempoArea * 10000.0) / 100.0;
+        double varAreaATiempo = finalizadosArea * mediaATiempoArea * (1 - mediaATiempoArea);
+        double desvioAreaATiempo = sqrt(varAreaATiempo);
+        cvAreaATiempo = (desvioAreaATiempo / finalizadosATiempoArea) * 100.0;
+    }
+    
+    if (totalUser > 0 && finalizadosUser > 0){
+        
+        // USUARIO VS EMPRESA
+        if(totalGlobal > 0 && finalizadosGlobal > 0) {
+            float diferenciaPrcjeGlobal = porcentajeUser - porcentajeGlobal;
+            float difATiempoPrcjeGlobal = porcentajeUserATiempo - porcentajeATiempoGlobal;
+            
+            compararRendimientoUsuario("EMPRESA",
+                                       diferenciaPrcjeGlobal,
+                                       difATiempoPrcjeGlobal,
+                                       cvUser,
+                                       cvGlobal,
+                                       cvUserATiempo,
+                                       cvGlobalATiempo);
+        }
+        
+        // USUARIO VS AREA
+        if (totalArea > 0 && finalizadosArea > 0) {
+            double diferenciaPrcjeArea = porcentajeUser - porcenajeArea;
+            double difATiempoPrcjeArea = porcentajeUserATiempo - porcentajeATiempoArea;
+            
+            compararRendimientoUsuario( "AREA",
+                                       diferenciaPrcjeArea,
+                                       difATiempoPrcjeArea,
+                                       cvUser,
+                                       cvArea,
+                                       cvUserATiempo,
+                                       cvAreaATiempo);
+        }
+    }
+    cout << endl;
+    cout << "====================================================" << endl;
+    
     delete [] vecTickets;
+    delete [] vecSprints;
     pause();
 }
 
@@ -200,4 +381,57 @@ void ReportesAdminMenuManager::sprintsCompletadosPorProyecto(){
 void ReportesAdminMenuManager::sprintsSinTerminarPorProyecto(){
 cout<<"sprintsSinTerminarPorProyecto"<<endl;
 pause();
+}
+
+void ReportesAdminMenuManager::proyectosCompletados()
+{
+    clear();
+    int total;
+    float completados, resultado;
+    ProyectoArchivo proyectoArchivo;
+    total = proyectoArchivo.getCantidadRegistros();
+    completados = 0;
+    for (int i=0;i<total;i++)
+    {
+        if(proyectoArchivo.leer(i).getIdEstado()== 2)
+            completados++;
+    }
+    resultado = (completados/total)*100;
+    cout<<" ------------ PROYECTOS COMPLETADOS ------------ "<<endl;
+    cout<<"La cantidad de proyectos completados es del: "<<resultado<<"%"<<endl;
+    cout<<"La cantidad de proyectos no completados es del: "<<100-resultado<<"%"<<endl;
+    cout<<completados<<endl;
+    cout<<total<<endl;
+    pause();
+
+}
+
+void ReportesAdminMenuManager::proyectosFinalizadosATiempo()
+{
+    clear();
+    int total;
+    float finalizados, finalizadosATiempo, resultado;
+    Fecha fin, finalizada;
+    ProyectoArchivo proyectoArchivo;
+    total = proyectoArchivo.getCantidadRegistros();
+    finalizados = 0;
+    finalizadosATiempo = 0;
+    for(int i=0;i<total;i++)
+    {
+        if(proyectoArchivo.leer(i).getIdEstado()==2)
+        {
+            finalizados++;
+            fin=proyectoArchivo.leer(i).getFechaFin();
+            finalizada=proyectoArchivo.leer(i).getFechaFinalizada();
+            if(fechaMenorOIgual(finalizada,fin))
+                finalizadosATiempo++;
+        }
+    }
+    resultado=(finalizadosATiempo/finalizados)*100;
+    if(finalizados == 0 )
+        resultado = 0;
+    cout<<" ------------ PROYECTOS FINALIZADOS A TIEMPO ------------ "<<endl;
+    cout<<"El porcentaje de proyectos finalizados a tiempo es de: "<<resultado<<"%"<<endl;
+    cout<<"El porcentaje de proyectos finalizados fuera de tiempo es de: "<<100-resultado<<"%"<<endl;
+    pause();
 }

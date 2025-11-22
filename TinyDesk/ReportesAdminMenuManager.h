@@ -8,8 +8,10 @@
 
 class ReportesAdminMenuManager {
 public:
-    void PorcentajeTicketsCompletadosPorUsuario();
+    void estadisticasDetalladasDeUnUsuario();
     void ticketsSinTerminar();
     void sprintsCompletadosPorProyecto();
     void sprintsSinTerminarPorProyecto();
+    void proyectosCompletados();
+    void proyectosFinalizadosATiempo();
 };

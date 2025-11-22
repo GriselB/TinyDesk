@@ -163,3 +163,6 @@ int SprintArchivo::contarPorProyecto(int idProyecto) {
     fclose(p);
     return contador;
 }
+
+
+

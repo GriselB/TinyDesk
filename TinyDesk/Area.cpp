@@ -28,8 +28,8 @@ void Area::setNombreArea(string nombre)
 
 
 void Area::mostrarOpciones() {
-    cout << "\n--- ÁREAS DISPONIBLES ---\n";
-    cout << "1: Administración"<<endl;
+    cout << "--- AREAS DISPONIBLES ---" <<endl;
+    cout << "1: Administracion"<<endl;
     cout << "2: Backend"<<endl;
     cout << "3: Frontend"<<endl;
     cout << "4: QA"<<endl;
@@ -39,11 +39,11 @@ void Area::mostrarOpciones() {
 
 void Area::seleccionar() {
     int idArea;
-    string nombres[5] = {"Administración", "Backend", "Frontend", "QA", "UX/UI"};
+    string nombres[5] = {"Administracion", "Backend", "Frontend", "QA", "UX/UI"};
 
     do {
         mostrarOpciones();
-        cout << "Ingrese el ID del área: ";
+        cout << "Ingrese el ID del area: ";
         cin >> idArea;
     } while (idArea < 1 || idArea > 5);
 

@@ -16,11 +16,13 @@ SprintManager::SprintManager() { }
 
 //----------------------------------------------
 void SprintManager::crearSprint() {
+    clear();
     cout << "---- CREAR NUEVO SPRINT ----" << endl;
     int idProyecto = seleccionarProyecto(); 
 
     if (idProyecto == 0) {
-        cout << "No se seleccionó ningún proyecto. Cancelando creación." << endl;
+        cout << "No se selecciono ningun proyecto. Creacion cancelada." << endl;
+        pause();
         return;
     }
 
@@ -29,96 +31,213 @@ void SprintManager::crearSprint() {
 //----------------------------------------------
 
 int SprintManager::seleccionarProyecto() {
-    ProyectoManager proyecto;
+    ProyectoManager proy;
     cout << "A continuacion se mostrara la lista de proyectos para asignar el Sprint"<< endl;
-    proyecto.listarProyectosNombreID();
+    proy.listarProyectosNombreID();
 
     int idProyecto;
-    cout << "Ingrese el ID del proyecto al que pertenece el sprint (0 para cancelar): ";
-    cin >> idProyecto;
+
+    while (true) {
+      cout << "Ingrese el ID del proyecto al que pertenece el sprint (0 para cancelar): ";
+      cin >> idProyecto;
+
+      if (idProyecto == 0) {
+
+        return 0;
+      }
+
+      if (proy.buscarID(idProyecto) == -1) {
+        cout << "El proyecto con ID " << idProyecto << " no existe. Intente nuevamente." << endl;
+        continue; 
+      }
+
+ 
     clear();
     return idProyecto;
+  }
 }
 
 
 //-------------------------------------------
 void SprintManager::Cargar(int idProyecto) {
-    int idSprint;
-    string nombreSprint;
+    int idSprint, posProyecto;
+    string nombreSprint, nombreProyecto;
     bool activo = true;
     char opcion;
+    Fecha auxInicio, auxFin; 
+    bool fechasValidas = false;
 
     Sprint sprint;
     Area area;
     Estado estado;
+    ProyectoArchivo repoProy;
+    ProyectoManager proyMg;
+    Proyecto proy;
     
-//    int cantidadExistente = _repo.contarPorProyecto(idProyecto);
-//    _contadorSprint = cantidadExistente + 1;
-//    _ultimoProyectoID = idProyecto;
-
     idSprint = _repo.getNuevoID(idProyecto);
     sprint.setIdSprint(idSprint);
+    
 
-    cout << "\n=== CARGA DE NUEVO SPRINT ===" << endl;
+    posProyecto = proyMg.buscarID(idProyecto);
+    proy = repoProy.leer(posProyecto);
+
+    cout << "=== CARGA DE NUEVO SPRINT ===" << endl << endl;
+
+
+    nombreProyecto = "Proyecto:" + proy.getNombre()+" (" + proy.getFechaInicio().toString() + " - " + proy.getFechaFin().toString() + ")";
+    sprint.setProyectoDelSprint(nombreProyecto);
+    cout << nombreProyecto << endl;
+
     cout << "Sprint #" << idSprint << endl;
 
-    sprint.setFechaInicio();
-    sprint.setFechaFin();
 
-    nombreSprint = "Sprint " + to_string(idSprint)+" ("+sprint.getFechaInicio()+" - "+sprint.getFechaFin()+")";
-    sprint.setNombre(nombreSprint);
-
-
+    cout << "Seleccione el Area para este Sprint:" << endl;
     area.seleccionar(); 
     sprint.setArea(area);
+
+    Fecha ultimaFechaArea = obtenerUltimaFechaFinPorArea(idProyecto, area.getIdArea());
+
+    do {
+        clear(); 
+        
+        cout << "=== CARGA DE NUEVO SPRINT ===" << endl;
+        cout << nombreProyecto << endl; 
+        cout << "Sprint #" << idSprint << endl;
+        cout << "Area seleccionada: " << area.getNombreArea() << endl; 
+        cout << "-----------------------------------" << endl;
+
+        if (ultimaFechaArea.getAnio() != 0) { 
+
+            cout << ">> INFO: El ultimo Sprint de esta area finalizo el: " 
+                 << ultimaFechaArea.toString() << endl;
+            cout << ">> (La nueva fecha de inicio debe ser posterior)" << endl;
+        } else {
+
+            cout << ">> INFO: Este sera el primer Sprint para " 
+                 << area.getNombreArea() << "." << endl;
+        }
+        cout << "-----------------------------------" << endl;
+
+        cout << "--- Ingreso de Fechas ---" << endl;
+        
+        auxInicio = Fecha("Inicio del Sprint"); 
+        cout << "-------------------------" << endl;
+        auxFin = Fecha("Fin del Sprint");
+
+        fechasValidas = true; 
+
+        if (!fechaMenorOIgual(auxInicio, auxFin)) {
+            cout << "[ERROR] La fecha de inicio del Sprint debe ser anterior a la fecha de fin." << endl;
+            pause();
+            fechasValidas = false;
+        }
+
+       
+        else if (!fechaMenorOIgual(proy.getFechaInicio(), auxInicio)) {
+            cout << "[ERROR] El Sprint no puede iniciar antes que el Proyecto (" 
+            << proy.getFechaInicio().toString() << ")." << endl;
+            pause();
+            fechasValidas = false;
+        }
+        
+        else if (!fechaMenorOIgual(auxFin, proy.getFechaFin())) {
+            cout << "[ERROR] El Sprint no puede terminar después que el Proyecto (" 
+            << proy.getFechaFin().toString() << ")." << endl;
+            pause();
+            fechasValidas = false;
+        }
+
+        else if (ultimaFechaArea.getAnio() != 0 && fechaMenorOIgual(auxInicio, ultimaFechaArea)) {
+          cout << "[ERROR] Ya existe un Sprint de esta area que termina el " 
+               << ultimaFechaArea.toString() << ". " 
+               << "El nuevo Sprint debe iniciar despues." << endl;
+          pause();
+          fechasValidas = false;
+        }
+
+    } while (!fechasValidas);
+    
+    sprint.setFechaInicio(auxInicio);
+    sprint.setFechaFin(auxFin);
+
+    nombreSprint = "Sprint " + to_string(idSprint)+" ("+sprint.getFechaInicio().toString()+" - "+sprint.getFechaFin().toString()+")";
+    sprint.setNombre(nombreSprint);
+
     
     sprint.setIdProyecto(idProyecto);
     sprint.setIdEstado(1);
+    
 
-    // Mostrar resumen antes de guardar
-    cout << "\n=== RESUMEN DEL SPRINT CARGADO ===" << endl;
-    /*cout << "Nombre: " << sprint.getNombre() << endl;
-    cout << "Proyecto ID: " << sprint.getIdProyecto() << endl;
-    cout << "Área ID: " << sprint.getArea().getNombreArea() << endl;
-    cout << "Inicio: " << sprint.getFechaInicio()<< endl;
-    cout << "Fin: " << sprint.getFechaFin() << endl;
-    cout << "Estado: " << estado.getNombreEstado(getIdEstado()-1)<< endl;*/
+
+    clear();
+    cout << "=== RESUMEN DEL SPRINT CARGADO ===" << endl;
+
     Mostrar(sprint);
     cout << "===================================" << endl;
 
 
-    cout << "\n¿Desea guardar este sprint? (S/N): ";
+    cout << "Desea guardar este sprint? (S/N): ";
     cin >> opcion;
 
     if (toupper(opcion) == 'S') {
         if (_repo.guardar(sprint)) {
-            cout << "\nSprint guardado exitosamente." << endl;
+            cout << "Sprint guardado exitosamente." << endl;
             pause();
         } else {
-            cout << "\nError al guardar el sprint." << endl;
+            cout << "Error al guardar el sprint." << endl;
             pause();
         }
     } else {
-        cout << "\nOperación cancelada. No se guardó el sprint." << endl;
+        cout << "Operación cancelada. No se guardó el sprint." << endl;
         pause();
     }
 }
 
 //----------------------------------------------
 
+Fecha SprintManager::obtenerUltimaFechaFinPorArea(int idProyecto, int idArea) {
+    Sprint reg;
+    int count = _repo.getCantidadRegistros();
+    
+    Fecha maxFecha;
+    
+    bool haySprints = false;
+
+    for (int i = 0; i < count; i++) {
+        reg = _repo.leer(i);
+        
+        if (reg.getIdProyecto() == idProyecto && 
+            reg.getArea().getIdArea() == idArea && 
+            reg.getIdEstado() == 1) { 
+            
+            if (!haySprints) {
+                maxFecha = reg.getFechaFin();
+                haySprints = true;
+            } else {
+                if (fechaMenorOIgual(maxFecha, reg.getFechaFin())) {
+                    maxFecha = reg.getFechaFin();
+                }
+            }
+        }
+    }
+    
+    return maxFecha;
+}
+//----------------------------------------------
+
 //----------------------------------------------
 
 void SprintManager::Mostrar(Sprint sprint) {
     Estado estado;
-    //cout << "Sprint: " << sprint.getIdSprint() << endl;
     cout <<  sprint.getNombre() << endl;
     cout << "Proyecto ID: " << sprint.getIdProyecto() << endl;
-    cout << "Área ID: " << sprint.getArea().getNombreArea() << endl;
-    cout << "Fecha Inicio: " << sprint.getFechaInicio() << endl;
-    cout << "Fecha Fin: " << sprint.getFechaFin() << endl;
+    cout <<  sprint.getProyectoDelSprint() << endl;
+    cout << "Area: " << sprint.getArea().getNombreArea() << endl;
+    cout << "Fecha Inicio: " << sprint.getFechaInicio().toString() << endl;
+    cout << "Fecha Fin: " << sprint.getFechaFin().toString() << endl;
     cout << "Estado: " << estado.getNombreEstado(sprint.getIdEstado()) << endl;
     if(sprint.getIdEstado()==2)
-        cout<<"Fecha de finalizacion del sprint: "<<sprint.getFechaFinalizada()<<endl;
+        cout<<"Fecha de finalizacion del sprint: "<<sprint.getFechaFinalizada().toString()<<endl;
     cout << endl;
 }
 
