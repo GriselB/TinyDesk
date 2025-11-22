@@ -9,7 +9,7 @@ void ReportesAdminMenu::run(string titulo) {
     do {
         clear();
     cout << "      --- "<< titulo <<" ---" << endl;
-    cout << "1- Estadistica Completa del Usuario" << endl;
+    cout << "1- Estadistica Completa de un Usuario seleccionado" << endl;
     cout << "2- Porcentaje de Tickets sin terminar" << endl;
     cout << "3- Porcentaje de Sprints completados por proyecto" << endl;
     cout << "4- Porcentaje de Sprint sin terminar por proyecto" << endl;
