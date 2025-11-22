@@ -1,6 +1,9 @@
 #include <iostream>
 #include "utils.h"
 
+using namespace std;
+
+
 std::string cargarCadena()
 {
   std::string texto;

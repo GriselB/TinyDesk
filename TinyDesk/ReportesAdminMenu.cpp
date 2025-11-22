@@ -25,7 +25,7 @@ void ReportesAdminMenu::run(string titulo) {
 
         switch (opcion) {
             case 1:
-                _reportesAdminMenuManager.estadisticaCompletaDelUsuario();
+                _reportesAdminMenuManager.estadisticasDetalladasDeUnUsuario();
                 break;
 
             case 2:
