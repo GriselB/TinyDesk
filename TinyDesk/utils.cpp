@@ -96,9 +96,77 @@ bool fechaMenorOIgual(Fecha esMenor, Fecha esMayor) {
 }
 
 std::string evaluarCV(double cv){
-    if (cv<=20) return std::string("rendimiento del usuario muy constante");
-    if (cv<=30) return std::string("rendimiento del usuario bastante constante");
-    if (cv<=40) return std::string("rendimiento del usuario variable");
-    return std::string("rendimiento del usuario muy malo");
+    if (cv<=20) return std::string("rendimiento muy constante");
+    if (cv<=40) return std::string("rendimiento muy variable");
+    return std::string("rendimiento muy malo");
 }
 
+void compararRendimientoUsuario(std::string titulo,
+                                double diferenciaCumplimiento,
+                                double diferenciaCumplimientoATiempo,
+                                double cvUsuario,
+                                double cvBase,
+                                double cvUsuarioATiempo,
+                                double cvBaseATiempo){
+    
+    cout << "--- Comparacion Usuario vs " << titulo << " ---" << endl;
+    
+    /// - CUMPLIMIENTO GENERAL -
+    cout << "Cumplimiento general: ";
+    if (diferenciaCumplimiento > 0) {
+        cout << diferenciaCumplimiento << "% POR ENCIMA del promedio de " << titulo << "." << endl;
+    }
+    else if (diferenciaCumplimiento < 0) {
+        cout << (diferenciaCumplimiento * -1) << "% POR DEBAJO del promedio de " << titulo << "." << endl;
+    }
+    else {
+        cout << "igual al promedio de " << titulo << "." << endl;
+    }
+    
+    /// - CONSISTENCIA EN CUMPLIMIENTO GENERAL -
+    cout << "Consistencia del rendimiento: ";
+    if (cvUsuario >= 0 && cvBase >= 0) {
+        if (cvUsuario < cvBase) {
+            cout << "el usuario es MAS ESTABLE que " << titulo << "." << endl;
+        }
+        else if (cvUsuario > cvBase) {
+            cout << "el usuario es MAS INESTABLE que " << titulo << "." << endl;
+        }
+        else {
+            cout << "el usuario tiene una estabilidad similar a " << titulo << "." << endl;
+        }
+    }
+    else {
+        cout << "no puede evaluarse (datos insuficientes)." << endl;
+    }
+    
+    /// - CUMPLIMIENTO A TIEMPO -
+    cout << "Cumplimiento A TIEMPO: ";
+    if (diferenciaCumplimientoATiempo > 0) {
+        cout << diferenciaCumplimientoATiempo
+        << "% POR ENCIMA del promedio a tiempo de " << titulo << "." << endl;
+    }
+    else if (diferenciaCumplimientoATiempo < 0) {
+        cout << (diferenciaCumplimientoATiempo * -1) << "% POR DEBAJO del promedio a tiempo de " << titulo << "." << endl;
+    }
+    else {
+        cout << "igual al promedio a tiempo de " << titulo << "." << endl;
+    }
+    
+    /// - CV A TIEMPO (consistencia) -
+    cout << "Consistencia en puntualidad (entregas a tiempo): ";
+    if (cvUsuarioATiempo >= 0 && cvBaseATiempo >= 0) {
+        if (cvUsuarioATiempo < cvBaseATiempo) {
+            cout << "el usuario es MAS ESTABLE en entregas a tiempo que " << titulo << "." << endl;
+        }
+        else if (cvUsuarioATiempo > cvBaseATiempo) {
+            cout << "el usuario es MAS INESTABLE en entregas a tiempo que " << titulo << "." << endl;
+        }
+        else {
+            cout << "el usuario tiene una estabilidad similar a " << titulo << " en entregas a tiempo." << endl;
+        }
+    }
+    else {
+        cout << "no puede evaluarse (insuficientes tickets finalizados a tiempo)." << endl;
+    }
+}
