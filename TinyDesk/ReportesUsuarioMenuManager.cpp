@@ -4,7 +4,7 @@
 
 using namespace std;
 
-void ReportesUsuarioMenuManager::PorcentajeTicketsCompletadosDelUsuario(){
+void ReportesUsuarioMenuManager::porcentajeTicketsCompletadosDelUsuario(){
     clear();
     cout<<"PorcentajeTicketsCompletadosDelUsuario"<<endl;
     pause();
