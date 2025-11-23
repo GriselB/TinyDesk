@@ -20,7 +20,7 @@ public:
     void mostrarUsuarios();
     int iniciarSesion();
     void eliminarUsuario();
-//    bool verificarUsuarioArea(int usuarioId, int area);
+    bool verificarUsuarioArea(int usuarioId, int area);
     bool existeUsuario(int usuarioId);
     void cargarUsuario(Usuario &user);
     void mostrarUsuario(Usuario &usuario);
