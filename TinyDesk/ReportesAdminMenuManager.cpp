@@ -181,7 +181,7 @@ void ReportesAdminMenuManager::estadisticasDetalladasDeUnUsuario(){
     cout << "Usuario: " << userSelected.getNombre() << " " << userSelected.getApellido() << endl;
     cout << "ID: " << userSelected.getIdUsuario() << endl;
     cout << "Area: " << nombreAreaUsuario << endl;
-    cout << "-----------------------------------------------" << endl << endl;
+    cout << "-------------------------" << endl << endl;
     
     // estadisticas del usuario
     if (totalUser == 0) {
@@ -197,13 +197,15 @@ void ReportesAdminMenuManager::estadisticasDetalladasDeUnUsuario(){
         pause();
         return;
     } else {
+        // cumplimiento user
         mediaUser = finalizadosUser / float(totalUser);
         porcentajeUser = round(mediaUser * 10000.0) / 100.0;
         double varUsr = totalUser * mediaUser * (1 - mediaUser);
         double desvioUsr = sqrt(varUsr);
         cvUser = (desvioUsr / finalizadosUser) * 100.0;
         
-        cout << "       ---> ESTADISTICAS DEL USUARIO" << endl;
+        cout << "    ---> ESTADISTICAS DEL USUARIO" << endl;
+        cout << "           --------------------------" << endl;
         cout << "Total tickets asignados al usuario: " << totalUser << endl;
         cout << "Total tickets finalizados: " << finalizadosUser << endl;
         cout << "Tickets aun sin finalizar: " << (totalUser - finalizadosUser) << endl;
@@ -279,7 +281,7 @@ void ReportesAdminMenuManager::estadisticasDetalladasDeUnUsuario(){
             double diferenciaPrcjeArea = porcentajeUser - porcenajeArea;
             double difATiempoPrcjeArea = porcentajeUserATiempo - porcentajeATiempoArea;
             
-            compararRendimientoUsuario( "AREA",
+            compararRendimientoUsuario( "AREA " + nombreAreaUsuario,
                                        diferenciaPrcjeArea,
                                        difATiempoPrcjeArea,
                                        cvUser,
