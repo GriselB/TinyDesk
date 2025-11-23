@@ -190,6 +190,17 @@ bool UsuarioManager::existeUsuario(int usuarioId){
     return user.getActivo();
 }
 
+bool UsuarioManager::verificarUsuarioArea(int usuarioId, int area){
+    int pos = _repo.buscarID(usuarioId);
+    if(pos<0) return false;
+    
+    Usuario user = _repo.leer(pos);
+    
+    if(user.getIdUsuario() == -1) return false;
+    if(user.getArea().getIdArea() != area) return false;
+    
+    return true;
+}
 
 void UsuarioManager::eliminarUsuario(){
     int id, pos;
