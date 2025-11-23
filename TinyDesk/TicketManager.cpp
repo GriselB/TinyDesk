@@ -34,7 +34,7 @@ void TicketManager::crearTicket() {
     clear();
     cout << "=== Nuevo ticket ===\n\n";
 
-    cargarProyectoSprint(0, t, pos);
+    cargarProyectoSprint(1, t, pos);
 
     int nuevoId = _repo.getNuevoIdTicket(t.getIdProyecto(), t.getIdSprint());
     t.setIdTicket(nuevoId);
