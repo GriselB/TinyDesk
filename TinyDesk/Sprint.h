@@ -16,7 +16,7 @@ private:
     char _status[20];
     char _nombre[50];
     char _nombreProyecto[50];
-    bool  _activo;
+    bool _finalizoTarde;
     int _idEstado;
     Proyecto _proyecto;
     
@@ -33,6 +33,7 @@ public:
     Fecha getFechaInicio();
     Fecha getFechaFin();
     Fecha getFechaFinalizada();
+    bool getFinalizoTarde();
    
     
     //setters
@@ -47,6 +48,8 @@ public:
     void setFechaFinalizada();
     void setFechaInicio(Fecha f); 
     void setFechaFin(Fecha f);
+    void setFechaFinalizada(Fecha f);
+    void setFinalizoTarde(bool f);
 };
 
 

@@ -307,20 +307,21 @@ void ReportesAdminMenuManager::sprintsCompletadosPorProyecto(){
 
     ProyectoArchivo archivoProyecto;
     SprintArchivo archivoSprint;
+    SprintManager sprint;
 
     int cantProyectos = archivoProyecto.getCantidadRegistros();
     int cantSprints = archivoSprint.getCantidadRegistros();
 
-    cout << "            ----- SPRINTS COMPLETADOS POR PROYECTO -----\n\n";
+    cout << "            ----- SPRINTS COMPLETADOS POR PROYECTO -----" << endl;
 
     if (cantProyectos <= 0) {
-        cout << "No hay proyectos registrados.\n";
+        cout << "No hay proyectos registrados."<< endl;
         pause();
         return;
     }
 
     if (cantSprints <= 0) {
-        cout << "No hay sprints registrados.\n";
+        cout << "No hay sprints registrados."<< endl;
         pause();
         return;
     }
@@ -328,6 +329,8 @@ void ReportesAdminMenuManager::sprintsCompletadosPorProyecto(){
     int *idsProyecto = new int[cantProyectos];
     int *totalSprints = new int[cantSprints]{0};
     int *finalizados = new int[cantSprints]{0};
+    int *bajas = new int[cantSprints]{0};
+    int *abiertos = new int[cantSprints]{0};
 
 
     for (int i = 0; i < cantProyectos; i++) {
@@ -343,10 +346,17 @@ void ReportesAdminMenuManager::sprintsCompletadosPorProyecto(){
             if (idsProyecto[i] == s.getIdProyecto()) {
 
                 totalSprints[i]++;
-
+                if (s.getIdEstado() == 0) {
+                    bajas[i]++;
+                }
+                if (s.getIdEstado() == 1) {
+                    abiertos[i]++;
+                }
+                
                 if (s.getIdEstado() == 2) {
                     finalizados[i]++;
                 }
+                
 
             }
         }
@@ -367,8 +377,10 @@ void ReportesAdminMenuManager::sprintsCompletadosPorProyecto(){
         float porcentaje = (finalizados[i] * 100.0f) / totalSprints[i];
 
         cout << "  Sprints totales:   " << totalSprints[i] << endl;
+        cout << "  Abiertos:          " << abiertos[i] << endl;
         cout << "  Finalizados:       " << finalizados[i] << endl;
-        cout << "  Progreso:          " << porcentaje << "%" << endl;
+        cout << "  Bajas:             " << bajas[i] << endl;
+        cout << "  Progreso:          " << porcentaje << "% " << sprint.dibujarBarra(porcentaje) << endl;
         cout << "------------------------------------------"<< endl;
     }
 
@@ -376,11 +388,134 @@ void ReportesAdminMenuManager::sprintsCompletadosPorProyecto(){
     delete[] idsProyecto;
     delete[] totalSprints;
     delete[] finalizados;
+    delete[] abiertos;
+    delete[] bajas;
     pause();
 }
-void ReportesAdminMenuManager::sprintsSinTerminarPorProyecto(){
-cout<<"sprintsSinTerminarPorProyecto"<<endl;
-pause();
+void ReportesAdminMenuManager::sprintsAtrasadosArea(){
+
+    clear();
+    ProyectoArchivo archivoProyecto;
+    SprintArchivo archivoSprint;
+    SprintManager sprintMgm;
+    ProyectoManager  proyecto;
+    Proyecto proy;
+    Area area;
+    
+
+    int cantProyectos = archivoProyecto.getCantidadRegistros();
+    int cantSprints   = archivoSprint.getCantidadRegistros();
+
+    if (cantProyectos == 0 || cantSprints == 0) {
+        cout << "No hay datos para generar el reporte." << endl;
+        pause();
+        return;
+    }
+
+    cout << "===== REPORTE DE ATRASOS POR AREA =====" << endl;
+
+    int idProyecto, posProyecto;
+    
+    proyecto.listarProyectosNombreID();
+    cout << "Ingrese el ID del proyecto para generar el reporte: ";
+    cin >> idProyecto;
+
+    posProyecto = proyecto.buscarID(idProyecto);
+    proy = archivoProyecto.leer(posProyecto);
+    cout << "Proyecto: " << proy.getNombre() << endl;
+
+
+    int *areas = new int[cantSprints]; 
+    int cantAreas = 0;
+
+    for (int i = 0; i < cantSprints; i++) {
+        Sprint sprint = archivoSprint.leer(i);
+
+        if (sprint.getIdProyecto() != idProyecto) continue;
+
+        int idArea = sprint.getArea().getIdArea();
+        bool existe = false;
+
+        for (int a = 0; a < cantAreas; a++) {
+            if (areas[a] == idArea) {
+                existe = true;
+                break;
+            }
+        }
+
+        if (!existe) {
+            areas[cantAreas++] = idArea;
+        }
+    }
+
+    if (cantAreas == 0) {
+        cout << "Este proyecto no tiene sprints asignados." << endl;
+        delete[] areas;
+        pause();
+        return;
+    }
+
+
+    int *totalPorArea     = new int[cantAreas] {0};
+    int *atrasadosPorArea = new int[cantAreas] {0};
+    int *diasAtrasoAcum   = new int[cantAreas] {0};
+
+
+
+    for (int i = 0; i < cantSprints; i++) {
+        Sprint sprint = archivoSprint.leer(i);
+
+        if (sprint.getIdProyecto() != idProyecto) continue;
+
+        int idArea = sprint.getArea().getIdArea();
+
+        int index = -1;
+        for (int a = 0; a < cantAreas; a++) {
+            if (areas[a] == idArea) {
+                index = a;
+                break;
+            }
+        }
+
+        if (index == -1) continue; 
+
+        totalPorArea[index]++;
+
+        if (sprint.getFinalizoTarde()) {
+            atrasadosPorArea[index]++;
+            //diasAtrasoAcum[index] += sprint.getDiasAtraso(); 
+        }
+    }
+
+
+    for (int i = 0; i < cantAreas; i++) {
+        cout << "----------------------------"<< endl;
+        cout << "Area: " << area.buscarNombrePorID(areas[i])  << endl;
+        cout << "  - Total de sprints: " << totalPorArea[i] << endl;
+        cout << "  - Finalizados tarde: " << atrasadosPorArea[i] << endl;
+
+        if (totalPorArea[i] == 0) {
+            cout << "  - % atraso: 0%" << endl;
+            continue;
+        }
+
+        float porc = (atrasadosPorArea[i] * 100.0f) / totalPorArea[i];
+
+        cout << "  - % atraso: " << porc << endl;
+
+//        if (atrasadosPorArea[i] > 0) {
+//            float promedio = diasAtrasoAcum[i] / (float)atrasadosPorArea[i];
+//            cout << "  - Promedio de atraso: " << promedio << " dias" <<endl;
+//        }
+        cout << "----------------------------"<< endl;
+    }
+
+    delete[] areas;
+    delete[] totalPorArea;
+    delete[] atrasadosPorArea;
+    delete[] diasAtrasoAcum;
+
+    pause();
 }
 
 void ReportesAdminMenuManager::proyectosCompletados()

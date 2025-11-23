@@ -60,6 +60,11 @@ Fecha Sprint::getFechaFinalizada()
     return _fechaFinalizada;
 }
 
+bool Sprint::getFinalizoTarde()
+{ 
+  return _finalizoTarde; 
+}
+
 
 
 // Setters
@@ -118,6 +123,16 @@ void Sprint::setFechaInicio(Fecha f) {
 
 void Sprint::setFechaFin(Fecha f) {
     _fechaFin = f;
+}
+
+void Sprint::setFechaFinalizada(Fecha f)
+{
+    _fechaFinalizada = f;
+}
+
+void Sprint::setFinalizoTarde(bool f) 
+{ 
+  _finalizoTarde = f; 
 }
 
 
