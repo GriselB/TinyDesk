@@ -8,6 +8,10 @@ int Ticket::getIdEmpleado()
     return _idEmpleado;
 }
 
+std::sting Ticket::getNombreEmpleado(){
+    return string(_nombreEmpleado);
+}
+
 int Ticket::getIdTicket()
 {
     return _idTicket;
@@ -17,8 +21,16 @@ int Ticket::getIdSprint(){
     return _idSprint;
 }
 
+std::sting Ticket::getNombreSprint(){
+    return string(_nombreSprint);
+}
+
 int Ticket::getIdProyecto(){
     return _idProyecto;
+}
+
+std::sting Ticket::getNombreProyecto(){
+    return string(_nombreProyecto);
 }
 
 int Ticket::getStatus()
@@ -56,6 +68,11 @@ void Ticket::setIdEmpleado(int idEmpleado)
     _idEmpleado=idEmpleado;
 }
 
+void Ticket::setNombreEmpleado(std::str nombreEmpleado){
+    strncpy(_nombreEmpleado, nombreEmpleado.c_str(), 49);
+    _nombre[49] = '\0';
+}
+
 void Ticket::setIdTicket(int idTicket)
 {
     _idTicket=idTicket;
@@ -65,9 +82,20 @@ void Ticket::setIdSprint(int idSprint){
     _idSprint = idSprint;
 }
 
+void Ticket::setNombreSprint(std::str nombreSprint){
+    strncpy(_nombreSprint, nombreSprint.c_str(), 49);
+    _nombre[49] = '\0';
+}
+
 void Ticket::setIdProyecto(int idProyecto){
     _idProyecto = idProyecto;
 }
+
+void Ticket::setNombreProyecto(std::str nombreProyecto){
+    strncpy(_nombreProyecto, nombreProyecto.c_str(), 49);
+    _nombre[49] = '\0';
+}
+
 
 void Ticket::setStatus(int status)
 {

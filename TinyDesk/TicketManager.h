@@ -4,6 +4,7 @@
 #include "TicketArchivo.h"
 #include "ProyectoManager.h"
 #include "SprintManager.h"
+#include "UsuarioManager.h"
 
 class TicketManager
 {
@@ -29,8 +30,9 @@ public:
 
 private:
     TicketArchivo _repo;
-    ProyectoManager proyectoManager;
-    SprintManager sprintManager;
+    ProyectoArchivo _repoProyecto;
+    SprintArchivo _repoSprint;
+    UsuarioArchivo _repoUsuario;
     Proyecto p;
     Fecha f;
     Estado estado;

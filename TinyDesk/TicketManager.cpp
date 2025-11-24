@@ -11,11 +11,13 @@ TicketManager::TicketManager(){
 
 void TicketManager::mostrarTicket(Ticket ticket) {
 
+    Proyecto pro;
+
     cout << "======================== \n"
          << " | ID: " << ticket.getIdTicket() << "\n"
+         << " | Proyecto: " << ticket.getNombreProyecto()) << " - " << " ID: "<< ticket.getIdProyecto() << "\n"
+         << " | Sprint: " << ticket.getNombreSprint()) << " - " << " ID: "<< ticket.getIdSprint() << "\n"
          << " | Empleado: " << ticket.getIdEmpleado() << "\n"
-         << " | Sprint: " << ticket.getIdSprint() << "\n"
-         << " | Proyecto: " << ticket.getIdProyecto() << "\n"
          << " | Estado: " << estado.getNombreEstado(ticket.getStatus()) << "\n"
          << " | Prioridad: " << ticket.getPrioridad() << "\n"
          << " | Descripcion: " << ticket.getDescripcionTarea() << "\n"
@@ -23,13 +25,16 @@ void TicketManager::mostrarTicket(Ticket ticket) {
 }
 
 void TicketManager::crearTicket() {
+
     Ticket t;
     Proyecto pro;
     Sprint spr;
+    Usuario u;
+    UsuarioManager userManager;
 
-    string prioridad, descripcion;
+    int idEmpleado = 0 ;
     char opcion;
-    int idEmpleado, pos = 0;
+    string prioridad, descripcion;
 
     clear();
     cout << "=== Nuevo ticket ===\n\n";
@@ -39,10 +44,32 @@ void TicketManager::crearTicket() {
     int nuevoId = _repo.getNuevoIdTicket(t.getIdProyecto(), t.getIdSprint());
     t.setIdTicket(nuevoId);
 
-    cout << "ID de empleado asignado: ";
-    cin >> idEmpleado;
+    int posSprint = _repoSprint.buscarID(t.getIdSprint(), t.getIdProyecto());
+    spr = _repoSprint.leer(posSprint);
+
+    t.setNombreProyecto(spr.getNombre());
+
+    int nUsuarios = _repoUsuario.getCantidadRegistros();
+
+    while(!!userManager.verificarUsuarioArea(idEmpleado, spr.getArea()){
+            for (int i=0; i<nUsuarios; i++){
+                u = _repoUsuario.leer(i);
+                if (userManager.verificarUsuarioArea(u.getIdUsuario(), spr.getArea())){
+                userManager.mostrarUsuario(u);
+            }
+
+            cout << "Seleccione el ID del empleado: ";
+            cin >> idEmpleado;
+            if (!userManager.verificarUsuarioArea(idEmpleado, spr.getArea()){
+                cout >> "El usuario ingresado no corresponde al area del sprint";
+                pause();
+                clear();
+            }
+        }
+    }
+
     t.setIdEmpleado(idEmpleado);
-    clear();
+    //t.setNombreEmpleado()
 
     cout << "Prioridad (1=Baja, 2=Media, 3=Alta): ";
     cin >> prioridad;
@@ -240,6 +267,7 @@ void TicketManager::cargarProyectoSprint(bool nuevo, Ticket &t, int &pos){
 int idProyecto = -1, idSprint, idTicket = -1;
 
 ProyectoManager proyectoManager;
+Proyecto pro;
 SprintManager sprintManager;
 
     while (proyectoManager.buscarIDyAlta(idProyecto) == -1){
@@ -249,9 +277,7 @@ SprintManager sprintManager;
         cout << "Numero de proyecto: ";
         cin >> idProyecto;
 
-
         int pos = proyectoManager.buscarIDyAlta(idProyecto);
-
             if (pos == -1){
                 clear();
                 cout << "El numero ingresado no corresponde a un proyecto existente" << endl;
@@ -260,7 +286,10 @@ SprintManager sprintManager;
             }
         }
 
+    pro = _repoProyecto.leer(pos);
+
     t.setIdProyecto(idProyecto);
+    t.setNombreProyecto(pro.getNombre());
 
     while(!sprintManager.ExisteSprint(idSprint, idProyecto)){
         clear();
