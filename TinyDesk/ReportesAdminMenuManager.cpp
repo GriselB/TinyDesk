@@ -614,3 +614,104 @@ void ReportesAdminMenuManager::proyectosSinSprintAsignados()
     delete[] vec;
     pause();
 }
+
+void ReportesAdminMenuManager::progresoTicketsPorProyecto() {
+
+    clear();
+
+    ProyectoArchivo proyectoRepo;
+    TicketArchivo   ticketRepo;
+
+    int cantProyectos = proyectoRepo.getCantidadRegistros();
+    int cantTickets   = ticketRepo.getCantidadRegistros();
+
+    cout << "------ PROGRESO DE TICKETS POR PROYECTO ------" << endl << endl;
+
+    if (cantProyectos <= 0) {
+        cout << "No hay proyectos registrados." << endl;
+        pause();
+        return;
+    }
+
+    if (cantTickets <= 0) {
+        cout << "No hay tickets registrados." << endl;
+        pause();
+        return;
+    }
+
+    int *idsProyecto   = new int[cantProyectos];
+    int *totalTickets  = new int[cantProyectos]{0};
+    int *disp          = new int[cantProyectos]{0};
+    int *noDisp        = new int[cantProyectos]{0};
+    int *finalizados   = new int[cantProyectos]{0};
+
+    for (int i = 0; i < cantProyectos; i++) {
+        Proyecto p = proyectoRepo.leer(i);
+        idsProyecto[i] = p.getIdProyecto();
+    }
+
+    for (int j = 0; j < cantTickets; j++) {
+        Ticket t;
+        ticketRepo.leer(j, t);
+
+        int idP = t.getIdProyecto();
+        int idx = -1;
+
+        for (int i = 0; i < cantProyectos; i++) {
+            if (idsProyecto[i] == idP) {
+                idx = i;
+                break;
+            }
+        }
+        if (idx == -1) continue;
+
+        totalTickets[idx]++;
+
+        int idEstado = t.getStatus().getIdEstado();
+
+        if (idEstado == 0)      noDisp[idx]++;
+        else if (idEstado == 1) disp[idx]++;
+        else if (idEstado == 2) finalizados[idx]++;
+    }
+
+    SprintManager sprintManager;
+
+    for (int i = 0; i < cantProyectos; i++) {
+
+        Proyecto p = proyectoRepo.leer(i);
+
+        cout << "Proyecto " << p.getIdProyecto()
+             << " - " << p.getNombre() << endl;
+
+        if (totalTickets[i] == 0) {
+            cout << "  No tiene tickets registrados." << endl;
+            cout << "------------------------------------------" << endl;
+            continue;
+        }
+
+        int tot         = totalTickets[i];
+        int completados = finalizados[i] + noDisp[i];
+        int pendientes  = disp[i];
+
+        float porcCompleto  = (completados * 100.0f) / tot;
+        float porcPendiente = (pendientes  * 100.0f) / tot;
+
+        cout << "  Tickets totales    : " << tot << endl;
+        cout << "  Finalizados        : " << finalizados[i] << endl;
+        cout << "  No disponibles     : " << noDisp[i] << endl;
+        cout << "  Disponibles        : " << disp[i] << endl;
+        cout << "  Progreso           : " << porcCompleto  << "% completado, "
+                                         << porcPendiente << "% pendiente" << endl;
+        cout << "  Barra de progreso  : "
+             << sprintManager.dibujarBarra(porcCompleto) << endl;
+        cout << "------------------------------------------" << endl;
+    }
+
+    delete [] idsProyecto;
+    delete [] totalTickets;
+    delete [] disp;
+    delete [] noDisp;
+    delete [] finalizados;
+
+    pause();
+}

@@ -15,4 +15,5 @@ public:
     void proyectosCompletados();
     void proyectosFinalizadosATiempo();
     void proyectosSinSprintAsignados();
+    void progresoTicketsPorProyecto();
 };
