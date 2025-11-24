@@ -1,6 +1,8 @@
 #pragma once
 #include <string>
 #include "Fecha.h"
+#include "Prioridad.h"
+#include "Estado.h"
 
 class Ticket
 {
@@ -13,8 +15,8 @@ public:
     std::string getNombreSprint();
     int getIdProyecto();
     std::string getNombreProyecto();
-    int getStatus();
-    std::string getPrioridad();
+    Estado getStatus();
+    Prioridad getPrioridad();
     std::string getDescripcionTarea();
     Fecha getFechaInicio();
     Fecha getFechaFin();
@@ -28,8 +30,8 @@ public:
     void setNombreSprint(std::string nombreSprint);
     void setIdProyecto (int idProyecto);
     void setNombreProyecto(std::string nombreProyecto);
-    void setStatus(int status);
-    void setPrioridad(std::string prioridad);
+    void setStatus(Estado status);
+    void setPrioridad(Prioridad prioridad);
     void setDescripcionTarea(std::string descripcionTarea);
     void setFechaInicio(Fecha fecha);
     void setFechaFin(Fecha fecha);
@@ -46,7 +48,7 @@ private:
     Fecha _fechaInicio;
     Fecha _fechaFin;
     Fecha _fechaFinalizada;
-    int _status;
-    char _prioridad[20];
+    Estado _status;
+    Prioridad _prioridad;
     char _descripcionTarea[250];
 };

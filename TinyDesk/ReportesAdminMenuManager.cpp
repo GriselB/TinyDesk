@@ -133,7 +133,7 @@ void ReportesAdminMenuManager::estadisticasDetalladasDeUnUsuario(){
         bool esFinalizado = false;
         bool esFinalizadoATiempo = false;
 
-        if (t.getStatus() == 2) {
+        if (t.getStatus().getIdEstado() == 2) {
             esFinalizado = true;
         }
 

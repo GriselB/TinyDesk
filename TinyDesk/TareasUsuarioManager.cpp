@@ -50,7 +50,7 @@ void TareasUsuarioManager::listarTareasUsuario() {
                 Ticket t;
                 int pos = archivoTicket.buscarIDTicketSprintProyecto(k, i, j);
                 if (!archivoTicket.leer(pos, t)) continue;
-                if (t.getStatus() == 0) continue;
+                if (t.getStatus().getIdEstado() == 0) continue;
                 if (t.getIdProyecto() != proy.getIdProyecto()) continue;
                 if (t.getIdSprint()   != spr.getIdSprint()) continue;
                 if (t.getIdEmpleado() != ses.getIdUsuario()) continue;
@@ -129,7 +129,7 @@ void TareasUsuarioManager::finalizarTicket() {
                 int pos = archivoTicket.buscarIDTicketSprintProyecto(k, i, j);
                 if (!archivoTicket.leer(pos, t)) continue;
 
-                if (t.getStatus() == 0) continue;
+                if (t.getStatus().getIdEstado() == 0) continue;
                 if (t.getIdEmpleado() != idUsuario) continue;
                 if (t.getIdProyecto() != proy.getIdProyecto()) continue;
                 if (t.getIdSprint()   != spr.getIdSprint()) continue;

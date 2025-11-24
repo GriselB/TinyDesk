@@ -1,8 +1,13 @@
 #include <iostream>
-#include <cstring>
+#include <string>
 #include "Prioridad.h"
 
 using namespace std;
+
+Prioridad::Prioridad()
+{
+    _idPrioridad = 0;
+}
 
 int Prioridad::getIdPrioridad()
 {
@@ -11,26 +16,36 @@ int Prioridad::getIdPrioridad()
 
 std::string Prioridad::getDescripcionPrioridad(int n)
 {
-    return _descripcion[n];
+    static const char* DESCRIPCIONES[3] = { "Baja", "Media", "Alta" };
+
+    if (n < 0 || n > 2) {
+        return "Invalidas";
+    }
+    return DESCRIPCIONES[n];
 }
 
 void Prioridad::setIdPrioridad(int idPrioridad)
 {
-    _idPrioridad=idPrioridad;
+    if (idPrioridad < 0 || idPrioridad > 2) {
+        idPrioridad = 0;
+    }
+    _idPrioridad = idPrioridad;
 }
 
 void Prioridad::mostrar()
 {
-    cout<<"ID Prioridad: "<<_idPrioridad<<endl;
-    cout<<"DESCRIPCIÓN: "<<_descripcion[_idPrioridad]<<endl;
+    cout << "Prioridad: " << getDescripcionPrioridad(_idPrioridad) << "\n";
 }
+
 void Prioridad::seleccionarPrioridad()
 {
     int opcion;
-    do{
-        cout<<"--- Seleccione la Prioridad ---"<<endl;
-        cout<<"--- 1 - Baja, 2 - Media, 3 - Alta  ---"<<endl;
-        cin>>opcion;
-    }while(opcion<1 && opcion >3);
-    setIdPrioridad(opcion-1);
+    do {
+        cout << "--- Seleccione la Prioridad ---" << endl;
+        cout << "--- 1 - Baja, 2 - Media, 3 - Alta  ---" << endl;
+        cout << "Opcion: ";
+        cin >> opcion;
+    } while (opcion < 1 || opcion > 3);
+
+    setIdPrioridad(opcion - 1);
 }

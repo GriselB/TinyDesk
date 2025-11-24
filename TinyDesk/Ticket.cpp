@@ -8,8 +8,8 @@ int Ticket::getIdEmpleado()
     return _idEmpleado;
 }
 
-std::sting Ticket::getNombreEmpleado(){
-    return string(_nombreEmpleado);
+std::string Ticket::getNombreEmpleado(){
+    return (_nombreEmpleado);
 }
 
 int Ticket::getIdTicket()
@@ -21,24 +21,24 @@ int Ticket::getIdSprint(){
     return _idSprint;
 }
 
-std::sting Ticket::getNombreSprint(){
-    return string(_nombreSprint);
+std::string Ticket::getNombreSprint(){
+    return _nombreSprint;
 }
 
 int Ticket::getIdProyecto(){
     return _idProyecto;
 }
 
-std::sting Ticket::getNombreProyecto(){
-    return string(_nombreProyecto);
+std::string Ticket::getNombreProyecto(){
+    return _nombreProyecto;
 }
 
-int Ticket::getStatus()
+Estado Ticket::getStatus()
 {
     return _status;
 }
 
-std::string Ticket::getPrioridad()
+Prioridad Ticket::getPrioridad()
 {
     return _prioridad;
 }
@@ -68,9 +68,9 @@ void Ticket::setIdEmpleado(int idEmpleado)
     _idEmpleado=idEmpleado;
 }
 
-void Ticket::setNombreEmpleado(std::str nombreEmpleado){
+void Ticket::setNombreEmpleado(std::string nombreEmpleado){
     strncpy(_nombreEmpleado, nombreEmpleado.c_str(), 49);
-    _nombre[49] = '\0';
+    _nombreEmpleado[49] = '\0';
 }
 
 void Ticket::setIdTicket(int idTicket)
@@ -82,30 +82,29 @@ void Ticket::setIdSprint(int idSprint){
     _idSprint = idSprint;
 }
 
-void Ticket::setNombreSprint(std::str nombreSprint){
+void Ticket::setNombreSprint(std::string nombreSprint){
     strncpy(_nombreSprint, nombreSprint.c_str(), 49);
-    _nombre[49] = '\0';
+    _nombreSprint[49] = '\0';
 }
 
 void Ticket::setIdProyecto(int idProyecto){
     _idProyecto = idProyecto;
 }
 
-void Ticket::setNombreProyecto(std::str nombreProyecto){
+void Ticket::setNombreProyecto(std::string nombreProyecto){
     strncpy(_nombreProyecto, nombreProyecto.c_str(), 49);
-    _nombre[49] = '\0';
+    _nombreProyecto[49] = '\0';
 }
 
 
-void Ticket::setStatus(int status)
+void Ticket::setStatus(Estado status)
 {
     _status = status;
 }
 
-void Ticket::setPrioridad(std::string prioridad)
+void Ticket::setPrioridad(Prioridad prioridad)
 {
-    strncpy(_prioridad, prioridad.c_str(), 19);
-    _prioridad[19] = '\0';
+   _prioridad = prioridad;
 }
 
 void Ticket::setDescripcionTarea(std::string descripcionTarea)
