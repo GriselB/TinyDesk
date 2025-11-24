@@ -103,22 +103,23 @@ std::string evaluarCV(double cv){
 void compararRendimientoUsuario(std::string titulo,
                                 double diferenciaCumplimiento,
                                 double diferenciaCumplimientoATiempo,
+                                double diferenciaCumplimientoATiempoCondicional,
                                 double cvUsuario,
                                 double cvBase,
                                 double cvUsuarioATiempo,
-                                double cvBaseATiempo){
-    
+                                double cvBaseATiempo,
+                                double cvUsuarioATiempoCondicional,
+                                double cvBaseATiempoCondicional){
+    cout << endl;
     cout << "--- Comparacion Usuario vs " << titulo << " ---" << endl;
     
     /// - CUMPLIMIENTO GENERAL -
     cout << "Cumplimiento general: ";
     if (diferenciaCumplimiento > 0) {
         cout << diferenciaCumplimiento << "% POR ENCIMA del promedio de " << titulo << "." << endl;
-    }
-    else if (diferenciaCumplimiento < 0) {
+    } else if (diferenciaCumplimiento < 0) {
         cout << (diferenciaCumplimiento * -1) << "% POR DEBAJO del promedio de " << titulo << "." << endl;
-    }
-    else {
+    } else {
         cout << "igual al promedio de " << titulo << "." << endl;
     }
     
@@ -127,29 +128,34 @@ void compararRendimientoUsuario(std::string titulo,
     if (cvUsuario >= 0 && cvBase >= 0) {
         if (cvUsuario < cvBase) {
             cout << "el usuario es MAS ESTABLE que " << titulo << "." << endl;
-        }
-        else if (cvUsuario > cvBase) {
+        } else if (cvUsuario > cvBase) {
             cout << "el usuario es MAS INESTABLE que " << titulo << "." << endl;
-        }
-        else {
+        } else {
             cout << "el usuario tiene una estabilidad similar a " << titulo << "." << endl;
         }
-    }
-    else {
+    } else {
         cout << "no puede evaluarse (datos insuficientes)." << endl;
     }
     
-    /// - CUMPLIMIENTO A TIEMPO -
+    /// - CUMPLIMIENTO A TIEMPO (total)  -
     cout << "Cumplimiento A TIEMPO: ";
     if (diferenciaCumplimientoATiempo > 0) {
         cout << diferenciaCumplimientoATiempo
         << "% POR ENCIMA del promedio a tiempo de " << titulo << "." << endl;
-    }
-    else if (diferenciaCumplimientoATiempo < 0) {
+    } else if (diferenciaCumplimientoATiempo < 0) {
         cout << (diferenciaCumplimientoATiempo * -1) << "% POR DEBAJO del promedio a tiempo de " << titulo << "." << endl;
-    }
-    else {
+    } else {
         cout << "igual al promedio a tiempo de " << titulo << "." << endl;
+    }
+    
+    // CUMPLIMIENTO A TIEMPO (condicional)
+    cout << "Cumplimiento a tiempo (entre FINALIZADOS): ";
+    if (diferenciaCumplimientoATiempoCondicional > 0) {
+        cout << diferenciaCumplimientoATiempoCondicional << "% POR ENCIMA de " << titulo << "." << endl;
+    } else if (diferenciaCumplimientoATiempoCondicional < 0) {
+        cout << (-diferenciaCumplimientoATiempoCondicional) << "% POR DEBAJO de " << titulo << "." << endl;
+    } else {
+        cout << "igual al promedio de " << titulo << "." << endl;
     }
     
     /// - CV A TIEMPO (consistencia) -
@@ -157,17 +163,28 @@ void compararRendimientoUsuario(std::string titulo,
     if (cvUsuarioATiempo >= 0 && cvBaseATiempo >= 0) {
         if (cvUsuarioATiempo < cvBaseATiempo) {
             cout << "el usuario es MAS ESTABLE en entregas a tiempo que " << titulo << "." << endl;
-        }
-        else if (cvUsuarioATiempo > cvBaseATiempo) {
+        } else if (cvUsuarioATiempo > cvBaseATiempo) {
             cout << "el usuario es MAS INESTABLE en entregas a tiempo que " << titulo << "." << endl;
-        }
-        else {
+        } else {
             cout << "el usuario tiene una estabilidad similar a " << titulo << " en entregas a tiempo." << endl;
         }
-    }
-    else {
+    } else {
         cout << "no puede evaluarse (insuficientes tickets finalizados a tiempo)." << endl;
     }
+    
+    /// - CV A TIEMPO (consistencia condicional) -
+       cout << "Consistencia en puntualidad (condicional entre finalizados): ";
+       if (cvUsuarioATiempoCondicional >= 0 && cvBaseATiempoCondicional >= 0) {
+           if (cvUsuarioATiempoCondicional < cvBaseATiempoCondicional) {
+               cout << "el usuario es MAS ESTABLE que " << titulo << "." << endl;
+           } else if (cvUsuarioATiempoCondicional > cvBaseATiempoCondicional) {
+               cout << "el usuario es MAS INESTABLE que " << titulo << "." << endl;
+           } else {
+               cout << "el usuario tiene estabilidad similar a " << titulo << "." << endl;
+           }
+       } else {
+           cout << "no puede evaluarse." << endl;
+       }
 }
 
 void cuentaBinomanial(float &media, double &porcentaje, double &CV, int finalizados, int total){
