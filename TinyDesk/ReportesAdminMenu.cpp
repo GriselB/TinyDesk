@@ -9,14 +9,16 @@ void ReportesAdminMenu::run(string titulo) {
     do {
         clear();
     cout << "      --- "<< titulo <<" ---" << endl;
-    cout << "1- Estadistica Completa de un Usuario seleccionado" << endl;
-    cout << "2- Porcentaje de Tickets sin terminar" << endl;
-    cout << "3- Porcentaje de Sprints completados por proyecto" << endl;
-    cout << "4- Sprints Atrasados por area" << endl;
-    cout << "5- Porcentaje de Proyectos completados" << endl;
-    cout << "6- Porcentaje de Proyectos finalizados a tiempo" << endl;
-    cout << "7- Porcentaje de Proyectos sin Sprint asignados" << endl;
-    cout << "8- Avances de Proyecto (en relacion a los tickets)" << endl;
+    cout << "1 - Estadistica Completa de un Usuario seleccionado" << endl;
+    cout << "2 - Porcentaje de Tickets sin terminar" << endl;
+    cout << "3 - Porcentaje de Sprints completados por proyecto" << endl;
+    cout << "4 - Sprints Atrasados por area" << endl;
+    cout << "5 - Porcentaje de Proyectos completados" << endl;
+    cout << "6 - Porcentaje de Proyectos finalizados a tiempo" << endl;
+    cout << "7 - Porcentaje de Proyectos sin Sprint asignados" << endl;
+    cout << "8 - Avances de Proyecto (en relacion a los tickets)" << endl;
+    cout << "9 - Ranking por Area según Prioridad" << endl;
+    cout << endl;
     cout << "-----------------" << endl;
     cout << "0- Volver" << endl;
     cout << "Opcion: ";
@@ -58,6 +60,10 @@ void ReportesAdminMenu::run(string titulo) {
                 _reportesAdminMenuManager.progresoTicketsPorProyecto();
                 break;
 
+            case 9:
+                _reportesAdminMenuManager.rankingAreasPorPrioridad();
+                break;
+                
             case 0:
                 break;
 

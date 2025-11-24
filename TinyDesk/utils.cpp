@@ -169,3 +169,11 @@ void compararRendimientoUsuario(std::string titulo,
         cout << "no puede evaluarse (insuficientes tickets finalizados a tiempo)." << endl;
     }
 }
+
+void cuentaBinomanial(float &media, double &porcentaje, double &CV, int finalizados, int total){
+    media = finalizados / float(total);
+    porcentaje = round(media * 10000.0) / 100.0;
+    double varianza = total * media * (1 - media);
+    double desvio = sqrt(varianza);
+    CV = (desvio / finalizados) * 100.0;
+}

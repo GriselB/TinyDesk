@@ -16,4 +16,5 @@ public:
     void proyectosFinalizadosATiempo();
     void proyectosSinSprintAsignados();
     void progresoTicketsPorProyecto();
+    void rankingAreasPorPrioridad();
 };

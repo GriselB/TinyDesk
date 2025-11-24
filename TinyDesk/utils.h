@@ -15,3 +15,4 @@ void compararRendimientoUsuario(std::string titulo,
                                 double cvBase,
                                 double cvUsuarioATiempo,
                                 double cvBaseATiempo);
+void cuentaBinomanial(float &media, double &porcentaje, double &CV, int finalizados, int total);
