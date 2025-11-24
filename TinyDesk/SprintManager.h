@@ -11,12 +11,13 @@ private:
     SprintArchivo _repo;
     int _ultimoProyectoID = -1;
     int _contadorSprint = 1;
-    
+
     void Cargar(int idProyecto);
-    int seleccionarProyecto(); 
+ 
 
 protected:
     void Mostrar(Sprint sprint);
+
 
 public:
     SprintManager();
@@ -30,7 +31,11 @@ public:
     void listarSprintsPorIDProyectos(int idProyecto);
     bool ExisteSprint(int idSprint, int idProyecto);
     bool SprintEstaActivo(int idSprint, int idProyecto);
+    bool SprintEstaAtrasado(int idSprint, int idProyecto);
+    bool SprintEstaFinalizado(int idSprint, int idProyecto);
     Fecha obtenerUltimaFechaFinPorArea(int idProyecto, int idArea); 
+    std::string dibujarBarra(float porcentaje);
+    int seleccionarProyecto();
     
     void finalizarSprint();
     void eliminarSprintLogico();  

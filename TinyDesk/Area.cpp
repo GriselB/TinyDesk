@@ -51,3 +51,13 @@ void Area::seleccionar() {
     setNombreArea(nombres[idArea - 1]);
 
 }
+
+string Area::buscarNombrePorID(int id) {
+    string nombres[5] = {"Administracion","Backend","Frontend","QA","UX/UI"};
+
+    if (id < 1 || id > 5) return "Desconocida";
+
+    return nombres[id - 1];
+}
+
+

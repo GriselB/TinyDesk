@@ -11,7 +11,8 @@ public:
     void estadisticasDetalladasDeUnUsuario();
     void ticketsSinTerminar();
     void sprintsCompletadosPorProyecto();
-    void sprintsSinTerminarPorProyecto();
+    void sprintsAtrasadosArea();
     void proyectosCompletados();
     void proyectosFinalizadosATiempo();
+    void proyectosSinSprintAsignados();
 };

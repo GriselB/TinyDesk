@@ -12,9 +12,10 @@ void ReportesAdminMenu::run(string titulo) {
     cout << "1- Estadistica Completa de un Usuario seleccionado" << endl;
     cout << "2- Porcentaje de Tickets sin terminar" << endl;
     cout << "3- Porcentaje de Sprints completados por proyecto" << endl;
-    cout << "4- Porcentaje de Sprint sin terminar por proyecto" << endl;
+    cout << "4- Sprints Atrasados por area" << endl;
     cout << "5- Porcentaje de Proyectos completados" << endl;
     cout << "6- Porcentaje de proyectos finalizados a tiempo" << endl;
+    cout << "7- Porcentaje de proyectos sin Sprint asignados" << endl;
     cout << "-----------------" << endl;
     cout << "0- Volver" << endl;
     cout << "Opcion: ";
@@ -37,7 +38,7 @@ void ReportesAdminMenu::run(string titulo) {
                 break;
 
             case 4:
-                _reportesAdminMenuManager.sprintsSinTerminarPorProyecto();
+                _reportesAdminMenuManager.sprintsAtrasadosArea();
                 break;
 
             case 5:
@@ -46,6 +47,10 @@ void ReportesAdminMenu::run(string titulo) {
 
             case 6:
                 _reportesAdminMenuManager.proyectosFinalizadosATiempo();
+                break;
+
+            case 7:
+                _reportesAdminMenuManager.proyectosSinSprintAsignados();
                 break;
 
             case 0:

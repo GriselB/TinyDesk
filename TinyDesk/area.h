@@ -19,4 +19,5 @@ class Area
     
     void seleccionar(); 
     void mostrarOpciones();
+    std::string buscarNombrePorID(int id);
 };

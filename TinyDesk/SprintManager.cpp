@@ -236,9 +236,15 @@ void SprintManager::Mostrar(Sprint sprint) {
     cout << "Fecha Inicio: " << sprint.getFechaInicio().toString() << endl;
     cout << "Fecha Fin: " << sprint.getFechaFin().toString() << endl;
     cout << "Estado: " << estado.getNombreEstado(sprint.getIdEstado()) << endl;
-    if(sprint.getIdEstado()==2)
-        cout<<"Fecha de finalizacion del sprint: "<<sprint.getFechaFinalizada().toString()<<endl;
-    cout << endl;
+    if(sprint.getIdEstado()==2){
+      cout<<"Fecha de finalizacion del sprint: "<<sprint.getFechaFinalizada().toString()<<endl;
+      cout <<"Finalizo Tarde:" << (sprint.getFinalizoTarde() ? "SI" : "NO") << endl;      
+    }
+    if(sprint.getIdEstado()==0){
+      cout <<"Baja: SI"<< endl;      
+    }
+
+     cout << endl;
 }
 
 //----------------------------------------------
@@ -281,10 +287,16 @@ void SprintManager::listarSprints() {
 //----------------------------------------------
 
 void SprintManager::finalizarSprint() {
-    int id_proyecto, id_sprint, pos;
+    int id_proyecto, id_sprint, pos,posProyecto;
+    bool  fechasValidas;
+    Fecha auxFin; 
     Sprint sprint;
     char finalizado;
     ProyectoManager proyecto;
+    ProyectoArchivo repoProy;
+    Proyecto proy;
+
+
 
     cout << "---- FINALIZAR SPRINT ----" << endl;
     cout << "                         " << endl;
@@ -295,6 +307,8 @@ void SprintManager::finalizarSprint() {
     cout << "Ingrese el ID del proyecto: ";
     cin >> id_proyecto;
     
+    posProyecto = proyecto.buscarID(id_proyecto);
+    proy = repoProy.leer(posProyecto);
     listarSprintsPorIDProyectos(id_proyecto);
     
     cout << "Ingrese el ID del Sprint a finalizar: ";
@@ -307,28 +321,76 @@ void SprintManager::finalizarSprint() {
     }
 
     sprint = _repo.leer(pos);
-
-    cout << "Información del Sprint: " << endl;
+    
+    clear();
+    
+    cout << "Informacion del Sprint: " << endl;
     Mostrar(sprint);
 
-    cout << "¿Desea finalizar el sprint? (s/n): ";
+    cout << "Desea finalizar el sprint? (s/n): ";
     cin >> finalizado;
 
     if (finalizado == 's' || finalizado == 'S') {
-        sprint.setFechaFinalizada();
-        sprint.setIdEstado(2);
+    do{ 
+      clear();
+      
+      cout << "---- FINALIZAR SPRINT ----" << endl;
+      cout << "                         " << endl;
+      cout << "Informacion del Sprint: " << endl;
+      Mostrar(sprint);
+      cout << "--- Ingreso de Fecha de finalizacion ---" << endl;
+        
+      auxFin = Fecha("Fin del Sprint");
 
-        if (_repo.guardar(pos, sprint)) {
-            cout << "El Sprint fue finalizado correctamente." << endl;
-            pause();
-        } else {
-            cout << "Ocurrió un error al finalizar el Sprint." << endl;
-            pause();
+      fechasValidas = true; 
+
+      if (!fechaMenorOIgual(auxFin,sprint.getFechaFin())) {
+        cout << "La fecha del Sprint va a finalizar despues de la fecha pactada" << endl;
+        cout << "Desea finalizar el sprint? (s/n): ";
+        cin >> finalizado;
+
+        if (finalizado == 's' || finalizado == 'S'){
+          sprint.setFinalizoTarde(true);
+          fechasValidas = true;
         }
-    }
+        
+        pause();
+        fechasValidas = false;
+      }
+
+      else if (!fechaMenorOIgual(sprint.getFechaInicio(), auxFin)) {
+            cout << "[ERROR] La fecha de fin del Sprint debe ser posterior a la fecha de incio." << endl;
+            pause();
+            fechasValidas = false;
+      }
+       
+        
+      else if (!fechaMenorOIgual(auxFin, proy.getFechaFin())) {
+        cout << "[ERROR] El Sprint no puede terminar despues que el Proyecto (" 
+        << proy.getFechaFin().toString() << ")." << endl;
+        pause();
+        fechasValidas = false;
+      }
+
+
+    } while (!fechasValidas);
+
+    sprint.setFechaFinalizada(auxFin);
+    sprint.setIdEstado(2);
+
+    if (_repo.guardar(pos, sprint)) {
+      cout << "El Sprint fue finalizado correctamente." << endl;
+      pause();
+    } 
+    else {
+        cout << "Ocurrió un error al finalizar el Sprint." << endl;
+        pause();
+      }
 
     pause();
-}
+  }
+  }
+  
 
 //----------------------------------------------
 
@@ -477,4 +539,56 @@ bool SprintManager::SprintEstaActivo(int idSprint, int idProyecto) {
     }
 
     return false; 
+}
+
+bool SprintManager::SprintEstaAtrasado(int idSprint, int idProyecto) {
+    SprintArchivo archivoSprint;
+    Sprint sprint;
+    
+    int cantSprints = archivoSprint.getCantidadRegistros();
+
+    for (int i = 0; i < cantSprints; i++) {
+        sprint = archivoSprint.leer(i);
+
+        if (sprint.getIdSprint() == idSprint && sprint.getIdProyecto() == idProyecto && sprint.getIdEstado() == 2) {
+            
+            return (sprint.getFinalizoTarde() == true);
+        }
+    }
+
+    return false; 
+}
+
+bool SprintManager::SprintEstaFinalizado(int idSprint, int idProyecto) {
+    SprintArchivo archivoSprint;
+    Sprint sprint;
+    
+    int cantSprints = archivoSprint.getCantidadRegistros();
+
+    for (int i = 0; i < cantSprints; i++) {
+        sprint = archivoSprint.leer(i);
+
+        if (sprint.getIdSprint() == idSprint && sprint.getIdProyecto() == idProyecto) {
+            
+            return (sprint.getIdEstado() == 2);
+        }
+    }
+
+    return false; 
+}
+
+string SprintManager::dibujarBarra(float porcentaje) {
+    int anchoBarra = 20;
+    int celdasLlenas = (porcentaje / 100.0) * anchoBarra;
+    
+    string barra = "[";
+    for (int i = 0; i < anchoBarra; i++) {
+        if (i < celdasLlenas) {
+            barra += "#"; 
+        } else {
+            barra += "."; 
+        }
+    }
+    barra += "]";
+    return barra;
 }
