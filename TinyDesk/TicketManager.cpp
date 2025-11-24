@@ -17,7 +17,11 @@ void TicketManager::mostrarTicket(Ticket ticket) {
     cout << " Proyecto : " << ticket.getNombreProyecto() << " (ID " << ticket.getIdProyecto() << ")\n";
     cout << " Sprint   : " << ticket.getNombreSprint() << " (ID " << ticket.getIdSprint() << ")\n";
     cout << " Empleado : " << ticket.getIdEmpleado() << "\n";
-    cout << " Estado   : " << estado.getNombreEstado(ticket.getStatus().getIdEstado()) << "\n";
+    if(ticket.getStatus().getIdEstado() == 2){
+        cout << " Fecha finalizacion   : " << ticket.getFechaFinalizada().toString() << "\n";
+    }else{
+        cout << " Estado   : " << estado.getNombreEstado(ticket.getStatus().getIdEstado()) << "\n";
+    }
     cout << " "; ticket.getPrioridad().mostrar();
     cout << " Detalle  : " << ticket.getDescripcionTarea() << "\n";
     cout << "========================================\n\n";
@@ -255,6 +259,63 @@ void TicketManager::reactivarTicket() {
         cout << "No se pudo reactivar el ticket.\n";
 }
 
+bool TicketManager::finalizarTicketAdmin(){
+Ticket t;
+int pos = -1;
+
+clear();
+    cout << "========================================\n";
+    cout << "          FINALIZAR TICKET             \n";
+    cout << "========================================\n\n";
+
+    cargarProyectoSprint(false, t, pos);
+
+    if (pos == -1) return false;
+
+    if (t.getStatus().getIdEstado() == 2) {
+        cout << "El ticket se encuentra finalizado.\n\n";
+        pause();
+        return false;
+    }
+
+    if (t.getFechaFinalizada().getAnio()!=0) {
+        cout << "Este ticket ya fue finalizado anteriormente.\n\n";
+        pause();
+        return false;
+    }
+
+    cout << "--- Detalle del ticket seleccionado ---\n";
+    mostrarTicket(t);
+
+    char opc;
+    cout << "¿Desea finalizar este ticket? (S/N): ";
+    pause();
+    cin >> opc;
+
+    if (opc != 'S' && opc != 's') {
+        cout << "Accion cancelada por el usuario.\n\n";
+        pause();
+        return false;
+    }
+
+    Fecha fecha("TICKET");
+
+    estado.setIdEstado(2);
+    t.setStatus(estado);
+    t.setFechaFinalizada(fecha);
+
+    if (_repo.guardar(pos, t)) {
+        cout << "El ticket se finalizo correctamente.\n\n";
+        pause();
+        return true;
+    }
+
+    cout << "Ocurrio un error al guardar los cambios del ticket.\n";
+    pause();
+    return false;
+
+}
+
 
 bool TicketManager::finalizarTicketUsuario(int idUsuario){
     Ticket t;
@@ -270,16 +331,19 @@ bool TicketManager::finalizarTicketUsuario(int idUsuario){
 
     if (t.getStatus().getIdEstado() == 2) {
         cout << "El ticket se encuentra inactivo.\n\n";
+        pause();
         return false;
     }
 
     if (t.getIdEmpleado() != idUsuario) {
         cout << "No es posible finalizar un ticket asignado a otro usuario.\n\n";
+        pause();
         return false;
     }
 
     if (t.getFechaFinalizada().getAnio()!=0) {
         cout << "Este ticket ya fue finalizado anteriormente.\n\n";
+        pause();
         return false;
     }
 
@@ -292,6 +356,7 @@ bool TicketManager::finalizarTicketUsuario(int idUsuario){
 
     if (opc != 'S' && opc != 's') {
         cout << "Accion cancelada por el usuario.\n\n";
+        pause();
         return false;
     }
 
@@ -303,10 +368,12 @@ bool TicketManager::finalizarTicketUsuario(int idUsuario){
 
     if (_repo.guardar(pos, t)) {
         cout << "El ticket se finalizo correctamente.\n\n";
+        pause();
         return true;
     }
 
     cout << "Ocurrio un error al guardar los cambios del ticket.\n";
+    pause();
     return false;
 }
 
@@ -372,6 +439,7 @@ void TicketManager::modificarStatus() {
     cout << "========================================\n";
     cout << "          MODIFICAR ESTADO             \n";
     cout << "========================================\n\n";
+    cout << "(Funcion pensada en caso de que existiera mas de 3 estados)";
 
     cargarProyectoSprint(false, t, pos);
     if (pos == -1) return;

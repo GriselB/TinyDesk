@@ -691,7 +691,7 @@
 	"MenuAdmin.h"
 	"MenuUsuario.h"
 
-1763325317 c:\users\katy\documents\nuevo tp\tinydesk\tinydesk\usuariomanager.h
+1763916141 c:\users\katy\documents\nuevo tp\tinydesk\tinydesk\usuariomanager.h
 	<string>
 	"UsuarioArchivo.h"
 	"ArchivoRol.h"
@@ -705,7 +705,7 @@
 1763325316 c:\users\katy\documents\nuevo tp\tinydesk\tinydesk\fecha.h
 	<string>
 
-1763325317 c:\users\katy\documents\nuevo tp\tinydesk\tinydesk\area.h
+1763946342 c:\users\katy\documents\nuevo tp\tinydesk\tinydesk\area.h
 	<string>
 
 1761929623 c:\users\katy\documents\nuevo tp\tinydesk\tinydesk\usuarioarchivo.h
@@ -740,9 +740,11 @@
 	"SprintManager.h"
 	"TicketManager.h"
 
-1763511588 c:\users\katy\documents\nuevo tp\tinydesk\tinydesk\ticket.h
+1763965529 c:\users\katy\documents\nuevo tp\tinydesk\tinydesk\ticket.h
 	<string>
 	"Fecha.h"
+	"Prioridad.h"
+	"Estado.h"
 
 1763469448 c:\users\katy\documents\nuevo tp\tinydesk\tinydesk\proyectomanager.h
 	<string>
@@ -757,7 +759,7 @@
 	<string>
 	"Proyecto.h"
 
-1763913541 c:\users\katy\documents\nuevo tp\tinydesk\tinydesk\sprintmanager.h
+1763946342 c:\users\katy\documents\nuevo tp\tinydesk\tinydesk\sprintmanager.h
 	<string>
 	"SprintArchivo.h"
 	"Sprint.h"
@@ -765,7 +767,7 @@
 	"Area.h"
 	"Proyecto.h"
 
-1763913541 c:\users\katy\documents\nuevo tp\tinydesk\tinydesk\sprint.h
+1763946342 c:\users\katy\documents\nuevo tp\tinydesk\tinydesk\sprint.h
 	<string>
 	"Fecha.h"
 	"Estado.h"
@@ -783,7 +785,7 @@
 	<iostream>
 	"ArchivoRol.h"
 
-1763913541 source:c:\users\katy\documents\nuevo tp\tinydesk\tinydesk\area.cpp
+1763946342 source:c:\users\katy\documents\nuevo tp\tinydesk\tinydesk\area.cpp
 	<iostream>
 	<cstring>
 	"area.h"
@@ -797,7 +799,7 @@
 	<iostream>
 	"Fecha.h"
 
-1763913541 source:c:\users\katy\documents\nuevo tp\tinydesk\tinydesk\listadoadminmanager.cpp
+1763987491 source:c:\users\katy\documents\nuevo tp\tinydesk\tinydesk\listadoadminmanager.cpp
 	<iostream>
 	"ListadoAdminManager.h"
 
@@ -833,7 +835,7 @@
 	<cstring>
 	"Rol.h"
 
-1763913541 source:c:\users\katy\documents\nuevo tp\tinydesk\tinydesk\sprint.cpp
+1763946342 source:c:\users\katy\documents\nuevo tp\tinydesk\tinydesk\sprint.cpp
 	<cstring>
 	<iostream>
 	"Sprint.h"
@@ -847,7 +849,7 @@
 	<iostream>
 	"SprintArchivo.h"
 
-1763913541 source:c:\users\katy\documents\nuevo tp\tinydesk\tinydesk\sprintmanager.cpp
+1763946342 source:c:\users\katy\documents\nuevo tp\tinydesk\tinydesk\sprintmanager.cpp
 	<iostream>
 	<string>
 	"SprintManager.h"
@@ -869,7 +871,7 @@
 	<iostream>
 	"UsuarioArchivo.h"
 
-1763913541 source:c:\users\katy\documents\nuevo tp\tinydesk\tinydesk\usuariomanager.cpp
+1763916141 source:c:\users\katy\documents\nuevo tp\tinydesk\tinydesk\usuariomanager.cpp
 	<iostream>
 	"UsuarioManager.h"
 
@@ -1399,13 +1401,14 @@
 1763325317 c:\users\katy\documents\nuevo tp\tinydesk\tinydesk\sesion.h
 	"area.h"
 
-1763914812 c:\users\katy\documents\nuevo tp\tinydesk\tinydesk\ticketmanager.h
+1763987067 c:\users\katy\documents\nuevo tp\tinydesk\tinydesk\ticketmanager.h
 	<string>
 	"Ticket.h"
 	"TicketArchivo.h"
 	"ProyectoManager.h"
 	"SprintManager.h"
 	"UsuarioManager.h"
+	"Prioridad.h"
 
 1763511588 c:\users\katy\documents\nuevo tp\tinydesk\tinydesk\ticketarchivo.h
 	<string>
@@ -1435,7 +1438,7 @@
 	<cstring>
 	"ReportesAdminMenuManager.h"
 
-1763913541 c:\users\katy\documents\nuevo tp\tinydesk\tinydesk\reportesadminmenumanager.h
+1763946342 c:\users\katy\documents\nuevo tp\tinydesk\tinydesk\reportesadminmenumanager.h
 	"ProyectoManager.h"
 	"SprintManager.h"
 	"TicketManager.h"
@@ -1500,36 +1503,36 @@
 	<iostream>
 	"SesionArchivo.h"
 
-1763511588 source:c:\users\katy\documents\nuevo tp\tinydesk\tinydesk\tareasusuariomanager.cpp
+1763965529 source:c:\users\katy\documents\nuevo tp\tinydesk\tinydesk\tareasusuariomanager.cpp
 	<iostream>
 	"TareasUsuarioManager.h"
 
-1763511588 source:c:\users\katy\documents\nuevo tp\tinydesk\tinydesk\ticket.cpp
+1763965529 source:c:\users\katy\documents\nuevo tp\tinydesk\tinydesk\ticket.cpp
 	<cstring>
 	<iostream>
 	"Ticket.h"
 	"Fecha.h"
 
-1763511588 source:c:\users\katy\documents\nuevo tp\tinydesk\tinydesk\ticketarchivo.cpp
+1763965529 source:c:\users\katy\documents\nuevo tp\tinydesk\tinydesk\ticketarchivo.cpp
 	<iostream>
 	"TicketManager.h"
 
-1763913473 source:c:\users\katy\documents\nuevo tp\tinydesk\tinydesk\ticketmanager.cpp
+1763987402 source:c:\users\katy\documents\nuevo tp\tinydesk\tinydesk\ticketmanager.cpp
 	<iostream>
 	<string>
 	"utils.h"
 	"TicketManager.h"
 	"Ticket.h"
 
-1763913541 source:c:\users\katy\documents\nuevo tp\tinydesk\tinydesk\modificacionadminmenumanager.cpp
+1763987082 source:c:\users\katy\documents\nuevo tp\tinydesk\tinydesk\modificacionadminmenumanager.cpp
 	<iostream>
 	"ModificacionAdminMenuManager.h"
 
-1763913541 source:c:\users\katy\documents\nuevo tp\tinydesk\tinydesk\reportesadminmenu.cpp
+1763946342 source:c:\users\katy\documents\nuevo tp\tinydesk\tinydesk\reportesadminmenu.cpp
 	<iostream>
 	"ReportesAdminMenu.h"
 
-1763913541 source:c:\users\katy\documents\nuevo tp\tinydesk\tinydesk\reportesadminmenumanager.cpp
+1763965529 source:c:\users\katy\documents\nuevo tp\tinydesk\tinydesk\reportesadminmenumanager.cpp
 	<iostream>
 	"ReportesAdminMenuManager.h"
 
@@ -1537,7 +1540,15 @@
 	<iostream>
 	"ReportesUsuarioMenu.h"
 
-1763913541 source:c:\users\katy\documents\nuevo tp\tinydesk\tinydesk\reportesusuariomenumanager.cpp
+1763965529 source:c:\users\katy\documents\nuevo tp\tinydesk\tinydesk\reportesusuariomenumanager.cpp
 	<iostream>
 	"ReportesUsuarioMenuManager.h"
+
+1763965529 c:\users\katy\documents\nuevo tp\tinydesk\tinydesk\prioridad.h
+	<string>
+
+1763965529 source:c:\users\katy\documents\nuevo tp\tinydesk\tinydesk\prioridad.cpp
+	<iostream>
+	<string>
+	"Prioridad.h"
 

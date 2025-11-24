@@ -147,11 +147,10 @@ void ListadoAdminManager::listarTicketsPorSprints() {
                 cout << "        Fecha inicio: " << ticket.getFechaInicio().toString() << endl;
                 cout << "        Fecha a finalizar: " << ticket.getFechaFin().toString() << endl;
 
-                if(ticket.getFechaFinalizada().getAnio() != 0){
-                    cout << "        Fecha finalizada: " << ticket.getFechaFinalizada().toString() << endl;
-                } else{
-                    int idEstado = ticket.getStatus().getIdEstado();
-                    cout << "        Status: " << estado.getNombreEstado(idEstado) << endl;
+                if(ticket.getStatus().getIdEstado() == 2){
+                    cout << "        Fecha finalizacion   : " << ticket.getFechaFinalizada().toString() << "\n";
+                }else{
+                    cout << "        Estado   : " << estado.getNombreEstado(ticket.getStatus().getIdEstado()) << "\n";
                 }
                 cout << "--------------------------------" << endl;
             }

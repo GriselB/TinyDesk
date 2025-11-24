@@ -103,9 +103,7 @@ void ModificacionAdminMenuManager::modificarTicketsPorSprintsProyecto(){
                 break;
 
             case 3:
-                cout << "Ingrese id de Usuario" << endl;
-                cin >> usuario;
-                ticket.finalizarTicketUsuario(usuario);
+                ticket.finalizarTicketAdmin();
 
                 break;
 
