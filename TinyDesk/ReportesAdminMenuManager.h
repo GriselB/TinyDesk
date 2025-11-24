@@ -14,4 +14,5 @@ public:
     void sprintsAtrasadosArea();
     void proyectosCompletados();
     void proyectosFinalizadosATiempo();
+    void proyectosSinSprintAsignados();
 };
