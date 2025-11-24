@@ -6,56 +6,56 @@ using namespace std;
 
 void ReportesAdminMenuManager::estadisticasDetalladasDeUnUsuario(){
     clear();
-    
+
     UsuarioArchivo usuarioRepo;
     TicketArchivo  ticketRepo;
     SprintArchivo  sprintRepo;
-    
+
     int cantUsuarios = usuarioRepo.getCantidadRegistros();
     if (cantUsuarios < 1) {
         cout << "No hay usuarios registrados." << endl;
         pause();
         return;
     }
-    
+
     int cantTickets = ticketRepo.getCantidadRegistros();
     if (cantTickets < 1) {
         cout << "No hay tickets registrados." << endl;
         pause();
         return;
     }
-    
+
     int cantSprints = sprintRepo.getCantidadRegistros();
     if (cantSprints < 1) {
         cout << "No hay sprints registrados." << endl;
         pause();
         return;
     }
-    
+
     cout << "=========== SELECCION DE USUARIO ===========" << endl;
     for (int i = 0; i < cantUsuarios; i++) {
         Usuario u = usuarioRepo.leer(i);
         if ( !u.getActivo() ) continue;
         if (u.getIdRol() == 1) continue;
-        
+
         cout << "ID: " << u.getIdUsuario() << endl;
         cout << " | Nombre: " << u.getNombre() << " " << u.getApellido() << endl;
         cout << " | Area: " << u.getArea().getNombreArea() << endl;
     }
     cout << "---------------------------------------------" << endl;
     cout << "---------------------------------------------" << endl;
-    
+
     int idUsuarioSel;
     cout << "Ingrese el ID de usuario para ver sus estadisticas: ";
     cin >> idUsuarioSel;
-    
+
     int posUsuario = usuarioRepo.buscarID(idUsuarioSel);
     if (posUsuario < 0) {
         cout << "No existe un usuario con ese ID." << endl;
         pause();
         return;
     }
-    
+
     Usuario userSelected = usuarioRepo.leer(posUsuario);
     if(userSelected.getIdUsuario() == -1){
         cout << "El usuario seleccionado no existe." << endl;
@@ -73,7 +73,7 @@ void ReportesAdminMenuManager::estadisticasDetalladasDeUnUsuario(){
         return;
     }
     clear();
-    
+
     Ticket *vecTickets = new Ticket[cantTickets];
     if (ticketRepo.leerTodos(vecTickets, cantTickets) < 1) {
         cout << "Error al leer los tickets." << endl;
@@ -81,7 +81,7 @@ void ReportesAdminMenuManager::estadisticasDetalladasDeUnUsuario(){
         pause();
         return;
     }
-    
+
     Sprint *vecSprints = new Sprint[cantSprints];
     if (sprintRepo.leerTodos(vecSprints, cantSprints) < 1) {
         cout << "Error al leer los sprints." << endl;
@@ -90,7 +90,7 @@ void ReportesAdminMenuManager::estadisticasDetalladasDeUnUsuario(){
         pause();
         return;
     }
-    
+
     // Global
     int totalGlobal = 0;
     int finalizadosGlobal = 0;
@@ -101,7 +101,7 @@ void ReportesAdminMenuManager::estadisticasDetalladasDeUnUsuario(){
     float mediaATiempoGlobal = 0.0;
     double porcentajeATiempoGlobal = 0.0;
     double cvGlobalATiempo = 0.0;
-    
+
     // Area del usuario
     int totalArea = 0;
     int finalizadosArea = 0;
@@ -112,7 +112,7 @@ void ReportesAdminMenuManager::estadisticasDetalladasDeUnUsuario(){
     float mediaATiempoArea = 0.0;
     double porcentajeATiempoArea = 0.0;
     double cvAreaATiempo = 0.0;
-    
+
     // Usuario
     int totalUser = 0;
     int finalizadosUser = 0;
@@ -123,20 +123,20 @@ void ReportesAdminMenuManager::estadisticasDetalladasDeUnUsuario(){
     float mediaUserATiempo = 0.0;
     double porcentajeUserATiempo = 0.0;
     double cvUserATiempo = 0.0;
-    
+
     int idArea = userSelected.getArea().getIdArea();
     string nombreAreaUsuario = userSelected.getArea().getNombreArea();
-    
+
     for (int i = 0; i < cantTickets; i++) {
         Ticket &ticket = vecTickets[i];
-        
+
         bool esFinalizado = false;
         bool esFinalizadoATiempo = false;
-        
+
         if (ticket.getStatus().getIdEstado() == 2) {
             esFinalizado = true;
         }
-        
+
         // Global
         totalGlobal++;
         if (esFinalizado) {
@@ -146,7 +146,7 @@ void ReportesAdminMenuManager::estadisticasDetalladasDeUnUsuario(){
                 esFinalizadoATiempo = true;
             }
         }
-        
+
         // Area
         for (int s = 0; s < cantSprints; s++) {
             Sprint &sprint = vecSprints[s];
@@ -163,7 +163,7 @@ void ReportesAdminMenuManager::estadisticasDetalladasDeUnUsuario(){
                 break;
             }
         }
-        
+
         // Usuario
         if ( ticket.getIdEmpleado() != userSelected.getIdUsuario() ) continue;
         totalUser++;
@@ -173,16 +173,16 @@ void ReportesAdminMenuManager::estadisticasDetalladasDeUnUsuario(){
                 finalizadosATiempoUser++;
             }
         }
-        
+
     }
-    
+
     clear();
     cout << "               =========== REPORTE DETALLADO DE USUARIO ===========" << endl;
     cout << "Usuario: " << userSelected.getNombre() << " " << userSelected.getApellido() << endl;
     cout << "ID: " << userSelected.getIdUsuario() << endl;
     cout << "Area: " << nombreAreaUsuario << endl;
     cout << "-------------------------" << endl << endl;
-    
+
     // estadisticas del usuario
     if (totalUser == 0) {
         cout << "El usuario no tiene tickets asignados." << endl;
@@ -203,7 +203,7 @@ void ReportesAdminMenuManager::estadisticasDetalladasDeUnUsuario(){
         double varUsr = totalUser * mediaUser * (1 - mediaUser);
         double desvioUsr = sqrt(varUsr);
         cvUser = (desvioUsr / finalizadosUser) * 100.0;
-        
+
         cout << "    ---> ESTADISTICAS DEL USUARIO" << endl;
         cout << endl;
         cout << "Total tickets asignados al usuario: " << totalUser << endl;
@@ -211,52 +211,52 @@ void ReportesAdminMenuManager::estadisticasDetalladasDeUnUsuario(){
         cout << "Tickets aun sin finalizar: " << (totalUser - finalizadosUser) << endl;
         cout << "Total tickets finalizados a tiempo: " << finalizadosATiempoUser << endl;
         cout << "Porcentaje de tickets completados: " << porcentajeUser << "%" << endl;
-        
+
         // finalizadas a tiempo - usuario -
         if (finalizadosATiempoUser > 0) {
             mediaUserATiempo = finalizadosATiempoUser / float(finalizadosUser);
             porcentajeUserATiempo = round(mediaUserATiempo * 10000.0) / 100.0;
-            
+
             double varUsrTime = finalizadosUser * mediaUserATiempo * (1 - mediaUserATiempo);
             double desvioUsrTime = sqrt(varUsrTime);
             cvUserATiempo = (desvioUsrTime / finalizadosATiempoUser) * 100.0;
-            
+
             cout << "Porcentaje de tickets completados a tiempo: " << porcentajeUserATiempo << "%" << endl;
             cout << "Coeficiente de variacion: " << round(cvUserATiempo * 100.0) / 100.0 << evaluarCV(cvUserATiempo) << endl;
         } else {
             cout << "El usuario no tiene ningun ticket finalizado a tiempo." << endl;
         }
     }
-    
+
     // estadisticas de la empresa
     if (totalGlobal > 0 && finalizadosGlobal > 0) {
-        
+
         cuentaBinomanial(mediaGlobal, porcentajeGlobal, cvGlobal, finalizadosGlobal, totalGlobal);
-        
+
         //a tiempo
         if(finalizadosATiempoGlobal > 0){
             cuentaBinomanial(mediaATiempoGlobal, porcentajeATiempoGlobal, cvGlobalATiempo, finalizadosATiempoGlobal, finalizadosGlobal);
         }
     }
-    
+
     // estadisticas del area del usuario
     if (totalArea > 0 && finalizadosArea > 0) {
-        
+
         cuentaBinomanial(mediaArea, porcenajeArea, cvArea, finalizadosArea, totalArea);
-        
+
         // a tiempo
         if(finalizadosATiempoArea > 0){
             cuentaBinomanial(mediaATiempoArea, porcentajeATiempoArea, cvAreaATiempo, finalizadosATiempoArea, finalizadosArea);
         }
     }
-    
+
     if (totalUser > 0 && finalizadosUser > 0){
-        
+
         // USUARIO VS EMPRESA
         if(totalGlobal > 0 && finalizadosGlobal > 0) {
             float diferenciaPrcjeGlobal = porcentajeUser - porcentajeGlobal;
             float difATiempoPrcjeGlobal = porcentajeUserATiempo - porcentajeATiempoGlobal;
-            
+
             compararRendimientoUsuario("EMPRESA",
                                        diferenciaPrcjeGlobal,
                                        difATiempoPrcjeGlobal,
@@ -265,12 +265,12 @@ void ReportesAdminMenuManager::estadisticasDetalladasDeUnUsuario(){
                                        cvUserATiempo,
                                        cvGlobalATiempo);
         }
-        
+
         // USUARIO VS AREA
         if (totalArea > 0 && finalizadosArea > 0) {
             double diferenciaPrcjeArea = porcentajeUser - porcenajeArea;
             double difATiempoPrcjeArea = porcentajeUserATiempo - porcentajeATiempoArea;
-            
+
             compararRendimientoUsuario( "AREA " + nombreAreaUsuario,
                                        diferenciaPrcjeArea,
                                        difATiempoPrcjeArea,
@@ -282,7 +282,7 @@ void ReportesAdminMenuManager::estadisticasDetalladasDeUnUsuario(){
     }
     cout << endl;
     cout << "====================================================" << endl;
-    
+
     delete [] vecTickets;
     delete [] vecSprints;
     pause();
@@ -729,7 +729,7 @@ void ReportesAdminMenuManager::rankingAreasPorPrioridad(){
     int vecTotal[3][5] = {};
     int vecFinalizadas[3][5] = {};
     float porcentaje[5];
-    
+
     int cantidadTickets = ticketArch.getCantidadRegistros();
     if(cantidadTickets < 1){
         cout << "No hay Tickets." << endl;
@@ -742,7 +742,7 @@ void ReportesAdminMenuManager::rankingAreasPorPrioridad(){
         pause();
         return;
     }
-    
+
     for(int i = 0; i < cantidadTickets; i++){
         if( !ticketArch.leer(i, ticket) ) {
             cout << "Error al leer ticket." << endl;
@@ -752,24 +752,24 @@ void ReportesAdminMenuManager::rankingAreasPorPrioridad(){
             sprint = sprintArch.leer(j);
             if( ticket.getIdSprint() != sprint.getIdSprint() ||
                ticket.getIdProyecto() != sprint.getIdProyecto() ) continue;
-            
+
             int idPrioridad = ticket.getPrioridad().getIdPrioridad();
             int idArea = sprint.getArea().getIdArea();
-            
+
             vecTotal[idPrioridad-1][idArea-1]++;
-            
+
             if(ticket.getStatus().getIdEstado() == 2){
                 vecFinalizadas[idPrioridad-1][idArea-1]++;
             }
         }
     }
-    
+
     for(int i = 0; i < 3; i ++){
         Prioridad prioridad;
         Area area;
         int idMax = 0;
         int idMin = 0;
-        
+
         for(int j = 0; j < 5; j++){
             if(vecTotal[i][j] > 0){
                 porcentaje[j] = vecFinalizadas[i][j] / float(vecTotal[i][j]);
@@ -777,21 +777,22 @@ void ReportesAdminMenuManager::rankingAreasPorPrioridad(){
                 porcentaje[j] = 0;
             }
         }
-        
+
         for(int k = 0; k < 5; k++){
             if(porcentaje[k] > porcentaje[idMax]) idMax = k;
             if(porcentaje[k] < porcentaje[idMin]) idMin = k;
         }
-        
+
         cout << "   ----> PRIORIDAD: " << prioridad.getDescripcionPrioridad(i) << " <----" << endl;
         cout << endl;
-        cout << ">> MEJOR desempe–o: " << area.buscarNombrePorID(idMax) << endl;
+        cout << ">> MEJOR desempe–o: " << area.buscarNombrePorID(idMax+1) << endl;
         cout << "Finalizados: " << round(porcentaje[idMax] * 10000) / 100 << "%" << endl;
         cout << "----------------------------" << endl;
-        cout << ">> PEOR desempe–o: " << area.buscarNombrePorID(idMin) << endl;
+        cout << ">> PEOR desempe–o: " << area.buscarNombrePorID(idMin+1) << endl;
         cout << "Finalizados: " << round(porcentaje[idMin] * 10000) / 100 << "%" << endl;
-        
+
         cout << "===========================" << endl;
+
     }
-    
+    pause();
 }

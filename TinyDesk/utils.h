@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include "Fecha.h"
+#include <cmath>
 std::string cargarCadena();
 int buscarMaximo(int vec[], int cant);
 void cleanBuffer();

@@ -18,7 +18,7 @@ void ReportesUsuarioMenu::run(string titulo) {
     cin >> opcion;
     cout << "Has elegido el reporte " << opcion << endl;
     cout<<endl;
-    //pause();
+    pause();
 
         switch (opcion) {
             case 1:
@@ -32,7 +32,7 @@ void ReportesUsuarioMenu::run(string titulo) {
             case 3:
                 _reportesUsuarioMenuManager.estadisticaCompletaDelUsuario();
                 break;
-                
+
             case 0:
                 break;
 
