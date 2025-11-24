@@ -1040,7 +1040,7 @@
 	"MenuAdmin.h"
 	"MenuUsuario.h"
 
-1763223596 c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\usuariomanager.h
+1763925634 c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\usuariomanager.h
 	<string>
 	"UsuarioArchivo.h"
 	"ArchivoRol.h"
@@ -1054,7 +1054,7 @@
 1763172308 c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\fecha.h
 	<string>
 
-1763172308 c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\area.h
+1763940889 c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\area.h
 	<string>
 
 1763223596 c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\sesion.h
@@ -1074,7 +1074,7 @@
 1763172308 c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\sesionarchivo.h
 	"Sesion.h"
 
-1763172308 c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\utils.h
+1763925634 c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\utils.h
 	<string>
 	"Fecha.h"
 
@@ -1108,7 +1108,7 @@
 	<string>
 	"Proyecto.h"
 
-1763172308 c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\sprintmanager.h
+1763940889 c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\sprintmanager.h
 	<string>
 	"SprintArchivo.h"
 	"Sprint.h"
@@ -1120,7 +1120,7 @@
 	<string>
 	"Sprint.h"
 
-1763172308 c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\sprint.h
+1763940889 c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\sprint.h
 	<string>
 	"Fecha.h"
 	"Estado.h"
@@ -1130,16 +1130,20 @@
 1763172308 c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\estado.h
 	<string>
 
-1763526910 c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\ticketmanager.h
+1764003850 c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\ticketmanager.h
 	<string>
 	"Ticket.h"
 	"TicketArchivo.h"
 	"ProyectoManager.h"
 	"SprintManager.h"
+	"UsuarioManager.h"
+	"Prioridad.h"
 
-1763526910 c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\ticket.h
+1764003850 c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\ticket.h
 	<string>
 	"Fecha.h"
+	"Prioridad.h"
+	"Estado.h"
 
 1763526910 c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\ticketarchivo.h
 	<string>
@@ -1169,7 +1173,7 @@
 	<cstring>
 	"ReportesAdminMenuManager.h"
 
-1763676268 c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\reportesadminmenumanager.h
+1764003850 c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\reportesadminmenumanager.h
 	"ProyectoManager.h"
 	"SprintManager.h"
 	"TicketManager.h"
@@ -1191,7 +1195,7 @@
 	<iostream>
 	"ArchivoRol.h"
 
-1763172308 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\area.cpp
+1763940889 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\area.cpp
 	<iostream>
 	<cstring>
 	"area.h"
@@ -1220,7 +1224,7 @@
 	<iostream>
 	"Fecha.h"
 
-1763670931 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\listadoadminmanager.cpp
+1764003850 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\listadoadminmanager.cpp
 	<iostream>
 	"ListadoAdminManager.h"
 
@@ -1228,7 +1232,7 @@
 	<iostream>
 	"ListadoAdminMenu.h"
 
-1763487347 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\main.cpp
+1763944773 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\main.cpp
 	<iostream>
 	"App.h"
 
@@ -1246,7 +1250,7 @@
 	<iostream>
 	"ModificacionAdminMenu.h"
 
-1763526910 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\modificacionadminmenumanager.cpp
+1764003850 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\modificacionadminmenumanager.cpp
 	<iostream>
 	"ModificacionAdminMenuManager.h"
 
@@ -1269,11 +1273,11 @@
 	"Proyecto.h"
 	"utils.h"
 
-1763676268 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\reportesadminmenu.cpp
+1764004441 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\reportesadminmenu.cpp
 	<iostream>
 	"ReportesAdminMenu.h"
 
-1763676416 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\reportesadminmenumanager.cpp
+1764004576 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\reportesadminmenumanager.cpp
 	<iostream>
 	"ReportesAdminMenuManager.h"
 
@@ -1291,7 +1295,7 @@
 	<iostream>
 	"SesionArchivo.h"
 
-1763172308 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\sprint.cpp
+1763940889 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\sprint.cpp
 	<cstring>
 	<iostream>
 	"Sprint.h"
@@ -1299,12 +1303,13 @@
 	"Proyecto.h"
 	"area.h"
 	"Estado.h"
+	"utils.h"
 
-1763172308 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\sprintarchivo.cpp
+1763925634 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\sprintarchivo.cpp
 	<iostream>
 	"SprintArchivo.h"
 
-1763172308 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\sprintmanager.cpp
+1763940889 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\sprintmanager.cpp
 	<iostream>
 	<string>
 	"SprintManager.h"
@@ -1317,21 +1322,21 @@
 	"utils.h"
 	"Estado.h"
 
-1763526910 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\tareasusuariomanager.cpp
+1764003850 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\tareasusuariomanager.cpp
 	<iostream>
 	"TareasUsuarioManager.h"
 
-1763526910 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\ticket.cpp
+1764003850 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\ticket.cpp
 	<cstring>
 	<iostream>
 	"Ticket.h"
 	"Fecha.h"
 
-1763526910 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\ticketarchivo.cpp
+1764003850 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\ticketarchivo.cpp
 	<iostream>
 	"TicketManager.h"
 
-1763526910 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\ticketmanager.cpp
+1764003850 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\ticketmanager.cpp
 	<iostream>
 	<string>
 	"utils.h"
@@ -1347,19 +1352,19 @@
 	<iostream>
 	"UsuarioArchivo.h"
 
-1763526910 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\usuariomanager.cpp
+1763925634 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\usuariomanager.cpp
 	<iostream>
 	"UsuarioManager.h"
 
-1763526315 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\utils.cpp
+1763925634 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\utils.cpp
 	<iostream>
 	"utils.h"
 
-1763176606 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\reportesusuariomenu.cpp
+1763925634 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\reportesusuariomenu.cpp
 	<iostream>
 	"ReportesUsuarioMenu.h"
 
-1763177054 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\reportesusuariomenumanager.cpp
+1764003850 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\reportesusuariomenumanager.cpp
 	<iostream>
 	"ReportesUsuarioMenuManager.h"
 
@@ -1367,7 +1372,7 @@
 	<cstring>
 	"ReportesUsuarioMenuManager.h"
 
-1763433698 c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\reportesusuariomenumanager.h
+1763925634 c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\reportesusuariomenumanager.h
 	"ProyectoManager.h"
 	"SprintManager.h"
 	"TicketManager.h"
@@ -1548,6 +1553,14 @@
 	<string>
 
 1763965529 source:c:\users\katy\documents\nuevo tp\tinydesk\tinydesk\prioridad.cpp
+	<iostream>
+	<string>
+	"Prioridad.h"
+
+1764003850 c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\prioridad.h
+	<string>
+
+1764003850 source:c:\users\maxi\desktop\tp final pii\tinydesk\tinydesk\prioridad.cpp
 	<iostream>
 	<string>
 	"Prioridad.h"

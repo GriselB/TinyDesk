@@ -14,9 +14,9 @@ void ReportesAdminMenu::run(string titulo) {
     cout << "3- Porcentaje de Sprints completados por proyecto" << endl;
     cout << "4- Sprints Atrasados por area" << endl;
     cout << "5- Porcentaje de Proyectos completados" << endl;
-    cout << "6- Porcentaje de proyectos finalizados a tiempo" << endl;
-    cout << "7- Porcentaje de proyectos sin Sprint asignados" << endl;
-    cout << "8- Avances de proyecto (en relacion a los tickets)" << endl;
+    cout << "6- Porcentaje de Proyectos finalizados a tiempo" << endl;
+    cout << "7- Porcentaje de Proyectos sin Sprint asignados" << endl;
+    cout << "8- Avances de Proyecto (en relacion a los tickets)" << endl;
     cout << "-----------------" << endl;
     cout << "0- Volver" << endl;
     cout << "Opcion: ";

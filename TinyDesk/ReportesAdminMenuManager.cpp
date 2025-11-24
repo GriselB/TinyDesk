@@ -534,11 +534,9 @@ void ReportesAdminMenuManager::proyectosCompletados()
             completados++;
     }
     resultado = (completados/total)*100;
-    cout<<" ------------ PROYECTOS COMPLETADOS ------------ "<<endl;
-    cout<<"La cantidad de proyectos completados es del: "<<resultado<<"%"<<endl;
-    cout<<"La cantidad de proyectos no completados es del: "<<100-resultado<<"%"<<endl;
-    cout<<completados<<endl;
-    cout<<total<<endl;
+    cout<<" ------------ PROYECTOS COMPLETADOS ------------ "<<endl<<endl;
+    cout<<"La cantidad de Proyectos completados es del: "<<resultado<<"%"<<endl<<endl;
+    cout<<"La cantidad de Proyectos no completados es del: "<<100-resultado<<"%"<<endl<<endl;
     pause();
 
 }
@@ -567,50 +565,66 @@ void ReportesAdminMenuManager::proyectosFinalizadosATiempo()
     resultado=(finalizadosATiempo/finalizados)*100;
     if(finalizados == 0 )
         resultado = 0;
-    cout<<" ------------ PROYECTOS FINALIZADOS A TIEMPO ------------ "<<endl;
-    cout<<"El porcentaje de proyectos finalizados a tiempo es de: "<<resultado<<"%"<<endl;
-    cout<<"El porcentaje de proyectos finalizados fuera de tiempo es de: "<<100-resultado<<"%"<<endl;
+    cout<<" ------------ PROYECTOS FINALIZADOS A TIEMPO ------------ "<<endl<<endl;
+    cout<<"El porcentaje de Proyectos finalizados a tiempo es de: "<<resultado<<"%"<<endl<<endl;
+    cout<<"El porcentaje de Proyectos finalizados fuera de tiempo es de: "<<100-resultado<<"%"<<endl<<endl;
     pause();
 }
 
 void ReportesAdminMenuManager::proyectosSinSprintAsignados()
 {
     clear();
-    int total;
-    float disponibles,noDisponibles, disponiblesSinAsignar;
+    int total,cantProyectos, *vec;
+    float disponibles, disponiblesSinAsignar;
     disponibles = 0;
-    noDisponibles = 0;
     disponiblesSinAsignar = 0;
     Sprint sprint;
     ProyectoArchivo proyectoArchivo;
     SprintArchivo sprintArchivo;
-    int cant = proyectoArchivo.getCantidadRegistros();
-    for(int h = 0; h < cant;h++)
-    {
-        if(proyectoArchivo.leer(h).getIdEstado()==1)
-            disponibles++;
-        else
-            noDisponibles++;
-    }
-    int* vec = new int[cant]{};
+    cantProyectos = proyectoArchivo.getCantidadRegistros();
+    vec = new int[cantProyectos]{};
     int cantSprints = sprintArchivo.getCantidadRegistros();
     for(int i=0;i<cantSprints;i++)
     {
         int num = sprintArchivo.leer(i).getIdProyecto();
-        vec[num-1]++;
+        if(num > 0 && num <= cantProyectos)
+            vec[num-1]++;
     }
-        for(int j = 0;j<cant;j++)
+
+    for(int h = 0; h < cantProyectos;h++)
+    {
+        if(proyectoArchivo.leer(h).getIdEstado()==1)
+            disponibles++;
+        else
+            vec[h]=-1;
+    }
+    for(int j = 0;j<cantProyectos;j++)
     {
         if(vec[j]==0)
             disponiblesSinAsignar++;
     }
+    cout<<"-------------- PROYECTOS DISPONIBLES SIN SPRINTS ASIGNADOS --------------"<<endl<<endl;
     if(disponibles!=0)
     {
-        total= ((disponiblesSinAsignar-noDisponibles)/disponibles)*100;
-        cout<<"El porcentaje de proyectos disponibles sin sprint asignados es de: "<< total<<"%"<<endl;
+        total= (disponiblesSinAsignar/disponibles)*100;
+        cout<<"El porcentaje de Proyectos disponibles sin Sprint asignados es de: "<< total<<"%"<<endl<<endl;
     }
     else
-        cout<<"El porcentaje de proyectos disponibles sin sprint asignados es de: 0%"<<endl;
+        cout<<"El porcentaje de Proyectos disponibles sin Sprint asignados es de: 0%"<<endl<<endl;
+
+    cout<<"¿Desea ver la lista de Proyectos disponibles sin Sprints asignados?  s/n"<<endl<<endl;
+    char opcion;
+    cin>>opcion;
+    if(opcion == 's')
+    {
+       for(int x = 0;x<cantProyectos;x++)
+        {
+            if(vec[x]==0)
+            {
+                proyectoArchivo.leer(x).mostrar();
+            }
+        }
+    }
     delete[] vec;
     pause();
 }

@@ -57,6 +57,8 @@
 		<Unit filename="MenuAdmin.h" />
 		<Unit filename="MenuUsuario.cpp" />
 		<Unit filename="MenuUsuario.h" />
+		<Unit filename="Prioridad.cpp" />
+		<Unit filename="Prioridad.h" />
 		<Unit filename="Proyecto.cpp" />
 		<Unit filename="Proyecto.h" />
 		<Unit filename="ProyectoArchivo.cpp" />
