@@ -139,18 +139,20 @@ void ListadoAdminManager::listarTicketsPorSprints() {
                         break;
                     }
                 }
+                int idPrioridad = ticket.getPrioridad().getIdPrioridad();
+                int idEstado = ticket.getStatus().getIdEstado();
 
                 cout << "      • Ticket " << ticket.getIdTicket() << endl;
                 cout << "        Asignado a: " << usuarioAsignado << " " << apellidoUsuarioAsignado << endl;
                 cout << "        Descripcion: " << ticket.getDescripcionTarea() << endl;
-                cout << "        Prioridad: " << ticket.getPrioridad().getDescripcionPrioridad(ticket.getPrioridad().getIdPrioridad()) << endl;
+                cout << "        Prioridad: " << ticket.getPrioridad().getDescripcionPrioridad(idPrioridad) << endl;
                 cout << "        Fecha inicio: " << ticket.getFechaInicio().toString() << endl;
                 cout << "        Fecha a finalizar: " << ticket.getFechaFin().toString() << endl;
 
                 if(ticket.getStatus().getIdEstado() == 2){
-                    cout << "        Fecha finalizacion   : " << ticket.getFechaFinalizada().toString() << "\n";
+                    cout << "        Fecha finalizacion   : " << ticket.getFechaFinalizada().toString() << endl;
                 }else{
-                    cout << "        Estado   : " << estado.getNombreEstado(ticket.getStatus().getIdEstado()) << "\n";
+                    cout << "        Estado   : " << estado.getNombreEstado(idEstado) << endl;
                 }
                 cout << "--------------------------------" << endl;
             }
