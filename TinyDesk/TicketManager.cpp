@@ -14,10 +14,8 @@ void TicketManager::mostrarTicket(Ticket ticket) {
     cout << "========================================\n";
     cout << " TICKET N° " << ticket.getIdTicket() << "\n";
     cout << "----------------------------------------\n";
-    cout << " Proyecto : " << ticket.getNombreProyecto()
-         << " (ID " << ticket.getIdProyecto() << ")\n";
-    cout << " Sprint   : " << ticket.getNombreSprint()
-         << " (ID " << ticket.getIdSprint() << ")\n";
+    cout << " Proyecto : " << ticket.getNombreProyecto() << " (ID " << ticket.getIdProyecto() << ")\n";
+    cout << " Sprint   : " << ticket.getNombreSprint() << " (ID " << ticket.getIdSprint() << ")\n";
     cout << " Empleado : " << ticket.getIdEmpleado() << "\n";
     cout << " Estado   : " << estado.getNombreEstado(ticket.getStatus().getIdEstado()) << "\n";
     cout << " "; ticket.getPrioridad().mostrar();
@@ -33,7 +31,7 @@ void TicketManager::crearTicket() {
     Usuario u;
     UsuarioManager userManager;
 
-    int idEmpleado = 0, pos = 0;
+    int idEmpleado = 0, pos = -1;
     char opcion;
     string descripcion;
 
@@ -42,12 +40,20 @@ void TicketManager::crearTicket() {
     cout << "         ALTA DE NUEVO TICKET           \n";
     cout << "========================================\n\n";
 
-    cargarProyectoSprint(1, t, pos);
+    cargarProyectoSprint(true, t, pos);
+    if (pos == -1) {
+        return;
+    }
 
     int nuevoId = _repo.getNuevoIdTicket(t.getIdProyecto(), t.getIdSprint());
     t.setIdTicket(nuevoId);
 
     int posSprint = _repoSprint.buscarID(t.getIdSprint(), t.getIdProyecto());
+    if (posSprint == -1) {
+        cout << "No se encontro el sprint asociado al ticket.\n";
+        pause();
+        return;
+    }
     spr = _repoSprint.leer(posSprint);
 
     t.setNombreSprint(spr.getNombre());
@@ -172,31 +178,71 @@ void TicketManager::crearTicket() {
 
 void TicketManager::bajaTicket() {
     Ticket t;
+    int pos = -1;
 
+    clear();
     cout << "========================================\n";
     cout << "           BAJA DE TICKET              \n";
     cout << "========================================\n\n";
 
-    if (_repo.darDeBaja(t.getIdTicket(), t.getIdProyecto(), t.getIdSprint()))
+    cargarProyectoSprint(false, t, pos);
+    if (pos == -1) {
+
+        return;
+    }
+
+    cout << "--- Detalle del ticket seleccionado ---\n";
+    mostrarTicket(t);
+
+    int estadoActual = t.getStatus().getIdEstado();
+
+    if (estadoActual == 0) {
+        cout << "El ticket ya se encuentra dado de baja (No Disponible).\n";
+        pause();
+        return;
+    }
+
+    char opcion;
+    cout << "¿Confirmar baja del ticket? (S/N): ";
+    cin >> opcion;
+
+    if (toupper(opcion) != 'S') {
+        cout << "Operacion cancelada por el usuario.\n";
+        pause();
+        return;
+    }
+
+    estado.setIdEstado(0);
+    t.setStatus(estado);
+
+    if (_repo.guardar(pos, t)) {
         cout << "El ticket fue dado de baja correctamente.\n";
-    else
+    } else {
         cout << "No se pudo realizar la baja del ticket.\n";
+    }
+
+    pause();
 }
+
 
 
 void TicketManager::reactivarTicket() {
     Ticket t;
-    int pos;
+    int pos = -1;
 
     clear();
     cout << "========================================\n";
     cout << "          REACTIVAR TICKET             \n";
     cout << "========================================\n\n";
 
-    cargarProyectoSprint(0, t, pos);
+    cargarProyectoSprint(false, t, pos);
+    if (pos == -1) {
+        return;
+    }
 
     if (t.getStatus().getIdEstado() == 1) {
         cout << "El ticket ya se encuentra activo.\n";
+        pause();
         return;
     }
 
@@ -212,14 +258,15 @@ void TicketManager::reactivarTicket() {
 
 bool TicketManager::finalizarTicketUsuario(int idUsuario){
     Ticket t;
-    int pos;
+    int pos = -1;
 
     clear();
     cout << "========================================\n";
     cout << "          FINALIZAR TICKET             \n";
     cout << "========================================\n\n";
 
-    cargarProyectoSprint(0, t, pos);
+    cargarProyectoSprint(false, t, pos);
+    if (pos == -1) return false;
 
     if (t.getStatus().getIdEstado() == 2) {
         cout << "El ticket se encuentra inactivo.\n\n";
@@ -266,20 +313,20 @@ bool TicketManager::finalizarTicketUsuario(int idUsuario){
 
 void TicketManager::modificarDescripcion() {
     Ticket t;
-    int pos;
+    int pos = -1;
 
     clear();
     cout << "========================================\n";
     cout << "        MODIFICAR DESCRIPCION          \n";
     cout << "========================================\n\n";
 
-    cargarProyectoSprint(0, t, pos);
-
+    cargarProyectoSprint(false, t, pos);
+    if (pos == -1) return;
     string desc;
     cin.ignore();
     cout << "Descripcion actual: " << t.getDescripcionTarea() << "\n";
     cout << "Nueva descripcion: ";
-    cin >> desc;
+    getline(cin, desc);
 
     t.setDescripcionTarea(desc);
 
@@ -289,17 +336,18 @@ void TicketManager::modificarDescripcion() {
         cout << "No se pudo actualizar la descripcion.\n";
 }
 
+
 void TicketManager::modificarPrioridad() {
     Ticket t;
-    int pos;
+    int pos = -1;
 
     clear();
     cout << "========================================\n";
     cout << "         MODIFICAR PRIORIDAD           \n";
     cout << "========================================\n\n";
 
-    cargarProyectoSprint(0, t, pos);
-
+    cargarProyectoSprint(false, t, pos);
+    if (pos == -1) return;
     cin.ignore();
     cout << "Prioridad actual:\n";
     t.getPrioridad().mostrar();
@@ -318,17 +366,18 @@ void TicketManager::modificarPrioridad() {
 void TicketManager::modificarStatus() {
     Ticket t;
     Estado e;
-    int st, pos;
+    int pos = -1;
 
     clear();
     cout << "========================================\n";
     cout << "          MODIFICAR ESTADO             \n";
     cout << "========================================\n\n";
 
-    cargarProyectoSprint(0, t, pos);
+    cargarProyectoSprint(false, t, pos);
+    if (pos == -1) return;
+    cout << "Estado actual: " << e.getNombreEstado(t.getStatus().getIdEstado()) << "\n\n";
 
-    cout << "Estado actual: " << e.getNombreEstado(t.getStatus().getIdEstado()) << "\n";
-    cout << "Ingrese el nuevo estado (0, 1 o 2): ";
+    cout << "Seleccione el nuevo estado:\n";
     estado.seleccionarEstado();
     t.setStatus(estado);
 
@@ -338,21 +387,6 @@ void TicketManager::modificarStatus() {
         cout << "No se pudo actualizar el estado.\n";
 }
 
-
-// Funciona pero habria que hacer una funcion que valide si el usuario que ingresa pertenece al area del sprint del ticket
-//void TicketManager::asignarNuevoEmpleado() {
-//Ticket t;
-
-    //cargarProyectoSprint(0, t);
-
-    //int empleado;
-    //cout << "Nuevo ID de empleado: ";
-    //cin >> empleado;
-    //t.setIdEmpleado(empleado);
-
-    //if (_repo.guardar(t.getIdTicket(), t)) cout << "Empleado reasignado.\n";
-    //else cout << "No se pudo actualizar.\n";
-//}
 
 void TicketManager::listarTickets(int idProyecto, int idSprint) {
 
@@ -389,7 +423,8 @@ void TicketManager::listarTickets(int idProyecto, int idSprint) {
 
 
 void TicketManager::cargarProyectoSprint(bool nuevo, Ticket &t, int &pos){
-    int idProyecto = -1, idSprint, idTicket = -1;
+    pos = -1;
+    int idProyecto = -1, idSprint = -1, idTicket = -1;
 
     ProyectoManager proyectoManager;
     Proyecto pro;
@@ -410,6 +445,7 @@ void TicketManager::cargarProyectoSprint(bool nuevo, Ticket &t, int &pos){
             clear();
             cout << "Operacion cancelada.\n";
             pause();
+            pos = -1;
             return;
         }
         if (posProyecto == -1){
@@ -440,6 +476,7 @@ void TicketManager::cargarProyectoSprint(bool nuevo, Ticket &t, int &pos){
             clear();
             cout << "Operacion cancelada.\n";
             pause();
+            pos = -1;
             return;
         }
 
@@ -466,6 +503,7 @@ void TicketManager::cargarProyectoSprint(bool nuevo, Ticket &t, int &pos){
                 clear();
                 cout << "Operacion cancelada.\n";
                 pause();
+                pos = -1;
                 return;
             }
 
@@ -480,16 +518,3 @@ void TicketManager::cargarProyectoSprint(bool nuevo, Ticket &t, int &pos){
         _repo.leer(pos, t);
     }
 }
-
-
-bool TicketManager::cancelarOperacion (int opcion){
-    if (opcion == 0) {
-        clear();
-        cout << "Operacion cancelada por el usuario.\n";
-        pause();
-        return false;
-    }
-    return true;
-}
-
-

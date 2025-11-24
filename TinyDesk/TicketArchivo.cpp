@@ -131,15 +131,17 @@ bool existe = false;
 
 
 bool TicketArchivo::darDeBaja(int idTicket, int idProyecto, int idSprint){
-int pos = buscarIDTicketSprintProyecto(idTicket, idProyecto, idSprint);
+    int pos = buscarIDTicketSprintProyecto(idTicket, idProyecto, idSprint);
+    if (pos == -1) return false;
 
- if (pos != -1){
     Ticket ticket;
+    if (!leer(pos, ticket)) return false;
 
-    bool pudoLeer = leer(pos, ticket);
+    Estado estado;
+    estado.setIdEstado(0);
+    ticket.setStatus(estado);
 
     return guardar(pos, ticket);
-  }
-  return false;
 }
+
 

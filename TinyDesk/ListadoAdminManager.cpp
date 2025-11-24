@@ -53,7 +53,6 @@ void ListadoAdminManager::listarSprintsPorProyectos() {
 
         for (int j = 0; j < cantSprints; j++) {
             Sprint sprint = archivoSprint.leer(j);
-            
             if(sprint.getIdSprint() == -1) continue;
             if (sprint.getIdProyecto() == proyecto.getIdProyecto()) {
                 sprintMng.mostrar(j, true);
@@ -74,13 +73,14 @@ void ListadoAdminManager::listarTicketsPorSprints() {
     clear();
 
     ProyectoArchivo archivoProyecto;
-    SprintArchivo archivoSprint;
-    TicketArchivo archivoTicket;
-    UsuarioArchivo archivoUsuario;
+    SprintArchivo   archivoSprint;
+    TicketArchivo   archivoTicket;
+    UsuarioArchivo  archivoUsuario;
+    Estado          estado;
 
-    int cantProy = archivoProyecto.getCantidadRegistros();
-    int cantSprints = archivoSprint.getCantidadRegistros();
-    int cantTickets = archivoTicket.getCantidadRegistros();
+    int cantProy     = archivoProyecto.getCantidadRegistros();
+    int cantSprints  = archivoSprint.getCantidadRegistros();
+    int cantTickets  = archivoTicket.getCantidadRegistros();
     int cantUsuarios = archivoUsuario.getCantidadRegistros();
 
     cout << "----- TICKETS POR PROYECTO Y SPRINT -----" << endl;
@@ -103,7 +103,7 @@ void ListadoAdminManager::listarTicketsPorSprints() {
 
     for (int i = 0; i < cantProy; i++) {
         Proyecto proyecto = archivoProyecto.leer(i);
-        if(proyecto.getIdProyecto() == -1) continue;
+        if (proyecto.getIdProyecto() == -1) continue;
 
         cout << "Proyecto " << proyecto.getIdProyecto() << ": " << proyecto.getNombre() << endl;
 
@@ -112,7 +112,7 @@ void ListadoAdminManager::listarTicketsPorSprints() {
         for (int j = 0; j < cantSprints; j++) {
             Sprint sprint = archivoSprint.leer(j);
             if(sprint.getIdSprint() == -1) continue;
-            if (sprint.getIdProyecto() != proyecto.getIdProyecto()) continue;
+            if(sprint.getIdProyecto() != proyecto.getIdProyecto()) continue;
 
             tieneSprint = true;
             cout << "   Sprint " << sprint.getNombre() << endl;
@@ -123,10 +123,9 @@ void ListadoAdminManager::listarTicketsPorSprints() {
                 Ticket ticket;
                 if(!archivoTicket.leer(k, ticket)) continue;
                 if(ticket.getIdProyecto() != proyecto.getIdProyecto()) continue;
-                if(ticket.getIdSprint() != sprint.getIdSprint()) continue;
+                if(ticket.getIdSprint()   != sprint.getIdSprint())     continue;
 
                 tieneTickets = true;
-
 
                 string usuarioAsignado = "-- sin usuario asignado --";
                 string apellidoUsuarioAsignado = "";
@@ -142,16 +141,17 @@ void ListadoAdminManager::listarTicketsPorSprints() {
                 }
 
                 cout << "      • Ticket " << ticket.getIdTicket() << endl;
-                cout << "        Asignado a: " << usuarioAsignado << apellidoUsuarioAsignado << endl;
+                cout << "        Asignado a: " << usuarioAsignado << " " << apellidoUsuarioAsignado << endl;
                 cout << "        Descripcion: " << ticket.getDescripcionTarea() << endl;
-                cout << "        Prioridad: " << ticket.getPrioridad() << endl;
+                cout << "        Prioridad: " << ticket.getPrioridad().getDescripcionPrioridad(ticket.getPrioridad().getIdPrioridad()) << endl;
                 cout << "        Fecha inicio: " << ticket.getFechaInicio().toString() << endl;
                 cout << "        Fecha a finalizar: " << ticket.getFechaFin().toString() << endl;
-                if (ticket.getFechaFinalizada().getAnio()!=0) {
-                    cout<<"        Fecha finalizada: " << ticket.getFechaFinalizada().toString()<<endl;
-                } else {
-                    cout << "        Status: " << ticket.getStatus() << endl;
 
+                if(ticket.getFechaFinalizada().getAnio() != 0){
+                    cout << "        Fecha finalizada: " << ticket.getFechaFinalizada().toString() << endl;
+                } else{
+                    int idEstado = ticket.getStatus().getIdEstado();
+                    cout << "        Status: " << estado.getNombreEstado(idEstado) << endl;
                 }
                 cout << "--------------------------------" << endl;
             }
@@ -162,7 +162,6 @@ void ListadoAdminManager::listarTicketsPorSprints() {
 
         cout << "------------------------------------------------------------" << endl;
         cout << "------------------------------------------------------------" << endl;
-
     }
 
     pause();
