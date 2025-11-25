@@ -790,7 +790,7 @@ void ReportesAdminMenuManager::rankingAreasPorPrioridad(){
             if(vecTotal[i][j] > 0){
                 porcentaje[j] = vecFinalizadas[i][j] / float(vecTotal[i][j]);
             } else {
-                porcentaje[j] = 0;
+                porcentaje[j] = -1;
             }
         }
 
@@ -801,13 +801,20 @@ void ReportesAdminMenuManager::rankingAreasPorPrioridad(){
 
         cout << "   ----> PRIORIDAD: " << prioridad.getDescripcionPrioridad(i) << " <----" << endl;
         cout << endl;
-        cout << ">> MEJOR desempe–o: " << area.buscarNombrePorID(idMax+1) << endl;
-        cout << "Finalizados: " << round(porcentaje[idMax] * 10000) / 100 << "%" << endl;
-        cout << "----------------------------" << endl;
+        if(porcentaje[idMax] > 0){
+            cout << ">> MEJOR desempe–o: " << area.buscarNombrePorID(idMax+1) << endl;
+            cout << "Finalizados: " << round(porcentaje[idMax] * 10000) / 100 << "%" << endl;
+        } else {
+            cout << ">> MEJOR desempe–o: No Hubo" << endl;
+        }
+        if(porcentaje[idMin] >= 0){
+        cout << "--------------------" << endl;
         cout << ">> PEOR desempe–o: " << area.buscarNombrePorID(idMin+1) << endl;
         cout << "Finalizados: " << round(porcentaje[idMin] * 10000) / 100 << "%" << endl;
-
-        cout << "===========================" << endl;
+        } else {
+            cout << ">> PEOR desempe–o: No Hubo" << endl;
+        }
+        cout << "=================================" << endl;
 
     }
     pause();
