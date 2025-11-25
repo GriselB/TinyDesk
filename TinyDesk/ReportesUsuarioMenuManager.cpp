@@ -277,6 +277,7 @@ void ReportesUsuarioMenuManager::estadisticaCompletaDelUsuario(){
 void ReportesUsuarioMenuManager::proyectosParticipaUsuario()
 {
     clear();
+    int cantidad = 0;
     ProyectoArchivo proyectoArchivo;
     TicketArchivo ticketArchivo;
     Ticket ticket;
@@ -300,8 +301,13 @@ void ReportesUsuarioMenuManager::proyectosParticipaUsuario()
     for(int j= 0;j<cantProy;j++)
     {
         if(vec[j]>0)
-            cout<<"El usuario actual esta asignado al proyecto "<<j+1<<endl;
+        {
+            cout<<"El usuario actual esta asignado al proyecto "<<j+1<<endl<<endl;
+            cantidad++;
+        }
     }
+    if(cantidad==0)
+        cout<<"El usuario actual no tiene asignado ningun proyecto "<<endl<<endl;
     delete [] vec;
     pause();
 
