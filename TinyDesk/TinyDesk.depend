@@ -213,11 +213,11 @@
 	<iostream>
 	"UsuarioArchivo.h"
 
-1763930111 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\usuariomanager.cpp
+1764037747 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\usuariomanager.cpp
 	<iostream>
 	"UsuarioManager.h"
 
-1764019923 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\utils.cpp
+1764102272 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\utils.cpp
 	<iostream>
 	"utils.h"
 
@@ -341,7 +341,7 @@
 	<string>
 	"Sprint.h"
 
-1763923731 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\sprintmanager.cpp
+1764037579 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\sprintmanager.cpp
 	<iostream>
 	<string>
 	"SprintManager.h"
@@ -1029,7 +1029,7 @@
 	<iostream>
 	"ReportesAdminMenu.h"
 
-1764019923 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\reportesadminmenumanager.cpp
+1764102272 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\reportesadminmenumanager.cpp
 	<iostream>
 	"ReportesAdminMenuManager.h"
 
@@ -1410,7 +1410,7 @@
 	<cstring>
 	"ReportesUsuarioMenuManager.h"
 
-1764030226 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\reportesusuariomenumanager.h
+1764037747 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\reportesusuariomenumanager.h
 	"ProyectoManager.h"
 	"SprintManager.h"
 	"TicketManager.h"
@@ -1418,11 +1418,11 @@
 	"Sesion.h"
 	<cmath>
 
-1764030226 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\reportesusuariomenu.cpp
+1764037747 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\reportesusuariomenu.cpp
 	<iostream>
 	"ReportesUsuarioMenu.h"
 
-1764036224 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\reportesusuariomenumanager.cpp
+1764102272 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\reportesusuariomenumanager.cpp
 	<iostream>
 	"ReportesUsuarioMenuManager.h"
 
@@ -1591,12 +1591,13 @@
 	<string>
 	"Prioridad.h"
 
-<<<<<<< HEAD
+1764025873 D
+
 1764019923 d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\prioridad.h
 	<string>
 
 1764019923 source:d:\utn\programacion2\tpi\tinydesk\tinydesk\tinydesk\prioridad.cpp
-=======
+
 1762310207 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\estadoarchivo.cpp
 	"EstadoArchivo.h"
 	"Estado.h"
@@ -1736,13 +1737,12 @@
 	"ModificacionAdminMenuManager.h"
 
 1764025873 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\prioridad.cpp
->>>>>>> 158b55ede830f67fcc56bf477d7c988f22a49078
+
+1764025873 b55ede830f67fcc56bf477d7c988f22a49078
 	<iostream>
 	<string>
 	"Prioridad.h"
 
-<<<<<<< HEAD
-=======
 1764025873 source:c:\users\max\desktop\tp final\tinydesk\tinydesk\reportesadminmenu.cpp
 	<iostream>
 	"ReportesAdminMenu.h"
@@ -1779,4 +1779,3 @@
 	"TicketManager.h"
 	"Ticket.h"
 
->>>>>>> 158b55ede830f67fcc56bf477d7c988f22a49078
