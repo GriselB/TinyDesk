@@ -106,4 +106,43 @@ string Fecha::toString()
   return to_string(_dia) + "/"+ to_string(_mes) + "/" + to_string(_anio);
 }
 
+//-------------------
+
+// Función auxiliar: Convierte una fecha (D/M/A) a un número total de días
+int Fecha::convertirAEntero() {
+    // 1. Sumamos los días de los años completos anteriores
+    int aniosCompletos = _anio - 1;
+    int totalDias = aniosCompletos * 365;
+
+    // 2. Sumamos los bisiestos acumulados en esos años
+    // (Un año es bisiesto si es divisible por 4, excepto multiplos de 100, salvo multiplos de 400)
+    totalDias += (aniosCompletos / 4) - (aniosCompletos / 100) + (aniosCompletos / 400);
+
+    // 3. Sumamos los días de los meses completos del año actual
+    int diasPorMes[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    
+    // Si el año actual es bisiesto, febrero tiene 29
+    if (comprobarBisiesto(_anio)) { // Asumo que tienes este metodo o usa la logica de arriba
+        diasPorMes[1] = 29;
+    }
+
+    // Sumamos los dias de los meses anteriores al actual
+    for (int i = 0; i < _mes - 1; i++) {
+        totalDias += diasPorMes[i];
+    }
+
+    // 4. Sumamos los días del mes actual
+    totalDias += _dia;
+
+    return totalDias;
+}
+
+// Función principal: Resta los dos números enteros
+int Fecha::diferenciaEnDias(Fecha fechaComparar) {
+    int misDias = this->convertirAEntero();
+    int susDias = fechaComparar.convertirAEntero();
+    
+    // Retornamos la resta (puede dar negativo si la fechaComparar es anterior)
+    return (int)(susDias - misDias);
+}
 

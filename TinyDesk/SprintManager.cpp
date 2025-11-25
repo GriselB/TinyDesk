@@ -352,10 +352,12 @@ void SprintManager::finalizarSprint() {
         if (finalizado == 's' || finalizado == 'S'){
           sprint.setFinalizoTarde(true);
           fechasValidas = true;
+        }else{
+          fechasValidas = false;
         }
         
         pause();
-        fechasValidas = false;
+ 
       }
 
       else if (!fechaMenorOIgual(sprint.getFechaInicio(), auxFin)) {

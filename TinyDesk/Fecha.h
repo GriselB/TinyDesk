@@ -20,9 +20,12 @@ class Fecha
     bool comprobarBisiesto(int anio);
 
     std::string toString(); // DD/MM/YYYY
+    int diferenciaEnDias(Fecha fechaFutura);
 
   private:
     int _dia;
     int _mes;
     int _anio;
+    
+    int convertirAEntero();
 };

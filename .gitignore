@@ -57,3 +57,6 @@ TinyDesk/sprints.dat
 TinyDesk/proyectos.dat
 *.dat
 TinyDesk/sprints.dat
+TinyDesk/bin/Debug/TinyDesk.exe
+TinyDesk/TinyDesk.depend
+TinyDesk/TinyDesk.layout

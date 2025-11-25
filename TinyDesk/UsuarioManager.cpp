@@ -15,26 +15,83 @@ UsuarioManager::UsuarioManager() { }
 void UsuarioManager::cargarUsuario(Usuario &user) {
 
     string nombre, apellido, email, pass;
-    int idRol;
+    int idRol, contadorChar;
+    int caractMax;
     Area area;
 
-    cout << "Nombre: ";
-    cin>>nombre;
+    cleanBuffer();
+    do{
+        cout << "Nombre: ";
+        cin>>nombre;
+        const char *caracteres = nombre.c_str();
+        contadorChar = 0;
+        caractMax = 19;
+        
+        while (caracteres[contadorChar] != '\0') {
+            contadorChar++;
+            if(contadorChar > caractMax){
+                cout << "El Nombre debe contener a lo sumo 19 caracteres." << endl;
+                break;
+            }
+        }
+    }while(contadorChar > 19);
     user.setNombre(nombre);
-
+    
+    cleanBuffer();
+    do{
     cout << "Apellido: ";
     cin>>apellido;
+        const char *caracteres = apellido.c_str();
+        contadorChar = 0;
+        caractMax = 19;
+        
+        while (caracteres[contadorChar] != '\0') {
+            contadorChar++;
+            if(contadorChar > caractMax){
+                cout << "El Apellido debe contener a lo sumo 19 caracteres." << endl;
+                break;
+            }
+        }
+    }while(contadorChar > 19);
     user.setApellido(apellido);
-
-    cout << "Email: ";
-    cin>>email;
-    user.setEmail(email);
-
-    cout << "Password: ";
-    cin>>pass;
-    user.setPassword(pass);
-
     
+    cleanBuffer();
+    do{
+        cout << "Email: ";
+        cin>>email;
+        const char *caracteres = email.c_str();
+        contadorChar = 0;
+        caractMax = 29;
+        
+        while (caracteres[contadorChar] != '\0') {
+            contadorChar++;
+            if(contadorChar > caractMax){
+                cout << "El Email debe contener a lo sumo 29 caracteres." << endl;
+                break;
+            }
+        }
+    }while(contadorChar > 29);
+    user.setEmail(email);
+    
+    cleanBuffer();
+    do{
+        cout << "Password: ";
+        cin>>pass;
+        const char *caracteres = pass.c_str();
+        contadorChar = 0;
+        caractMax = 49;
+        
+        while (caracteres[contadorChar] != '\0') {
+            contadorChar++;
+            if(contadorChar > caractMax){
+                cout << "La contraseña debe contener a lo sumo 49 caracteres." << endl;
+                break;
+            }
+        }
+    }while(contadorChar > 49);
+    user.setPassword(pass);
+    
+    cleanBuffer();
     do{
         cout << "ID de rol (1 para admin, 2 para empleado) : ";
         cin >> idRol;

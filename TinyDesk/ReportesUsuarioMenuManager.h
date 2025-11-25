@@ -10,6 +10,7 @@
 class ReportesUsuarioMenuManager {
 public:
     void porcentajeTicketsCompletadosDelUsuario();
-    void ticketsSinTerminarDelUsuario();
+    void ticketsProximosAvencerseXusuario();
     void estadisticaCompletaDelUsuario();
+    void proyectosParticipaUsuario();
 };
