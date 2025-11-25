@@ -124,20 +124,18 @@ void compararRendimientoUsuario(std::string titulo,
     }
     
     /// - CONSISTENCIA EN CUMPLIMIENTO GENERAL -
-    cout << "Consistencia del rendimiento: ";
-    if (cvUsuario >= 0 && cvBase >= 0) {
-        if (cvUsuario < cvBase) {
-            cout << "el usuario es MAS ESTABLE que " << titulo << "." << endl;
-        } else if (cvUsuario > cvBase) {
-            cout << "el usuario es MAS INESTABLE que " << titulo << "." << endl;
-        } else {
-            cout << "el usuario tiene una estabilidad similar a " << titulo << "." << endl;
-        }
-    } else {
-        cout << "no puede evaluarse (datos insuficientes)." << endl;
-    }
-    
-    cout << endl;
+//    cout << "Consistencia del rendimiento: ";
+//    if (cvUsuario >= 0 && cvBase >= 0) {
+//        if (cvUsuario < cvBase) {
+//            cout << "el usuario es MAS ESTABLE que " << titulo << "." << endl;
+//        } else if (cvUsuario > cvBase) {
+//            cout << "el usuario es MAS INESTABLE que " << titulo << "." << endl;
+//        } else {
+//            cout << "el usuario tiene una estabilidad similar a " << titulo << "." << endl;
+//        }
+//    } else {
+//        cout << "no puede evaluarse (datos insuficientes)." << endl;
+//    }
     
     /// - CUMPLIMIENTO A TIEMPO (total)  -
     cout << "Cumplimiento A TIEMPO: ";
@@ -163,32 +161,32 @@ void compararRendimientoUsuario(std::string titulo,
     cout << endl;
     
     /// - CV A TIEMPO (consistencia) -
-    cout << "Consistencia en puntualidad (entregas a tiempo): ";
-    if (cvUsuarioATiempo >= 0.0 && cvBaseATiempo >= 0.0) {
-        if (cvUsuarioATiempo < cvBaseATiempo) {
-            cout << "el usuario es MAS ESTABLE en entregas a tiempo que " << titulo << "." << endl;
-        } else if (cvUsuarioATiempo > cvBaseATiempo) {
-            cout << "el usuario es MAS INESTABLE en entregas a tiempo que " << titulo << "." << endl;
-        } else {
-            cout << "el usuario tiene una estabilidad similar a " << titulo << " en entregas a tiempo." << endl;
-        }
-    } else {
-        cout << "no puede evaluarse (insuficientes tickets finalizados a tiempo)." << endl;
-    }
+//    cout << "Consistencia en puntualidad (entregas a tiempo): ";
+//    if (cvUsuarioATiempo >= 0.0 && cvBaseATiempo >= 0.0) {
+//        if (cvUsuarioATiempo < cvBaseATiempo) {
+//            cout << "el usuario es MAS ESTABLE en entregas a tiempo que " << titulo << "." << endl;
+//        } else if (cvUsuarioATiempo > cvBaseATiempo) {
+//            cout << "el usuario es MAS INESTABLE en entregas a tiempo que " << titulo << "." << endl;
+//        } else {
+//            cout << "el usuario tiene una estabilidad similar a " << titulo << " en entregas a tiempo." << endl;
+//        }
+//    } else {
+//        cout << "no puede evaluarse (insuficientes tickets finalizados a tiempo)." << endl;
+//    }
     
     /// - CV A TIEMPO (consistencia condicional) -
-       cout << "Consistencia en puntualidad (condicional entre finalizados): ";
-       if (cvUsuarioATiempoCondicional >= 0.0 && cvBaseATiempoCondicional >= 0.0) {
-           if (cvUsuarioATiempoCondicional < cvBaseATiempoCondicional) {
-               cout << "el usuario es MAS ESTABLE que " << titulo << "." << endl;
-           } else if (cvUsuarioATiempoCondicional > cvBaseATiempoCondicional) {
-               cout << "el usuario es MAS INESTABLE que " << titulo << "." << endl;
-           } else {
-               cout << "el usuario tiene estabilidad similar a " << titulo << "." << endl;
-           }
-       } else {
-           cout << "no puede evaluarse." << endl;
-       }
+//       cout << "Consistencia en puntualidad (condicional entre finalizados): ";
+//       if (cvUsuarioATiempoCondicional >= 0.0 && cvBaseATiempoCondicional >= 0.0) {
+//           if (cvUsuarioATiempoCondicional < cvBaseATiempoCondicional) {
+//               cout << "el usuario es MAS ESTABLE que " << titulo << "." << endl;
+//           } else if (cvUsuarioATiempoCondicional > cvBaseATiempoCondicional) {
+//               cout << "el usuario es MAS INESTABLE que " << titulo << "." << endl;
+//           } else {
+//               cout << "el usuario tiene estabilidad similar a " << titulo << "." << endl;
+//           }
+//       } else {
+//           cout << "no puede evaluarse." << endl;
+//       }
 }
 
 void cuentaBinomanial(float &media, double &porcentaje, double &CV, int finalizados, int total){
