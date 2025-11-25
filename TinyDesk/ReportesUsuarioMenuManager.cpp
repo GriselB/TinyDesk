@@ -302,9 +302,8 @@ void ReportesUsuarioMenuManager::proyectosParticipaUsuario()
     {
         if(vec[j]>0)
         {
-            cout<<"El usuario actual esta asignado al proyecto "<<j+1<<endl<<endl;
+            cout<<"El usuario actual esta asignado al proyecto "<<proyectoArchivo.leer(j).getNombre()<<endl<<endl;
             cantidad++;
-            proyectoArchivo.leer(j).mostrar();
         }
     }
     if(cantidad==0)
