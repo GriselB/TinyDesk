@@ -137,6 +137,8 @@ void compararRendimientoUsuario(std::string titulo,
         cout << "no puede evaluarse (datos insuficientes)." << endl;
     }
     
+    cout << endl;
+    
     /// - CUMPLIMIENTO A TIEMPO (total)  -
     cout << "Cumplimiento A TIEMPO: ";
     if (diferenciaCumplimientoATiempo > 0) {
@@ -158,9 +160,11 @@ void compararRendimientoUsuario(std::string titulo,
         cout << "igual al promedio de " << titulo << "." << endl;
     }
     
+    cout << endl;
+    
     /// - CV A TIEMPO (consistencia) -
     cout << "Consistencia en puntualidad (entregas a tiempo): ";
-    if (cvUsuarioATiempo >= 0 && cvBaseATiempo >= 0) {
+    if (cvUsuarioATiempo >= 0.0 && cvBaseATiempo >= 0.0) {
         if (cvUsuarioATiempo < cvBaseATiempo) {
             cout << "el usuario es MAS ESTABLE en entregas a tiempo que " << titulo << "." << endl;
         } else if (cvUsuarioATiempo > cvBaseATiempo) {
@@ -174,7 +178,7 @@ void compararRendimientoUsuario(std::string titulo,
     
     /// - CV A TIEMPO (consistencia condicional) -
        cout << "Consistencia en puntualidad (condicional entre finalizados): ";
-       if (cvUsuarioATiempoCondicional >= 0 && cvBaseATiempoCondicional >= 0) {
+       if (cvUsuarioATiempoCondicional >= 0.0 && cvBaseATiempoCondicional >= 0.0) {
            if (cvUsuarioATiempoCondicional < cvBaseATiempoCondicional) {
                cout << "el usuario es MAS ESTABLE que " << titulo << "." << endl;
            } else if (cvUsuarioATiempoCondicional > cvBaseATiempoCondicional) {
@@ -190,7 +194,20 @@ void compararRendimientoUsuario(std::string titulo,
 void cuentaBinomanial(float &media, double &porcentaje, double &CV, int finalizados, int total){
     media = finalizados / float(total);
     porcentaje = round(media * 10000.0) / 100.0;
+    if(total < 2){
+        CV = -1;
+        return;
+    }
+    double esperanza = total * media;
+    if(esperanza <= 0.0) {
+        CV = -1;
+        return;
+    }
     double varianza = total * media * (1 - media);
     double desvio = sqrt(varianza);
-    CV = (desvio / finalizados) * 100.0;
+    if(desvio == 0) {
+        CV = 0.0;
+        return;
+    }
+    CV = (desvio / esperanza) * 100.0;
 }
