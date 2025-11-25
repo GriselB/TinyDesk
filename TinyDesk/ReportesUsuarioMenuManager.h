@@ -12,4 +12,5 @@ public:
     void porcentajeTicketsCompletadosDelUsuario();
     void ticketsSinTerminarDelUsuario();
     void estadisticaCompletaDelUsuario();
+    void proyectosParticipaUsuario();
 };

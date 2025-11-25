@@ -12,6 +12,7 @@ void ReportesUsuarioMenu::run(string titulo) {
     cout << "1 - Porcentaje de Tickets completado del usuario" << endl;
     cout << "2 - Porcentaje de Tickets sin terminar del usuario" << endl;
     cout << "3 - Estadistica Completa del Usuario" << endl;
+    cout << "4 - Proyectos en los que participa el Usuario" << endl;
     cout << "-----------------" << endl;
     cout << "0- Volver" << endl;
     cout << "Opcion: ";
@@ -32,6 +33,9 @@ void ReportesUsuarioMenu::run(string titulo) {
             case 3:
                 _reportesUsuarioMenuManager.estadisticaCompletaDelUsuario();
                 break;
+
+            case 4:
+                _reportesUsuarioMenuManager.proyectosParticipaUsuario();
 
             case 0:
                 break;
