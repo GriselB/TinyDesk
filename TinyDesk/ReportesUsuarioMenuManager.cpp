@@ -352,11 +352,6 @@ void ReportesUsuarioMenuManager::estadisticaCompletaDelUsuario(){
             cuentaBinomanial(mediaUserTiempoCondicional, porcenajeUserTiempoCondicional, cvUserTiempoCondicional, finalizadosATiempoUser, finalizadosUser);
 
             cout << "Porcentaje de tickets completados a tiempo: " << porcentajeUserATiempo << "%" << endl;
-            if(cvUserATiempo >= 0) {
-                cout << "Coeficiente de variacion: " << round(cvUserATiempo * 100.0) / 100.0 << evaluarCV(cvUserATiempo) << endl;
-            } else {
-                cout << "Coeficiente de variacion: no evaluable -muy pocos casos-." << endl;
-            }
         } else {
             cout << "El usuario no tiene ningun ticket finalizado a tiempo." << endl;
         }
